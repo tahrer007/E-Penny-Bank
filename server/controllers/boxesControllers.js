@@ -16,7 +16,7 @@ const newBox = async (req, res) => {
   }
 };
 
-const getBox = async (req, res) => {
+const getBoxs = async (req, res) => {
   const getAllBoxs = () => Box.find();
 
   try {
@@ -31,4 +31,4 @@ const updateBox = () => {
   console.log("updateBox:)");
 };
 
-module.exports = { newBox, getBox, updateBox };
+module.exports = { newBox, getBoxs, updateBox };
