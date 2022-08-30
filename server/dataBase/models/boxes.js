@@ -20,7 +20,7 @@ const savingBoxSchema = new Schema({
     required: [true, "Please provide an admin id"],
   },
   addingHistory: {
-    type: Array, //{userId , amount , date & time }
+    type: Array, //{userId , amount, date & time }
     default: [{}],
     required: [false],
   },
