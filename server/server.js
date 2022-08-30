@@ -18,8 +18,12 @@ const path = require("path"), //module is used for handling and transforming fil
     app.use(bodyParser.json());
   
     //add routers
-    const usersRouter = require("../routers/usersRouter");
-    const boxesRouter = require("../routers/boxesRouter");
+    //const usersRouter = require("../routers/usersRouter");
+    const authRouter = require("./routes/authRouter");
+    const boxesRouter = require("./routes/boxesRouter");
+    const usersRouter = require("./routes/usersRouter");
+
+    
 
   
     app.use(authRouter);
@@ -40,5 +44,5 @@ const path = require("path"), //module is used for handling and transforming fil
     }
   
 app.listen(PORT, () => {
-  console.log(`Server ddddd listening on ${PORT}`);
+  console.log(`Server listening on ${PORT}`);
 });

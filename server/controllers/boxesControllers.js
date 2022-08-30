@@ -10,4 +10,4 @@ const updateBox = () => {
   console.log("updateBox:)");
 };
 
-export { newBox, getBox, updateBox };
+module.exports = { newBox, getBox, updateBox };
