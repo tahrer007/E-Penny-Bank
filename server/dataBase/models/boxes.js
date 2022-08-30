@@ -24,7 +24,7 @@ const savingBoxSchema = new Schema({
     default: [{}],
     required: [false],
   },
-  createdTime: Date,
+  createdTime: {default :Date},
 });
 const savingBox = mongoose.model("savingBoxes", savingBoxSchema);
 
