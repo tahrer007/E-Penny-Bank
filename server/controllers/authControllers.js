@@ -31,36 +31,26 @@ const signUp = async (req, res) => {
     });
   }
 };
-
+//TODO:refactor with try/catch , always return password not match with try and catch 
 const signIn = async (req, res) => {
-  let user;
- /* try{
-    user = await User.findOne({ email: req.body.email });
-  }catch(error){
-    res.status(404).send({
-      message: "Email not found",
-      e,
-  }*/
-
- user = await User.findOne({ email: req.body.email });
+  const user = await User.findOne({ email: req.body.email });
   if (!user)
     return res.status(404).send({
       message: "Email not found",
-      //e,
+      //error,
     });
 
   const match = await bcrypt.compare(req.body.password, user.password);
   if (!match)
     return res.status(400).send({
       message: "Passwords does not match",
-     // error,
+      // error,
     });
 
   const accessToken = jwt.sign(
-    user,
+    { mail: user.email },
     process.env.ACCESS_TOKEN_SECRET
   );
-  console.log(accessToken);
   return res.status(200).send({
     message: "Login Successful",
     user: user,
