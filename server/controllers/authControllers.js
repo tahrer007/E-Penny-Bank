@@ -57,15 +57,14 @@ const signIn = async (req, res) => {
     accessToken,
   });
 };
-function authenticateToken (req,res,next){
+function authenticateToken(req, res, next) {
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
-  if(!token) return res.sendStatus(401) ; // dont have token
-  jwt.verify(token,process.env.ACCESS_TOKEN_SECRET,(error,user)=>{
-    if(error) return res.sendStatus(403) // dont have access 
-    req.user= user ;
-    next() ; 
-  })
-
+  if (!token) return res.sendStatus(401); // dont have token
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (error, user) => {
+    if (error) return res.sendStatus(403); // dont have access
+    req.user = user;
+    next();
+  });
 }
 module.exports = { signUp, signIn };
