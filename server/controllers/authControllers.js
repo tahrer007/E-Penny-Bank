@@ -1,11 +1,12 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../dataBase/models/users");
+const saltRounds = 10;
 
 const signUp = async (req, res) => {
   let hashedPassword;
   try {
-    hashedPassword = await bcrypt.hash(req.body.password, 10);
+    hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
   } catch (error) {
     res.status(500).send({
       message: "Password was not hashed successfully",
@@ -33,74 +34,37 @@ const signUp = async (req, res) => {
 
 const signIn = async (req, res) => {
   let user;
-  try {
-    user = User.findOne({ email: req.body.email });
-  } catch (error) {
+ /* try{
+    user = await User.findOne({ email: req.body.email });
+  }catch(error){
     res.status(404).send({
       message: "Email not found",
-      error,
+      e,
+  }*/
+
+ user = await User.findOne({ email: req.body.email });
+  if (!user)
+    return res.status(404).send({
+      message: "Email not found",
+      //e,
     });
-  }
-  try {
-    const passwordCheck = bcrypt.compare(req.body.password, user.password);
-    console.log(passwordCheck);
-    if (!passwordCheck) {
-      return res.status(400).send({
-        message: "Passwords does not match",
-        error,
-      });
-    }
-  } catch (error) {
-    res.status(400).send({
+
+  const match = await bcrypt.compare(req.body.password, user.password);
+  if (!match)
+    return res.status(400).send({
       message: "Passwords does not match",
-      error,
+     // error,
     });
-  }
-  /*User.findOne({ email: req.body.email })
 
-    .then((user) => {
-      bcrypt
-        .compare(req.body.password, user.password)
-
-        .then((passwordCheck) => {
-          console.log(passwordCheck);
-          if (!passwordCheck) {
-            return res.status(400).send({
-              message: "Passwords does not match",
-              error,
-            });
-          }
-
-          const token = jwt.sign(
-            {
-              userId: user._id,
-              userEmail: user.email,
-            },
-            "RANDOM-TOKEN",
-            { expiresIn: "24h" }
-          );
-
-          //   return success res
-          res.status(200).send({
-            message: "Login Successful",
-            email: user.email,
-            token,
-          });
-        })
-        // catch error if password does not match
-        .catch((error) => {
-          res.status(400).send({
-            message: "Passwords does not match",
-            error,
-          });
-        });
-    })
-    // catch error if email does not exist
-    .catch((e) => {
-      res.status(404).send({
-        message: "Email not found",
-        e,
-      });
-    });*/
+  const accessToken = jwt.sign(
+    user,
+    process.env.ACCESS_TOKEN_SECRET
+  );
+  console.log(accessToken);
+  return res.status(200).send({
+    message: "Login Successful",
+    user: user,
+    accessToken,
+  });
 };
 module.exports = { signUp, signIn };
