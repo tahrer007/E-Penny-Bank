@@ -32,6 +32,30 @@ const signUp = async (req, res) => {
 };
 
 const signIn = async (req, res) => {
+  let user;
+  try {
+    user = User.findOne({ email: req.body.email });
+  } catch (error) {
+    res.status(404).send({
+      message: "Email not found",
+      error,
+    });
+  }
+  try {
+    const passwordCheck = bcrypt.compare(req.body.password, user.password);
+    console.log(passwordCheck);
+    if (!passwordCheck) {
+      return res.status(400).send({
+        message: "Passwords does not match",
+        error,
+      });
+    }
+  } catch (error) {
+    res.status(400).send({
+      message: "Passwords does not match",
+      error,
+    });
+  }
   /*User.findOne({ email: req.body.email })
 
     .then((user) => {
