@@ -1,21 +1,23 @@
 @import "global.scss";
 
 .navBar {
-    display: flex;
-    height: 90%;
+  display: flex;
+  height: 10%;
+  width: $appWidth;
+  background-color: rebeccapurple;
+
+  .title {
+    width: 75%;
+    height: 100%;
+    background-color: red;
+  }
+  .icon {
+    width: 25%;
+    background-color: yellow;
+  }
+
+  @media (orientation: portrait) and (max-width: $smallScreen) {
     width: 100%;
-    background-color: rebeccapurple;
+  }
 
-
-
-    .title {
-        width: 90%;
-        height: 100%;
-        background-color: red;
-
-    }
-    .icon {
-        width: 100%;
-        background-color: yellow;
-    }
 }
