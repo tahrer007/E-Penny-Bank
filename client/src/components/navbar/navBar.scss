@@ -1,0 +1,21 @@
+@import "./global.scss";
+
+.navBar {
+    display: flex;
+    height: 90%;
+    width: 100%;
+    background-color: rebeccapurple;
+
+
+
+    .title {
+        width: 90%;
+        height: 100%;
+        background-color: red;
+
+    }
+    .icon {
+        width: 100%;
+        background-color: yellow;
+    }
+}
