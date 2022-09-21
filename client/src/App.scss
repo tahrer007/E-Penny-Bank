@@ -18,19 +18,19 @@
   scrollbar-width: none;
   padding: 0;
 
-  
-
   .pageContainer {
+    padding: 0.5em;
     background-color: royalblue;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     height: 90%;
     width: $appWidth;
+
+    
     @media (orientation: portrait) and (max-width: $smallScreen) {
       width: 100%;
     }
+  }
 }
-}
-
