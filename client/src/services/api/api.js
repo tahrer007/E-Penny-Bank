@@ -1,7 +1,11 @@
-/*import axios from "axios";
-const myUrl = `https://spot-it-server.herokuapp.com/`;
-const myApi = axios.create({
-  baseURL: myUrl,
+import axios from "axios";
+import { React_App_BASE_URL } from "@env";
+
+const baseURL = React_App_BASE_URL;
+const api = axios.create({
+  baseURL: baseURL,
+  headers: { "Content-Type": "application/json" },
+  //withCredentials: true,
 });
 
-export  {myApi,myUrl};*/
+export default api;
