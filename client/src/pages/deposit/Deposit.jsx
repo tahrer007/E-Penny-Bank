@@ -5,7 +5,16 @@ import ExactDeposit from "components/deposit/exactDeposit/ExactDeposit";
 const Deposit = () => {
   const [randomSelected, setRandomSlected] = useState(true);
   const onChangeSelection = (e) => setRandomSlected(!randomSelected);
+  const [amount, setAmount] = useState(0);
 
+  const deposit = async () => {
+    if (!amount) {
+      console.log("zero not accepted !!");
+      return;
+    }
+    console.log(amount);
+  };
+  const addAmount = (amount) => setAmount(amount);
   useEffect(() => {
     console.log(randomSelected);
   }, [randomSelected]);
@@ -25,8 +34,12 @@ const Deposit = () => {
         <input className="radioBtn" type="radio" value={false} name="gender" />
         exact deposit
       </div>
-      <div className="selectedOption">
-        {randomSelected ? <RandomDeposit /> : <ExactDeposit />}
+      <div className="selectedOptionBox">
+        {randomSelected ? (
+          <RandomDeposit addAmount={addAmount} />
+        ) : (
+          <ExactDeposit addAmount={addAmount} />
+        )}
       </div>
       <div className="submitBtn"> button</div>
     </div>
