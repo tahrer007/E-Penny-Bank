@@ -7,17 +7,10 @@ const Deposit = () => {
   const onChangeSelection = (e) => setRandomSlected(!randomSelected);
   const [amount, setAmount] = useState(0);
 
-  const deposit = async () => {
-    if (!amount) {
-      console.log("zero not accepted !!");
-      return;
-    }
-    console.log(amount);
-  };
-  const addAmount = (amount) => setAmount(amount);
+  const addAmount = async (amount) => setAmount(amount);
   useEffect(() => {
-    console.log(randomSelected);
-  }, [randomSelected]);
+    console.log(amount);
+  }, [amount]);
 
   return (
     <div className="pageContainer depositPage">

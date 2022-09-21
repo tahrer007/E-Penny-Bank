@@ -3,26 +3,21 @@ import "./exactDeposit.scss";
 const MIN = 1;
 const MAX = 100;
 
-const ExactDeposit = () => {
+const ExactDeposit = ({ addAmount }) => {
   const [amount, setAmount] = useState(MIN);
   const [alert, setAlert] = useState(false);
 
   const handleInputChange = (value) => {
     if (value < MIN || value > MAX) {
       setAlert(true);
-    
       setTimeout(() => {
         setAlert(false);
         value > MAX ? setAmount(MAX) : setAmount(MIN);
       }, 3000);
     }
-    console.log(value);
+    addAmount(value);
     setAmount(value);
   };
-
-  useEffect(() => {
-    console.log(amount);
-  }, [amount]);
 
   return (
     <div className="exactBox">
