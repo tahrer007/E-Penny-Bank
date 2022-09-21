@@ -11,7 +11,7 @@ const Home= ()=>{
 
     const [loading,setLoading]=useState(true);
 
-    return( <div className="pageContainer homePage">home</div>)
+    return(<div className="pageContainer homePage">home</div>)
 
 }
 
