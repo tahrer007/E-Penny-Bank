@@ -16,8 +16,8 @@
     background-color: yellow;
   }
 
-  @media (orientation: portrait) and (max-width: $smallScreen) {
-    width: 100%;
-  }
+   @media (orientation: portrait) and (max-width: $smallScreen) {
+      width: 100%;
+    }
 
 }
