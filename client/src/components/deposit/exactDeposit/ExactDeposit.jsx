@@ -14,9 +14,10 @@ const ExactDeposit = ({ addAmount }) => {
         setAlert(false);
         value > MAX ? setAmount(MAX) : setAmount(MIN);
       }, 3000);
+    } else {
+      addAmount(value);
+      setAmount(value);
     }
-    addAmount(value);
-    setAmount(value);
   };
 
   return (
