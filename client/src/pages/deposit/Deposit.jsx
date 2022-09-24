@@ -20,11 +20,11 @@ const Deposit = () => {
           className="radioBtn"
           type="radio"
           value={true}
-          name="gender"
+          name="Random deposit"
           defaultChecked={true}
         />
         Random deposit
-        <input className="radioBtn" type="radio" value={false} name="gender" />
+        <input className="radioBtn" type="radio" value={false} name="exact deposit" />
         exact deposit
       </div>
       <div className="selectedOptionBox">
