@@ -2,6 +2,8 @@
 
 .depositPage {
   background-color: red;
+  justify-content: space-around;
+    align-items: center;
 
   > * {
     border: 3px solid black;
@@ -30,6 +32,7 @@
       width: 20px;
       vertical-align: middle;
       margin: 0px 10px;
+      
     }
   }
   .selectedOptionBox {
