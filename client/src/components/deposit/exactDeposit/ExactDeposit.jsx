@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./exactDeposit.scss";
-import { MAX,MIN } from "services/api/const";
+import { MAX,MIN } from "services/const";
 
 
 const ExactDeposit = ({ addAmount }) => {

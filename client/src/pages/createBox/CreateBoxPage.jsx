@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { BOXES_TYPES, PRIVATE_BOX, SHARED_BOX } from "services/api/const";
+import { BOXES_TYPES, PRIVATE_BOX, SHARED_BOX } from "services/const";
 //import RadioButton from "components/radioButton/RadioButton";
-
+import SharedBoxDetails from "components/sharedBoxDetails/SharedBoxDetails";
 import "./createBox.scss";
-//const PRIVATE_BOX = 0 ;
-//const SHARED_BOX = 1 ;
+
 const CreateBox = () => {
   const [boxType, setBoxType] = useState(PRIVATE_BOX);
 
@@ -48,7 +47,7 @@ const CreateBox = () => {
           Shared box
         </div>
       </div>
-      {boxType && <div className="sharedBoxDetails"> shared Box Details</div>}
+      {boxType ? <SharedBoxDetails newBox={true} /> : null}
       <div className="createBtn"> createBtn</div>
     </div>
   );

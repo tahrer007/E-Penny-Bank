@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { MAX, MIN } from "services/api/const";
+import { MAX, MIN } from "services/const";
 
 import "./randomDeposit.scss";
 
