@@ -5,8 +5,8 @@ import ExactDeposit from "components/deposit/exactDeposit/ExactDeposit";
 const Deposit = () => {
   const [randomSelected, setRandomSlected] = useState(true);
   const onChangeSelection = (e) => setRandomSlected(!randomSelected);
-  const [amount, setAmount] = useState(0);
-
+  const [amount, setAmount] = useState(null);
+  //TODO:remove from the first time amount
   const addAmount = async (amount) => setAmount(amount);
   useEffect(() => {
     console.log(amount);

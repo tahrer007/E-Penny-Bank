@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./exactDeposit.scss";
-const MIN = 1;
-const MAX = 100;
+import { MAX,MIN } from "services/api/const";
+
 
 const ExactDeposit = ({ addAmount }) => {
   const [amount, setAmount] = useState(MIN);
