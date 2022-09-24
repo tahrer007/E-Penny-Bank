@@ -14,7 +14,7 @@ const Deposit = () => {
 
   return (
     <div className="pageContainer depositPage">
-      <div className="boxName">personal box</div>
+      <div className="boxName">box name</div>
       <div className="optionsBox" onChange={(e) => onChangeSelection(e)}>
         <input
           className="radioBtn"

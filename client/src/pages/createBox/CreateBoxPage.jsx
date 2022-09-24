@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { BOXES_TYPES, PRIVATE_BOX, SHARED_BOX } from "services/api/const";
-import RadioButtons from "components/radioButtons/RadioButtons";
+//import RadioButton from "components/radioButton/RadioButton";
+
 import "./createBox.scss";
 //const PRIVATE_BOX = 0 ;
 //const SHARED_BOX = 1 ;
 const CreateBox = () => {
-  const [boxtype, setBoxType] = useState(PRIVATE_BOX);
-  useEffect(() => {
-    console.log(BOXES_TYPES, PRIVATE_BOX, SHARED_BOX);
-  }, []);
+  const [boxType, setBoxType] = useState(PRIVATE_BOX);
 
-  const selectBoxType = (type) => {
-    if (type === SHARED_BOX) setBoxType(SHARED_BOX);
+  useEffect(() => {}, []);
+
+  const onChangeSelection = (e) => {
+    const value = parseInt(e.target.value);
+
+    setBoxType(value);
   };
 
   return (
@@ -24,13 +26,29 @@ const CreateBox = () => {
             //value={this.state.value}
             //onChange={this.handleChange}
           />
-          <RadioButtons
-            options={BOXES_TYPES}
-            selectBoxType onChangeSelection={selectBoxType}
-          />
         </label>
+        <div className="optionsBox">
+          <input
+            className="radioBtn"
+            type="radio"
+            value={0}
+            name="Random deposit"
+            checked={boxType === PRIVATE_BOX}
+            onChange={(e) => onChangeSelection(e)}
+          />
+          Private box
+          <input
+            className="radioBtn"
+            type="radio"
+            value={1}
+            name="exact deposit"
+            checked={boxType === SHARED_BOX}
+            onChange={(e) => onChangeSelection(e)}
+          />
+          Shared box
+        </div>
       </div>
-      {boxtype && <div className="sharedBoxDetails"> shared Box Details</div>}
+      {boxType && <div className="sharedBoxDetails"> shared Box Details</div>}
       <div className="createBtn"> createBtn</div>
     </div>
   );
