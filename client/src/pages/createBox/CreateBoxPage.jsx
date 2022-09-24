@@ -12,8 +12,8 @@ const CreateBox = () => {
           Box name:
           <input
             type="text"
-            value={this.state.value}
-            onChange={this.handleChange}
+            //value={this.state.value}
+            //onChange={this.handleChange}
           />
         </label>
       </div>
