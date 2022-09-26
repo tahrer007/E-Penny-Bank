@@ -31,13 +31,17 @@ const getBoxs = async (req, res) => {
 };
 
 const deposit = async (req, res) => {
-  const filter = { _id: req.body.boxId };
-  const update = { totalDeposits: req.body.deposit };
-  //let doc = await Box.findOneAndUpdate(filter, update);
-  //console.log(doc) ;
-  //doc.totalDeposits ;
+  try {
+    const filter = { _id: req.body.boxId };
+    const update = { $inc: { totalDeposits: req.body.deposit } };
+    //const update = { $push: { depositsHistory: req.body.boxId } };
 
-  //box_id .... 1- amount 2- userId
+    let box = await Box.findOneAndUpdate(filter, update);
+    box.save; 
+    res.status(200).send(box);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
 module.exports = { newBox, getBoxs, deposit };
