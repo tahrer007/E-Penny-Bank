@@ -2,23 +2,28 @@ import React, { useEffect, useState } from "react";
 import { makeKey } from "services/helper";
 import "./sharedBoxDetails.scss";
 
-const SharedBoxDetails = ({ boxDetails, newBox }) => {
+const SharedBoxDetails = ({ newBox, boxDetails,getSharedBoxDetails }) => {
   const [boxKey, setBoxKey] = useState(boxDetails?.key);
   const [isAllowedToReveal, setIsAllowedToReveal] = useState(
     boxDetails?.isAllowedToReveal || false
   );
+
+
+  useEffect(() => {
+    if (newBox) setBoxKey(makeKey());
+  }, [newBox]);
+
+  useEffect(() => {
+    if(!boxKey) return ; 
+    getSharedBoxDetails({boxKey,isAllowedToReveal});
+  }, [isAllowedToReveal]);
+
   const share = () => {
     if (newBox) return;
     console.log(boxKey);
   };
+  
 
-  useEffect(() => {
-    if (newBox) setBoxKey(makeKey());
-  }, []);
-
-  useEffect(() => {
-    console.log(isAllowedToReveal);
-  }, [isAllowedToReveal]);
   return (
     <div className="sharedBoxDetails">
       <div className="keyBox">

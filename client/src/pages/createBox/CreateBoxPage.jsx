@@ -7,15 +7,26 @@ import "./createBox.scss";
 const CreateBox = () => {
   const [boxType, setBoxType] = useState(PRIVATE_BOX);
   const [boxName, setBoxName] = useState("");
+  const [sharedBoxDetails, setSharedBoxDetails] = useState({});
 
   useEffect(() => {
-    console.log(boxName);
-  }, [boxName]);
+    
+  }, []);
 
   const onChangeSelection = (e) => {
     const value = parseInt(e.target.value);
 
     setBoxType(value);
+  };
+
+  const getSharedBoxDetails = ({ boxKey, isAllowedToReveal }) =>
+    setSharedBoxDetails({ boxKey, isAllowedToReveal });
+
+  const createNewBox = async () => {
+    //boxName , userID ,box type ,isAllowedToReveal , isAdMIN : TRUE , key
+    //amount 0 
+    //create date 
+    
   };
 
   return (
@@ -50,7 +61,12 @@ const CreateBox = () => {
           Shared box
         </div>
       </div>
-      {boxType ? <SharedBoxDetails newBox={true} /> : null}
+      {boxType ? (
+        <SharedBoxDetails
+          newBox={true}
+          getSharedBoxDetails={getSharedBoxDetails}
+        />
+      ) : null}
       <div className="createBtn"> createBtn</div>
     </div>
   );
