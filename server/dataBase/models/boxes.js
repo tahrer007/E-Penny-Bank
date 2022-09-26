@@ -7,7 +7,7 @@ const savingBoxSchema = new Schema(
       type: Number,
       required: [true, "Please provide a box type (private/shared)"],
     },
-    amount: {
+    totalDeposits: {
       type: Number,
       required: [false],
       default: 0,
@@ -20,7 +20,7 @@ const savingBoxSchema = new Schema(
       type: String,
       required: [true, "Please provide an admin id"],
     },
-    depositHistory: {
+    depositsHistory: {
       type: Array, //{userId , amount, date & time }
       default: [{}],
       required: [false],

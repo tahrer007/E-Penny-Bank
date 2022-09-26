@@ -22,7 +22,7 @@ const usersRouter = require("./routes/usersRouter");
 
 app.use(authRouter);
 app.use("/boxes", boxesRouter);
-app.use("/usersRouter", usersRouter);
+app.use("/users", usersRouter);
 app.get("/test", (req, res) => {
   res.send("ok");
 });

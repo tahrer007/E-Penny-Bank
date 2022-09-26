@@ -1,5 +1,5 @@
 const Box = require("../dataBase/models/boxes");
-const User = require("../dataBase/models/users");
+//const User = require("../dataBase/models/users");
 
 const newBox = async (req, res) => {
   try {
@@ -12,8 +12,8 @@ const newBox = async (req, res) => {
     });
 
     const createBox = await newBox.save();
+
     res.status(201).json(createBox);
-    console.log("here!!!!!!!!!");
   } catch (err) {
     return res.status(400).json({ message: err.message });
   }
@@ -30,8 +30,14 @@ const getBoxs = async (req, res) => {
   }
 };
 
-const updateBox = () => {
-  console.log("updateBox:)");
+const deposit = async (req, res) => {
+  const filter = { _id: req.body.boxId };
+  const update = { totalDeposits: req.body.deposit };
+  //let doc = await Box.findOneAndUpdate(filter, update);
+  //console.log(doc) ;
+  //doc.totalDeposits ;
+
+  //box_id .... 1- amount 2- userId
 };
 
-module.exports = { newBox, getBoxs, updateBox };
+module.exports = { newBox, getBoxs, deposit };
