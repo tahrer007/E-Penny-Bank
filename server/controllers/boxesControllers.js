@@ -1,18 +1,21 @@
 const Box = require("../dataBase/models/boxes");
+const User = require("../dataBase/models/users");
 
 const newBox = async (req, res) => {
-  const newBox = new Box({
-    type: req.body.type,
-    amount: req.body.amount,
-    usersId: req.body.usersId,
-    adminId: req.body.adminId,
-    addingHistory: req.body.addingHistory,
-  });
   try {
+    const newBox = new Box({
+      type: req.body.type,
+      usersId: [req.body.userId],
+      adminId: req.body.userId,
+      isAllowedToReveal: req.body.isAllowedToReveal,
+      boxKey: req.body.boxKey,
+    });
+
     const createBox = await newBox.save();
     res.status(201).json(createBox);
+    console.log("here!!!!!!!!!");
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    return res.status(400).json({ message: err.message });
   }
 };
 
