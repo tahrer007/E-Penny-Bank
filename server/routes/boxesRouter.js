@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {newBox,getBoxs,deposit} = require("../controllers/boxesControllers");
+const {newBox,getBoxes,deposit} = require("../controllers/boxesControllers");
 
 router.get('/allBoxes', getBoxs);
 router.post('/newBox', newBox);

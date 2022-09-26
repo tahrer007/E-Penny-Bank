@@ -19,12 +19,12 @@ const newBox = async (req, res) => {
   }
 };
 
-const getBoxs = async (req, res) => {
+const getBoxes = async (req, res) => {
   const getAllBoxs = () => Box.find();
 
   try {
-    const allBoxs = await getAllBoxs();
-    res.status(200).json(allBoxs);
+    const allBoxes = await getAllBoxs();
+    res.status(200).json(allBoxes);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -37,11 +37,11 @@ const deposit = async (req, res) => {
     //const update = { $push: { depositsHistory: req.body.boxId } };
 
     let box = await Box.findOneAndUpdate(filter, update);
-    box.save; 
+
     res.status(200).send(box);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-module.exports = { newBox, getBoxs, deposit };
+module.exports = { newBox, getBoxes, deposit };
