@@ -25,7 +25,7 @@ const savingBoxSchema = new Schema({
     required: [false],
   },
   createdTime: {default :Date},
-});
+}, {timestamps: true});
 const savingBox = mongoose.model("savingBoxes", savingBoxSchema);
 
 module.exports = savingBox;
