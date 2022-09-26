@@ -1,28 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { makeKey } from "services/helper";
+import { SHARED_BOX } from "services/const";
 import "./sharedBoxDetails.scss";
-
-const SharedBoxDetails = ({ newBox, boxDetails,getSharedBoxDetails }) => {
-  const [boxKey, setBoxKey] = useState(boxDetails?.key);
+const userId = "6331f73f92d30d25c7103d29";
+const SharedBoxDetails = ({ newBox, boxDetails, getSharedBoxDetails }) => {
+  const [boxKey, setBoxKey] = useState(boxDetails?.boxKey);
   const [isAllowedToReveal, setIsAllowedToReveal] = useState(
     boxDetails?.isAllowedToReveal || false
   );
-
+  let isAdmin =
+    boxDetails?.type === SHARED_BOX && userId === boxDetails.adminId;
 
   useEffect(() => {
+    console.log(boxDetails);
     if (newBox) setBoxKey(makeKey());
   }, [newBox]);
 
   useEffect(() => {
-    if(!boxKey) return ; 
-    getSharedBoxDetails({boxKey,isAllowedToReveal});
+    if (!boxKey) return;
+    getSharedBoxDetails({ boxKey, isAllowedToReveal });
   }, [isAllowedToReveal]);
 
   const share = () => {
     if (newBox) return;
     console.log(boxKey);
   };
-  
 
   return (
     <div className="sharedBoxDetails">
@@ -35,7 +37,7 @@ const SharedBoxDetails = ({ newBox, boxDetails,getSharedBoxDetails }) => {
           shared icon
         </div>
       </div>
-      {(newBox || boxDetails.admin) && (
+      {(newBox || isAdmin) && (
         <div className="authorized">
           <div className="revealBox">
             <input
