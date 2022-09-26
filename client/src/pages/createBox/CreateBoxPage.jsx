@@ -6,14 +6,20 @@ import "./createBox.scss";
 
 const CreateBox = () => {
   const [boxType, setBoxType] = useState(PRIVATE_BOX);
+  const [boxName,setBoxName] =useState("") ; 
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+
+      console.log(boxName);
+
+  }, [boxName]);
 
   const onChangeSelection = (e) => {
     const value = parseInt(e.target.value);
 
     setBoxType(value);
   };
+  
 
   return (
     <div className="pageContainer newBoxPage">
@@ -22,8 +28,8 @@ const CreateBox = () => {
           Box name:
           <input
             type="text"
-            //value={this.state.value}
-            //onChange={this.handleChange}
+            value={boxName}
+            onChange={e =>setBoxName(e.target.value)}
           />
         </label>
         <div className="optionsBox">
