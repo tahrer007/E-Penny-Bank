@@ -12,12 +12,22 @@
   }
 
   .keyBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     height: 20%;
     > div {
+      border: 3px solid black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+
     .key {
+      width: 50%;
     }
     .shareKey {
+      width: 20%;
     }
   }
 
