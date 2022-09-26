@@ -6,7 +6,7 @@ const getUsers = () => {
 };
 
 const addBoxToUser = async (req, res) => {
-  console.log(req.body)
+  
   const filter = { _id: req.body.userId };
   const update = { $push: { boxesId: req.body.boxId } };
   try {
