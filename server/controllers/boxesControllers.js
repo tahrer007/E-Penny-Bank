@@ -5,6 +5,7 @@ const newBox = async (req, res) => {
   try {
     const newBox = new Box({
       type: req.body.type,
+      boxName: req.body.boxName,
       usersId: [req.body.userId],
       adminId: req.body.userId,
       isAllowedToReveal: req.body.isAllowedToReveal,
