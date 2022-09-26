@@ -2,7 +2,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const savingBoxSchema = new Schema(
-  {
+  { 
+    boxName : {
+      type : String , 
+      required: [true, "Please provide box name"],
+    },
     type: {
       type: Number,
       required: [true, "Please provide a box type (private/shared)"],
@@ -33,6 +37,7 @@ const savingBoxSchema = new Schema(
       type: Boolean,
       required: [false],
     },
+
   },
   { timestamps: true }
 );
