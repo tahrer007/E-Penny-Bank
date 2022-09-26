@@ -5,5 +5,5 @@ const {newBox,getBoxes,deposit} = require("../controllers/boxesControllers");
 router.get('/allBoxes', getBoxes);
 router.post('/newBox', newBox);
 router.post('/deposit', deposit);
-//router.post('/updateBox', updateBox);
+//router.post('/adduser', updateBox);
 module.exports = router;

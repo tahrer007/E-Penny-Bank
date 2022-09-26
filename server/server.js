@@ -16,11 +16,11 @@ app.use(bodyParser.json());
 
 //add routers
 
-const authRouter = require("./routes/authRouter");
+//const authRouter = require("./routes/authRouter");
 const boxesRouter = require("./routes/boxesRouter");
 const usersRouter = require("./routes/usersRouter");
 
-app.use(authRouter);
+//app.use(authRouter);
 app.use("/boxes", boxesRouter);
 app.use("/users", usersRouter);
 app.get("/test", (req, res) => {
