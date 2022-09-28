@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { selectUser } from "actions";
+import { fetchBoxes } from "actions";
 import "./home.scss";
 //1- render loadig
 //2-check local sortage ;
@@ -9,9 +9,10 @@ import "./home.scss";
 //form contain auto log in
 //
 
-const Home = ({users}) => {
+const Home = ({fetchBoxes}) => {
   useEffect(() => {
-    console.log(users);
+    fetchBoxes();
+   
   }, []);
   const [loading, setLoading] = useState(true);
 
@@ -22,4 +23,4 @@ const mapStateToProps = (state) => {
   return { users: state.users };
 };
 
-export default connect(mapStateToProps)(Home);
+export default connect(null,{fetchBoxes})(Home);

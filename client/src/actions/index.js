@@ -1,11 +1,8 @@
-//action ceator 
-export const getUsers =()=>{
-
-}
-export const selectUser =(user)=>{
-    return {
-        type : "GET_BOXES",
-        payLoad : user
-    }
-}
- 
+//action ceator
+import apis from "api/api";
+//(dispatch,getState)
+export const fetchBoxes = () => async (dispatch) => {
+  const response = await apis.get("boxes/allboxes");
+  console.log(response) ;
+  dispatch({ type: "FETCH_BOXES", payload: response });
+};

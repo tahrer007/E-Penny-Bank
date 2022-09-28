@@ -1,5 +1,4 @@
 const Box = require("../dataBase/models/boxes");
-//const User = require("../dataBase/models/users");
 
 const newBox = async (req, res) => {
   try {
@@ -21,10 +20,10 @@ const newBox = async (req, res) => {
 };
 
 const getBoxes = async (req, res) => {
-  const getAllBoxs = () => Box.find();
+  //const getAllBoxs = () => Box.find();
 
   try {
-    const allBoxes = await getAllBoxs();
+    const allBoxes = await Box.find();
     res.status(200).json(allBoxes);
   } catch (error) {
     res.status(500).json({ message: error.message });
