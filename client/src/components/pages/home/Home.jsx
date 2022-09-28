@@ -1,18 +1,25 @@
-import React , {useState , useEffect} from "react";
-import "./home.scss" ;
-//1- render loadig 
-//2-check local sortage ; 
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { selectUser } from "actions";
+import "./home.scss";
+//1- render loadig
+//2-check local sortage ;
 // if has data ... check for update  else login page
-//if has data without inter net connection .. load latest data with offline message 
-//form contain auto log in 
+//if has data without inter net connection .. load latest data with offline message
+//form contain auto log in
 //
 
-const Home= ()=>{
+const Home = ({users}) => {
+  useEffect(() => {
+    console.log(users);
+  }, []);
+  const [loading, setLoading] = useState(true);
 
-    const [loading,setLoading]=useState(true);
+  return <div className="pageContainer homePage">home</div>;
+};
 
-    return(<div className="pageContainer homePage">home</div>)
+const mapStateToProps = (state) => {
+  return { users: state.users };
+};
 
-}
-
-export default Home ;
+export default connect(mapStateToProps)(Home);

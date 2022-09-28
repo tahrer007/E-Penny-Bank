@@ -2,10 +2,10 @@
 export const getUsers =()=>{
 
 }
-export const getUserBoxes =(userId)=>{
+export const selectUser =(user)=>{
     return {
         type : "GET_BOXES",
-        payLoad : userId
+        payLoad : user
     }
 }
  
