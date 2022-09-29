@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 //import { selectedBoxReducer } from "./boxesReducers";
-import {boxesReducer} from "./boxesReducer";
+import boxesReducer from "./boxesReducer";
+import selectedBoxReducer from "./selectedBoxReducer";
 
 const usersReducers = () => {
   return [
@@ -19,11 +20,8 @@ const usersReducers = () => {
   ];
 };
 
-
-
 export default combineReducers({
   users: usersReducers,
-  boxes: boxesReducer 
-  //selectedBox: selectedBoxReducer,
- 
+  boxes: boxesReducer,
+  selectedBox: selectedBoxReducer,
 });

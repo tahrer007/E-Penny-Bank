@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchBoxes } from "actions";
+import { fetchallBoxes, selectedBox } from "actions";
 import "./home.scss";
 //1- render loadig
 //2-check local sortage ;
@@ -9,15 +9,24 @@ import "./home.scss";
 //form contain auto log in
 //
 
-const Home = ({ fetchBoxes, users, boxes }) => {
+const Home = ({ fetchallBoxes, users, boxes ,selectedBox }) => {
   useEffect(() => {
-    fetchBoxes();
+    fetchallBoxes();
   }, []);
+
+  const handleBoxSelection = (box) => {
+    console.log(box)
+    selectedBox(box);
+  };
 
   return (
     <div className="pageContainer homePage">
-      {boxes?.map((x) => {
-        return <div key={x._id}>{x.totalDeposits}</div>;
+      {boxes[0]?.map((x) => {
+        return (
+          <div key={x._id} onClick={()=>handleBoxSelection(x)}>
+            {x.totalDeposits}
+          </div>
+        );
       })}
     </div>
   );
@@ -25,7 +34,7 @@ const Home = ({ fetchBoxes, users, boxes }) => {
 
 const mapStateToProps = (state, ownProps) => {
   console.log(state);
-  return { users: state.users, boxes: state.boxes[0] };
+  return { users: state.users, boxes: state.boxes };
 };
 
-export default connect(mapStateToProps, { fetchBoxes })(Home);
+export default connect(mapStateToProps, { fetchallBoxes, selectedBox })(Home);
