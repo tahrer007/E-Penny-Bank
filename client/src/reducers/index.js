@@ -1,4 +1,6 @@
 import { combineReducers } from "redux";
+//import { selectedBoxReducer } from "./boxesReducers";
+import {boxesReducer} from "./boxesReducer";
 
 const usersReducers = () => {
   return [
@@ -17,15 +19,11 @@ const usersReducers = () => {
   ];
 };
 
-const selectedBoxReducer = (selectedBox = null, action) => {
-  if (action.type === "BOX_SELECTED") {
-    return action.payload;
-  }
 
-  return selectedBox;
-};
 
 export default combineReducers({
   users: usersReducers,
-  selectedBox: selectedBoxReducer,
+  boxes: boxesReducer 
+  //selectedBox: selectedBoxReducer,
+ 
 });

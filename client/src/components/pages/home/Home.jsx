@@ -9,18 +9,23 @@ import "./home.scss";
 //form contain auto log in
 //
 
-const Home = ({fetchBoxes}) => {
+const Home = ({ fetchBoxes, users, boxes }) => {
   useEffect(() => {
     fetchBoxes();
-   
   }, []);
-  const [loading, setLoading] = useState(true);
 
-  return <div className="pageContainer homePage">home</div>;
+  return (
+    <div className="pageContainer homePage">
+      {boxes?.map((x) => {
+        return <div key={x._id}>{x.totalDeposits}</div>;
+      })}
+    </div>
+  );
 };
 
-const mapStateToProps = (state) => {
-  return { users: state.users };
+const mapStateToProps = (state, ownProps) => {
+  console.log(state);
+  return { users: state.users, boxes: state.boxes[0] };
 };
 
-export default connect(null,{fetchBoxes})(Home);
+export default connect(mapStateToProps, { fetchBoxes })(Home);
