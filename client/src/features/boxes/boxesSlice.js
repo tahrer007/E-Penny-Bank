@@ -59,26 +59,14 @@ const boxesSlice = createSlice({
       .addCase(fetchBoxes.fulfilled, (state, action) => {
         state.status = "succeeded";
         console.log(state.status, action.payload);
-        state.posts = action.payload;
-        // Adding details
-        /*const loadedPosts = action.payload.map((post) => {
-       
-          return post;
-        });
-        // Add any fetched posts to the array
-        //state.posts = state.posts.concat(loadedPosts);*/
+        state.boxes = action.payload;
+        
       })
       .addCase(fetchBoxes.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       })
       .addCase(addNewBox.fulfilled, (state, action) => {
-        /*const sortedBoxes = state.boxes.sort((a, b) => {
-          if (a.id > b.id) return 1;
-          if (a.id < b.id) return -1;
-          return 0;
-        });*/
-        console.log("addBox", action.payload);
         state.posts.push(action.payload);
       });
   },
