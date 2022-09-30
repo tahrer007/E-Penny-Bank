@@ -1,13 +1,12 @@
 import "./app.scss";
-import Home from "./pages/home/Home";
-import Deposit from "./pages/deposit/Deposit";
-import CreateBox from "./pages/createBox/CreateBoxPage";
-import BoxDetails from "./pages/boxDetails/BoxDetails";
+import Home from "./components/pages/home/Home";
+import Deposit from "./components/pages/deposit/Deposit";
+import CreateBox from "./components/pages/createBox/CreateBoxPage";
+import BoxDetails from "./components/pages/boxDetails/BoxDetails";
 import NavBar from "components/navbar/NavBar";
-import LogIn from "./pages/login/LogIn";
-import SignUp from "./pages/signUp/SignUp";
+import LogIn from "./components/pages/login/LogIn";
+import SignUp from "./components/pages/signUp/SignUp";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-<Route path="/" element={<Home />} />;
 
 function App() {
   return (
