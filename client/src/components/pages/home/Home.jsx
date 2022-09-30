@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { fetchallBoxes, selectedBox } from "actions";
+import { fetchallBoxes, selectBox, unselectBox } from "actions";
 import "./home.scss";
 //1- render loadig
 //2-check local sortage ;
@@ -9,21 +9,30 @@ import "./home.scss";
 //form contain auto log in
 //
 
-const Home = ({ fetchallBoxes, users, boxes ,selectedBox }) => {
+const Home = ({
+  fetchallBoxes,
+  users,
+  boxes,
+  selectedBox,
+  selectBox,
+  unselectBox,
+}) => {
   useEffect(() => {
     fetchallBoxes();
   }, []);
 
   const handleBoxSelection = (box) => {
-    console.log(box)
-    selectedBox(box);
+    selectBox(box)
+    setTimeout(() => {
+      unselectBox();
+    }, 3000);
   };
 
   return (
     <div className="pageContainer homePage">
       {boxes[0]?.map((x) => {
         return (
-          <div key={x._id} onClick={()=>handleBoxSelection(x)}>
+          <div key={x._id} onClick={() => handleBoxSelection(x)}>
             {x.totalDeposits}
           </div>
         );
@@ -31,10 +40,20 @@ const Home = ({ fetchallBoxes, users, boxes ,selectedBox }) => {
     </div>
   );
 };
+const test = () => ({ type: 'UNSELECT_BOX' })
 
-const mapStateToProps = (state, ownProps) => {
-  console.log(state);
-  return { users: state.users, boxes: state.boxes };
+const mapStateToProps = ( state, ownProps) => {
+
+  return {
+    users: state.users,
+    boxes: state.boxes,
+    selectedBox: state.selectedBox,
+    
+  };
 };
 
-export default connect(mapStateToProps, { fetchallBoxes, selectedBox })(Home);
+export default connect(mapStateToProps, {
+  fetchallBoxes,
+  selectBox,
+  unselectBox,
+})(Home);

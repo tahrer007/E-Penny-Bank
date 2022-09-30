@@ -1,5 +1,4 @@
 import { combineReducers } from "redux";
-//import { selectedBoxReducer } from "./boxesReducers";
 import boxesReducer from "./boxesReducer";
 import selectedBoxReducer from "./selectedBoxReducer";
 

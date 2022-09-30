@@ -1,3 +1,5 @@
+import _ from "lodash"
+
 const selectedBoxReducer = (state = [], action) => {
   switch (action.type) {
     case "SELECT_BOX":
@@ -10,7 +12,7 @@ const selectedBoxReducer = (state = [], action) => {
       return [...state, action.payload];
 
     case "UNSELECT_BOX":
-      return [...state, action.payload];
+      return [_.omit(...state,action.payload) ];
     default:
       return state;
   }
