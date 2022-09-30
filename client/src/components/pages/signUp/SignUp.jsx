@@ -11,7 +11,6 @@ const SignUp = () => {
     password: "",
     confirmedPassword: "",
     name: "",
-    rememberMe: false,
   });
   const [rememberMe, setrememberMe] = useState(false);
 
@@ -38,11 +37,10 @@ const SignUp = () => {
         if (!input.password) setError("please enter password");
         return;
       case CONFIRMEDPASSWORD:
-        if (
-          input.password !== input.confirmedPassword ||
-          !input.confirmedPassword
-        )
+        console.log(typeof input.password, typeof input.confirmedPassword);
+        if (input.password !== input.confirmedPassword) {
           setError("passwords don't match");
+        }
         return;
       case NAME:
         if (!input.name) setError("please type name");
@@ -64,6 +62,11 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (input.password !== input.confirmedPassword) {
+      setError("passwords don't match")
+      return ; 
+    }
+    console.log(input, rememberMe);
   };
 
   return (

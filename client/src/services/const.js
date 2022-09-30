@@ -8,7 +8,7 @@ const CHARACTERS =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 const EMAIL ="email" ; 
 const PASSWORD = "password" ; 
-const NAME = " Name" ; 
+const NAME = "name" ; 
 const CONFIRMEDPASSWORD ="confirmedPassword"
 export {
   MAX,
