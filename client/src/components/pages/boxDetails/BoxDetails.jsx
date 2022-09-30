@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SharedBoxDetails from "components/sharedBoxDetails/SharedBoxDetails";
+import SharedBoxDetails from "components/reusables/sharedBoxDetails/SharedBoxDetails";
 import { formatRelative } from "date-fns";
 import enGB from 'date-fns/locale/en-GB';
 

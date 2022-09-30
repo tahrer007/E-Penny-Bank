@@ -1,28 +1,47 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { selectAllBoxes } from "features/boxes/boxesSlice";
-//import { fetchallBoxes, selectBox, unselectBox } from "actions";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  selectAllBoxes,
+  getBoxesStatus,
+  getBoxesError,
+  fetchBoxes
+} from "features/boxes/boxesSlice";
 import "./home.scss";
-//1- render loadig
-//2-check local sortage ;
-// if has data ... check for update  else login page
-//if has data without inter net connection .. load latest data with offline message
-//form contain auto log in
-//
+
 const Home = () => {
+  const dispatch = useDispatch();
   const allBoxes = useSelector(selectAllBoxes);
+  const boxesStatus = useSelector(getBoxesStatus);
+  const error = useSelector(getBoxesError);
+
+  useEffect(() => {
+    
+    if (boxesStatus === 'idle') {
+      dispatch(fetchBoxes())
+  }
+  }, [boxesStatus,dispatch])
+
+  const BoxList =(box)=> <div>{box.totalDeposits}</div>
+
+  let content;
+    if (boxesStatus === 'loading') {
+        content = <p>"Loading..."</p>;
+    } else if (boxesStatus === 'succeeded') {
+        //const orderedPosts = allBoxes.slice().sort((a, b) => b.date.localeCompare(a.date))
+        content = allBoxes.map(box => <BoxList key={box._id} box={box} />)
+    } else if (boxesStatus === 'failed') {
+        content = <p>{error}</p>;
+    }
+  
 
   return (
     <div className="pageContainer homePage">
-    {//TODO : IF THERE IS NO BOXES PAGE WITH MESSAGE }
-}
-      {allBoxes?.map((x) => {
-        return <div key={x._id}>{x.totalDeposits}</div>;
-      })}
+       <section>
+            <h2>boxes</h2>
+            {content}
+        </section>
     </div>
   );
 };
-
-
 
 export default Home;

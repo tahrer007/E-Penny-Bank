@@ -12,18 +12,16 @@ const SharedBoxDetails = ({ newBox, boxDetails, getSharedBoxDetails }) => {
     boxDetails?.type === SHARED_BOX && userId === boxDetails.adminId;
 
   useEffect(() => {
-    console.log(boxDetails);
     if (newBox) setBoxKey(makeKey());
   }, [newBox]);
 
   useEffect(() => {
     if (!boxKey) return;
     getSharedBoxDetails({ boxKey, isAllowedToReveal });
-  }, [isAllowedToReveal]);
+  }, [isAllowedToReveal, boxKey]);
 
   const share = () => {
     if (newBox) return;
-    console.log(boxKey);
   };
 
   return (
@@ -34,7 +32,9 @@ const SharedBoxDetails = ({ newBox, boxDetails, getSharedBoxDetails }) => {
           //TODO:add unclickable style on share button}}
         }
         <div className="shareKey" onClick={share}>
-          shared icon
+          <button disabled={!newBox} onclick={share}>
+            shared icon
+          </button>
         </div>
       </div>
       {(newBox || isAdmin) && (
