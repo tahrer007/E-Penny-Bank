@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import InputField from "components/reusables/InputField/InputField";
-import { EMAIL, PASSWORD } from "../../../services/const";
+import { EMAIL, PASSWORD } from "services/const";
 import validator from "validator";
 import { useNavigate, Link } from "react-router-dom";
 import "./LogIn";
@@ -70,7 +70,7 @@ const LogIn = () => {
       {errorMessage && <div className="errorMessage">{errorMessage}</div>}
       <div className="signUpMessage">
         don't have account ?
-        <button onClick={() => navigate("/signup")} /> test <button />
+        <button  onClick={() => navigate("/signup")} /> test <button />{" "}
       </div>
     </div>
   );

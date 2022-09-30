@@ -7,7 +7,9 @@ const KEY_LENGTH = 5;
 const CHARACTERS =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 const EMAIL ="email" ; 
-const PASSWORD = "password"
+const PASSWORD = "password" ; 
+const NAME = " Name" ; 
+const CONFIRMEDPASSWORD ="confirmedPassword"
 export {
   MAX,
   MIN,
@@ -17,5 +19,7 @@ export {
   KEY_LENGTH,
   CHARACTERS,
   EMAIL ,
-  PASSWORD
+  PASSWORD ,
+  CONFIRMEDPASSWORD , 
+  NAME
 };
