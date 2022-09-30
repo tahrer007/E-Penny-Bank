@@ -6,7 +6,8 @@ const BOXES_TYPES = ["private", "shared"];
 const KEY_LENGTH = 5;
 const CHARACTERS =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
+const EMAIL ="email" ; 
+const PASSWORD = "password"
 export {
   MAX,
   MIN,
@@ -15,4 +16,6 @@ export {
   BOXES_TYPES,
   KEY_LENGTH,
   CHARACTERS,
+  EMAIL ,
+  PASSWORD
 };

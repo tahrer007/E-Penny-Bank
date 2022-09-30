@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import InputField from "components/InputField/InputField";
-
+import InputField from "components/reusables/InputField/InputField";
+import { EMAIL, PASSWORD } from "../../../services/const";
+import { useEffect } from "react";
 const LogIn = () => {
   const [email, setEmail] = useState("");
-  const onChangeText = (e) => {
-    setEmail(e.target.value);
-    console.log(e.target.value);
-  };
+  const [password, setPasswrod] = useState("");
+  const onChangeText = (e) =>
+    e.target.id === EMAIL
+      ? setEmail(e.target.value)
+      : setPasswrod(e.target.value);
+
+  //useEffect(() => {}, [password, email]);
 
   return (
     <div className="pageContainer">
@@ -17,7 +21,17 @@ const LogIn = () => {
         onChangeText={onChangeText}
         editable={true}
         type={"text"}
-        label ={"email"}
+        label={EMAIL}
+        id={EMAIL}
+      />
+      <InputField
+        placeholder={"enter your password"}
+        value={password}
+        onChangeText={onChangeText}
+        editable={true}
+        type={PASSWORD}
+        label={PASSWORD}
+        id={PASSWORD}
       />
     </div>
   );
