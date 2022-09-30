@@ -13,6 +13,7 @@ const SignUp = () => {
     name: "",
     rememberMe: false,
   });
+  const [rememberMe, setrememberMe] = useState(false);
 
   /*const [error, setError] = useState({
     EMAIL: "",
@@ -32,20 +33,22 @@ const SignUp = () => {
       case EMAIL:
         if (!validator.isEmail(input.email))
           setError("please enter a valid email");
-        break;
+        return;
+      case PASSWORD:
+        if (!input.password) setError("please enter password");
+        return;
       case CONFIRMEDPASSWORD:
         if (
           input.password !== input.confirmedPassword ||
           !input.confirmedPassword
         )
           setError("passwords don't match");
-        break;
+        return;
       case NAME:
         if (!input.name) setError("please type name");
-
-        break;
+        return;
       default:
-        if (!e.target.id) setError("please type name");
+        setError(null);
         break;
     }
   };
@@ -69,7 +72,7 @@ const SignUp = () => {
       <form onSubmit={handleSubmit} className="form">
         <InputField
           placeholder={"Enter user name"}
-          value={input.NAME}
+          value={input.name}
           onChangeText={onChangeText}
           editable={true}
           type={"text"}
@@ -79,7 +82,7 @@ const SignUp = () => {
         />
         <InputField
           placeholder={"enter your email"}
-          value={input.EMAIL}
+          value={input.email}
           onChangeText={onChangeText}
           editable={true}
           type={EMAIL}
@@ -89,7 +92,7 @@ const SignUp = () => {
         />
         <InputField
           placeholder={"enter your password"}
-          value={input.PASSWORD}
+          value={input.password}
           onChangeText={onChangeText}
           editable={true}
           type={PASSWORD}
@@ -99,7 +102,7 @@ const SignUp = () => {
         />
         <InputField
           placeholder={"password"}
-          value={input.CONFIRMEDPASSWORD}
+          value={input.confirmedPassword}
           onChangeText={onChangeText}
           editable={true}
           type={PASSWORD}
@@ -111,8 +114,7 @@ const SignUp = () => {
           <input
             type="checkbox"
             checked={input.rememberMe}
-            onChange={onChangeText}
-            id={"rememberMe"}
+            onChange={() => setrememberMe(!rememberMe)}
           />
           Remmber me
         </label>
