@@ -13,13 +13,6 @@ const SignUp = () => {
     name: "",
   });
   const [rememberMe, setrememberMe] = useState(false);
-
-  /*const [error, setError] = useState({
-    EMAIL: "",
-    PASSWORD: "",
-    CONFIRMEDPASSWORD: "",
-    NAME: "",
-  });*/
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -63,8 +56,8 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.password !== input.confirmedPassword) {
-      setError("passwords don't match")
-      return ; 
+      setError("passwords don't match");
+      return;
     }
     console.log(input, rememberMe);
   };
@@ -99,7 +92,7 @@ const SignUp = () => {
           onChangeText={onChangeText}
           editable={true}
           type={PASSWORD}
-          label={"confirm password"}
+          label={PASSWORD}
           id={PASSWORD}
           validateInputs={validateInputs}
         />

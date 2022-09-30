@@ -7,7 +7,11 @@ export const fetchallBoxes = () => async (dispatch) => {
 
   dispatch({ type: "FETCH_ALL_BOXES", payload: response.data });
 };
+export const signUp = () => async (dispatch) => {
+  const response = await apis.post("signup");
 
+  
+};
 export const selectBox = (box = null) => {
   return { type: "SELECT_BOX", payload: box };
 };
