@@ -1,38 +1,62 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputField from "components/reusables/InputField/InputField";
 import { EMAIL, PASSWORD } from "../../../services/const";
-import { useEffect } from "react";
+import validator from "validator";
+import "./LogIn";
+
 const LogIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPasswrod] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {}, []);
   const onChangeText = (e) =>
     e.target.id === EMAIL
       ? setEmail(e.target.value)
       : setPasswrod(e.target.value);
 
-  //useEffect(() => {}, [password, email]);
+  useEffect(() => {
+    if(
+      !errorMessage) return ; 
+       setTimeout(() => {
+        setErrorMessage("")
+       }, 3000);
+
+  }, [errorMessage]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(!validator.isEmail(email)) setErrorMessage("please enter a valid email") ; 
+    console.log(email, password);
+    console.log("handleSubmit");
+  };
 
   return (
-    <div className="pageContainer">
+    <div className="loginPage pageContainer ">
       log in
-      <InputField
-        placeholder={"enter your email"}
-        value={email}
-        onChangeText={onChangeText}
-        editable={true}
-        type={"text"}
-        label={EMAIL}
-        id={EMAIL}
-      />
-      <InputField
-        placeholder={"enter your password"}
-        value={password}
-        onChangeText={onChangeText}
-        editable={true}
-        type={PASSWORD}
-        label={PASSWORD}
-        id={PASSWORD}
-      />
+      <form onSubmit={handleSubmit} className="form">
+        <InputField
+          placeholder={"enter your email"}
+          value={email}
+          onChangeText={onChangeText}
+          editable={true}
+          type={"email"}
+          label={EMAIL}
+          id={EMAIL}
+        />
+        <InputField
+          placeholder={"enter your password"}
+          value={password}
+          onChangeText={onChangeText}
+          editable={true}
+          type={PASSWORD}
+          label={PASSWORD}
+          id={PASSWORD}
+        />
+
+        <input type="submit" value="Submit" />
+      </form>
+      {errorMessage &&<div className="errorMessage">{errorMessage}</div>}
     </div>
   );
 };
