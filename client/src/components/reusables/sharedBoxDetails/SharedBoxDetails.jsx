@@ -32,7 +32,7 @@ const SharedBoxDetails = ({ newBox, boxDetails, getSharedBoxDetails }) => {
           //TODO:add unclickable style on share button}}
         }
         <div className="shareKey" onClick={share}>
-          <button disabled={!newBox} onclick={share}>
+          <button disabled={!newBox} onClick={share}>
             shared icon
           </button>
         </div>

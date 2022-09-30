@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import apis from "api/api";
 import axios from "axios";
-//const baseURL = process.env.REACT_APP_BASE_URL;
+const React_App_BASE_URL = "https://saving-box.herokuapp.com/";
+const Local = "http://localhost:5000/";
 
 const initialState = {
   boxes: [],
@@ -12,8 +13,7 @@ const initialState = {
 export const fetchBoxes = createAsyncThunk("boxes/allboxes", async () => {
   try {
 
-    
-    const response =await apis.get("boxes/allboxes");
+    const response = await apis.get("boxes/allboxes");
     //const response = await axios.get(baseURL);
     console.log(response);
     return response.data;
@@ -22,15 +22,21 @@ export const fetchBoxes = createAsyncThunk("boxes/allboxes", async () => {
   }
 });
 
-export const addNewBox = createAsyncThunk("boxes/newBox", async (newBox) => {
-  try {
-    const response = await apis.post("boxes/newBox")
-    console.log(response.data);
-    return response.data;
-  } catch (err) {
-    return err.message;
+export const addNewBox = createAsyncThunk(
+  //TO:DO post not working 
+  "boxes/newBox",
+  async (initialBox) => {
+    try {
+      console.log(initialBox);
+      const response = await axios.post(React_App_BASE_URL, initialBox);
+      console.log(response.data);
+      return response.data;
+    } catch (err) {
+      return err.message;
+    }
   }
-});
+);
+
 const boxesSlice = createSlice({
   name: "boxes",
   initialState,
@@ -58,20 +64,19 @@ const boxesSlice = createSlice({
       })
       .addCase(fetchBoxes.fulfilled, (state, action) => {
         state.status = "succeeded";
-        console.log(state.status, action.payload);
+
         state.boxes = action.payload;
-        
       })
       .addCase(fetchBoxes.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       })
       .addCase(addNewBox.fulfilled, (state, action) => {
-        state.posts.push(action.payload);
+        state.boxes.push(action.payload);
       });
   },
 });
-export const { postAdded } = boxesSlice.actions;
+//export const { postAdded } = boxesSlice.actions;
 
 export const selectAllBoxes = (state) => state.boxes.boxes;
 export const getBoxesStatus = (state) => state.boxes.status;

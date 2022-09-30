@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addNewBox } from "features/boxes/boxesSlice";
 import { BOXES_TYPES, PRIVATE_BOX, SHARED_BOX } from "services/const";
 import InputField from "components/reusables/InputField/InputField";
 //import RadioButton from "components/radioButton/RadioButton";
 import SharedBoxDetails from "components/reusables/sharedBoxDetails/SharedBoxDetails";
 import "./createBox.scss";
 
+const usersId = "6331f73f92d30d25c7103d29";
+
 const CreateBox = () => {
   const [boxType, setBoxType] = useState(PRIVATE_BOX);
   const [boxName, setBoxName] = useState("");
   const [sharedBoxDetails, setSharedBoxDetails] = useState({});
+  const [addRequestStatus, setAddRequestStatus] = useState("idle");
+  const dispatch = useDispatch();
+  const canSave = Boolean(boxName) && addRequestStatus === "idle";
 
   const onChangeText = (e) => setBoxName(e.target.value);
   const onChangeSelection = (e) => {
@@ -20,6 +27,19 @@ const CreateBox = () => {
     setSharedBoxDetails({ boxKey, isAllowedToReveal });
 
   const onCreateBoxClick = async () => {
+    const { boxKey, isAllowedToReveal } = sharedBoxDetails;
+    if (canSave) {
+      try {
+        setAddRequestStatus("pending");
+        dispatch(
+          addNewBox({ boxName, boxType, boxKey, isAllowedToReveal, usersId })).unwrap();
+      } catch (err) {
+        console.error("Failed to create box the box", err);
+      } finally {
+        setAddRequestStatus("idle");
+      }
+    }
+
     //boxName , userID ,box type ,isAllowedToReveal , isAdMIN : TRUE , key
     //amount 0
     //create date
@@ -64,7 +84,7 @@ const CreateBox = () => {
         />
       ) : null}
       <div className="createBtn">
-        <button type="button" disabled={!boxName} onclick={onCreateBoxClick}>
+        <button type="button" disabled={!canSave} onClick={onCreateBoxClick}>
           Create Box
         </button>
       </div>

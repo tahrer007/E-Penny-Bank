@@ -1,6 +1,7 @@
 const Box = require("../dataBase/models/boxes");
 
 const newBox = async (req, res) => {
+  console.log("server", req.body);
   try {
     const newBox = new Box({
       type: req.body.type,
