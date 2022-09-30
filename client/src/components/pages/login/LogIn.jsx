@@ -8,6 +8,7 @@ const LogIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPasswrod] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [rememberMe, setrememberMe] = useState(false);
 
   useEffect(() => {}, []);
   const onChangeText = (e) =>
@@ -16,17 +17,17 @@ const LogIn = () => {
       : setPasswrod(e.target.value);
 
   useEffect(() => {
-    if(
-      !errorMessage) return ; 
-       setTimeout(() => {
-        setErrorMessage("")
-       }, 3000);
-
-  }, [errorMessage]);
+    console.log(rememberMe);
+    if (!errorMessage) return;
+    setTimeout(() => {
+      setErrorMessage("");
+    }, 3000);
+  }, [errorMessage, rememberMe]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(!validator.isEmail(email)) setErrorMessage("please enter a valid email") ; 
+    if (!validator.isEmail(email))
+      setErrorMessage("please enter a valid email");
     console.log(email, password);
     console.log("handleSubmit");
   };
@@ -53,10 +54,18 @@ const LogIn = () => {
           label={PASSWORD}
           id={PASSWORD}
         />
+        <label>
+          <input
+            type="checkbox"
+            checked={rememberMe}
+            onChange={() => setrememberMe(!rememberMe)}
+          />
+          My Value
+        </label>
 
         <input type="submit" value="Submit" />
       </form>
-      {errorMessage &&<div className="errorMessage">{errorMessage}</div>}
+      {errorMessage && <div className="errorMessage">{errorMessage}</div>}
     </div>
   );
 };
