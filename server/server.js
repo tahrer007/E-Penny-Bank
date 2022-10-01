@@ -25,6 +25,7 @@ const authRouter = require("./routes/authRouter");
 const boxesRouter = require("./routes/boxesRouter");
 const usersRouter = require("./routes/usersRouter");
 const  refreshRouter = require("./routes/refreshRouter");
+const logoutRouter = require ("./routes/logoutRouter")
 
 app.get("/test", (req, res) => {
   res.send("ok");
@@ -32,6 +33,7 @@ app.get("/test", (req, res) => {
 
 app.use("/auth",authRouter);
 app.use("/refresh",refreshRouter);
+app.use("/logout",logoutRouter);
 app.use(verifyJWT);
 
 app.use("/boxes", boxesRouter);

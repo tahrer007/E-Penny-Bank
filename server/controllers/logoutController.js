@@ -1,4 +1,4 @@
-const jwt = require("jsonwebtoken");
+//const jwt = require("jsonwebtoken");
 
 const RefreshTokenModel = require("../dataBase/models/refreshToken");
 
@@ -15,12 +15,16 @@ const handleLogout = async (req, res) => {
     res.clearCookie("jwt", { httpOnly: true });
     return res.sendStatus(204);
   }
+  console.log(
+    foundToken
+  )
   //delete from mongodb ; 
-  await RefreshTokenModel.deleteOne({ _id:foundToken._id },function(err, obj) {
-    if (err) res.sendStatus(400); //TODO : not sure !! 
+  const response = await RefreshTokenModel.deleteOne({ _id:foundToken._id }) ; 
+  console.log(response) ; 
+   if (!response.acknowledged) res.sendStatus(400); //TODO : not sure !! 
     res.clearCookie("jwt", { httpOnly: true });
     return res.sendStatus(204);
-  });
+
  
 };
 
