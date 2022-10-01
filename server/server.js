@@ -26,7 +26,7 @@ const boxesRouter = require("./routes/boxesRouter");
 const usersRouter = require("./routes/usersRouter");
 const  refreshRouter = require("./routes/refreshRouter");
 const logoutRouter = require ("./routes/logoutRouter") ;
-const authRouter = require("./routes/authRouter")
+const authRouter = require("./routes/test")
 
 app.get("/test", (req, res) => {
   res.send("ok");
