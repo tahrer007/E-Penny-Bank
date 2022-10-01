@@ -6,7 +6,7 @@ const saltRounds = 10;
 require("dotenv").config();
 
 const signUp = async (req, res) => {
-  console.log("test")
+  console.log("test");
   let hashedPassword;
   try {
     hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
@@ -77,10 +77,12 @@ const handleLogin = async (req, res) => {
         { token: refreshToken },
         { new: true }
       );
-      console.log(newToken);
     }
-
-    res.json({ sccess: ` User ${foundUser.email} is logged in!` });
+    res.cookie("jwt", refreshToken, {
+      httpOnly: true,
+      maxAge: 24 * 60 * 60 * 1000,
+    });
+    res.json({ accessToken });
   } else {
     res.send(401);
   }
