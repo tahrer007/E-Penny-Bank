@@ -1,9 +1,9 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 const User = require("../dataBase/models/users");
 const RefreshTokenModel = require("../dataBase/models/refreshToken");
 const saltRounds = 10;
-require("dotenv").config();
 
 const signUp = async (req, res) => {
   console.log("test");
@@ -52,7 +52,7 @@ const handleLogin = async (req, res) => {
         userName: foundUser.email,
       },
       process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: "30s" }
+      { expiresIn: "60s" }
     );
     const refreshToken = jwt.sign(
       {
