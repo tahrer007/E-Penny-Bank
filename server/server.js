@@ -21,14 +21,18 @@ app.use(cookieParser());
 
 //add routers
 
-const authRouter = require("./routes/authRouter");
+
 const boxesRouter = require("./routes/boxesRouter");
 const usersRouter = require("./routes/usersRouter");
 const  refreshRouter = require("./routes/refreshRouter");
-const logoutRouter = require ("./routes/logoutRouter")
+const logoutRouter = require ("./routes/logoutRouter") ;
+const authRouter = require("./routes/authRouter")
 
 app.get("/test", (req, res) => {
   res.send("ok");
+});
+app.get("/", (req, res) => {
+  res.send("welcome to my server !");
 });
 
 app.use("/auth",authRouter);
