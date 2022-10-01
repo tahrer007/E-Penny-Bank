@@ -6,13 +6,11 @@ const RefreshTokenModel = require("../dataBase/models/refreshToken");
 const handelRefreshToken = async (req, res) => {
   const cookies = req.cookies;
   if (!cookies?.jwt) return res.status(401);
-  
   const refreshToken = cookies.jwt;
-  console.log(refreshToken);
   const foundToken = await RefreshTokenModel.findOne({
     token: refreshToken,
   });
-  console.log("foundToken",foundToken);
+
   if (!foundToken) return res.sendStatus(403); //forbidden
   const foundUser = await User.findOne({
     _id: foundToken.user,
@@ -28,7 +26,7 @@ const handelRefreshToken = async (req, res) => {
         expiresIn: "60s",
       }
     );
-     console.log("Test !!") 
+
     res.json({ accessToken });
   });
 };
