@@ -6,7 +6,7 @@ const RefreshTokenModel = require("../dataBase/models/refreshToken");
 const saltRounds = 10;
 
 const signUp = async (req, res) => {
-  console.log("test");
+ 
   let hashedPassword;
   try {
     hashedPassword = await bcrypt.hash(req.body.password, saltRounds);

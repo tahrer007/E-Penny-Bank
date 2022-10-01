@@ -5,7 +5,9 @@ const path = require("path"), //module is used for handling and transforming fil
   cors = require("cors"); //CORS is a node. js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
 require("./dataBase/mongoose");
 
-const verifyJWT = require("./middleware/verifyJWT")
+const verifyJWT = require("./middleware/verifyJWT") ; 
+const cookieParser = require("cookie-parser") ; 
+
 
 const PORT = process.env.PORT || 5000;
 
@@ -15,19 +17,23 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 //add routers
 
 const authRouter = require("./routes/authRouter");
 const boxesRouter = require("./routes/boxesRouter");
 const usersRouter = require("./routes/usersRouter");
+const  refreshRouter = require("./routes/refreshRouter");
 
 app.get("/test", (req, res) => {
   res.send("ok");
 });
 
 app.use("/auth",authRouter);
+app.use("/refresh",refreshRouter);
 app.use(verifyJWT);
+
 app.use("/boxes", boxesRouter);
 app.use("/users", usersRouter);
 
