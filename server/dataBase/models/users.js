@@ -22,13 +22,13 @@ const UserSchema = new Schema(
       required: [true, "Please provide a password!"],
       unique: false,
     },
-    
+
     boxesId: {
       type: Array,
-      default :[]
+      default: [],
     },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model.users || mongoose.model("users", UserSchema);
+module.exports = mongoose.model.users || mongoose.model("User", UserSchema);

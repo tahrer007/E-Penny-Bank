@@ -1,9 +1,12 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../dataBase/models/users");
+const RefreshTokenModel = require("../dataBase/models/refreshToken");
 const saltRounds = 10;
+require("dotenv").config();
 
 const signUp = async (req, res) => {
+  console.log("test")
   let hashedPassword;
   try {
     hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
@@ -16,8 +19,8 @@ const signUp = async (req, res) => {
   const user = new User({
     email: req.body.email,
     password: hashedPassword,
-    firstName : req.body.firstName,
-    lastName : req.body.lastName,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
   });
 
   try {
@@ -34,39 +37,53 @@ const signUp = async (req, res) => {
   }
 };
 //TODO:refactor with try/catch , always return password not match with try and catch
-const signIn = async (req, res) => {
-  const user = await User.findOne({ email: req.body.email });
-  if (!user)
-    return res.status(404).send({
-      message: "Email not found",
-      //error,
+const handleLogin = async (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password)
+    return res
+      .status(400)
+      .json({ message: "email and password are required !!" });
+  const foundUser = await User.findOne({ email: req.body.email });
+  if (!foundUser) return res.status(401); //unutherized
+  const match = await bcrypt.compare(password, foundUser.password);
+  if (match) {
+    const accessToken = jwt.sign(
+      {
+        userName: foundUser.email,
+      },
+      process.env.ACCESS_TOKEN_SECRET,
+      { expiresIn: "30s" }
+    );
+    const refreshToken = jwt.sign(
+      {
+        userName: foundUser.email,
+      },
+      process.env.REFRESH_TOKEN_SECRET,
+      { expiresIn: "1d" }
+    );
+    //add refresh token to data base ;
+    const findTokenInSchema = await RefreshTokenModel.findOne({
+      user: foundUser._id,
     });
+    if (!findTokenInSchema) {
+      const refreshTokenModel = new RefreshTokenModel({
+        token: refreshToken,
+        user: foundUser._id,
+      });
+      await refreshTokenModel.save();
+    } else {
+      let newToken = await RefreshTokenModel.findOneAndUpdate(
+        { user: foundUser._id },
+        { token: refreshToken },
+        { new: true }
+      );
+      console.log(newToken);
+    }
 
-  const match = await bcrypt.compare(req.body.password, user.password);
-  if (!match)
-    return res.status(400).send({
-      message: "Passwords does not match",
-      // error,
-    });
-
-  const accessToken = jwt.sign(
-    { mail: user.email },
-    process.env.ACCESS_TOKEN_SECRET
-  );
-  return res.status(200).send({
-    message: "Login Successful",
-    user: user,
-    accessToken,
-  });
+    res.json({ sccess: ` User ${foundUser.email} is logged in!` });
+  } else {
+    res.send(401);
+  }
 };
-function authenticateToken(req, res, next) {
-  const authHeader = req.headers["authorization"];
-  const token = authHeader && authHeader.split(" ")[1];
-  if (!token) return res.sendStatus(401); // dont have token
-  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (error, user) => {
-    if (error) return res.sendStatus(403); // dont have access
-    req.user = user;
-    next();
-  });
-}
-module.exports = { signUp, signIn };
+
+module.exports = { signUp, handleLogin };
