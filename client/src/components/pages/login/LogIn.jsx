@@ -6,7 +6,7 @@ import Instructions from "components/reusables/form/instructions/Instructions";
 //import InputField from "components/reusables/InputField/InputField";
 //import { EMAIL, PASSWORD } from "services/const";
 import "./LogIn";
-import { Button } from "rsuite";
+
 import api from "api/axios";
 const LOGIN_URL = "auth/login";
 
@@ -38,19 +38,18 @@ const LogIn = () => {
     setErrMsg("");
   }, [user, pwd]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // if button enabled with JS hack
-    const v1 = validator.isEmail(user);
+  useEffect(() => {
+    console.log(errMsg);
+  }, [errMsg]);
 
-    if (!v1) {
-      setErrMsg("Invalid Email");
-      return;
-    }
+  const handleSubmit = async (e) => {
+    console.log("clicked !! ")
+    e.preventDefault();
+
     try {
       const response = await api.post(
         LOGIN_URL,
-        JSON.stringify({ email: user, password: pwd, name: "tahrer" }),
+        JSON.stringify({ email: user, password: pwd }),
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
@@ -60,15 +59,16 @@ const LogIn = () => {
       console.log(response);
       console.log(JSON.stringify(response));
       setSuccess(true);
-      //clear state and controlled inputs
-      //need value attrib on inputs for this
+      const accessToken = response?.data?.accessToken;
       setUser("");
       setPwd("");
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");
-      } else if (err.response?.status === 409) {
-        setErrMsg("Username Taken");
+      } else if (err.response?.status === 400) {
+        setErrMsg("Missing username or password");
+      } else if (err.response?.status === 401) {
+        setErrMsg("Unauthorized");
       } else {
         setErrMsg("Login Failed");
       }
@@ -140,9 +140,7 @@ const LogIn = () => {
               id={"pwdnote"}
             />
 
-            <button disabled={!validName || !pwd ? true : false}>
-             log in
-            </button>
+            <button disabled={!validName || !pwd ? true : false}>log in</button>
           </form>
 
           <p>
