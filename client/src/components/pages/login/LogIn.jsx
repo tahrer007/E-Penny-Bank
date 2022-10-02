@@ -56,8 +56,6 @@ const LogIn = () => {
         }
       );
       console.log(response?.data);
-      console.log(response);
-      console.log(JSON.stringify(response));
       setSuccess(true);
       const accessToken = response?.data?.accessToken;
       setUser("");
