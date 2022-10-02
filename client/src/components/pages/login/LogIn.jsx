@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import validator from "validator";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import Label from "components/reusables/form/label/Label";
 import Instructions from "components/reusables/form/instructions/Instructions";
 //import InputField from "components/reusables/InputField/InputField";
@@ -14,13 +14,14 @@ const LogIn = () => {
   const userRef = useRef();
   const errRef = useRef();
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const [user, setUser] = useState("");
   const [validName, setValidName] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
 
   const [pwd, setPwd] = useState("");
-  const [validPwd, setValidPwd] = useState(false);
   const [pwdFocus, setPwdFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
@@ -43,7 +44,7 @@ const LogIn = () => {
   }, [errMsg]);
 
   const handleSubmit = async (e) => {
-    console.log("clicked !! ")
+    console.log("clicked !! ");
     e.preventDefault();
 
     try {
@@ -60,6 +61,7 @@ const LogIn = () => {
       const accessToken = response?.data?.accessToken;
       setUser("");
       setPwd("");
+      navigate(from, { replace: true });
     } catch (err) {
       if (!err?.response) {
         setErrMsg("No Server Response");
@@ -116,26 +118,16 @@ const LogIn = () => {
               className={userFocus && user && !validName}
               id="uidnote"
             />
-            <Label
-              htmlFor={"password"}
-              valid1={validPwd}
-              valid2={validPwd || !pwd}
-            />
+            <label htmlFor="password">password </label>
             <input
               type="password"
               id="password"
               onChange={(e) => setPwd(e.target.value)}
               value={pwd}
               required
-              aria-invalid={validPwd ? "false" : "true"}
               aria-describedby="pwdnote"
               onFocus={() => setPwdFocus(true)}
               onBlur={() => setPwdFocus(false)}
-            />
-            <Instructions
-              content={"pwd"}
-              className={pwdFocus && !validPwd}
-              id={"pwdnote"}
             />
 
             <button disabled={!validName || !pwd ? true : false}>log in</button>
