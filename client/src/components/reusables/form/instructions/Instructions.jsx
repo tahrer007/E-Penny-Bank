@@ -2,10 +2,11 @@ import React from "react";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Instructions = ({ className }) => {
+
+const Instructions = ({ className ,id}) => {
   return (
     <p
-      id="uidnote"
+      id={id}
       className={className ? "instructions" : "offscreen"}
     >
       <FontAwesomeIcon icon={faInfoCircle} />

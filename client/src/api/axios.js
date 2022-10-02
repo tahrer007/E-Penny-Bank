@@ -4,10 +4,10 @@ import axios from "axios";
 
 //const baseURL = "https://saving-box.herokuapp.com/";
 const baseURL = "http://localhost:5000/";
-const apis = axios.create({
+const api = axios.create({
   baseURL: baseURL,
   headers: { "Content-Type": "application/json" },
   //withCredentials: true,
 });
 
-export default apis;
+export default api;

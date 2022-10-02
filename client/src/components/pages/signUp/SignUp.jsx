@@ -4,17 +4,20 @@ import { useRef, useState, useEffect } from "react";
 import validator from "validator";
 import { useNavigate } from "react-router-dom";
 import "./SignUp";
-import axios from "axios";
 
 import Label from "components/reusables/form/label/Label";
+import Instructions from "components/reusables/form/instructions/Instructions";
 
-const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+import api from "api/axios";
+
+//const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const SIGNUP_URL = "/signup";
+const SIGNUP_URL = "auth/signup";
 
 const SignUp = () => {
   const userRef = useRef();
   const errRef = useRef();
+  const navigate = useNavigate() ; 
 
   const [user, setUser] = useState("");
   const [validName, setValidName] = useState(false);
@@ -42,32 +45,41 @@ const SignUp = () => {
   useEffect(() => {
     setValidPwd(PWD_REGEX.test(pwd));
     setValidMatch(pwd === matchPwd);
+    console.log(pwd, matchPwd);
   }, [pwd, matchPwd]);
 
   useEffect(() => {
     setErrMsg("");
   }, [user, pwd, matchPwd]);
 
+  useEffect(()=>{
+    if(success){
+      setTimeout(() => {
+        navigate("../Login") ; 
+      }, 5000);
+    }
+  },[success])
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     // if button enabled with JS hack
-    const v1 = USER_REGEX.test(user);
+    const v1 = validator.isEmail(user);
     const v2 = PWD_REGEX.test(pwd);
     if (!v1 || !v2) {
       setErrMsg("Invalid Entry");
       return;
     }
     try {
-      const response = await axios.post(
+      const response = await api.post(
         SIGNUP_URL,
-        JSON.stringify({ user, pwd }),
+        JSON.stringify({ email: user, password: pwd, name: "tahrer" }),
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         }
       );
       console.log(response?.data);
-      console.log(response?.accessToken);
+      console.log(response);
       console.log(JSON.stringify(response));
       setSuccess(true);
       //clear state and controlled inputs
@@ -98,8 +110,16 @@ const SignUp = () => {
         </section>
       ) : (
         <section>
+          <p
+            ref={errRef}
+            className={errMsg ? "errmsg" : "offscreen"}
+            aria-live="assertive"
+          >
+            {errMsg}
+          </p>
+
           <h1>Registor</h1>
-          <form>
+          <form onSubmit={handleSubmit}>
             <Label
               htmlFor={"username"}
               valid1={validName}
@@ -118,7 +138,68 @@ const SignUp = () => {
               onFocus={() => setUserFocus(true)}
               onBlur={() => setUserFocus(false)}
             />
+            <Instructions
+              className={userFocus && user && !validName}
+              id="uidnote"
+            />
+            <Label
+              htmlFor={"password"}
+              valid1={validPwd}
+              valid2={validPwd || !pwd}
+            />
+            <input
+              type="password"
+              id="password"
+              onChange={(e) => setPwd(e.target.value)}
+              value={pwd}
+              required
+              aria-invalid={validPwd ? "false" : "true"}
+              aria-describedby="pwdnote"
+              onFocus={() => setPwdFocus(true)}
+              onBlur={() => setPwdFocus(false)}
+            />
+            <Instructions
+              content={"pwd"}
+              className={pwdFocus && !validPwd}
+              id={"pwdnote"}
+            />
+            <Label
+              htmlFor={"confirm_pwd"}
+              valid1={validPwd}
+              valid2={validPwd || !pwd}
+              text={"Confirm Password:"}
+            />
+            <input
+              type="password"
+              id="confirm_pwd"
+              onChange={(e) => setMatchPwd(e.target.value)}
+              value={matchPwd}
+              required
+              aria-invalid={validPwd ? "false" : "true"}
+              aria-describedby="pwdnote"
+              onFocus={() => setPwdFocus(true)}
+              onBlur={() => setMatchFocus(false)}
+            />
+            <Instructions
+              content={"confirmnote"}
+              className={matchFocus && !validMatch}
+              id={"confirmnote"}
+            />
+            <button
+              disabled={!validName || !validPwd || !validMatch ? true : false}
+            >
+              Sign Up
+            </button>
           </form>
+
+          <p>
+            Already registered?
+            <br />
+            <span className="line">
+              {/*put router link here*/}
+              <a href="#">Sign In</a>
+            </span>
+          </p>
         </section>
       )}
     </div>

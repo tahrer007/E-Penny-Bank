@@ -9,14 +9,11 @@ const UserSchema = new Schema(
       required: [true, "Please provide an Email!"],
       unique: [true, "Email Exist"],
     },
-    firstName: {
+    name: {
       type: String,
       required: [true, "Please provide a first name"],
     },
-    lastName: {
-      type: String,
-      required: [true, "Please provide a last name"],
-    },
+
     password: {
       type: String,
       required: [true, "Please provide a password!"],
