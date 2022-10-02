@@ -29,6 +29,7 @@ const usersRouter = require("./routes/usersRouter");
 const refreshRouter = require("./routes/refreshRouter");
 const logoutRouter = require("./routes/logoutRouter");
 const authRouter = require("./routes/authRouter");
+const registerRouter = require("./routes/registerRouter")
 
 app.get("/test", (req, res) => {
   res.send("ok");
@@ -37,6 +38,7 @@ app.get("/", (req, res) => {
   res.send("welcome to my server !");
 });
 
+app.use("/signup", registerRouter);
 app.use("/auth", authRouter);
 app.use("/refresh", refreshRouter);
 app.use("/logout", logoutRouter);
