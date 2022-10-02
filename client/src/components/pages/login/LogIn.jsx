@@ -141,7 +141,7 @@ const LogIn = () => {
             />
 
             <button disabled={!validName || !pwd ? true : false}>
-              Sign Up
+             log in
             </button>
           </form>
 
