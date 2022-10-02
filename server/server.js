@@ -7,12 +7,16 @@ require("./dataBase/mongoose");
 
 const verifyJWT = require("./middleware/verifyJWT");
 const cookieParser = require("cookie-parser");
+const corsOptions = require ("./config/corsOptions");
+const credentials = require("./middleware/credentials") ;
+
 
 const PORT = process.env.PORT || 5000;
 
 //initialize app
 const app = express();
-app.use(cors());
+app.use(credentials)
+app.use(cors(corsOptions));
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

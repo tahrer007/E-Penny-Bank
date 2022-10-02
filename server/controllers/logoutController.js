@@ -15,17 +15,13 @@ const handleLogout = async (req, res) => {
     res.clearCookie("jwt", { httpOnly: true });
     return res.sendStatus(204);
   }
-  console.log(
-    foundToken
-  )
-  //delete from mongodb ; 
-  const response = await RefreshTokenModel.deleteOne({ _id:foundToken._id }) ; 
-  console.log(response) ; 
-   if (!response.acknowledged) res.sendStatus(400); //TODO : not sure !! 
-    res.clearCookie("jwt", { httpOnly: true });
-    return res.sendStatus(204);
-
- 
+  console.log(foundToken);
+  //delete from mongodb ;
+  const response = await RefreshTokenModel.deleteOne({ _id: foundToken._id });
+  console.log(response);
+  if (!response.acknowledged) res.sendStatus(400); //TODO : not sure !!
+  res.clearCookie("jwt", { httpOnly: true, sameSite: "None", secure: true });
+  return res.sendStatus(204);
 };
 
 module.exports = { handleLogout };
