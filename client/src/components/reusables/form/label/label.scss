@@ -1,0 +1,10 @@
+@import "global.scss";
+
+.label {
+  .invalid {
+    display: block;
+  }
+  .valid {
+    display: none;
+  }
+}
