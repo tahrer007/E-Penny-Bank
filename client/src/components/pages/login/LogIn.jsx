@@ -7,7 +7,7 @@ import Instructions from "components/reusables/form/instructions/Instructions";
 //import { EMAIL, PASSWORD } from "services/const";
 import "./LogIn";
 
-import api from "api/axios";
+import api from "app/api/axios";
 const LOGIN_URL = "auth/login";
 
 const LogIn = () => {
@@ -15,7 +15,7 @@ const LogIn = () => {
   const errRef = useRef();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/home";
 
   const [user, setUser] = useState("");
   const [validName, setValidName] = useState(false);

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import apis from "api/axios";
+import apis from "app/api/axios";
 import axios from "axios";
 const React_App_BASE_URL = "https://saving-box.herokuapp.com/";
 const Local = "http://localhost:5000/";

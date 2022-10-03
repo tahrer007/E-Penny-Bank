@@ -26,7 +26,7 @@ const Home = () => {
 
   
 
-  let content;
+  /*let content;
     if (boxesStatus === 'loading') {
         content = <p>"Loading..."</p>;
     } else if (boxesStatus === 'succeeded') {
@@ -35,14 +35,14 @@ const Home = () => {
         content = boxes.map(box => <BoxListItem key={box._id} box={box} />)
     } else if (boxesStatus === 'failed') {
         content = <p>{error}</p>;
-    }
+    }*/
   
 
   return (
     <div className="pageContainer homePage">
        <section>
             <h2>boxes</h2>
-            {content}
+         {  /* {content}*/}
         </section>
     </div>
   );

@@ -8,7 +8,7 @@ import "./SignUp";
 import Label from "components/reusables/form/label/Label";
 import Instructions from "components/reusables/form/instructions/Instructions";
 
-import api from "api/axios";
+import api from "app/api/axios";
 
 //const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
