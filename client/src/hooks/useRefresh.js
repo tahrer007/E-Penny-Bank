@@ -1,11 +1,10 @@
-import axios from "axios";
 import api from "../api/axios";
 import useAuth from "./useAuth";
 
 const useRefreshToken = () => {
   const { setAuth } = useAuth();
   const refresh = async () => {
-    const response = await axios.get("/refresh", {
+    const response = await api.get("/refresh", {
       withCredentials: true,
     });
 
@@ -14,10 +13,10 @@ const useRefreshToken = () => {
       console.log(response.data.accessToken);
       return { ...prev, accessToken: response.data.accessToken };
     });
-    return response.data.accessToken ; 
+    return response.data.accessToken;
   };
 
-  return refresh ; 
+  return refresh;
 };
 
 export default useRefreshToken;
