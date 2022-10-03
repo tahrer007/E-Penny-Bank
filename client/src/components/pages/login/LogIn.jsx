@@ -3,19 +3,19 @@ import validator from "validator";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import Label from "components/reusables/form/label/Label";
 import Instructions from "components/reusables/form/instructions/Instructions";
-//import InputField from "components/reusables/InputField/InputField";
-//import { EMAIL, PASSWORD } from "services/const";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "features/auth/authSlice";
+import { useLoginMutation } from "features/auth/authApiSlice";
 import "./LogIn";
-
-import api from "api/axios";
-const LOGIN_URL = "auth/login";
 
 const LogIn = () => {
   const userRef = useRef();
   const errRef = useRef();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/home";
+  //const from = location.state?.from?.pathname || "/welcome";
+  
+  
 
   const [user, setUser] = useState("");
   const [validName, setValidName] = useState(false);
@@ -27,6 +27,9 @@ const LogIn = () => {
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
 
+  const [login, { isLoading }] = useLoginMutation();
+  const dispatch = useDispatch();
+
   useEffect(() => {
     userRef.current.focus();
   }, []);
@@ -37,6 +40,7 @@ const LogIn = () => {
 
   useEffect(() => {
     setErrMsg("");
+    console.log(pwd);
   }, [user, pwd]);
 
   useEffect(() => {
@@ -48,26 +52,18 @@ const LogIn = () => {
     e.preventDefault();
 
     try {
-      const response = await api.post(
-        LOGIN_URL,
-        JSON.stringify({ email: user, password: pwd }),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      );
-      console.log(response?.data);
-      setSuccess(true);
-      const accessToken = response?.data?.accessToken;
+      const userData = await login({ email: user, password: pwd }).unwrap();
+      dispatch(setCredentials({ ...userData, user }));
       setUser("");
       setPwd("");
-      navigate(from, { replace: true });
+      navigate("/welcome");
     } catch (err) {
-      if (!err?.response) {
+      if (!err?.originalStatus) {
+        // isLoading: true until timeout occurs
         setErrMsg("No Server Response");
-      } else if (err.response?.status === 400) {
-        setErrMsg("Missing username or password");
-      } else if (err.response?.status === 401) {
+      } else if (err.originalStatus === 400) {
+        setErrMsg("Missing Username or Password");
+      } else if (err.originalStatus === 401) {
         setErrMsg("Unauthorized");
       } else {
         setErrMsg("Login Failed");
@@ -123,7 +119,6 @@ const LogIn = () => {
               type="password"
               id="password"
               onChange={(e) => setPwd(e.target.value)}
-
               autoComplete="off"
               value={pwd}
               required

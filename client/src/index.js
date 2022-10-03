@@ -2,20 +2,20 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
 import App from "./App";
+import { store } from "app/store";
 import { Provider } from "react-redux";
-import { store } from "./app/store";
-import thunk from "redux-thunk";
 
-
-/*const store = createStore(reducers, applyMiddleware(thunk));
-store.getState();
-store.subscribe(() => {
-  console.log("store change ", store.getState());
-});*/
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Provider store={store}>
-    <App />
-  </Provider>
+  <React.StrictMode>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/*" element={<App />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
+  </React.StrictMode>
 );
