@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import apis from "app/api/axios";
+import api from "api/axios";
 import axios from "axios";
 const React_App_BASE_URL = "https://saving-box.herokuapp.com/";
 const Local = "http://localhost:5000/";
@@ -13,7 +13,7 @@ const initialState = {
 export const fetchBoxes = createAsyncThunk("boxes/allboxes", async () => {
   try {
 
-    const response = await apis.get("boxes/allboxes");
+    const response = await api.get("boxes/allboxes");
     //const response = await axios.get(baseURL);
     console.log(response);
     return response.data;

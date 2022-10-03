@@ -7,7 +7,7 @@ import Instructions from "components/reusables/form/instructions/Instructions";
 //import { EMAIL, PASSWORD } from "services/const";
 import "./LogIn";
 
-import api from "app/api/axios";
+import api from "api/axios";
 const LOGIN_URL = "auth/login";
 
 const LogIn = () => {
