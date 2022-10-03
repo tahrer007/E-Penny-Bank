@@ -153,6 +153,8 @@ const SignUp = () => {
               onChange={(e) => setPwd(e.target.value)}
               value={pwd}
               required
+              autoComplete="off"
+
               aria-invalid={validPwd ? "false" : "true"}
               aria-describedby="pwdnote"
               onFocus={() => setPwdFocus(true)}
@@ -179,6 +181,8 @@ const SignUp = () => {
               aria-describedby="pwdnote"
               onFocus={() => setPwdFocus(true)}
               onBlur={() => setMatchFocus(false)}
+              autoComplete="off"
+
             />
             <Instructions
               content={"confirmnote"}

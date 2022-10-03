@@ -123,6 +123,8 @@ const LogIn = () => {
               type="password"
               id="password"
               onChange={(e) => setPwd(e.target.value)}
+
+              autoComplete="off"
               value={pwd}
               required
               aria-describedby="pwdnote"
