@@ -15,7 +15,6 @@ const handleLogin = async (req, res) => {
   if (!foundUser) return res.sendStatus(401); //unutherized
   const match = await bcrypt.compare(password, foundUser.password);
   if (!match) return res.sendStatus(401);
-  console.log(foundUser);
 
   const accessToken = jwt.sign(
     {
