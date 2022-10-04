@@ -6,7 +6,7 @@ const RefreshTokenModel = require("../dataBase/models/refreshToken");
 
 const handleLogin = async (req, res) => {
   const { email, password } = req.body;
-  console.log(email, password)
+  console.log(email, password);
   if (!email || !password)
     return res
       .status(400)
@@ -14,8 +14,8 @@ const handleLogin = async (req, res) => {
   const foundUser = await User.findOne({ email: req.body.email });
   if (!foundUser) return res.sendStatus(401); //unutherized
   const match = await bcrypt.compare(password, foundUser.password);
-  console.log(match);
   if (!match) return res.sendStatus(401);
+  console.log(foundUser);
 
   const accessToken = jwt.sign(
     {
@@ -54,7 +54,7 @@ const handleLogin = async (req, res) => {
     secure: true,
     maxAge: 24 * 60 * 60 * 1000,
   });
-  res.json({ accessToken  ,user : foundUser});
+  res.json({ user: foundUser, accessToken });
 };
 
 module.exports = { handleLogin };

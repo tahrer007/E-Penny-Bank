@@ -14,8 +14,6 @@ const LogIn = () => {
   const navigate = useNavigate();
   const location = useLocation();
   //const from = location.state?.from?.pathname || "/welcome";
-  
-  
 
   const [user, setUser] = useState("");
   const [validName, setValidName] = useState(false);
@@ -53,7 +51,8 @@ const LogIn = () => {
 
     try {
       const userData = await login({ email: user, password: pwd }).unwrap();
-      dispatch(setCredentials({ ...userData, user }));
+      console.log(userData);
+      dispatch(setCredentials({ ...userData }));
       setUser("");
       setPwd("");
       navigate("/welcome");
