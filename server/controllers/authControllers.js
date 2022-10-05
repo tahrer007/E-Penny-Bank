@@ -1,10 +1,13 @@
 const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const User = require("../dataBase/models/users");
 const RefreshTokenModel = require("../dataBase/models/refreshToken");
+//import { createAccessToken, createRefreshToken } from "../utils/signTokens" ; 
+const { createAccessToken, createRefreshToken } = require("../utils/signTokens");
 
-const handleLogin = async (req, res) => {
+
+
+async function handleLogin(req, res) {
   const { email, password } = req.body;
   if (!email || !password)
     return res
@@ -15,20 +18,9 @@ const handleLogin = async (req, res) => {
   const match = await bcrypt.compare(password, foundUser.password);
   if (!match) return res.sendStatus(401);
 
-  const accessToken = jwt.sign(
-    {
-      userName: foundUser.email,
-    },
-    process.env.ACCESS_TOKEN_SECRET,
-    { expiresIn: "60s" }
-  );
-  const refreshToken = jwt.sign(
-    {
-      userName: foundUser.email,
-    },
-    process.env.REFRESH_TOKEN_SECRET,
-    { expiresIn: "1d" }
-  );
+  const accessToken = createAccessToken(foundUser.email);
+  const refreshToken = createRefreshToken(foundUser.email);
+
   //add refresh token to data base ;
   const findTokenInSchema = await RefreshTokenModel.findOne({
     user: foundUser._id,
@@ -46,13 +38,18 @@ const handleLogin = async (req, res) => {
       { new: true }
     );
   }
+
   res.cookie("jwt", refreshToken, {
     httpOnly: true,
     sameSite: "None",
     secure: true,
     maxAge: 24 * 60 * 60 * 1000,
   });
-  res.json({ user: foundUser, accessToken });
-};
+
+  //res.json({ user: foundUser, accessToken });
+  res.status(201).json({ user: foundUser, accessToken });
+  //res.json({ user: foundUser, accessToken });
+ //res.sendStatus(200)
+}
 
 module.exports = { handleLogin };
