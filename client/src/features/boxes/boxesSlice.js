@@ -14,7 +14,6 @@ export const fetchBoxes = createAsyncThunk("boxes/allboxes", async () => {
   try {
 
     const response = await api.get("boxes/allboxes");
-    //const response = await axios.get(baseURL);
     console.log(response);
     return response.data;
   } catch (err) {

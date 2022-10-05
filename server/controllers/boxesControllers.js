@@ -23,6 +23,8 @@ const newBox = async (req, res) => {
 const getBoxes = async (req, res) => {
   //const getAllBoxs = () => Box.find();
 
+  //box id
+
   try {
     const allBoxes = await Box.find();
     res.status(200).json(allBoxes);
