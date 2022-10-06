@@ -20,13 +20,11 @@ const newBox = async (req, res) => {
   }
 };
 
-const getBoxes = async (req, res) => {
-  //const getAllBoxs = () => Box.find();
-
-  //box id
+const getUserBoxes = async (req, res) => {
+  const userId = req.query.userId;
 
   try {
-    const allBoxes = await Box.find();
+    const allBoxes = await Box.find({ usersId: userId });
     res.status(200).json(allBoxes);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -47,4 +45,4 @@ const deposit = async (req, res) => {
   }
 };
 
-module.exports = { newBox, getBoxes, deposit };
+module.exports = { newBox, getUserBoxes, deposit };
