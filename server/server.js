@@ -1,21 +1,21 @@
-const path = require("path"), //module is used for handling and transforming file paths
-  express = require("express"),
-  morgan = require("morgan"), //middleware to log HTTP requests and errors, and simplifies the process.
-  bodyParser = require("body-parser"), //extracts the entire body portion of an incoming request stream and exposes it on req. body .
-  cors = require("cors"); //CORS is a node. js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
+express = require("express");
 require("./dataBase/mongoose");
+const path = require("path"); //module is used for handling and transforming file paths
+
+morgan = require("morgan"); //middleware to log HTTP requests and errors, and simplifies the process.
+bodyParser = require("body-parser"); //extracts the entire body portion of an incoming request stream and exposes it on req. body .
+cors = require("cors"); //CORS is a node. js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
 
 const verifyJWT = require("./middleware/verifyJWT");
 const cookieParser = require("cookie-parser");
-const corsOptions = require ("./config/corsOptions");
-const credentials = require("./middleware/credentials") ;
-
+const corsOptions = require("./config/corsOptions");
+const credentials = require("./middleware/credentials");
 
 const PORT = process.env.PORT || 5000;
 
 //initialize app
 const app = express();
-app.use(credentials)
+app.use(credentials);
 app.use(cors(corsOptions));
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -29,7 +29,7 @@ const usersRouter = require("./routes/usersRouter");
 const refreshRouter = require("./routes/refreshRouter");
 const logoutRouter = require("./routes/logoutRouter");
 const authRouter = require("./routes/authRouter");
-const registerRouter = require("./routes/registerRouter")
+const registerRouter = require("./routes/registerRouter");
 
 app.get("/test", (req, res) => {
   res.send("ok");

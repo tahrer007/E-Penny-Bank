@@ -3,11 +3,12 @@ require("dotenv").config();
 const User = require("../dataBase/models/users");
 const RefreshTokenModel = require("../dataBase/models/refreshToken");
 const {createAccessToken } = require("../utils/signTokens");
+const jwt = require('jsonwebtoken');
 
 
 const handelRefreshToken = async (req, res) => {
   const cookies = req.cookies;
-  console.log(req);
+  console.log(cookies?.jwt);
   console.log("teeeeeeeeeeeeeeeeeeeest", cookies);
   if (!cookies) return res.status(401);
   if (!cookies?.jwt) return res.status(401);
