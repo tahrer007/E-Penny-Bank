@@ -38,21 +38,14 @@ const LogIn = () => {
 
   useEffect(() => {
     setErrMsg("");
-    console.log(pwd);
   }, [user, pwd]);
 
-  useEffect(() => {
-    console.log(errMsg);
-  }, [errMsg]);
-
   const handleSubmit = async (e) => {
-    console.log("clicked !! ");
     e.preventDefault();
 
     try {
-      console.log(user, pwd )
+      console.log(user, pwd);
       const userData = await login({ email: user, password: pwd }).unwrap();
-      console.log(userData);
       dispatch(setCredentials({ ...userData }));
       setUser("");
       setPwd("");
