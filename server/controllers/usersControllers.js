@@ -3,6 +3,7 @@ const User = require("../dataBase/models/users");
 const getUsers = async (req, res) => {
   // filter users to get only names and id
   try {
+    console.log("get users !!! ")
     const allUsers = await User.find();
     const filterUsersDetails = allUsers.map((user) => ({
       userId: user._id,

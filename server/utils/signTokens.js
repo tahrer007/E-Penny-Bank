@@ -6,8 +6,8 @@ const createAccessToken = (email) =>
     {
       email,
     },
-    process.env.REFRESH_TOKEN_SECRET,
-    { expiresIn: "1d" }
+    process.env.ACCESS_TOKEN_SECRET,
+    { expiresIn: "60s" }
   );
 const createRefreshToken = (email) =>
   jwt.sign(

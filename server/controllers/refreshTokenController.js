@@ -1,16 +1,13 @@
-
 require("dotenv").config();
 const User = require("../dataBase/models/users");
 const RefreshTokenModel = require("../dataBase/models/refreshToken");
-const {createAccessToken } = require("../utils/signTokens");
-const jwt = require('jsonwebtoken');
-
+const { createAccessToken } = require("../utils/signTokens");
+const jwt = require("jsonwebtoken");
 
 const handelRefreshToken = async (req, res) => {
   const cookies = req.cookies;
-  console.log(cookies?.jwt);
-  console.log("teeeeeeeeeeeeeeeeeeeest", cookies);
-  if (!cookies) return res.status(401);
+  console.log("refreeeeesh !!!!");
+
   if (!cookies?.jwt) return res.status(401);
   const refreshToken = cookies.jwt;
   const foundToken = await RefreshTokenModel.findOne({
@@ -25,7 +22,7 @@ const handelRefreshToken = async (req, res) => {
   jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
     if (err || foundUser.email !== decoded.email) return res.sendStatus(403);
 
-    const accessToken = createAccessToken(foundUser.email) ;
+    const accessToken = createAccessToken(foundUser.email);
 
     res.json({ accessToken });
   });
