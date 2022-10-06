@@ -14,7 +14,7 @@ const handleRegister = async (req, res) => {
     });
   }
   const user = new User({
-    email: req.body.email,
+    email: req.body.email.toLowerCase(),
     password: hashedPassword,
     name: req.body.name,
   });

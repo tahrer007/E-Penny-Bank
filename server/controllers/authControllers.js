@@ -13,7 +13,7 @@ async function handleLogin(req, res) {
     return res
       .status(400)
       .json({ message: "email and password are required !!" });
-  const foundUser = await User.findOne({ email: req.body.email });
+  const foundUser = await User.findOne({ email: req.body.email.toLowerCase() });
   if (!foundUser) return res.sendStatus(401); //unutherized
   const match = await bcrypt.compare(password, foundUser.password);
   if (!match) return res.sendStatus(401);

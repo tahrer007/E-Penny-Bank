@@ -50,6 +50,7 @@ const LogIn = () => {
     e.preventDefault();
 
     try {
+      console.log(user, pwd )
       const userData = await login({ email: user, password: pwd }).unwrap();
       console.log(userData);
       dispatch(setCredentials({ ...userData }));
