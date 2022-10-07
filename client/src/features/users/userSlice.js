@@ -31,6 +31,8 @@ export const { useGetUsersQuery } = extendedApiSlice;
 export const selectUsersResult = extendedApiSlice.endpoints.getUsers.select();
 
 //Create memoized selector
+  //normalized state object with ids and entities
+
 const selectUsersData = createSelector(
   selectUsersResult,
   (usersResult) => {
@@ -38,7 +40,6 @@ const selectUsersData = createSelector(
     return usersResult.data;
   }
 
-  //normalized state object with ids and entities
 );
 
 //getSelectors creates these selectors and we rename them with aliases using destructuring

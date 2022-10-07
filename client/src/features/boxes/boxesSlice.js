@@ -1,6 +1,5 @@
 import { apiSlice } from "app/api/apiSlice";
 import { createEntityAdapter, createSelector } from "@reduxjs/toolkit";
-import build from "babel-plugin-root-import/build";
 
 const boxesAdapter = createEntityAdapter({
   selectId: (box) => box._id,
@@ -24,3 +23,21 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
     }),
   }),
 });
+export const { useGetBoxesByUserIdsQuery } = extendedApiSlice;
+export const selectBoxesByUserIdResult =
+  extendedApiSlice.endpoints.getBoxesByUserId.select();
+const selectBoxesByUserIdData = createSelector(
+  selectBoxesByUserIdResult,
+  (boxesResult) => {
+    console.log(boxesResult.data);
+    return boxesResult.data;
+  }
+);
+
+//getSelectors creates these selectors and we rename them with aliases using destructuring
+export const {
+  selectAll: selectAllPosts,
+  selectById: selectPostById,
+  selectIds: selectPostIds
+  // Pass in a selector that returns the posts slice of state
+} = boxesAdapter.getSelectors(state => selectBoxesByUserIdData(state) ?? initialState)
