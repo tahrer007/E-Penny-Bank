@@ -2,10 +2,11 @@ const bcrypt = require("bcrypt");
 require("dotenv").config();
 const User = require("../dataBase/models/users");
 const RefreshTokenModel = require("../dataBase/models/refreshToken");
-//import { createAccessToken, createRefreshToken } from "../utils/signTokens" ; 
-const { createAccessToken, createRefreshToken } = require("../utils/signTokens");
-
-
+//import { createAccessToken, createRefreshToken } from "../utils/signTokens" ;
+const {
+  createAccessToken,
+  createRefreshToken,
+} = require("../utils/signTokens");
 
 async function handleLogin(req, res) {
   const { email, password } = req.body;
@@ -42,14 +43,11 @@ async function handleLogin(req, res) {
   res.cookie("jwt", refreshToken, {
     httpOnly: true,
     sameSite: "None",
-    secure: false, // in production : true  
+    secure: false, // in production : true
     maxAge: 24 * 60 * 60 * 1000,
   });
 
-  //res.json({ user: foundUser, accessToken });
   res.status(201).json({ user: foundUser, accessToken });
-  //res.json({ user: foundUser, accessToken });
- //res.sendStatus(200)
 }
 
 module.exports = { handleLogin };

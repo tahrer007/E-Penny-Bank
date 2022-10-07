@@ -15,7 +15,7 @@ import Layout from "./components/Layout";
 import Public from "./components/Public";
 import Login from "./components/pages/login/LogIn";
 import Welcome from "./components/pages/welcome/Welcome";
-import RequireAuth from "./features/auth/RequireAuth";
+import RequireAuth from "./features/auth/requireAuth";
 //import UsersList from "./features/users/UsersList";
 
 function App() {

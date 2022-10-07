@@ -8,11 +8,8 @@ const RequireAuth = () => {
   const token = useSelector(selectCurrentToken);
   const location = useLocation();
   useEffect(() => {
-   console.log(token) ;
-  
-    
-  }, [])
-  
+    //console.log(token);
+  }, []);
 
   return token ? (
     <Outlet />
