@@ -1,83 +1,26 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import api from "api/axios";
-import axios from "axios";
-const React_App_BASE_URL = "https://saving-box.herokuapp.com/";
-const Local = "http://localhost:5000/";
+import { apiSlice } from "app/api/apiSlice";
+import { createEntityAdapter, createSelector } from "@reduxjs/toolkit";
+import build from "babel-plugin-root-import/build";
 
-const initialState = {
-  boxes: [],
-  status: "idle", // "idle" | "loading" | "succeeded" | "failed"
-  error: null,
-};
-
-export const fetchBoxes = createAsyncThunk("boxes/allboxes", async () => {
-  try {
-
-    const response = await api.get("boxes/allboxes");
-    console.log(response);
-    return response.data;
-  } catch (err) {
-    return err.message;
-  }
+const boxesAdapter = createEntityAdapter({
+  selectId: (box) => box._id,
+  //sort users by name
+  sortComparer: (a, b) => a.boxName.localeCompare(b.boxName),
 });
 
-export const addNewBox = createAsyncThunk(
-  //TO:DO post not working 
-  "boxes/newBox",
-  async (initialBox) => {
-    try {
-      console.log(initialBox);
-      const response = await axios.post(React_App_BASE_URL, initialBox);
-      console.log(response.data);
-      return response.data;
-    } catch (err) {
-      return err.message;
-    }
-  }
-);
+const initialState = boxesAdapter.getInitialState();
 
-const boxesSlice = createSlice({
-  name: "boxes",
-  initialState,
-  reducers: {
-    boxAdded: {
-      reducer(state, action) {
-        state.posts.push(action.payload);
+export const extendedApiSlice = apiSlice.injectEndpoints({
+  endpoints: (builder) => ({
+    getBoxesByUserId: builder.query({
+      query: (id) => `/boxes/?userId=${id}`,
+      transformResponse: (responseData) => {
+        console.log(responseData);
+        return boxesAdapter.setAll(initialState, responseData);
       },
-      prepare(boxName, boxType, boxKey, allowedToRevel) {
-        return {
-          payload: {
-            boxName,
-            boxType,
-            boxKey,
-            allowedToRevel: !boxKey ? true : allowedToRevel,
-          },
-        };
-      },
-    },
-  },
-  extraReducers(builder) {
-    builder
-      .addCase(fetchBoxes.pending, (state, action) => {
-        state.status = "loading";
-      })
-      .addCase(fetchBoxes.fulfilled, (state, action) => {
-        state.status = "succeeded";
-
-        state.boxes = action.payload;
-      })
-      .addCase(fetchBoxes.rejected, (state, action) => {
-        state.status = "failed";
-        state.error = action.error.message;
-      })
-      .addCase(addNewBox.fulfilled, (state, action) => {
-        state.boxes.push(action.payload);
-      });
-  },
+      providesTags: (result, error, arg) => [
+        ...result.ids.map((id) => ({ type: "Box", id })),
+      ],
+    }),
+  }),
 });
-//export const { postAdded } = boxesSlice.actions;
-
-export const selectAllBoxes = (state) => state.boxes.boxes;
-export const getBoxesStatus = (state) => state.boxes.status;
-export const getBoxesError = (state) => state.boxes.error;
-export default boxesSlice.reducer;

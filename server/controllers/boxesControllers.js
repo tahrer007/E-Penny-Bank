@@ -21,8 +21,8 @@ const newBox = async (req, res) => {
 };
 
 const getUserBoxes = async (req, res) => {
-  //const userId = req.query.userId;
-  const userId = req.body.userId;
+  const userId = req.query.userId;
+  //const userId = req.body.userId;
 
   try {
     const allBoxes = await Box.find({ usersId: userId });

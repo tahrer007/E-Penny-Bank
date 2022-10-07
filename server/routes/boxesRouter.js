@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const {newBox,getUserBoxes,deposit} = require("../controllers/boxesControllers");
 
-router.get('/allBoxes', getUserBoxes);
+router.get('/', getUserBoxes);
 router.post('/newBox', newBox);
 router.post('/deposit', deposit);//put
 //router.post('/adduser', updateBox);
