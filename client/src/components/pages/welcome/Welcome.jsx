@@ -18,7 +18,7 @@ const Welcome = () => {
     isError,
     error,
   } = useGetBoxesByUserIdQuery(user._id);
-  
+
   let content;
   if (isLoading) {
     content = <p>Loading...</p>;
@@ -26,22 +26,12 @@ const Welcome = () => {
     const { ids, entities } = boxesForUser;
     content = ids.map((id) => (
       <li key={id}>
-        <Link to={`/post/${id}`}>{entities[id].boxName}</Link>
+        <Link to={`/box/${id}`}>{entities[id].boxName}</Link>
       </li>
     ));
   } else if (isError) {
     content = <p>{error}</p>;
   }
-
-  useEffect(() => {
-    //console.log(boxesForUser);
-    /* const { ids, entities } = boxesForUser;
-    if (boxesForUser) {
-      ids.forEach((id) => {
-        console.log(entities[id].BoxName);
-      });
-    }*/
-  }, []);
 
   return (
     <section>
