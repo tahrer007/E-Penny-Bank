@@ -13,10 +13,9 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getBoxesByUserId: builder.query({
       query: (id) => `/boxes/?userId=${id}`,
-      transformResponse: (responseData) => {
-        console.log(responseData);
-        return boxesAdapter.setAll(initialState, responseData);
-      },
+      transformResponse: (responseData) =>
+        boxesAdapter.setAll(initialState, responseData),
+
       providesTags: (result, error, arg) => [
         ...result.ids.map((id) => ({ type: "Box", id })),
       ],
@@ -29,7 +28,7 @@ export const selectBoxesByUserIdResult =
 const selectBoxesByUserIdData = createSelector(
   selectBoxesByUserIdResult,
   (boxesResult) => {
-    console.log("tesssssst",boxesResult.data);
+    console.log("tesssssst", boxesResult.data);
     return boxesResult.data;
   }
 );
@@ -38,6 +37,8 @@ const selectBoxesByUserIdData = createSelector(
 export const {
   selectAll: selectAllBoxes,
   selectById: selectBoxById,
-  selectIds: selectBoxesIds
+  selectIds: selectBoxesIds,
   // Pass in a selector that returns the posts slice of state
-} = boxesAdapter.getSelectors(state => selectBoxesByUserIdData(state) ?? initialState)
+} = boxesAdapter.getSelectors(
+  (state) => selectBoxesByUserIdData(state) ?? initialState
+);

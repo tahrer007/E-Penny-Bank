@@ -11,17 +11,27 @@ const Welcome = () => {
   useEffect(() => {
     store.dispatch(extendedApiSlice.endpoints.getUsers.initiate());
   }, []);
-
-  const { state } = useLocation();
-
-  console.log(state);
-  //const token = useSelector(selectCurrentToken);
-
-  const { data, error, isLoading } = useGetBoxesByUserIdQuery(
-    user._id
-  );
-
-  //const Welcome = user ? user.name : "welcome";
+  const {
+    data: boxesForUser,
+    isLoading,
+    isSuccess,
+    isError,
+    error,
+  } = useGetBoxesByUserIdQuery(user._id);
+  
+  let content;
+  if (isLoading) {
+    content = <p>Loading...</p>;
+  } else if (isSuccess) {
+    const { ids, entities } = boxesForUser;
+    content = ids.map((id) => (
+      <li key={id}>
+        <Link to={`/post/${id}`}>{entities[id].boxName}</Link>
+      </li>
+    ));
+  } else if (isError) {
+    content = <p>{error}</p>;
+  }
 
   useEffect(() => {
     //console.log(boxesForUser);
@@ -35,8 +45,9 @@ const Welcome = () => {
 
   return (
     <section>
-      <h2>{user.name}</h2>
-      <p> teest test </p>
+      <h2>{user?.name}</h2>
+
+      <ol>{content}</ol>
     </section>
   );
 };
