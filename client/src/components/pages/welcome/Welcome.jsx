@@ -1,32 +1,43 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectCurrentUser, selectCurrentToken } from "features/auth/authSlice";
-import { Link } from "react-router-dom";
-import { extendedApiSlice, selectAllUsers } from "features/users/userSlice";
-
+import { Link, useLocation } from "react-router-dom";
+import { extendedApiSlice } from "features/users/userSlice";
+import { useGetBoxesByUserIdQuery } from "features/boxes/boxesSlice";
 import { store } from "app/store";
 
 const Welcome = () => {
-  store.dispatch(extendedApiSlice.endpoints.getUsers.initiate());
   const user = useSelector(selectCurrentUser);
-  const token = useSelector(selectCurrentToken);
-  
-  //fetch users !!
-  //fetch user boxes
-  //save to store !
+  useEffect(() => {
+    store.dispatch(extendedApiSlice.endpoints.getUsers.initiate());
+  }, []);
 
-  const welcome = user ? `Welcome ${user.name}!` : "Welcome!";
+  const { state } = useLocation();
 
-  const content = (
-    <section className="welcome">
-      <h1>{welcome}</h1>
+  console.log(state);
+  //const token = useSelector(selectCurrentToken);
 
-      <p>
-        <Link to="/welcome">Go to the Users List</Link>
-      </p>
-    </section>
+  const { data, error, isLoading } = useGetBoxesByUserIdQuery(
+    user._id
   );
 
-  return content;
+  //const Welcome = user ? user.name : "welcome";
+
+  useEffect(() => {
+    //console.log(boxesForUser);
+    /* const { ids, entities } = boxesForUser;
+    if (boxesForUser) {
+      ids.forEach((id) => {
+        console.log(entities[id].BoxName);
+      });
+    }*/
+  }, []);
+
+  return (
+    <section>
+      <h2>{user.name}</h2>
+      <p> teest test </p>
+    </section>
+  );
 };
 export default Welcome;

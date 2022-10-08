@@ -13,10 +13,8 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getUsers: builder.query({
       query: () => "/users/allUsers",
-      transformResponse: (response) => {
-        console.log(response);
-        return usersAdapter.setAll(initialState, response);
-      },
+      transformResponse: (response) =>
+        usersAdapter.setAll(initialState, response),
       providesTags: (result, error, arg) => [
         { type: "User", id: "LIST" },
         ...result.ids.map((id) => ({ type: "User", id })),
@@ -31,15 +29,11 @@ export const { useGetUsersQuery } = extendedApiSlice;
 export const selectUsersResult = extendedApiSlice.endpoints.getUsers.select();
 
 //Create memoized selector
-  //normalized state object with ids and entities
+//normalized state object with ids and entities
 
 const selectUsersData = createSelector(
   selectUsersResult,
-  (usersResult) => {
-    console.log(usersResult.data);
-    return usersResult.data;
-  }
-
+  (usersResult) => usersResult.data
 );
 
 //getSelectors creates these selectors and we rename them with aliases using destructuring

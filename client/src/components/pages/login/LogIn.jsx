@@ -13,7 +13,7 @@ const LogIn = () => {
   const errRef = useRef();
   const navigate = useNavigate();
   const location = useLocation();
-  //const from = location.state?.from?.pathname || "/welcome";
+  const from = location.state?.from?.pathname || "/welcome";
 
   const [user, setUser] = useState("");
   const [validName, setValidName] = useState(false);
@@ -49,7 +49,9 @@ const LogIn = () => {
       dispatch(setCredentials({ ...userData }));
       setUser("");
       setPwd("");
-      navigate("/welcome");
+      navigate(from);
+      console.log(userData.user._id);
+      navigate(from, {state :{ userId: userData.user._id }});
     } catch (err) {
       if (!err?.originalStatus) {
         // isLoading: true until timeout occurs

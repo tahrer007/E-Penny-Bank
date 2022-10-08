@@ -23,21 +23,21 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
     }),
   }),
 });
-export const { useGetBoxesByUserIdsQuery } = extendedApiSlice;
+export const { useGetBoxesByUserIdQuery } = extendedApiSlice;
 export const selectBoxesByUserIdResult =
   extendedApiSlice.endpoints.getBoxesByUserId.select();
 const selectBoxesByUserIdData = createSelector(
   selectBoxesByUserIdResult,
   (boxesResult) => {
-    console.log(boxesResult.data);
+    console.log("tesssssst",boxesResult.data);
     return boxesResult.data;
   }
 );
 
 //getSelectors creates these selectors and we rename them with aliases using destructuring
 export const {
-  selectAll: selectAllPosts,
-  selectById: selectPostById,
-  selectIds: selectPostIds
+  selectAll: selectAllBoxes,
+  selectById: selectBoxById,
+  selectIds: selectBoxesIds
   // Pass in a selector that returns the posts slice of state
 } = boxesAdapter.getSelectors(state => selectBoxesByUserIdData(state) ?? initialState)
