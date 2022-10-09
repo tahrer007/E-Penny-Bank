@@ -54,4 +54,16 @@ const deposit = async (req, res) => {
   }
 };
 
-module.exports = { newBox, getUserBoxes, deposit };
+const addUserToBox = async (req, res) => {
+  const { userId, boxKey } = req.body;
+  const filter = { boxKey };
+  const update = { $push: { usersId: userId } };
+  try {
+    let box = await Box.findOneAndUpdate(filter, update);
+    res.status(201).json(box);
+  } catch (error) {
+    res.status(201).status(400).json({ message: err.message });
+  }
+};
+
+module.exports = { newBox, getUserBoxes, deposit ,addUserToBox };
