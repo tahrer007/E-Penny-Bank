@@ -1,9 +1,7 @@
 import { apiSlice } from "app/api/apiSlice";
 import { createEntityAdapter, createSelector } from "@reduxjs/toolkit";
-
 const boxesAdapter = createEntityAdapter({
   selectId: (box) => box._id,
-  //sort users by name
   sortComparer: (a, b) => a.boxName.localeCompare(b.boxName),
 });
 
@@ -20,18 +18,25 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
         ...result.ids.map((id) => ({ type: "Box", id })),
       ],
     }),
+    addNewBox: builder.mutation({
+      query: (initialBox) => ({
+        url: "/boxes/newBox",
+        method: "POST",
+        body: initialBox,
+      }),
+      invalidatesTags: [{ type: "Box", id: "LIST" }],
+    }),
   }),
 });
-export const { useGetBoxesByUserIdQuery } = extendedApiSlice;
-export const selectBoxesByUserIdResult =
+export const { useGetBoxesByUserIdQuery, useAddNewBoxMutation } =
+  extendedApiSlice;
+export const selectBoxesResult =
   extendedApiSlice.endpoints.getBoxesByUserId.select();
-const selectBoxesByUserIdData = createSelector(
-  selectBoxesByUserIdResult,
-  (boxesResult) => {
-    console.log("tesssssst", boxesResult.data);
-    return boxesResult.data;
-  }
-);
+
+const selectBoxesData = createSelector(selectBoxesResult, (boxesResult) => {
+  console.log("tesssssst", boxesResult.data);
+  return boxesResult;
+});
 
 //getSelectors creates these selectors and we rename them with aliases using destructuring
 export const {
@@ -40,5 +45,5 @@ export const {
   selectIds: selectBoxesIds,
   // Pass in a selector that returns the posts slice of state
 } = boxesAdapter.getSelectors(
-  (state) => selectBoxesByUserIdData(state) ?? initialState
+  (state) => selectBoxesData(state) ?? initialState
 );

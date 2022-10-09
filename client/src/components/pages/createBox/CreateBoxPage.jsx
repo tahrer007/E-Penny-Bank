@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addNewBox } from "features/boxes/boxesSlice";
+import { useSelector } from "react-redux";
 import { BOXES_TYPES, PRIVATE_BOX, SHARED_BOX } from "services/const";
 import InputField from "components/reusables/InputField/InputField";
 //import RadioButton from "components/radioButton/RadioButton";
 import SharedBoxDetails from "components/reusables/sharedBoxDetails/SharedBoxDetails";
 import "./createBox.scss";
-
-const usersId = "6331f73f92d30d25c7103d29";
+import { useAddNewBoxMutation } from "features/boxes/boxesSlice";
+import { useNavigate } from "react-router-dom";
+import { selectCurrentUser } from "features/auth/authSlice";
 
 const CreateBox = () => {
+  const user = useSelector(selectCurrentUser);
+  const navigate = useNavigate();
+
+  const [addNewBox, { isLoading }] = useAddNewBoxMutation();
+
   const [boxType, setBoxType] = useState(PRIVATE_BOX);
   const [boxName, setBoxName] = useState("");
   const [sharedBoxDetails, setSharedBoxDetails] = useState({});
-  const [addRequestStatus, setAddRequestStatus] = useState("idle");
-  const dispatch = useDispatch();
-  const canSave = Boolean(boxName) && addRequestStatus === "idle";
+
+  const canSave = Boolean(boxName) && !isLoading;
 
   const onChangeText = (e) => setBoxName(e.target.value);
   const onChangeSelection = (e) => {
@@ -28,15 +32,23 @@ const CreateBox = () => {
 
   const onCreateBoxClick = async () => {
     const { boxKey, isAllowedToReveal } = sharedBoxDetails;
+
     if (canSave) {
       try {
-        setAddRequestStatus("pending");
-        dispatch(
-          addNewBox({ boxName, boxType, boxKey, isAllowedToReveal, usersId })).unwrap();
+        await addNewBox({
+          boxName,
+          type :boxType,
+          boxKey,
+          isAllowedToReveal,
+          userId: user._id,
+        }).unwrap();
+
+        setBoxName("");
+        setSharedBoxDetails({});
+
+        navigate("/welcome");
       } catch (err) {
-        console.error("Failed to create box the box", err);
-      } finally {
-        setAddRequestStatus("idle");
+        console.error("Failed to save the post", err);
       }
     }
 

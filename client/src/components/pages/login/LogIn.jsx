@@ -50,8 +50,7 @@ const LogIn = () => {
       setUser("");
       setPwd("");
       navigate(from);
-      console.log(userData.user._id);
-      navigate(from, {state :{ userId: userData.user._id }});
+      //navigate(from, {state :{ userId: userData.user._id }});
     } catch (err) {
       if (!err?.originalStatus) {
         // isLoading: true until timeout occurs

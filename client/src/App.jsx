@@ -16,6 +16,7 @@ import Login from "./components/pages/login/LogIn";
 import RequireAuth from "./features/auth/requireAuth";
 import Welcome from "./components/pages/welcome/Welcome";
 import BoxDetails from "./components/pages/boxDetails/BoxDetails";
+import CreateBox from "./components/pages/createBox/CreateBoxPage";
 
 //import UsersList from "./features/users/UsersList";
 
@@ -30,15 +31,10 @@ function App() {
         {/* protected routes */}
         <Route element={<RequireAuth />}>
           <Route path="welcome" element={<Welcome />} />
-          <Route path="boxes:boxId" element={<BoxDetails />} />
+          <Route path="newBox" element={<CreateBox />} />
           <Route path="box">
             <Route path=":boxId" element={<BoxDetails />} />
           </Route>
-
-          {/*<Route path="box">
-          <Route index element={<BoxesList />} />
-          <Route path=":boxId" element={<BoxDetails />} />
-  </Route>*/}
         </Route>
       </Route>
     </Routes>

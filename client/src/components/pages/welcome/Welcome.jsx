@@ -24,6 +24,7 @@ const Welcome = () => {
     content = <p>Loading...</p>;
   } else if (isSuccess) {
     const { ids, entities } = boxesForUser;
+    console.log(boxesForUser)
     content = ids.map((id) => (
       <li key={id}>
         <Link to={`/box/${id}`}>{entities[id].boxName}</Link>
@@ -32,6 +33,7 @@ const Welcome = () => {
   } else if (isError) {
     content = <p>{error}</p>;
   }
+
 
   return (
     <section>
