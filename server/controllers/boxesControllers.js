@@ -22,7 +22,6 @@ const newBox = async (req, res) => {
 
 const getUserBoxes = async (req, res) => {
   const userId = req.query.userId;
-  //const userId = req.body.userId;
 
   try {
     const allBoxes = await Box.find({ usersId: userId });
@@ -33,6 +32,7 @@ const getUserBoxes = async (req, res) => {
 };
 
 const deposit = async (req, res) => {
+  console.log(req.body.boxId, req.body.deposit);
   try {
     const filter = { _id: req.body.boxId };
     const update = { $inc: { totalDeposits: req.body.deposit } };

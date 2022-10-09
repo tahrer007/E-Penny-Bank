@@ -26,10 +26,21 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: [{ type: "Box", id: "LIST" }],
     }),
+    deposit: builder.mutation({
+      query: (details) => ({
+        url: `/boxes/deposit`,
+        method: "PUT",
+        body: details,
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: "Box", id: arg.id }],
+    }),
   }),
 });
-export const { useGetBoxesByUserIdQuery, useAddNewBoxMutation } =
-  extendedApiSlice;
+export const {
+  useGetBoxesByUserIdQuery,
+  useAddNewBoxMutation,
+  useDepositMutation,
+} = extendedApiSlice;
 export const selectBoxesResult =
   extendedApiSlice.endpoints.getBoxesByUserId.select();
 

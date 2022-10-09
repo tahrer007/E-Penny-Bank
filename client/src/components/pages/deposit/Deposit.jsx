@@ -2,10 +2,14 @@ import React, { useState, useEffect } from "react";
 import RandomDeposit from "components/deposit/randomDeposit/RandomDeposit";
 import ExactDeposit from "components/deposit/exactDeposit/ExactDeposit";
 import { useParams } from "react-router-dom";
-
+import { useDepositMutation } from "features/boxes/boxesSlice";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import "./deposit.scss";
 const Deposit = () => {
   const { boxId } = useParams();
+  const navigate = useNavigate();
+  const [deposit, { isLoading }] = useDepositMutation();
   const [randomSelected, setRandomSlected] = useState(true);
   const onChangeSelection = (e) => setRandomSlected(!randomSelected);
   const [amount, setAmount] = useState(null);
@@ -14,6 +18,21 @@ const Deposit = () => {
   useEffect(() => {
     console.log(amount);
   }, [amount]);
+  const canSave = amount && !isLoading;
+
+  const onDoneClicked = async () => {
+    if (canSave) {
+      try {
+        const test = await deposit({boxId, deposit: Number(amount)} ).unwrap();
+        console.log(test);
+
+        setAmount(null);
+        navigate(`../../welcome`);
+      } catch (err) {
+        console.error("Failed to save the post", err);
+      }
+    }
+  };
 
   return (
     <div className="pageContainer depositPage">
@@ -42,7 +61,10 @@ const Deposit = () => {
           <ExactDeposit addAmount={addAmount} />
         )}
       </div>
-      <div className="submitBtn"> button</div>
+      <div className="submitBtn" onClick={onDoneClicked}>
+        {" "}
+        button
+      </div>
     </div>
   );
 };
