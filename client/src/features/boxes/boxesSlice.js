@@ -29,7 +29,15 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
     deposit: builder.mutation({
       query: (details) => ({
         url: `/boxes/deposit`,
-        method: "PUT",
+        method: "PATCH",
+        body: details,
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: "Box", id: arg.id }],
+    }),
+    addUser: builder.mutation({
+      query: (details) => ({
+        url: `/boxes/addUser`,
+        method: "PATCH",
         body: details,
       }),
       invalidatesTags: (result, error, arg) => [{ type: "Box", id: arg.id }],
@@ -40,6 +48,7 @@ export const {
   useGetBoxesByUserIdQuery,
   useAddNewBoxMutation,
   useDepositMutation,
+  useAddUserMutation ,
 } = extendedApiSlice;
 export const selectBoxesResult =
   extendedApiSlice.endpoints.getBoxesByUserId.select();
