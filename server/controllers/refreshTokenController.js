@@ -7,12 +7,15 @@ const jwt = require("jsonwebtoken");
 const handelRefreshToken = async (req, res) => {
   const cookies = req.cookies;
   console.log("refreeeeesh !!!!");
+  console.log(cookies);
 
   if (!cookies?.jwt) return res.status(401);
   const refreshToken = cookies.jwt;
+  console.log("refreshToken", refreshToken);
   const foundToken = await RefreshTokenModel.findOne({
     token: refreshToken,
   });
+  console.log(foundToken);
 
   if (!foundToken) return res.sendStatus(403); //forbidden
   const foundUser = await User.findOne({

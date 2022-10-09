@@ -6,17 +6,17 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Label = ({ htmlFor, validInput }) => {
+const Label = ({ htmlFor, validInput ,labelName,valid1 ,valid2 }) => {
   return (
     <label htmlFor={htmlFor}>
-      Username:
+      {labelName}
       <FontAwesomeIcon
         icon={faCheck}
-        className={validInput ? "valid" : "hide"}
+        className={valid1 ? "valid" : "hide"}
       />
       <FontAwesomeIcon
         icon={faTimes}
-        className={validInput ? "hide" : "invalid"}
+        className={valid2 ? "hide" : "invalid"}
       />
     </label>
   );

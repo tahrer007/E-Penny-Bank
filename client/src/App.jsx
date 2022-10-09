@@ -30,11 +30,8 @@ function App() {
 
         {/* protected routes */}
         <Route element={<RequireAuth />}>
-          <Route path="welcome" element={<Welcome />} />
           <Route path="newBox" element={<CreateBox />} />
-          <Route path="box">
-            <Route path=":boxId" element={<BoxDetails />} />
-          </Route>
+          <Route path="welcome" element={<Welcome />} />
         </Route>
       </Route>
     </Routes>

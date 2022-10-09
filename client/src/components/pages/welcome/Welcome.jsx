@@ -40,6 +40,7 @@ const Welcome = () => {
       <h2>{user?.name}</h2>
 
       <ol>{content}</ol>
+      <Link to={"../newBox"}>new box</Link>
     </section>
   );
 };
