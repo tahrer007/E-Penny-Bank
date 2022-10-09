@@ -24,16 +24,20 @@ const Welcome = () => {
     content = <p>Loading...</p>;
   } else if (isSuccess) {
     const { ids, entities } = boxesForUser;
-    console.log(boxesForUser)
+    console.log(boxesForUser);
     content = ids.map((id) => (
       <li key={id}>
-        <Link to={`/box/${id}`}>{entities[id].boxName}</Link>
+        {entities[id].totalDeposits}
+        {"     "}
+
+        <Link to={`/box/${id}`} state={{ box: entities[id] }}>
+          {entities[id].boxName}
+        </Link>
       </li>
     ));
   } else if (isError) {
     content = <p>{error}</p>;
   }
-
 
   return (
     <section>

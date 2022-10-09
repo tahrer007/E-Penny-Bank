@@ -35,8 +35,9 @@ export const selectBoxesResult =
 
 const selectBoxesData = createSelector(selectBoxesResult, (boxesResult) => {
   console.log("tesssssst", boxesResult.data);
-  return boxesResult;
+  return boxesResult.data;
 });
+//selectById notworking , temprory fuction
 
 //getSelectors creates these selectors and we rename them with aliases using destructuring
 export const {
