@@ -5,9 +5,11 @@ import { useParams } from "react-router-dom";
 import { useDepositMutation } from "features/boxes/boxesSlice";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { selectCurrentUser } from "features/auth/authSlice";
 import "./deposit.scss";
 const Deposit = () => {
   const { boxId } = useParams();
+  const user = useSelector(selectCurrentUser);
   const navigate = useNavigate();
   const [deposit, { isLoading }] = useDepositMutation();
   const [randomSelected, setRandomSlected] = useState(true);
@@ -23,7 +25,7 @@ const Deposit = () => {
   const onDoneClicked = async () => {
     if (canSave) {
       try {
-        const test = await deposit({boxId, deposit: Number(amount)} ).unwrap();
+        const test = await deposit({boxId, deposit: Number(amount) ,userId : user._id } ).unwrap();
         console.log(test);
 
         setAmount(null);

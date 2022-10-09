@@ -26,7 +26,7 @@ const savingBoxSchema = new Schema(
     },
     depositsHistory: {
       type: Array, //{userId , amount, date & time }
-      default: [{}],
+      default: [],
       required: [false],
     },
     boxKey: {

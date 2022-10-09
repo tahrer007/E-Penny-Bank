@@ -32,11 +32,19 @@ const getUserBoxes = async (req, res) => {
 };
 
 const deposit = async (req, res) => {
+  const { deposit, boxId, userId } = req.body;
+  const depositsHistory = {
+    userId,
+    deposit,
+    time: new Date().toLocaleString(),
+  };
   console.log(req.body.boxId, req.body.deposit);
   try {
     const filter = { _id: req.body.boxId };
-    const update = { $inc: { totalDeposits: req.body.deposit } };
-    //const update = { $push: { depositsHistory: req.body.boxId } };
+    const update = {
+      $inc: { totalDeposits: req.body.deposit },
+      $push: { depositsHistory: depositsHistory },
+    };
 
     let box = await Box.findOneAndUpdate(filter, update);
 
