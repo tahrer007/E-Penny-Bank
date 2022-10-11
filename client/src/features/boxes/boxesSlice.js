@@ -48,17 +48,19 @@ export const {
   useGetBoxesByUserIdQuery,
   useAddNewBoxMutation,
   useDepositMutation,
-  useAddUserMutation ,
+  useAddUserMutation,
 } = extendedApiSlice;
 export const selectBoxesResult =
   extendedApiSlice.endpoints.getBoxesByUserId.select();
 
-const selectBoxesData = createSelector(selectBoxesResult, (boxesResult) => {
-  console.log("tesssssst", boxesResult.data);
-  return boxesResult.data;
-});
-//selectById notworking , temprory fuction
+/*const selectBoxesData = createSelector(
+  selectBoxesResult,
+  (boxesResult) => boxesResult.data
+);*/
 
+
+
+export const selectBoxesData = (state, userId) => extendedApiSlice.endpoints.getBoxesByUserId.select(userId)(state)?.data ?? {};
 //getSelectors creates these selectors and we rename them with aliases using destructuring
 export const {
   selectAll: selectAllBoxes,
