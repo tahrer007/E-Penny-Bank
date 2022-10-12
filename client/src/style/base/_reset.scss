@@ -1,0 +1,25 @@
+@use "../abstracts/colors" as *;
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+
+.light {
+    .text {
+        color: colors.$primary;
+    }
+    .background {
+        background-color: colors.$background;
+    }
+}
+
+.dark {
+    .text {
+        color: colors.$primary-dark;
+    }
+    .background {
+        background-color: colors.$background-dark;
+    }
+}
