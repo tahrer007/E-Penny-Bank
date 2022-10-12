@@ -20,11 +20,14 @@ body {
   font-family: "Oswald", sans-serif;
   font-size: $fontSize;
 
-  @media only screen and (max-width: $smallScreen) {
+  //transition: background 0.2s linear;
+
+  @media (orientation: portrait) and (max-width: $smallScreen) {
     font-size: $fontSizeMobile;
   }
 }
 .light {
+  position: relative; 
   .text {
     color: $primary;
   }
@@ -32,6 +35,7 @@ body {
     background-color: $background;
     height: inherit;
     width: inherit;
+    
   }
 }
 

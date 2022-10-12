@@ -19,6 +19,7 @@ import BoxDetails from "./components/pages/boxDetails/BoxDetails";
 import CreateBox from "./components/pages/createBox/CreateBoxPage";
 import Deposit from "./components/pages/deposit/Deposit";
 import AddUser from "components/pages/addUser/AddUser";
+import ThemButton from "components/reusables/themBtn/ThemButton";
 import "./style/_main.scss";
 
 //import UsersList from "./features/users/UsersList";
@@ -26,6 +27,7 @@ import "./style/_main.scss";
 function App() {
   return (
     <div className={`appContainer light`}>
+      <ThemButton />
       <div className="background columnFlex">
         <Routes>
           <Route path="/" element={<Layout />}>
