@@ -1,8 +1,14 @@
-
-.logoWrapper{
-   
-    box-sizing: border-box;
-    background-color: red;
-    background-image: url('../../../assets/images/logo.svg');
-    //background:$bgProperties; 
+@use "style/abstracts/global" as *;
+.logoWrapper {
+  box-sizing: border-box;
+  background-color: grey;
+  position: relative;
+  margin: auto;
+  .logo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    max-width: 100%;
+    max-height: 100%;
+  }
 }

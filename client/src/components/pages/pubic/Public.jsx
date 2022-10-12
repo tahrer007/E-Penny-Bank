@@ -4,8 +4,8 @@ import SvgLogo from "components/Svg/logo/SvgLogo";
 
 const Public = () => {
   const content = (
-    <div className="publicLayouts columnFlex">
-      <section className="public">
+    <div className="public">
+      <section>
         <header>
           <SvgLogo />
         </header>
