@@ -23,11 +23,10 @@
     background-color: royalblue;
     display: flex;
     flex-direction: column;
-    
+
     height: 90%;
     width: $appWidth;
 
-    
     @media (orientation: portrait) and (max-width: $smallScreen) {
       width: 100%;
     }

@@ -11,7 +11,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";*/
 
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
-import Public from "./components/Public";
+import Public from "./components/pages/pubic/Public";
 import Login from "./components/pages/login/LogIn";
 import RequireAuth from "./features/auth/requireAuth";
 import Welcome from "./components/pages/welcome/Welcome";
