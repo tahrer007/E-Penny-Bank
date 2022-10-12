@@ -1,4 +1,5 @@
 @use "../abstracts/colors" as *;
+@use "../abstracts/global" as * ; 
 
 body {
   padding: 0;
@@ -14,19 +15,6 @@ body {
   height: 100vh;
   width: 100vw;
   background-color: blanchedalmond;
-}
-
-.columnFlex {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.rowFlex {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 .light {
   .text {
@@ -45,10 +33,24 @@ body {
   }
   .background {
     background-color: $background-dark;
-    height: 100vh;
-    width: 100vw;
+    height: inherit;
+    width: inherit;
   }
 }
+
+.columnFlex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.rowFlex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 
 button {
   padding: 15px 25px;

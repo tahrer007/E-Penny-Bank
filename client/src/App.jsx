@@ -25,8 +25,8 @@ import "./style/_main.scss";
 
 function App() {
   return (
-    <div className={`appContainer columnFlex light`}>
-      <div className="background">
+    <div className={`appContainer light`}>
+      <div className="background columnFlex">
         <Routes>
           <Route path="/" element={<Layout />}>
             {/* public routes */}

@@ -1,12 +1,9 @@
-.public{
+.public {
+  header {
 
-    width: 75%;
-    height: 60%;
-    padding: 60px;
-    box-sizing: border-box;
-   
-    .logo {
-
-    }
-    
+   .logoWrapper {
+      width: 150px;
+      height: 150px;
+   }
+  }
 }

@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import "./public.scss";
+import SvgLogo from "components/Svg/logo/SvgLogo";
 
-import { ReactComponent as Logo } from "assets/images/logo.svg";
 const Public = () => {
   const content = (
-    <div className="background columnFlex publicLayouts">
+    <div className="publicLayouts columnFlex">
       <section className="public">
         <header>
-          <Logo />
+          <SvgLogo />
         </header>
         <main>
           <h1 className="text">Welcome to penny Box!</h1>
