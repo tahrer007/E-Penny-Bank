@@ -11,19 +11,21 @@ const Public = () => {
         </header>
         <main>
           <h1 className="text">Welcome to penny Box!</h1>
-          Start saving your money with the same cash experience, get surprised
-          by how much you save. Start saving with your family and friends.
+          like real penny bank, Start saving now and get surprised by how much
+          you save :)
+          <br />
+          Don't forget to share boxes with friends and start saving together.
         </main>
         <footer>
-          already have an account ?
+          <p> already have an account?</p>
+
           <button>
             <Link to="/login">Login</Link>
           </button>
-          Need an Account?
+          <p> Need an Account?</p>
+
           <button>
-            <Link to="/login" style={{ textDecoration: "none" }}>
-              Signup{" "}
-            </Link>
+            <Link to="/login">Signup</Link>
           </button>
         </footer>
       </section>

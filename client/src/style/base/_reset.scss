@@ -18,6 +18,11 @@ body {
   width: 100vw;
   background-color: blanchedalmond;
   font-family: "Oswald", sans-serif;
+  font-size: $fontSize;
+
+  @media only screen and (max-width: $smallScreen) {
+    font-size: $fontSizeMobile;
+  }
 }
 .light {
   .text {
@@ -55,7 +60,7 @@ body {
 }
 
 button {
-  padding: 15px 25px;
+  padding: 0.7em 1.2em;
   border: unset;
   border-radius: 15px;
   color: #212121;
@@ -63,11 +68,20 @@ button {
   background: #e8e8e8;
   position: relative;
   font-weight: 1000;
-  font-size: 17px;
+  font-size: $fontSize;
   -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
   box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
   transition: all 250ms;
   overflow: hidden;
+  width: 100%;
+
+  @media (orientation: portrait) and (max-width: $smallScreen) {
+    font-size: $fontSizeBtnMobile;
+  }
+
+  @media (orientation: landScape) and (max-width: $landScapeWidth) {
+    font-size: $fontSizeBtnMobile;
+  }
 }
 
 button::before {

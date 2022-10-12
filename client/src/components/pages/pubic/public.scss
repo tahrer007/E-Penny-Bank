@@ -1,27 +1,74 @@
+@use "style/abstracts/global" as *;
 .public {
   background-color: blueviolet;
   text-align: center;
   width: 70%;
   height: 90%;
-  padding: 1em;
+  padding: 0.2em;
   box-sizing: border-box;
-  border-radius:5em;
+  border-radius: 5em;
+  line-height: 1.5em;
 
   section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1em;
     width: 100%;
     height: 100%;
-    
+
     header {
       background-color: yellow;
       justify-content: space-around;
-      height:fit-content;
+      height: fit-content;
       .logoWrapper {
-        width: 25vmin;
-        height:25vmin;
+        width: 30vmin;
+        height: 30vmin;
+      }
+    }
+    main {
+      h1 {
+        line-height: 1.5em;
+      }
+    }
+
+    footer {
+      justify-content: center;
+      margin: auto;
+      P {
+        margin: 0.5em;
+        padding: 0;
+      }
+      button {
+        display: block;
+      }
+    }
+  }
+  @media (orientation: portrait) and (max-width: $smallScreen) {
+    width: 90%;
+    height: max-content;
+    border-radius: 2em;
+    padding: 2em;
+    background-color: chocolate;
+    section {
+      main {
+        h1 {
+          line-height: 1.5em;
+        }
+      }
+    }
+  }
+  @media (orientation: landScape) and (max-width: $landScapeWidth) {
+    width: 80%;
+    height: 95%;
+    border-radius: 2em;
+    background-color: pink;
+    line-height: 1em;
+    section {
+      header {
+        .logoWrapper {
+          width: 21vmin;
+          height: 21vmin;
+        }
       }
     }
   }

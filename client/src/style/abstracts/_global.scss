@@ -1,27 +1,25 @@
+$bgProperties: center no-repeat contain;
 
-$bgProperties  : center no-repeat contain; 
-
-//padding & margins 
+//padding & margins
 $pagePadding: 1rem 5rem;
-$textPadding : 0.5rem 0.5rem ;
-$mobileTextPadding : 5px 30px; 
+$textPadding: 0.5rem 0.5rem;
+$mobileTextPadding: 5px 30px;
 
-//font size 
-$fontSize : 1rem ; 
-$fontSizeMobile : 0.775rem ; 
+//font size
+$fontSize: 1.5rem;
+$fontSizeMobile:1rem;
+$fontSizeBtn : 1.5rem;
+$fontSizeBtnMobile : 0.8rem;
 
 // screens size
-$topBarHeight : 60px ; 
-$smallScreen : 960px ;
-$bigScreen : 1200px ;
-$landScapeWidth : 900px ; 
-$appWidth : 30vw ; 
-$appwidthMobile : 100% ;
+$topBarHeight: 60px;
+$smallScreen: 960px;
+$bigScreen: 1200px;
+$landScapeWidth: 850px;
+$appWidth: 30vw;
+$appwidthMobile: 100%;
+$innerContainersWidth: 100%;
+$innerContainersBgColor: brown;
 
-$innerContainersWidth : 100% ; 
-$innerContainersBgColor :  brown;
-
-
-@import url('https://fonts.googleapis.com/css2?family=Exo&display=swap');
-$font :'Exo', sans-serif;
-
+@import url("https://fonts.googleapis.com/css2?family=Exo&display=swap");
+$font: "Exo", sans-serif;
