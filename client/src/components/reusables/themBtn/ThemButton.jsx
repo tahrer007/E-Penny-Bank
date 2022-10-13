@@ -1,12 +1,33 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleDarkMode } from "features/them/themSlice";
+import { selectedCurrentMode } from "features/them/themSlice";
+
 import "./themBtn.scss";
 
 function ThemButton() {
-  const [them, setThem] = useState("light");
+  const currentMode = useSelector(selectedCurrentMode);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log("dark", currentMode);
+  }, [currentMode]);
+
+
+  const handleCheck = () => dispatch(toggleDarkMode());
+
   return (
     <div className="toggleWrapper">
-      <input type="checkbox" className="dn" id="dn" />
+      <input
+        type="checkbox"
+        className="dn"
+        id="dn"
+        onChange={handleCheck}
+        value={currentMode}
+        checked={currentMode}
+      />
       <label htmlFor="dn" className="toggle">
         <span className="toggle__handler">
           <span className="crater crater--1"></span>
