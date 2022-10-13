@@ -1,9 +1,16 @@
-
-.label {
-  .invalid {
-    display: block;
-  }
+label {
+  margin-top: 1rem;
+  text-align: left;
   .valid {
+    display: inline-block;
+    color: green;
+  }
+  .invalid {
+    display: inline-block;
+    color: greenyellow;
+  }
+
+  .hide {
     display: none;
   }
 }

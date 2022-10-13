@@ -1,10 +1,84 @@
+@use "style/abstracts/global" as *;
+.authPage {
+  background-color: blueviolet;
+  text-align: center;
+  width: 30vw;
+  height: fit-content;
+  padding: 0.5em;
+  box-sizing: border-box;
+  border-radius: 2em;
+  //line-height: 1.2em;
 
-.loginPage{
+  section {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    background-color: red;
+    box-sizing: border-box;
 
-    .form {
-        display: flex;
-        flex-direction: column;
+    //padding:1em;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      flex-grow: 1;
+      padding-bottom: 1rem;
+
+      margin: 10px auto;
+      padding: 10px 20px;
+      width: 100%;
+      box-sizing: border-box;
+      height: 100%;
+
+      input[type="text"],
+      input[type="password"] {
+        padding: 0.25rem;
+        margin-top: 0.25rem;
+        border-radius: 0.5rem;
+        width: 100%;
+        font-size: inherit;
+      }
+      
+      button {
+        text-align: center;
+        margin-top: 1rem;
+      }
     }
+  }
+  @media (orientation: portrait) and (max-width: $smallScreen) {
+    width: 90vw;
+    height: max-content;
+    border-radius: 2em;
+    padding: 2em;
+    background-color: chocolate;
+    section {
+      main {
+        h1 {
+          line-height: 1.5em;
+        }
+      }
+    }
+  }
+  /* @media (orientation: landScape) and (max-width: $landScapeWidth) {
+    width: 80%;
+    height: 95%;
+    border-radius: 2em;
+    background-color: pink;
+    line-height: 1rem;
+    section {
+      main {
+        h1 {
+          // font-size: 1em;
+          margin: 5px;
+        }
+      }
+      header {
+        .logoWrapper {
+          width: 21vmin;
+          height: 21vmin;
+        }
+      }
+    }
+  }*/
 }

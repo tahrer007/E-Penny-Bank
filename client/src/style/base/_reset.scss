@@ -81,6 +81,7 @@ button {
   transition: all 250ms;
   overflow: hidden;
   width: 100%;
+  cursor: pointer;
 
   @media (orientation: portrait) and (max-width: $smallScreen) {
     font-size: $fontSizeBtnMobile;

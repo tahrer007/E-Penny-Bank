@@ -6,7 +6,7 @@ import Instructions from "components/reusables/form/instructions/Instructions";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "features/auth/authSlice";
 import { useLoginMutation } from "features/auth/authApiSlice";
-import "./LogIn";
+import "./logIn.scss";
 
 const LogIn = () => {
   const userRef = useRef();
@@ -16,10 +16,11 @@ const LogIn = () => {
   const from = location.state?.from?.pathname || "/welcome";
 
   const [user, setUser] = useState("");
-  const [validName, setValidName] = useState(false);
+  const [validUserName, setValidUserName] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
 
   const [pwd, setPwd] = useState("");
+  const [validPwd,setValidPwd] =useState(false) ;
   const [pwdFocus, setPwdFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
@@ -33,8 +34,12 @@ const LogIn = () => {
   }, []);
 
   useEffect(() => {
-    setValidName(validator.isEmail(user));
+    setValidUserName(validator.isEmail(user));
   }, [user]);
+  useEffect(() => {
+    const pwdLength = pwd.length >=4 && pwd.length <= 24;
+    setValidPwd(pwdLength);
+  }, [pwd]);
 
   useEffect(() => {
     setErrMsg("");
@@ -66,7 +71,7 @@ const LogIn = () => {
     }
   };
   return (
-    <div className="pageContainer signupPage">
+    <div className="authPage">
       {success ? (
         <section>
           <h1>you logged in , Success!</h1>
@@ -86,10 +91,14 @@ const LogIn = () => {
 
           <h1>Log in</h1>
           <form onSubmit={handleSubmit}>
+
+           {/*validInput,
+  invalidInput, */}
             <Label
+              labelName={"email :"}
               htmlFor={"username"}
-              valid1={validName}
-              valid2={validName || !user}
+              validInput={validUserName}
+              invalidInput={!validUserName && user}
             />
             <input
               type="text"
@@ -99,16 +108,22 @@ const LogIn = () => {
               onChange={(e) => setUser(e.target.value)}
               value={user}
               required
-              aria-invalid={validName ? "false" : "true"}
+              aria-invalid={validUserName ? "false" : "true"}
               aria-describedby="uidnote"
               onFocus={() => setUserFocus(true)}
               onBlur={() => setUserFocus(false)}
             />
             <Instructions
-              className={userFocus && user && !validName}
-              id="uidnote"
+              className={userFocus && user && !validUserName}
+              //id="uidnote"
+              id="username"
             />
-            <label htmlFor="password">password </label>
+            <Label
+              labelName={"Password: "}
+              htmlFor={"password"}
+              validInput={validPwd}
+              invalidInput={!validPwd && pwd}
+            />
             <input
               type="password"
               id="password"
@@ -120,8 +135,12 @@ const LogIn = () => {
               onFocus={() => setPwdFocus(true)}
               onBlur={() => setPwdFocus(false)}
             />
+            <Instructions
+              className={pwdFocus && pwd && !validPwd}
+              id="password"
+            />
 
-            <button disabled={!validName || !pwd ? true : false}>log in</button>
+            <button disabled={!validUserName || !pwd ? true : false}>log in</button>
           </form>
 
           <p>
