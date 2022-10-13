@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import "./public.scss";
 import SvgLogo from "components/Svg/logo/SvgLogo";
+import { useNavigate } from "react-router-dom";
 
 const Public = () => {
+  const navigate = useNavigate();
   const content = (
     <div className="public">
       <section>
@@ -19,13 +21,15 @@ const Public = () => {
         <footer>
           <p> already have an account?</p>
 
-          <button>
-            <Link to="/login">Login</Link>
+          <button onClick={()=>navigate("login")}>
+            Login
+          
           </button>
           <p> Need an Account?</p>
 
-          <button>
-            <Link to="/login">Signup</Link>
+          <button onClick={()=>navigate("Signup")}>
+          Signup
+          
           </button>
         </footer>
       </section>

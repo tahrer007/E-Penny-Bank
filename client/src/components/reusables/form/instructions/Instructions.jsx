@@ -17,10 +17,10 @@ const Instructions = ({ className, id }) => {
   const content = instructions[id].map((item) => <li key={item}>{item}</li>);
 
   return (
-    <p id={id} className={className ? "instructions" : "offscreen"}>
+    <div id={id} className={className ? "instructions" : "offscreen"}>
        <FontAwesomeIcon icon={faInfoCircle} />
       <ul>{content}</ul>
-    </p>
+    </div>
   );
 };
 
