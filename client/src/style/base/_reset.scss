@@ -25,6 +25,9 @@ body {
   @media (orientation: portrait) and (max-width: $smallScreen) {
     font-size: $fontSizeMobile;
   }
+  @media (orientation: landScape) and (max-width: $landScapeWidth) {
+    font-size: $fontSizeMobile;
+  }
 }
 .light {
   position: relative; 
@@ -72,7 +75,7 @@ button {
   background: #e8e8e8;
   position: relative;
   font-weight: 1000;
-  font-size: $fontSize;
+  font-size: $fontSizeBtn;
   -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
   box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
   transition: all 250ms;
@@ -85,6 +88,7 @@ button {
 
   @media (orientation: landScape) and (max-width: $landScapeWidth) {
     font-size: $fontSizeBtnMobile;
+
   }
 }
 

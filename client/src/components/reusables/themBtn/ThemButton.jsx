@@ -11,11 +11,6 @@ function ThemButton() {
   const currentMode = useSelector(selectedCurrentMode);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log("dark", currentMode);
-  }, [currentMode]);
-
-
   const handleCheck = () => dispatch(toggleDarkMode());
 
   return (

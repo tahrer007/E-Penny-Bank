@@ -2,7 +2,7 @@
 .public {
   background-color: blueviolet;
   text-align: center;
-  width: 70%;
+  width: fit-content;
   height: 90%;
   padding: 0.2em;
   box-sizing: border-box;
@@ -62,8 +62,14 @@
     height: 95%;
     border-radius: 2em;
     background-color: pink;
-    line-height: 1em;
+    line-height: 1rem;
     section {
+      main {
+        h1 {
+         // font-size: 1em;
+          margin: 5px;
+        }
+      }
       header {
         .logoWrapper {
           width: 21vmin;
