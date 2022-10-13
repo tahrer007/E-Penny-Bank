@@ -20,7 +20,7 @@ const LogIn = () => {
   const [userFocus, setUserFocus] = useState(false);
 
   const [pwd, setPwd] = useState("");
-  const [validPwd,setValidPwd] =useState(false) ;
+  const [validPwd, setValidPwd] = useState(false);
   const [pwdFocus, setPwdFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
@@ -28,6 +28,8 @@ const LogIn = () => {
 
   const [login, { isLoading }] = useLoginMutation();
   const dispatch = useDispatch();
+
+  const disableClick =!validUserName || !validPwd ;
 
   useEffect(() => {
     userRef.current.focus();
@@ -37,7 +39,7 @@ const LogIn = () => {
     setValidUserName(validator.isEmail(user));
   }, [user]);
   useEffect(() => {
-    const pwdLength = pwd.length >=4 && pwd.length <= 24;
+    const pwdLength = pwd.length >= 4 && pwd.length <= 24;
     setValidPwd(pwdLength);
   }, [pwd]);
 
@@ -55,7 +57,6 @@ const LogIn = () => {
       setUser("");
       setPwd("");
       navigate(from);
-      //navigate(from, {state :{ userId: userData.user._id }});
     } catch (err) {
       if (!err?.originalStatus) {
         // isLoading: true until timeout occurs
@@ -72,87 +73,77 @@ const LogIn = () => {
   };
   return (
     <div className="authPage">
-      {success ? (
-        <section>
-          <h1>you logged in , Success!</h1>
-          <p>
-            <a href="#">Sign In</a>
-          </p>
-        </section>
-      ) : (
-        <section>
-          <p
-            ref={errRef}
-            className={errMsg ? "errmsg" : "offscreen"}
-            aria-live="assertive"
-          >
-            {errMsg}
-          </p>
+      <section>
+        <p
+          ref={errRef}
+          className={errMsg ? "errmsg" : "offscreen"}
+          aria-live="assertive"
+        >
+          {errMsg}
+        </p>
 
-          <h1>Log in</h1>
-          <form onSubmit={handleSubmit}>
+        <h1>Log in</h1>
+        <form onSubmit={handleSubmit}>
+          <Label
+            labelName={"email :"}
+            htmlFor={"username"}
+            validInput={validUserName}
+            invalidInput={!validUserName && user}
+          />
+          <input
+            type="text"
+            id="username"
+            ref={userRef}
+            autoComplete="off"
+            onChange={(e) => setUser(e.target.value)}
+            value={user}
+            required
+            aria-invalid={validUserName ? "false" : "true"}
+            aria-describedby="uidnote"
+            onFocus={() => setUserFocus(true)}
+            onBlur={() => setUserFocus(false)}
+          />
+          <Instructions
+            className={userFocus && user && !validUserName}
+            //id="uidnote"
+            id="username"
+          />
+          <Label
+            labelName={"Password: "}
+            htmlFor={"password"}
+            validInput={validPwd}
+            invalidInput={!validPwd && pwd}
+          />
+          <input
+            type="password"
+            id="password"
+            onChange={(e) => setPwd(e.target.value)}
+            autoComplete="off"
+            value={pwd}
+            required
+            aria-describedby="pwdnote"
+            onFocus={() => setPwdFocus(true)}
+            onBlur={() => setPwdFocus(false)}
+          />
+          <Instructions
+            className={pwdFocus && pwd && !validPwd}
+            id="password"
+          />
 
-           {/*validInput,
-  invalidInput, */}
-            <Label
-              labelName={"email :"}
-              htmlFor={"username"}
-              validInput={validUserName}
-              invalidInput={!validUserName && user}
-            />
-            <input
-              type="text"
-              id="username"
-              ref={userRef}
-              autoComplete="off"
-              onChange={(e) => setUser(e.target.value)}
-              value={user}
-              required
-              aria-invalid={validUserName ? "false" : "true"}
-              aria-describedby="uidnote"
-              onFocus={() => setUserFocus(true)}
-              onBlur={() => setUserFocus(false)}
-            />
-            <Instructions
-              className={userFocus && user && !validUserName}
-              //id="uidnote"
-              id="username"
-            />
-            <Label
-              labelName={"Password: "}
-              htmlFor={"password"}
-              validInput={validPwd}
-              invalidInput={!validPwd && pwd}
-            />
-            <input
-              type="password"
-              id="password"
-              onChange={(e) => setPwd(e.target.value)}
-              autoComplete="off"
-              value={pwd}
-              required
-              aria-describedby="pwdnote"
-              onFocus={() => setPwdFocus(true)}
-              onBlur={() => setPwdFocus(false)}
-            />
-            <Instructions
-              className={pwdFocus && pwd && !validPwd}
-              id="password"
-            />
+          <button disabled={disableClick} className={disableClick ? "disabled" : ""}>
+            log in
+          </button>
+        </form>
 
-            <button disabled={!validUserName || !pwd ? true : false}>log in</button>
-          </form>
-
-          <p>
-            Need an Account?
-            <br />
-            <span className="line">
-              {/*put router link here*/}
-              <a href="#">Sign Up</a>
-            </span>
-          </p>
-        </section>
-      )}
+        <p>
+          Need an Account?
+          <br />
+          <span className="line">
+            {/*put router link here*/}
+            <a href="#">Sign Up</a>
+          </span>
+        </p>
+      </section>
     </div>
   );
 };

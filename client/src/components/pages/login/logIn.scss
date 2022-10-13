@@ -39,10 +39,14 @@
         width: 100%;
         font-size: inherit;
       }
-      
+
       button {
         text-align: center;
         margin-top: 1rem;
+      }
+      .disabled{
+        pointer-events: none;
+        background-color: chocolate;
       }
     }
   }
