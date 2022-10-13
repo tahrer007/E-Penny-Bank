@@ -8,6 +8,9 @@ import { setCredentials } from "features/auth/authSlice";
 import { useLoginMutation } from "features/auth/authApiSlice";
 import "./logIn.scss";
 
+import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const LogIn = () => {
   const userRef = useRef();
   const errRef = useRef();
@@ -29,7 +32,7 @@ const LogIn = () => {
   const [login, { isLoading }] = useLoginMutation();
   const dispatch = useDispatch();
 
-  const disableClick =!validUserName || !validPwd ;
+  const disableClick = !validUserName || !validPwd;
 
   useEffect(() => {
     userRef.current.focus();
@@ -46,6 +49,10 @@ const LogIn = () => {
   useEffect(() => {
     setErrMsg("");
   }, [user, pwd]);
+
+  useEffect(() => {
+    console.log("isloading ", isLoading);
+  }, [isLoading]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -130,8 +137,11 @@ const LogIn = () => {
             id="password"
           />
 
-          <button disabled={disableClick} className={disableClick ? "disabled" : ""}>
-            log in
+          <button
+            disabled={disableClick}
+            className={disableClick ? "disabled" : ""}
+          >
+            {isLoading ? "loading ...." : " log in"}
           </button>
         </form>
 
