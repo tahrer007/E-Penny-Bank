@@ -9,7 +9,7 @@ import Spinner from "components/spinner/Spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import "./welcome.scss";
-
+import HomeBody from "components/homeBody/HomeBody";
 import { changeDateFormate } from "services/dateAndTimeFormate";
 
 const Welcome = () => {
@@ -31,49 +31,40 @@ const Welcome = () => {
   if (isLoading) {
     content = <Spinner />;
   } else if (isSuccess) {
-    const { ids, entities } = boxesForUser;
-    console.log(boxesForUser);
-    content = ids.map((id) => (
-      <li key={id}>
-        {entities[id].totalDeposits}
+    content = (
+      <>
+        <header>
+          <div className="title columnFlex">
+            <h2>
+              {user?.lastLogIn ? "Welcome back " : "Welcome "}
+              {user?.name}
+            </h2>
+          </div>
 
-        <Link to={`/box/${id}`} state={{ box: entities[id] }}>
-          {entities[id].boxName}
-        </Link>
-      </li>
-    ));
+          <div className="otherDetails">
+            <div className="lastLogIn">
+              Last login {changeDateFormate(user.lastLogIn)}
+            </div>
+
+            <div className="reward">
+              <FontAwesomeIcon icon={faStar} />
+              <span>{user.rewards}</span>
+            </div>
+          </div>
+        </header>
+        <main className="columnFlex">
+          <HomeBody />
+        </main>
+
+        <footer className="">
+          all rights reserved @Tahrer abu diab linkedIn
+        </footer>
+      </>
+    );
   } else if (isError) {
     content = <p>{error}</p>;
   }
 
-  return (
-    <section className="innerContainer">
-      <header>
-        <div className="title columnFlex">
-          <h2>
-            {user?.lastLogIn ? "Welcome back " : "Welcome "}
-            {user?.name}
-          </h2>
-        </div>
-
-        <div className="otherDetails">
-          <div className="reward">
-            <FontAwesomeIcon icon={faStar} />
-            <span>{user.rewards}</span>
-          </div>
-          <div className="lastLogIn">
-            Last login {changeDateFormate(user.lastLogIn)}
-          </div>
-        </div>
-      </header>
-      <main></main>
-
-      <footer></footer>
-
-      <ol>{content}</ol>
-      <Link to={"../newBox"}>new box</Link>
-      <Link to={"../addUser"}>addUser</Link>
-    </section>
-  );
+  return <section className="innerContainer">{content}</section>;
 };
 export default Welcome;
