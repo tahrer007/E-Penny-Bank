@@ -5,11 +5,12 @@ import { Link, useLocation } from "react-router-dom";
 import { extendedApiSlice } from "features/users/userSlice";
 import { useGetBoxesByUserIdQuery } from "features/boxes/boxesSlice";
 import { store } from "app/store";
-import enGB from "date-fns/locale/en-GB";
-import { format, formatDistance, formatRelative, subDays } from "date-fns";
 import Spinner from "components/spinner/Spinner";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 import "./welcome.scss";
+
+import { changeDateFormate } from "services/dateAndTimeFormate";
 
 const Welcome = () => {
   const user = useSelector(selectCurrentUser);
@@ -56,14 +57,18 @@ const Welcome = () => {
         </div>
 
         <div className="otherDetails">
-          <div className="reward"> reward </div>
-          <div className="lastLogIn">Last logIn</div>
+          <div className="reward">
+            <FontAwesomeIcon icon={faStar} />
+            <span>{user.rewards}</span>
+          </div>
+          <div className="lastLogIn">
+            Last login {changeDateFormate(user.lastLogIn)}
+          </div>
         </div>
       </header>
-      <main>yrysdfsdf</main>
+      <main></main>
 
       <footer></footer>
-      <h2></h2>
 
       <ol>{content}</ol>
       <Link to={"../newBox"}>new box</Link>
