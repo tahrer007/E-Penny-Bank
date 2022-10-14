@@ -34,7 +34,7 @@ function HomeBody() {
         <FontAwesomeIcon icon={faMoon} />
         theme
       </div>
-
+    <div></div>
       <div className="navButton columnFlex">
         <FontAwesomeIcon icon={faRightFromBracket} />
         Log out

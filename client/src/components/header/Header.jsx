@@ -1,9 +1,18 @@
-import React from 'react'
+import React from "react";
+import "./header.scss";
+import SvgLogo from "components/Svg/logo/SvgLogo";
 
 function Header() {
   return (
-    <header>Header</header>
-  )
+    <header className="mainHeader">
+      <div className="logo">
+        <SvgLogo />
+      </div>
+      <div className="homeBtn">
+        
+      </div>
+    </header>
+  );
 }
 
-export default Header
+export default Header;

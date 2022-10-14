@@ -11,7 +11,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import "./welcome.scss";
 import HomeBody from "components/homeBody/HomeBody";
 import { changeDateFormate } from "services/dateAndTimeFormate";
-
+import Footer from "components/footer/Footer";
 const Welcome = () => {
   const user = useSelector(selectCurrentUser);
   useEffect(() => {
@@ -56,9 +56,8 @@ const Welcome = () => {
           <HomeBody />
         </main>
 
-        <footer className="">
-          all rights reserved @Tahrer abu diab linkedIn
-        </footer>
+        <Footer/>
+        
       </>
     );
   } else if (isError) {

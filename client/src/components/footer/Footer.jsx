@@ -1,8 +1,10 @@
 import React from 'react'
-
+import "./footer.scss"
 function Footer() {
   return (
-    <footer>footer</footer>
+    <footer className="">
+          all rights reserved @Tahrer abu diab linkedIn
+        </footer>
   )
 }
 
