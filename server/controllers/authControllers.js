@@ -47,6 +47,14 @@ async function handleLogin(req, res) {
     maxAge: 24 * 60 * 60 * 1000,
   });
 
+  const filter = { _id: foundUser._id };
+  const update = { $set: { lastLogIn: new Date() } };
+
+  let updateLogInTime = await User.findOneAndUpdate(
+    { _id: foundUser._id },
+    { $set: { lastLogIn: new Date() } }
+  );
+
   res.status(201).json({ user: foundUser, accessToken });
 }
 

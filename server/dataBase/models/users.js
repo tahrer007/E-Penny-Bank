@@ -24,6 +24,11 @@ const UserSchema = new Schema(
       type: Array,
       default: [],
     },
+    lastLogIn: {
+      type: Date,
+      default: null,
+      required: [false],
+    },
   },
   { timestamps: true }
 );
