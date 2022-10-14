@@ -24,30 +24,11 @@
       justify-content: space-evenly;
       flex-grow: 1;
       padding-bottom: 1rem;
-
       margin: 10px auto;
       padding: 10px 20px;
       width: 100%;
       box-sizing: border-box;
       height: 100%;
-
-      input[type="text"],
-      input[type="password"] {
-        padding: 0.25rem;
-        margin-top: 0.25rem;
-        border-radius: 0.5rem;
-        width: 100%;
-        font-size: inherit;
-      }
-
-      button {
-        text-align: center;
-        margin-top: 1rem;
-      }
-      .disabled{
-        pointer-events: none;
-        background-color: chocolate;
-      }
     }
   }
   @media (orientation: portrait) and (max-width: $smallScreen) {

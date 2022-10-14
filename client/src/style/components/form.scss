@@ -1,0 +1,10 @@
+@use "../abstracts/global" as *;
+
+input[type="text"],
+input[type="password"] {
+  padding: 0.25rem;
+  margin-top: 0.25rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  font-size: inherit;
+}
