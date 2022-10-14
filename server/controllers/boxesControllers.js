@@ -1,4 +1,5 @@
 const Box = require("../dataBase/models/boxes");
+const User = require("../dataBase/models/users");
 
 const newBox = async (req, res) => {
   console.log("server", req.body);
@@ -48,6 +49,11 @@ const deposit = async (req, res) => {
 
     let box = await Box.findOneAndUpdate(filter, update);
 
+    let updateUser = await User.findOneAndUpdate(
+      { _id: userId },
+      { $inc: { rewards: 1 } }
+    );
+
     res.status(200).send(box);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -66,4 +72,4 @@ const addUserToBox = async (req, res) => {
   }
 };
 
-module.exports = { newBox, getUserBoxes, deposit ,addUserToBox };
+module.exports = { newBox, getUserBoxes, deposit, addUserToBox };

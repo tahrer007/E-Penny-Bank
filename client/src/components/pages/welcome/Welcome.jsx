@@ -49,7 +49,10 @@ const Welcome = () => {
     <section className="innerContainer">
       <header>
         <div className="title columnFlex">
-          <h2>Welcome Back {user?.name}</h2>
+          <h2>
+            {user?.lastLogIn ? "Welcome back " : "Welcome "}
+            {user?.name}
+          </h2>
         </div>
 
         <div className="otherDetails">

@@ -29,6 +29,11 @@ const UserSchema = new Schema(
       default: null,
       required: [false],
     },
+    rewards: {
+      type: Number,
+      default: 0,
+      required: [false],
+    },
   },
   { timestamps: true }
 );
