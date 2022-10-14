@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import validator from "validator";
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Label from "components/reusables/form/label/Label";
 import Instructions from "components/reusables/form/instructions/Instructions";
 import { useDispatch } from "react-redux";
@@ -8,8 +8,6 @@ import { setCredentials } from "features/auth/authSlice";
 import { useLoginMutation } from "features/auth/authApiSlice";
 import "./logIn.scss";
 
-import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const LogIn = () => {
   const userRef = useRef();
@@ -27,8 +25,6 @@ const LogIn = () => {
   const [pwdFocus, setPwdFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState(false);
-
   const [login, { isLoading }] = useLoginMutation();
   const dispatch = useDispatch();
 

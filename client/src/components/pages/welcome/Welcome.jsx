@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { selectCurrentUser, selectCurrentToken } from "features/auth/authSlice";
+import { selectCurrentUser } from "features/auth/authSlice";
 import { Link, useLocation } from "react-router-dom";
 import { extendedApiSlice } from "features/users/userSlice";
 import { useGetBoxesByUserIdQuery } from "features/boxes/boxesSlice";
 import { store } from "app/store";
+import enGB from "date-fns/locale/en-GB";
+import { format, formatDistance, formatRelative, subDays } from "date-fns";
+import Spinner from "components/spinner/Spinner";
+
+import "./welcome.scss";
 
 const Welcome = () => {
   const user = useSelector(selectCurrentUser);
@@ -19,16 +24,17 @@ const Welcome = () => {
     error,
   } = useGetBoxesByUserIdQuery(user._id);
 
+  console.log(user);
+
   let content;
   if (isLoading) {
-    content = <p>Loading...</p>;
+    content = <Spinner />;
   } else if (isSuccess) {
     const { ids, entities } = boxesForUser;
     console.log(boxesForUser);
     content = ids.map((id) => (
       <li key={id}>
         {entities[id].totalDeposits}
-        {"     "}
 
         <Link to={`/box/${id}`} state={{ box: entities[id] }}>
           {entities[id].boxName}
@@ -40,8 +46,21 @@ const Welcome = () => {
   }
 
   return (
-    <section>
-      <h2>{user?.name}</h2>
+    <section className="innerContainer">
+      <header>
+        <div className="title columnFlex">
+          <h2>Welcome Back {user?.name}</h2>
+        </div>
+
+        <div className="otherDetails">
+          <div className="reward"> reward </div>
+          <div className="lastLogIn">Last logIn</div>
+        </div>
+      </header>
+      <main>yrysdfsdf</main>
+
+      <footer></footer>
+      <h2></h2>
 
       <ol>{content}</ol>
       <Link to={"../newBox"}>new box</Link>
