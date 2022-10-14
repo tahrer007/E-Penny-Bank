@@ -60,6 +60,19 @@ const deposit = async (req, res) => {
   }
 };
 
+const addBoxToUser = async (boxId, UserId) => {
+  const filter = { _id: UserId };
+  const update = {
+    $push: { boxesId: boxId },
+  };
+  try {
+    let updateUser = await User.findOneAndUpdate(filter, update);
+    return updateUser;
+  } catch (error) {
+    return error.message;
+  }
+};
+
 const addUserToBox = async (req, res) => {
   const { userId, boxKey } = req.body;
   const filter = { boxKey };
