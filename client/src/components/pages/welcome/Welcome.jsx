@@ -43,7 +43,9 @@ const Welcome = () => {
 
           <div className="otherDetails">
             <div className="lastLogIn">
-              Last login {changeDateFormate(user.lastLogIn)}
+              {user?.lastLogIn
+                ? `Last login ${changeDateFormate(user.lastLogIn)}`
+                : null}
             </div>
 
             <div className="reward">
@@ -56,14 +58,13 @@ const Welcome = () => {
           <HomeBody />
         </main>
 
-        <Footer/>
-        
+        <Footer />
       </>
     );
   } else if (isError) {
     content = <p>{error}</p>;
   }
 
-  return <section className="innerContainer">{content}</section>;
+  return <section className="innerContainer welcomePage">{content}</section>;
 };
 export default Welcome;

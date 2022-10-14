@@ -12,20 +12,20 @@ const Public = () => {
           <SvgLogo />
         </header>
         <main>
-          <h1 className="text">Welcome to penny Box!</h1>
+          <h1 className="text">Welcome to E-Penny Bank</h1>
           like real penny bank, Start saving now and get surprised by how much
           you save :)
           <br />
           Don't forget to share boxes with friends and start saving together.
         </main>
         <footer>
-          <p> already have an account?</p>
+          <p> Already have an account?</p>
 
           <button onClick={()=>navigate("login")}>
             Login
           
           </button>
-          <p> Need an Account?</p>
+          <p> Need an account?</p>
 
           <button onClick={()=>navigate("Signup")}>
           Signup

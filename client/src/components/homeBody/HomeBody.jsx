@@ -1,6 +1,7 @@
 import React from "react";
 import "./homeBody.scss";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { selectCurrentUser } from "features/auth/authSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,6 +15,7 @@ import {
 
 function HomeBody() {
   const user = useSelector(selectCurrentUser);
+  const navigate = useNavigate(); 
 
   return (
     <div className="navButtonsWrapper">
@@ -21,7 +23,7 @@ function HomeBody() {
         <FontAwesomeIcon icon={faUser} />
         Profile
       </div>
-      <div className="navButton columnFlex">
+      <div className="navButton columnFlex" onClick={()=>navigate("../boxesList")}>
         <FontAwesomeIcon icon={faPiggyBank} />
         Boxes
       </div>
