@@ -9,13 +9,13 @@ import UsersList from "./usersList/UsersList";
 import "./sharedBoxDetails.scss";
 
 const SharedBoxDetails = ({ newBox, boxDetails, getSharedBoxDetails }) => {
+  const [boxKey, setBoxKey] = useState(boxDetails?.boxKey || makeKey());
   const user = useSelector(selectCurrentUser);
-  const boxKey = boxDetails?.boxKey || makeKey();
+
   const [isAllowedToReveal, setIsAllowedToReveal] = useState(
     boxDetails?.isAllowedToReveal || false
   );
-  let isAdmin = checkId(user._id, boxDetails.adminId);
-  console.log(isAdmin);
+  let isAdmin = checkId(user._id, boxDetails?.adminId);
 
   useEffect(() => {
     if (!boxKey) return;
@@ -27,7 +27,7 @@ const SharedBoxDetails = ({ newBox, boxDetails, getSharedBoxDetails }) => {
   };
 
   return (
-    <div className="sharedBoxDetailsWrapper">
+    <div className={"sharedBoxDetailsWrapper"}id ={newBox ? "newBox" : "details"}>
       <div className="details">
         <div className="keyBox">
           <div className="key">{boxKey} </div>
@@ -53,10 +53,12 @@ const SharedBoxDetails = ({ newBox, boxDetails, getSharedBoxDetails }) => {
           </label>
         </div>
       </div>
-      {!newBox &&<div className="usersListWrapper">
-        <h3 className="subtitle">Other users </h3>
-        <UsersList boxDetails={boxDetails} />
-      </div>}
+      {!newBox && (
+        <div className="usersListWrapper">
+          <h3 className="subtitle">Other users </h3>
+          <UsersList boxDetails={boxDetails} />
+        </div>
+      )}
     </div>
   );
 };

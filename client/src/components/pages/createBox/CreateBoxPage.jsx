@@ -1,27 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { BOXES_TYPES, PRIVATE_BOX, SHARED_BOX } from "services/const";
-import InputField from "components/reusables/InputField/InputField";
-//import RadioButton from "components/radioButton/RadioButton";
 import SharedBoxDetails from "components/boxDetails/sharedBoxDetails/SharedBoxDetails";
-import "./createBox.scss";
 import { useAddNewBoxMutation } from "features/boxes/boxesSlice";
 import { useNavigate } from "react-router-dom";
 import { selectCurrentUser } from "features/auth/authSlice";
 import Label from "components/reusables/form/label/Label";
-import Instructions from "components/reusables/form/instructions/Instructions";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCloudArrowUp, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import "./createBox.scss";
 const CreateBox = () => {
   const user = useSelector(selectCurrentUser);
   const navigate = useNavigate();
-
   const userRef = useRef();
   const errRef = useRef();
-
   const [addNewBox, { isLoading }] = useAddNewBoxMutation();
   const [boxName, setBoxName] = useState("");
   const [validName, setValidName] = useState(false);
-
   const [userFocus, setUserFocus] = useState(false);
   const [boxType, setBoxType] = useState(PRIVATE_BOX);
   const [errMsg, setErrMsg] = useState("");
@@ -48,6 +43,8 @@ const CreateBox = () => {
   const onCreateBoxClick = async () => {
     const { boxKey, isAllowedToReveal } = sharedBoxDetails;
 
+    //TODO:CHECK WHY SHARED LIST NOT UPDATE THE BOXES LIST
+
     if (canSave) {
       try {
         await addNewBox({
@@ -60,7 +57,6 @@ const CreateBox = () => {
 
         setBoxName("");
         setSharedBoxDetails({});
-
         navigate("/welcome");
       } catch (err) {
         console.error("Failed to save the post", err);
@@ -100,7 +96,50 @@ const CreateBox = () => {
         </div>
       </header>
 
-      <main className="columnFlex"></main>
+      <main>
+        <div className="boxNameBox">
+          <Label
+            htmlFor={"boxName"}
+            valid1={validName}
+            valid2={true}
+            labelName={"Box name : "}
+          />
+          <input
+            type="text"
+            id="boxName"
+            ref={userRef}
+            autoComplete="off"
+            onChange={(e) => setBoxName(e.target.value)}
+            value={boxName}
+            required
+            //aria-invalid={validName ? "false" : "true"}
+            //aria-describedby="uidnote"
+            onFocus={() => setUserFocus(true)}
+            onBlur={() => setUserFocus(false)}
+          />
+        </div>
+        {boxType ? (
+          <SharedBoxDetails
+            newBox={true}
+            getSharedBoxDetails={getSharedBoxDetails}
+            boxDetails={null}
+          />
+        ) : null}
+
+        <div className="secBtnWrapper">
+          <div
+            className={`mainBtns columnFlex ${!canSave && "disabled"}`}
+            onClick={onCreateBoxClick}
+          >
+            <FontAwesomeIcon icon={faCloudArrowUp} />
+            Save
+          </div>
+          <div className={`mainBtns columnFlex ${isLoading && "disabled"}`}>
+            <FontAwesomeIcon icon={faTrashCan} />
+            Cancel
+          </div>
+        </div>
+      </main>
     </section>
   );
 };
@@ -109,58 +148,9 @@ export default CreateBox;
 
 /*<div className="pageContainer newBoxPage">
       <div className="boxDetails">
-        <Label
-          htmlFor={"boxName"}
-          valid1={validName}
-          valid2={true}
-          labelName={"Box name : "}
-        />
-        <input
-          type="text"
-          id="boxName"
-          ref={userRef}
-          autoComplete="off"
-          onChange={(e) => setBoxName(e.target.value)}
-          value={boxName}
-          required
-          //aria-invalid={validName ? "false" : "true"}
-          //aria-describedby="uidnote"
-          onFocus={() => setUserFocus(true)}
-          onBlur={() => setUserFocus(false)}
-        />
-        <Instructions
-          className={userFocus && user && !validName}
-          id="boxName"
-        />
-        <div className="optionsBox">
-          <input
-            className="radioBtn"
-            type="radio"
-            value={PRIVATE_BOX}
-            name={PRIVATE_BOX}
-            checked={boxType === PRIVATE_BOX}
-            onChange={(e) => onChangeSelection(e)}
-          />
-          Private box
-          <input
-            className="radioBtn"
-            type="radio"
-            value={SHARED_BOX}
-            name={SHARED_BOX}
-            checked={boxType === SHARED_BOX}
-            onChange={(e) => onChangeSelection(e)}
-          />
-          Shared box
-        </div>
-      </div>
-      {boxType ? (
-        <SharedBoxDetails
-          newBox={true}
-          getSharedBoxDetails={getSharedBoxDetails}
-        />
-      ) : null}
+       
       <div className="createBtn">
-        <button type="button" disabled={!canSave} onClick={onCreateBoxClick}>
+        <button type="button" disabled={!canSave} >
           Create Box
         </button>
       </div>

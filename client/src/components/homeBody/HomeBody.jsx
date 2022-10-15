@@ -19,25 +19,25 @@ function HomeBody() {
 
   return (
     <div className="innerButtonsWrapper homeMainBody">
-      <div className="navButton columnFlex">
+      <div className="mainBtns columnFlex">
         <FontAwesomeIcon icon={faUser} />
         Profile
       </div>
-      <div className="navButton columnFlex" onClick={()=>navigate("../boxesList")}>
+      <div className="mainBtns columnFlex" onClick={()=>navigate("../boxesList")}>
         <FontAwesomeIcon icon={faPiggyBank} />
         Boxes
       </div>
-      <div className="navButton columnFlex" onClick={()=>navigate("../box/new")}>
+      <div className="mainBtns columnFlex" onClick={()=>navigate("../box/new")}>
         <FontAwesomeIcon icon={faPlus}  />
         NewBox
       </div>
 
-      <div className="navButton columnFlex">
+      <div className="mainBtns columnFlex">
         <FontAwesomeIcon icon={faMoon} />
         theme
       </div>
     <div></div>
-      <div className="navButton columnFlex">
+      <div className="mainBtns columnFlex">
         <FontAwesomeIcon icon={faRightFromBracket} />
         Log out
       </div>

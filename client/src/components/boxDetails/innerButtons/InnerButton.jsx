@@ -13,18 +13,18 @@ function InnerButton({ box }) {
   const navigate = useNavigate();
   return (
     <div className="detailsInnerBtns">
-      <div className="innerBtn columnFlex">
+      <div className="mainBtns columnFlex">
         <FontAwesomeIcon icon={faCircleDollarToSlot} />
         Deposit
       </div>
       <div
-        className="innerBtn columnFlex"
+        className="mainBtns columnFlex"
         onClick={() => navigate("../boxesList")}
       >
         <FontAwesomeIcon icon={faFaceSurprise} />
         Reveal
       </div>
-      <div className="innerBtn columnFlex">
+      <div className="mainBtns columnFlex">
         <FontAwesomeIcon icon={faCalendarDays} />
        
       </div>
