@@ -64,13 +64,11 @@
 
     .list {
       background-color: brown;
- 
-      // height: max-content;
+
       overflow-y: scroll;
       box-sizing: border-box;
 
       .listItem {
-        //width: 98%;
         height: fit-content;
         background-color: greenyellow;
         margin: 0.1em;

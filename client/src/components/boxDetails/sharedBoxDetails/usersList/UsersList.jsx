@@ -24,7 +24,7 @@ function UsersList({ boxDetails }) {
       <div className="listItem userItem">
         {selectedUser.name}
 
-        {isAdmin && <FontAwesomeIcon icon={faUserNinja} />}
+        {isAdmin && <FontAwesomeIcon icon={faUserNinja} className="adminIcon"/>}
       </div>
     );
   };

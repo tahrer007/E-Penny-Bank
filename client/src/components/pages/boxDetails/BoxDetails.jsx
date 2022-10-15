@@ -47,10 +47,10 @@ const SavingBox = () => {
         </div>
       </header>
       <main>
-        <div className="lastUpdate">
+        {!box.type &&<div className="lastUpdate">
           {/*//TODO : change the time formte */}
           Last update at : {box.depositsHistory[historyArrLength - 1].deposit}
-        </div>
+        </div>}
         {box?.type ? (
           <SharedBoxDetails
             newBox={false}
