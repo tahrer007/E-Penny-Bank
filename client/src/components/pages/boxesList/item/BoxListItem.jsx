@@ -9,7 +9,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faUsers } from "@fortawesome/free-solid-svg-icons";
 
 const BoxListItem = ({ box, boxId }) => {
-  const [fade, setFade] = useState(false);
   const navigate = useNavigate();
 
   const user = useSelector(selectCurrentUser);
@@ -18,31 +17,20 @@ const BoxListItem = ({ box, boxId }) => {
   const adminDetails = () => {
     console.log(user, admin);
     if (user._id === admin.userId) return "admin :You";
-    else return` admin :${admin.name}`;
+    else return ` admin :${admin.name}`;
   };
 
-  const handleOnitemClick = () => {
-    //state={{ box: box }}
-    /*
-
-<Link to={`/box/${boxId}`} state={{ box: box }}>
-        {box.boxName} {box.type} {box.type ? adminDetails() : null}
-      </Link>
- */
-    console.log("clicked");
-    setFade(true);
+  const handleOnitemClick = () =>
     navigate(`../box/${boxId}`, { state: { box: box } });
-  };
+
   return (
-    <div
-      className={`boxListItem ${fade ? "fade" : ""}`}
-      onClick={handleOnitemClick}
-      onAnimationEnd={() => setFade(false)}
-    >
-      <div className="left">
-        {box.boxName} <FontAwesomeIcon icon={box.type ? faUsers : faUser} />
+    <div className={`boxListItem`} onClick={handleOnitemClick}>
+      <div className="name">{box.boxName}</div>
+      <div className="icon">
+        <FontAwesomeIcon icon={box.type ? faUsers : faUser} />
       </div>
-      <div className="right">{box.type ? adminDetails() : null}</div>
+
+      <div className="adminName">{box.type ? adminDetails() : null}</div>
     </div>
   );
 };
