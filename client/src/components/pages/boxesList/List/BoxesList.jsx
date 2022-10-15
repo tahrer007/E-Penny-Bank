@@ -10,6 +10,8 @@ import Footer from "components/footer/Footer";
 import { Link } from "react-router-dom";
 import Error from "components/error/Error";
 import BoxListItem from "../item/BoxListItem";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faUsers } from "@fortawesome/free-solid-svg-icons";
 function BoxesListPage() {
   const user = useSelector(selectCurrentUser);
   //if(!user)NAVIGATE TO LOGIN PAGE !!
@@ -44,16 +46,20 @@ function BoxesListPage() {
             <h2>Boxes list</h2>
           </div>
           <div className="otherDetails">
-            otherdetails 
+            <div className="icons">
+              <FontAwesomeIcon icon={faUser} /> : private Box
+            </div>
+            <div className="icons">
+              <FontAwesomeIcon icon={faUsers} /> : shared Box
+            </div>
           </div>
         </header>
         <main className="columnFlex">
           <div className="list">
-          {ids.map((id) => (
-            <BoxListItem key={id} boxId={id} box={entities[id]} />
-          ))}
+            {ids.map((id) => (
+              <BoxListItem key={id} boxId={id} box={entities[id]} />
+            ))}
           </div>
-          
         </main>
         <Footer />
       </>

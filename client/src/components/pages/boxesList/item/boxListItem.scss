@@ -1,0 +1,17 @@
+.boxListItem {
+  background-color: greenyellow;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  width: 90%;
+  height: 10%;
+  margin: 0.1em;
+  padding: 0.5em 1em;
+  cursor: pointer;
+
+  &:hover {
+    color: red;
+    background-color: yellowgreen;
+  }
+}
