@@ -39,14 +39,17 @@ const SharedBoxDetails = ({ newBox, boxDetails, getSharedBoxDetails }) => {
           )}
         </div>
         <div className="authorized">
-          <input
-            type="checkbox"
-            checked={isAllowedToReveal}
-            //value={isAllowedToReveal}
-            onChange={() => setIsAllowedToReveal(!isAllowedToReveal)}
-            disabled={!newBox && !isAdmin}
-          />
-          <label>allow users to reveal deposits and history</label>
+          <label>
+            <input
+              type="checkbox"
+              checked={isAllowedToReveal}
+              //value={isAllowedToReveal}
+              onChange={() => setIsAllowedToReveal(!isAllowedToReveal)}
+              disabled={!newBox && !isAdmin}
+              className="cbx"
+            />
+            allow users to reveal deposits and history
+          </label>
         </div>
       </div>
       <div className="usersList">userList</div>
