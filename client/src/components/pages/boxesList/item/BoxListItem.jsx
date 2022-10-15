@@ -15,7 +15,7 @@ const BoxListItem = ({ box, boxId }) => {
   const admin = useSelector((state) => selectUserById(state, box.adminId));
 
   const adminDetails = () => {
-    console.log(user, admin);
+    //console.log(user, admin);
     if (user._id === admin.userId) return "admin :You";
     else return ` admin :${admin.name}`;
   };
@@ -24,7 +24,7 @@ const BoxListItem = ({ box, boxId }) => {
     navigate(`../box/${boxId}`, { state: { box: box } });
 
   return (
-    <div className={`boxListItem`} onClick={handleOnitemClick}>
+    <div className={`listItem boxListItem`} onClick={handleOnitemClick}>
       <div className="name">{box.boxName}</div>
       <div className="icon">
         <FontAwesomeIcon icon={box.type ? faUsers : faUser} />

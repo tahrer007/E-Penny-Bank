@@ -1,31 +1,16 @@
 .boxListItem {
-  background-color: greenyellow;
   display: grid;
- grid-template-columns: 40% 10% 50%;
- justify-items: start;
+  grid-template-columns: 40% 10% 50%;
+  justify-items: start;
   box-sizing: border-box;
   width: 98%;
-  height: 10%;
-  margin: 0.1em;
-  padding: 0.5em 1em;
-  cursor: pointer;
+  
 
-   > *{
- 
+  .icon {
   }
-
-  &:hover {
-    color: red;
-    background-color: yellowgreen;
-  }
-  .icon{
-    
-  }
-  .adminName{
+  .adminName {
     justify-self: last baseline;
     display: flex;
     align-content: flex-start;
-    
-    
   }
 }

@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { selectCurrentUser } from "features/auth/authSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShareFromSquare } from "@fortawesome/free-solid-svg-icons";
+import UsersList from "./usersList/UsersList";
 import "./sharedBoxDetails.scss";
 
 const SharedBoxDetails = ({ newBox, boxDetails, getSharedBoxDetails }) => {
@@ -52,18 +53,10 @@ const SharedBoxDetails = ({ newBox, boxDetails, getSharedBoxDetails }) => {
           </label>
         </div>
       </div>
-      <div className="usersList">userList</div>
-      {/*
-      {(newBox || isAdmin) && (
-        <div className="authorized" 
-            <input
-              type="checkbox"
-              
-            />
-           
-          
-      </div>
-      )}*/}
+      {!newBox &&<div className="usersListWrapper">
+        <h3 className="subtitle">Other users </h3>
+        <UsersList boxDetails={boxDetails} />
+      </div>}
     </div>
   );
 };

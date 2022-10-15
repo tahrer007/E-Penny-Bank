@@ -14,17 +14,11 @@ const SavingBox = () => {
   const { boxId } = useParams();
   const location = useLocation();
   const { box } = location.state;
-  console.log(box);
-  //const box = useSelector((state) => selectAllBoxes(state));
 
   useEffect(() => {
     console.log(box);
   }, [box]);
 
-  const lastUpdate = () => {
-    console.log(box.depositsHistory);
-  };
-  lastUpdate();
   if (!box) return;
 
   const getSharedBoxDetails = ({ boxKey, isAllowedToReveal }) =>
@@ -64,26 +58,12 @@ const SavingBox = () => {
             boxDetails={box}
           />
         ) : null}
-       
       </main>
       <footer>
-     <InnerButton box={box} />
-    
+        <InnerButton box={box} />
       </footer>
     </section>
   );
 };
 
 export default SavingBox;
-
-/*<div className="pageContainer boxDetails">
-      
-   
-      <div className="buttonsBox">
-        <div className="deposit">
-          <Link to={`../deposit/${box._id}`}>deposit</Link>
-        </div>
-        <div className="history">history</div>
-        <div className="save">save</div>
-      </div>
-    </div>*/

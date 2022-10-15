@@ -36,4 +36,13 @@
       }
     }
   }
+
+  .usersListWrapper {
+    display: flex;
+    flex-direction: column;
+
+    .subtitle {
+      margin: 0.5em;
+    }
+  }
 }

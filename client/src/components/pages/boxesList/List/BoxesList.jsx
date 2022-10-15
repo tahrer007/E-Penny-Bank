@@ -45,7 +45,7 @@ function BoxesListPage() {
           </div>
         </header>
         <main className="columnFlex">
-          <div className="list">
+          <div className="list boxesList">
             {ids.map((id) => (
               <BoxListItem key={id} boxId={id} box={entities[id]} />
             ))}
