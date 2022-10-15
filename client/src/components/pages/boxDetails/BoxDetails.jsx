@@ -1,20 +1,14 @@
 import React, { useState, useEffect } from "react";
 import SharedBoxDetails from "components/reusables/sharedBoxDetails/SharedBoxDetails";
-import { formatRelative } from "date-fns";
 import enGB from "date-fns/locale/en-GB";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-//import { useSelector } from "react-redux";
-//import { selectBoxById, selectAllBoxes } from "features/boxes/boxesSlice";
-
+import { changeDateFormate } from "services/dateAndTimeFormate";
 import "./boxDetails.scss";
-const format = {
-  yesterday: "'Yesterday'",
-  today: "'Today'",
-  tomorrow: "'Tomorrow'",
-  other: "dd/MM/yyyy",
-};
+import Footer from "components/footer/Footer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar ,faUser, faUsers } from "@fortawesome/free-solid-svg-icons";
 
 const SavingBox = () => {
   const { boxId } = useParams();
@@ -27,25 +21,55 @@ const SavingBox = () => {
     console.log(box);
   }, [box]);
 
+  const lastUpdate =()=>{
+    console.log(box.depositsHistory)
+  }
+  lastUpdate()
+  if (!box) return;
+
   const getSharedBoxDetails = ({ boxKey, isAllowedToReveal }) =>
     console.log(boxKey, isAllowedToReveal);
 
-  const locale = {
-    ...enGB,
-    formatRelative: (token) => format[token],
-  };
-
   return (
-    <div className="pageContainer boxDetails">
+    <section className="innerContainer boxdetailsSection">
+      <header>
+        <div className="title">
+          <h2>{box.boxName}</h2>
+        </div>
+        <div className="otherDetails">
+      
+          <div className="dates">
+            created at : {changeDateFormate(box.createdAt)}
+          </div>
+
+          <div className="reward">
+            <FontAwesomeIcon icon={faStar} />
+            deposits counter : <span>{box.depositsHistory.length}</span>
+          </div>
+          <div className="icon">
+        <FontAwesomeIcon icon={box.type ? faUsers : faUser} />
+      </div>
+        </div>
+      </header>
+      <main>
+        <div className="dates">
+        Last update at : {changeDateFormate(box.createdAt)}
+        </div>
+        <div className="sharedDetails"></div>
+        <div className="mainInnerButtons"></div>
+      </main>
+      <Footer />
+    </section>
+  );
+};
+
+export default SavingBox;
+
+/*<div className="pageContainer boxDetails">
       <div className="MainDetails">
         {/*<div className="name">{box?.boxName}</div>
         <div className="totalDeposit">{box?.totalDeposits}</div>
-        <div className="date latestUpdate">
-          {formatRelative(Date.parse(box?.updatedAt), new Date())}
-        </div>
-        <div className="date createdDate">
-          {formatRelative(Date.parse(box?.createdAt), new Date(), { locale })}
-        </div>*/}
+        
       </div>
       {box?.type ? (
         <SharedBoxDetails
@@ -61,8 +85,4 @@ const SavingBox = () => {
         <div className="history">history</div>
         <div className="save">save</div>
       </div>
-    </div>
-  );
-};
-
-export default SavingBox;
+    </div>*/

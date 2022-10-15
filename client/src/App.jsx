@@ -44,7 +44,7 @@ function App() {
               <Route path="addUser" element={<AddUser />} />
               <Route path="BoxesList" element={<BoxesList />} />
 
-              <Route path="boxe">
+              <Route path="box">
                 <Route path=":boxId" element={<BoxDetails />} />
                 <Route path="deposit/:boxId" element={<Deposit />} />
               </Route>

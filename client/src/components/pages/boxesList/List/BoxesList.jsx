@@ -14,16 +14,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faUsers } from "@fortawesome/free-solid-svg-icons";
 function BoxesListPage() {
   const user = useSelector(selectCurrentUser);
-  //if(!user)NAVIGATE TO LOGIN PAGE !!
-
-  /*<li key={id}>
-  {entities[id].totalDeposits}
-
-  <Link to={`/box/${id}`} state={{ box: entities[id] }}>
-    {entities[id].boxName}
-  </Link>
-</li>*/
-
   const {
     data: boxesForUser,
     isLoading,
