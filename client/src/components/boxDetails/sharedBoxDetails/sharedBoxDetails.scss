@@ -17,6 +17,7 @@
       background-color: salmon;
       display: grid;
       grid-template-columns: 60% 40%;
+      padding: 0.2em;
       .shareIcon {
         display: block;
         cursor: pointer;
@@ -35,32 +36,4 @@
       }
     }
   }
-  /*> div {
-    width: 100%;
-    background-color: chocolate;
-  }
-
-  .keyBox {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 20%;
-    > div {
-      border: 3px solid black;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .key {
-      width: 50%;
-    }
-    .shareKey {
-      width: 20%;
-    }
-  }
-
-  .authorized {
-  }*/
 }
