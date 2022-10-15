@@ -3,15 +3,18 @@ import { makeKey, checkId } from "services/helper";
 import { SHARED_BOX } from "services/const";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "features/auth/authSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShareFromSquare } from "@fortawesome/free-solid-svg-icons";
 import "./sharedBoxDetails.scss";
 
 const SharedBoxDetails = ({ newBox, boxDetails, getSharedBoxDetails }) => {
   const user = useSelector(selectCurrentUser);
-  const boxKey = useState(boxDetails?.boxKey || makeKey());
+  const boxKey = boxDetails?.boxKey || makeKey();
   const [isAllowedToReveal, setIsAllowedToReveal] = useState(
     boxDetails?.isAllowedToReveal || false
   );
   let isAdmin = checkId(user._id, boxDetails.adminId);
+  console.log(isAdmin);
 
   useEffect(() => {
     if (!boxKey) return;
@@ -24,31 +27,38 @@ const SharedBoxDetails = ({ newBox, boxDetails, getSharedBoxDetails }) => {
 
   return (
     <div className="sharedBoxDetailsWrapper">
-      <div className="details"></div>
-      <div className="usersList"></div>
-      {/*<div className="keyBox">
-        <div className="key">{boxKey}</div>
-        <div className="shareKey" onClick={share}>
-          <button
-            disabled={!newBox}
-            onClick={share}
-            className={newBox ? "disabled" : ""}
-          >
-            Shared icon
-          </button>
+      <div className="details">
+        <div className="keyBox">
+          <div className="key">{boxKey} </div>
+          {!newBox && (
+            <FontAwesomeIcon
+              icon={faShareFromSquare}
+              onClick={() => console.log("Test")}
+              className="shareIcon"
+            />
+          )}
+        </div>
+        <div className="authorized">
+          <input
+            type="checkbox"
+            checked={isAllowedToReveal}
+            //value={isAllowedToReveal}
+            onChange={() => setIsAllowedToReveal(!isAllowedToReveal)}
+            disabled={!newBox && !isAdmin}
+          />
+          <label>allow users to reveal deposits and history</label>
         </div>
       </div>
+      <div className="usersList">userList</div>
+      {/*
       {(newBox || isAdmin) && (
-        <div className="authorized">
-          <div className="revealBox">
+        <div className="authorized" 
             <input
               type="checkbox"
-              checked={isAllowedToReveal}
-              value="allow"
-              onChange={() => setIsAllowedToReveal(!isAllowedToReveal)}
+              
             />
-            allow other users to reveal history
-          </div>
+           
+          
       </div>
       )}*/}
     </div>

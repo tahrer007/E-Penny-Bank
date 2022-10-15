@@ -1,12 +1,36 @@
-
 .sharedBoxDetailsWrapper {
- width: 100%;
- //height: 100%;
-  display: flex;
-  flex-direction: column;
-  background-color: darkgoldenrod;
+  width: 100%;
+  height: 100%;
+  background-color: darkgoldenrod !important;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 15% 85%;
 
-  > div {
+  .details {
+    display: flex;
+    justify-content: space-around;
+    background-color: red;
+    display: grid;
+    grid-template-columns: 20% 70%;
+
+    .keyBox {
+      background-color: salmon;
+      display: grid;
+      grid-template-columns: 60% 40%;
+      align-items: center;
+
+      .shareIcon {
+        display: block;
+        cursor: pointer;
+
+        &:hover {
+          color: rebeccapurple;
+        }
+      }
+
+    }
+  }
+  /*> div {
     width: 100%;
     background-color: chocolate;
   }
@@ -18,6 +42,7 @@
     height: 20%;
     > div {
       border: 3px solid black;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -32,5 +57,5 @@
   }
 
   .authorized {
-  }
+  }*/
 }
