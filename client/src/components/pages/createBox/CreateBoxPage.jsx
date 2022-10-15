@@ -69,7 +69,45 @@ const CreateBox = () => {
   };
 
   return (
-    <div className="pageContainer newBoxPage">
+    <section className="innerContainer createBoxSection">
+      <header>
+        <div className="title columnFlex">
+          <h2>Create New Box</h2>
+        </div>
+        <div className="otherDetails">
+          <div className="optionWrapper">
+            <input
+              className="radioBtn"
+              type="radio"
+              value={PRIVATE_BOX}
+              name={PRIVATE_BOX}
+              checked={boxType === PRIVATE_BOX}
+              onChange={(e) => onChangeSelection(e)}
+            />
+            Private box
+          </div>
+          <div className="optionWrapper">
+            <input
+              className="radioBtn"
+              type="radio"
+              value={SHARED_BOX}
+              name={SHARED_BOX}
+              checked={boxType === SHARED_BOX}
+              onChange={(e) => onChangeSelection(e)}
+            />
+            Shared box
+          </div>
+        </div>
+      </header>
+
+      <main className="columnFlex"></main>
+    </section>
+  );
+};
+
+export default CreateBox;
+
+/*<div className="pageContainer newBoxPage">
       <div className="boxDetails">
         <Label
           htmlFor={"boxName"}
@@ -92,7 +130,7 @@ const CreateBox = () => {
         />
         <Instructions
           className={userFocus && user && !validName}
-          id="uidnote"
+          id="boxName"
         />
         <div className="optionsBox">
           <input
@@ -126,8 +164,4 @@ const CreateBox = () => {
           Create Box
         </button>
       </div>
-    </div>
-  );
-};
-
-export default CreateBox;
+      </div>*/

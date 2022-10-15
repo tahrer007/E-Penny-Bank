@@ -10,6 +10,7 @@ const instructions = {
     "Allowed special characters: @ ! #",
   ],
   confirmPwd: ["Must match the first password input field."],
+  boxName :[" 8 to 24 characters."]
 };
 const Instructions = ({ className, id }) => {
   const [textArr, SetTextArr] = useState(instructions[id] || null);

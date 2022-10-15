@@ -2,7 +2,6 @@
 import Welcome from "components/pages/welcome/Welcome";
 import Home from "./components/pages/home/Home";
 import Deposit from "./components/pages/deposit/Deposit";
-import CreateBox from "./components/pages/createBox/CreateBoxPage";
 import NavBar from "components/navbar/NavBar";
 import LogIn from "./components/pages/login/LogIn";
 import SignUp from "./components/pages/signUp/SignUp";
@@ -47,6 +46,7 @@ function App() {
               <Route path="box">
                 <Route path=":boxId" element={<BoxDetails />} />
                 <Route path="deposit/:boxId" element={<Deposit />} />
+                <Route path="new" element={<CreateBox />} />
               </Route>
             </Route>
           </Route>

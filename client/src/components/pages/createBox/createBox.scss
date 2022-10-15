@@ -1,21 +1,8 @@
-
-.newBoxPage {
-  justify-content: space-around;
-  row-gap: 1em;
-
-  > * {
-    border: 3px solid black;
-    background-color: brown;
-    width: 100%;
-  }
-  .boxDetails {
-    height: 25%;
-  }
-
-
-  .createBtn {
-    margin-top: auto;
-    height: 10%;
-    align-self: flex-end;
+.createBoxSection {
+  .optionWrapper {
+    .radioBtn {
+      margin-right: 0.7em;
+      transform: scale(1.5);
+    }
   }
 }

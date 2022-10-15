@@ -27,8 +27,8 @@ function HomeBody() {
         <FontAwesomeIcon icon={faPiggyBank} />
         Boxes
       </div>
-      <div className="navButton columnFlex">
-        <FontAwesomeIcon icon={faPlus} />
+      <div className="navButton columnFlex" onClick={()=>navigate("../box/new")}>
+        <FontAwesomeIcon icon={faPlus}  />
         NewBox
       </div>
 
