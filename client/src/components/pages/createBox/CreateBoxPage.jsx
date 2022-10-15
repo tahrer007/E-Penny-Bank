@@ -134,7 +134,7 @@ const CreateBox = () => {
             <FontAwesomeIcon icon={faCloudArrowUp} />
             Save
           </div>
-          <div className={`mainBtns columnFlex ${isLoading && "disabled"}`}>
+          <div className={`mainBtns columnFlex ${isLoading && "disabled"}`} onClick={()=>navigate("/welcome")}>
             <FontAwesomeIcon icon={faTrashCan} />
             Cancel
           </div>
