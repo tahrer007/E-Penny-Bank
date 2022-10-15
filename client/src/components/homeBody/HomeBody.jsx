@@ -18,7 +18,7 @@ function HomeBody() {
   const navigate = useNavigate(); 
 
   return (
-    <div className="navButtonsWrapper">
+    <div className="innerButtonsWrapper homeMainBody">
       <div className="navButton columnFlex">
         <FontAwesomeIcon icon={faUser} />
         Profile

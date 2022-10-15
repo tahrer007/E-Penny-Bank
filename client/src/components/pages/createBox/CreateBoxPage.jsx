@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { BOXES_TYPES, PRIVATE_BOX, SHARED_BOX } from "services/const";
 import InputField from "components/reusables/InputField/InputField";
 //import RadioButton from "components/radioButton/RadioButton";
-import SharedBoxDetails from "components/reusables/sharedBoxDetails/SharedBoxDetails";
+import SharedBoxDetails from "components/boxDetails/sharedBoxDetails/SharedBoxDetails";
 import "./createBox.scss";
 import { useAddNewBoxMutation } from "features/boxes/boxesSlice";
 import { useNavigate } from "react-router-dom";

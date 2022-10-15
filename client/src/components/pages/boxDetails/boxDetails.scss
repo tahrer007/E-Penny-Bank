@@ -1,29 +1,14 @@
-.boxDetails{
-
+.boxdetailsSection {
+  main {
+    display: flex;
+    flex-direction: column;
     justify-content: space-around;
-    align-items: flex-start;
+    align-items: center;
 
-    > div {
-        border: 3px solid black;
-        background-color: brown;
-        width: 100%;
-      }
-      .MainDetails{
-        height: 30%;
-      }
-      .buttonsBox{
-        height: 10%;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        > div {
-            padding: 10px;
-          width: fit-content;  
-          height: fit-content;
-          border: 3px solid black;
-          background-color: blueviolet;
-        
-        }
-      }
+    > * {
+      background-color: blueviolet;
+      width: 100%;
+    }
+  }
 
 }

@@ -1,44 +1,68 @@
-//pages inner container main parts 
+//pages inner container main parts
 
 .innerContainer {
-    background-color: brown;
-    width: 100vmin;
-    height: 100vmin;
-    padding: 0.5em;
+  background-color: brown;
+  width: 100vmin;
+  height: 100vmin;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+  display: grid;
+  grid-template-rows: 20% 70% 10%;
+
+  header {
+    display: flex;
+    flex-direction: column;
+    background-color: yellowgreen;
     box-sizing: border-box;
-    text-align: center;
-    display: grid;
-    grid-template-rows: 20% 70% 10%;
-    
-  
-    header {
+    > * {
+      width: 100%;
+    }
+
+    .title {
+      background-color: chocolate;
+      height: 70%;
+    }
+    .otherDetails {
+      background-color: violet;
       display: flex;
-      flex-direction: column;
-      background-color: yellowgreen;
-      box-sizing: border-box;
-      > * {
-        width: 100%;
-      }
-  
-      .title {
-        background-color: chocolate;
-        height: 70%;
-       
-      }
-      .otherDetails {
-        background-color: violet;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: center;
+      height: 30%;
+    }
+  }
+  main {
+    background-color: lightblue;
+    padding: 0.3em;
+
+
+    .innerButtonsWrapper {
+
+      display: grid;
+      grid-template-columns: repeat(3,0.7fr);
+      grid-template-rows: repeat(2,0.7fr);
+      justify-content: center;
+      align-content: center;
+      background-color: red;
+      gap: 3vmin;
+
+      .navButton {
+        background-color: chartreuse;
+        border-radius: 32% 68% 55% 45% / 53% 35% 65% 47%;
         display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center;
-        height: 30%;
+        cursor: pointer;
       }
-    }
-    main {
-      background-color: lightblue;
-   
-    }
   
+  }
+
+  .innerBtn {
+    background-color: chartreuse;
+    border-radius: 32% 68% 55% 45% / 53% 35% 65% 47%;
+    display: flex;
+    cursor: pointer;
+  }
+
     
   }
-  
+}
