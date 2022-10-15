@@ -4,13 +4,17 @@
   justify-items: start;
   box-sizing: border-box;
   width: 98%;
-  
 
   .icon {
+   
   }
   .adminName {
-    justify-self: last baseline;
+    //justify-self: last baseline;
     display: flex;
     align-content: flex-start;
+
+    span {
+      padding-left: 0.5em;
+    }
   }
 }

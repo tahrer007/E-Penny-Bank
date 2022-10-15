@@ -6,18 +6,27 @@ import { useSelector } from "react-redux";
 import { selectCurrentUser } from "features/auth/authSlice";
 import { selectUserById } from "features/users/userSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faUsers } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUser,
+  faUsers,
+  faUserNinja,
+} from "@fortawesome/free-solid-svg-icons";
+import { checkId } from "services/helper";
 
 const BoxListItem = ({ box, boxId }) => {
   const navigate = useNavigate();
 
   const user = useSelector(selectCurrentUser);
   const admin = useSelector((state) => selectUserById(state, box.adminId));
+  const isAdmin = checkId(user._id, admin.userId);
 
-  const adminDetails = () => {
-    //console.log(user, admin);
-    if (user._id === admin.userId) return "admin :You";
-    else return ` admin :${admin.name}`;
+  const AdminName = ({ isAdmin, admin }) => {
+    <>
+      <div className="icon">
+        <FontAwesomeIcon icon={faUserNinja} />
+      </div>
+      {isAdmin ? "You" : `${admin.name}`}
+    </>;
   };
 
   const handleOnitemClick = () =>
@@ -29,8 +38,15 @@ const BoxListItem = ({ box, boxId }) => {
       <div className="icon">
         <FontAwesomeIcon icon={box.type ? faUsers : faUser} />
       </div>
+      {box.type  ?(
+        <div className="adminName">
+          <div className="icon">
+            <FontAwesomeIcon icon={faUserNinja} />
+          </div>
 
-      <div className="adminName">{box.type ? adminDetails() : null}</div>
+          <span>{isAdmin ? "You" : `${admin.name}`}</span>
+        </div>
+      ) : null}
     </div>
   );
 };

@@ -11,7 +11,11 @@ import { Link } from "react-router-dom";
 import Error from "components/error/Error";
 import BoxListItem from "../item/BoxListItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faUsers } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUser,
+  faUsers,
+  faUserNinja,
+} from "@fortawesome/free-solid-svg-icons";
 function BoxesListPage() {
   const user = useSelector(selectCurrentUser);
   const {
@@ -42,6 +46,9 @@ function BoxesListPage() {
             <div className="icons">
               <FontAwesomeIcon icon={faUsers} /> Shared Box
             </div>
+            <div className="icons">
+              <FontAwesomeIcon icon={faUserNinja} /> Admin name
+            </div>
           </div>
         </header>
         <main className="columnFlex">
@@ -51,7 +58,6 @@ function BoxesListPage() {
             ))}
           </div>
         </main>
-        
       </>
     );
   } else if (isError) {
