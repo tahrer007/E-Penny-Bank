@@ -37,7 +37,7 @@ const deposit = async (req, res) => {
   const depositsHistory = {
     userId,
     deposit,
-    time: new Date().toLocaleString(),
+    time: new Date(),
   };
   console.log(req.body.boxId, req.body.deposit);
   try {
