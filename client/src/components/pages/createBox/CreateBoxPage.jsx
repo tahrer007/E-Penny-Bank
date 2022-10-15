@@ -112,8 +112,6 @@ const CreateBox = () => {
             onChange={(e) => setBoxName(e.target.value)}
             value={boxName}
             required
-            //aria-invalid={validName ? "false" : "true"}
-            //aria-describedby="uidnote"
             onFocus={() => setUserFocus(true)}
             onBlur={() => setUserFocus(false)}
           />

@@ -20,14 +20,15 @@ const BoxListItem = ({ box, boxId }) => {
   const admin = useSelector((state) => selectUserById(state, box.adminId));
   const isAdmin = checkId(user._id, admin.userId);
 
-  const AdminName = ({ isAdmin, admin }) => {
-    <>
+  const AdminName = ({ isAdmin, admin }) => (
+    <div className="adminName">
       <div className="icon">
         <FontAwesomeIcon icon={faUserNinja} />
       </div>
-      {isAdmin ? "You" : `${admin.name}`}
-    </>;
-  };
+
+      <span>{isAdmin ? "You" : `${admin.name}`}</span>
+    </div>
+  );
 
   const handleOnitemClick = () =>
     navigate(`../box/${boxId}`, { state: { box: box } });
@@ -38,15 +39,7 @@ const BoxListItem = ({ box, boxId }) => {
       <div className="icon">
         <FontAwesomeIcon icon={box.type ? faUsers : faUser} />
       </div>
-      {box.type  ?(
-        <div className="adminName">
-          <div className="icon">
-            <FontAwesomeIcon icon={faUserNinja} />
-          </div>
-
-          <span>{isAdmin ? "You" : `${admin.name}`}</span>
-        </div>
-      ) : null}
+      {box.type ? <AdminName isAdmin={isAdmin} admin={admin} /> : null}
     </div>
   );
 };
