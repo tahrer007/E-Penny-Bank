@@ -58,7 +58,7 @@ const Welcome = () => {
           <HomeBody />
         </main>
 
-        <Footer />
+        
       </>
     );
   } else if (isError) {

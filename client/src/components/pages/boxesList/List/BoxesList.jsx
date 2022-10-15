@@ -51,7 +51,7 @@ function BoxesListPage() {
             ))}
           </div>
         </main>
-        <Footer />
+        
       </>
     );
   } else if (isError) {

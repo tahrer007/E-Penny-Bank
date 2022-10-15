@@ -3,12 +3,14 @@
 .innerContainer {
   background-color: brown;
   width: 100vmin;
-  height: 100vmin;
+  //height: 90vmin;
+  height: inherit;
   padding: 0.5em;
   box-sizing: border-box;
   text-align: center;
   display: grid;
   grid-template-rows: 20% 70% 10%;
+  row-gap: 5vh;
 
   header {
     display: flex;
@@ -33,8 +35,11 @@
     }
   }
   main {
+    //flex-grow: 1;
     background-color: lightblue;
     padding: 0.3em;
+    
+    
 
     .innerButtonsWrapper {
       display: grid;

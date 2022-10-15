@@ -53,7 +53,7 @@ const SavingBox = () => {
         </div>
       </header>
       <main>
-        <div className="dates">
+        <div className="lastUpdate">
           {/*//TODO : change the time formte */}
           Last update at : {box.depositsHistory[historyArrLength - 1].deposit}
         </div>
@@ -66,7 +66,6 @@ const SavingBox = () => {
         ) : null}
         <InnerButton box={box} />
       </main>
-      <Footer />
     </section>
   );
 };
