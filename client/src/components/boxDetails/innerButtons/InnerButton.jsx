@@ -26,7 +26,7 @@ function InnerButton({ box }) {
       </div>
       <div className="innerBtn columnFlex">
         <FontAwesomeIcon icon={faCalendarDays} />
-        History
+       
       </div>
     </div>
   );

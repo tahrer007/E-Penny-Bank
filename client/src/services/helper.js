@@ -10,5 +10,7 @@ const makeKey = () => {
   return result;
 };
 
+const checkId =(userId,adminId) =>userId===adminId ;
 
-export { makeKey };
+
+export { makeKey ,checkId };

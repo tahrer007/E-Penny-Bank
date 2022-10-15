@@ -64,8 +64,12 @@ const SavingBox = () => {
             boxDetails={box}
           />
         ) : null}
-        <InnerButton box={box} />
+       
       </main>
+      <footer>
+     <InnerButton box={box} />
+    
+      </footer>
     </section>
   );
 };

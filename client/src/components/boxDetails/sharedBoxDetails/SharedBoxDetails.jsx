@@ -1,39 +1,40 @@
 import React, { useEffect, useState } from "react";
-import { makeKey } from "services/helper";
+import { makeKey, checkId } from "services/helper";
 import { SHARED_BOX } from "services/const";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "features/auth/authSlice";
 import "./sharedBoxDetails.scss";
-const userId = "6331f73f92d30d25c7103d29";
+
 const SharedBoxDetails = ({ newBox, boxDetails, getSharedBoxDetails }) => {
-  const [boxKey, setBoxKey] = useState(boxDetails?.boxKey);
+  const user = useSelector(selectCurrentUser);
+  const boxKey = useState(boxDetails?.boxKey || makeKey());
   const [isAllowedToReveal, setIsAllowedToReveal] = useState(
     boxDetails?.isAllowedToReveal || false
   );
-  let isAdmin =
-    boxDetails?.type === SHARED_BOX && userId === boxDetails.adminId;
-
-  useEffect(() => {
-    if (newBox) setBoxKey(makeKey());
-  }, [newBox]);
+  let isAdmin = checkId(user._id, boxDetails.adminId);
 
   useEffect(() => {
     if (!boxKey) return;
     getSharedBoxDetails({ boxKey, isAllowedToReveal });
-  }, [isAllowedToReveal, boxKey]);
+  }, [isAllowedToReveal]);
 
   const share = () => {
     if (newBox) return;
   };
 
   return (
-    <div className="sharedBoxDetails">
-      <div className="keyBox">
+    <div className="sharedBoxDetailsWrapper">
+      <div className="details"></div>
+      <div className="usersList"></div>
+      {/*<div className="keyBox">
         <div className="key">{boxKey}</div>
-        {
-          //TODO:add unclickable style on share button}}
-        }
         <div className="shareKey" onClick={share}>
-          <button disabled={!newBox} onClick={share}>
-            shared icon
+          <button
+            disabled={!newBox}
+            onClick={share}
+            className={newBox ? "disabled" : ""}
+          >
+            Shared icon
           </button>
         </div>
       </div>
@@ -48,8 +49,8 @@ const SharedBoxDetails = ({ newBox, boxDetails, getSharedBoxDetails }) => {
             />
             allow other users to reveal history
           </div>
-        </div>
-      )}
+      </div>
+      )}*/}
     </div>
   );
 };

@@ -37,10 +37,10 @@ function BoxesListPage() {
           </div>
           <div className="otherDetails">
             <div className="icons">
-              <FontAwesomeIcon icon={faUser} /> : private Box
+              <FontAwesomeIcon icon={faUser} /> private Box
             </div>
             <div className="icons">
-              <FontAwesomeIcon icon={faUsers} /> : shared Box
+              <FontAwesomeIcon icon={faUsers} /> Shared Box
             </div>
           </div>
         </header>

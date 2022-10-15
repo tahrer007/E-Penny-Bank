@@ -10,7 +10,6 @@
   text-align: center;
   display: grid;
   grid-template-rows: 20% 70% 10%;
-  row-gap: 5vh;
 
   header {
     display: flex;
@@ -38,8 +37,6 @@
     //flex-grow: 1;
     background-color: lightblue;
     padding: 0.3em;
-    
-    
 
     .innerButtonsWrapper {
       display: grid;
@@ -64,5 +61,15 @@
       display: flex;
       cursor: pointer;
     }
+
+    .list {
+      background-color: brown;
+      width: 90%;
+      height: 90%;
+      overflow-y: scroll;
+      box-sizing: border-box;
+    }
+  }
+  footer {
   }
 }
