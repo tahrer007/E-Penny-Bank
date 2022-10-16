@@ -42,7 +42,7 @@ const SavingBox = () => {
         </div>
       </header>
       <main>
-        {!box.type && (
+        {!box.type ? (
           <div className="lastUpdate">
             {firstDeposit
               ? `Last update at : ${firstDeposit}`
@@ -50,14 +50,13 @@ const SavingBox = () => {
             {/*//TODO : change the time formte 
         // {*/}
           </div>
-        )}
-        {box?.type ? (
+        ) : (
           <SharedBoxDetails
             newBox={false}
             getSharedBoxDetails={getSharedBoxDetails}
             boxDetails={box}
           />
-        ) : null}
+        )}
       </main>
       <footer>
         <InnerButton box={box} />

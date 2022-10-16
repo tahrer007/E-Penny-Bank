@@ -7,12 +7,17 @@ import {
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "features/auth/authSlice";
 import { useDepositMutation } from "features/boxes/boxesSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , useLocation} from "react-router-dom";
 
 import "./mainBtnsD.scss";
 
 function MainButtons({ value, boxId }) {
   const user = useSelector(selectCurrentUser);
+  const location = useLocation() ;
+  console.log(location);
+  //const from = location.state?.from?.pathname;
+  const from = `../../BoxesList` ;
+  console.log(from);
   const [deposit, { isLoading }] = useDepositMutation();
 
   const canSave = value && !isLoading;
@@ -26,7 +31,7 @@ function MainButtons({ value, boxId }) {
         }).unwrap();
         console.log(test);
 
-        navigate(`../../welcome`);
+        navigate(from);
       } catch (err) {
         console.error("Failed to save the post", err);
       }

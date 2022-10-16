@@ -14,6 +14,7 @@ const LogIn = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/welcome";
+ 
 
   const [user, setUser] = useState("");
   const [validUserName, setValidUserName] = useState(false);

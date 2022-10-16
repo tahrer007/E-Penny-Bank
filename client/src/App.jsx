@@ -19,6 +19,7 @@ import CreateBox from "./components/pages/createBox/CreateBoxPage";
 import Deposit from "./components/pages/deposit/Deposit";
 import AddUser from "components/pages/addUser/AddUser";
 import BoxesList from "components/pages/boxesList/List/BoxesList";
+import DepositsLogs from "components/pages/dipositsLog/DepositsLogs";
 
 //import ThemButton from "components/reusables/themBtn/ThemButton";
 import "./style/_main.scss";
@@ -44,9 +45,11 @@ function App() {
               <Route path="BoxesList" element={<BoxesList />} />
 
               <Route path="box">
+              <Route path="new" element={<CreateBox />} />
                 <Route path=":boxId" element={<BoxDetails />} />
               <Route path="deposit/:boxId" element={<Deposit />} />
-                <Route path="new" element={<CreateBox />} />
+              <Route path="logs/:boxId" element={<DepositsLogs />} />
+                
               </Route>
             </Route>
           </Route>
