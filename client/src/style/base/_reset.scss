@@ -62,6 +62,13 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.startColumnFlex {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
 .rowFlex {
   display: flex;
   flex-direction: column;

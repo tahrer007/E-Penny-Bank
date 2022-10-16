@@ -14,6 +14,7 @@ import {
 import { selectAllUsers, selectUserById } from "features/users/userSlice";
 import { checkId } from "services/helper";
 import { useSelector } from "react-redux";
+import { changeDateFormate } from "services/dateAndTimeFormate";
 
 function DepositsLogs() {
   const user = useSelector(selectCurrentUser);
@@ -22,7 +23,7 @@ function DepositsLogs() {
   const navigate = useNavigate();
   const { box } = location.state;
   const { boxName, type, adminId, depositsHistory } = box;
-  const [show,setShow] =useState(false) ; 
+  const [show, setShow] = useState(false);
 
   console.log(box, boxId);
   const canReveal = box.isAllowedToReveal || checkId(user._id || adminId);
@@ -31,14 +32,14 @@ function DepositsLogs() {
   const Item = ({ log }) => {
     console.log(log);
     const x = useSelector((state) => selectUserById(state, log.userId));
-    console.log(x);
+
     return (
       <div className="listItem logItem">
-        <div className="date">{x?.time}</div>
+        <div className="date">{changeDateFormate(log?.createdAt)}</div>
         <div className="name">{x?.name}</div>
         <div className="icons">
           <FontAwesomeIcon icon={faDollarSign} />
-          {log?.deposit}
+          {log?.amount}
         </div>
       </div>
     );
@@ -66,7 +67,7 @@ function DepositsLogs() {
         </div>
       </header>
 
-      <main className="columnFlex">
+      <main className="startColumnFlex">
         <div className="list logsList">
           {depositsHistory.map((log) => (
             <Item key={log.time} log={log} />

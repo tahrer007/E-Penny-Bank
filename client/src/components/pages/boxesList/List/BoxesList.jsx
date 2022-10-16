@@ -3,11 +3,8 @@ import "./boxesList.scss";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "features/auth/authSlice";
-import { selectUserById } from "features/users/userSlice";
 import { useGetBoxesByUserIdQuery } from "features/boxes/boxesSlice";
 import Spinner from "components/spinner/Spinner";
-import Footer from "components/footer/Footer";
-import { Link } from "react-router-dom";
 import Error from "components/error/Error";
 import BoxListItem from "../item/BoxListItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -51,7 +48,7 @@ function BoxesListPage() {
             </div>
           </div>
         </header>
-        <main className="columnFlex">
+        <main className="startColumnFlex">
           <div className="list boxesList">
             {ids.map((id) => (
               <BoxListItem key={id} boxId={id} box={entities[id]} />

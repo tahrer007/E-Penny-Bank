@@ -1,10 +1,22 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const log = new Schema(
+  {
+    userId: {
+      type: String,
+    },
+    amount: {
+      type: Number,
+    },
+  },
+  { timestamps: true }
+);
+
 const savingBoxSchema = new Schema(
-  { 
-    boxName : {
-      type : String , 
+  {
+    boxName: {
+      type: String,
       required: [true, "Please provide box name"],
     },
     type: {
@@ -24,11 +36,8 @@ const savingBoxSchema = new Schema(
       type: String,
       required: [true, "Please provide an admin id"],
     },
-    depositsHistory: {
-      type: Array, //{userId , amount, date & time }
-      default: [],
-      required: [false],
-    },
+
+    depositsHistory: [log],
     boxKey: {
       type: String,
       required: [false],
@@ -37,10 +46,14 @@ const savingBoxSchema = new Schema(
       type: Boolean,
       required: [false],
     },
-
   },
   { timestamps: true }
 );
 const savingBox = mongoose.model("savingBoxes", savingBoxSchema);
 
 module.exports = savingBox;
+/* depositsHistory: {
+      type: Array, //{userId , amount, date & time }
+      default: [],
+      required: [false],
+    },*/

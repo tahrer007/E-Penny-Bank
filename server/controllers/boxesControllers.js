@@ -34,17 +34,16 @@ const getUserBoxes = async (req, res) => {
 
 const deposit = async (req, res) => {
   const { deposit, boxId, userId } = req.body;
-  const depositsHistory = {
+  const log = {
     userId,
-    deposit,
-    time: new Date(),
+    amount :deposit 
   };
   console.log(req.body.boxId, req.body.deposit);
   try {
     const filter = { _id: req.body.boxId };
     const update = {
       $inc: { totalDeposits: req.body.deposit },
-      $push: { depositsHistory: depositsHistory },
+      $push: { depositsHistory: log },
     };
 
     let box = await Box.findOneAndUpdate(filter, update);
