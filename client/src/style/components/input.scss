@@ -1,10 +1,18 @@
 @use "../abstracts/global" as *;
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="number"] {
   padding: 0.25rem;
   margin-top: 0.25rem;
   border-radius: 0.5rem;
   width: 100%;
   font-size: inherit;
 }
+
+input[type="radio"] {
+  margin-right: 0.7em;
+  transform: scale(1.5);
+}
+
+

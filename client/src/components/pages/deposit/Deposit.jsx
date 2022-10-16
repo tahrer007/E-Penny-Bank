@@ -4,16 +4,24 @@ import ExactDeposit from "components/deposit/exactDeposit/ExactDeposit";
 import { useParams } from "react-router-dom";
 import { useDepositMutation } from "features/boxes/boxesSlice";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { selectCurrentUser } from "features/auth/authSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+
 import "./deposit.scss";
+
+const RANDOM = "random";
+const EXACT = "exact";
 const Deposit = () => {
   const { boxId } = useParams();
   const user = useSelector(selectCurrentUser);
+  const location = useLocation();
+  const { box } = location.state;
   const navigate = useNavigate();
   const [deposit, { isLoading }] = useDepositMutation();
-  const [randomSelected, setRandomSlected] = useState(true);
-  const onChangeSelection = (e) => setRandomSlected(!randomSelected);
+  const [type, setType] = useState(RANDOM);
+  //const onChangeSelection = (e) => setRandomSlected(!randomSelected);
   const [amount, setAmount] = useState(null);
   //TODO:remove from the first time amount
   const addAmount = async (amount) => setAmount(amount);
@@ -22,10 +30,20 @@ const Deposit = () => {
   }, [amount]);
   const canSave = amount && !isLoading;
 
+  const onChangeSelection = (e) => {
+    setType(e.target.value);
+    setAmount(null);
+  };
+  const getValue = (value) => setAmount(value);
+
   const onDoneClicked = async () => {
     if (canSave) {
       try {
-        const test = await deposit({boxId, deposit: Number(amount) ,userId : user._id } ).unwrap();
+        const test = await deposit({
+          boxId,
+          deposit: Number(amount),
+          userId: user._id,
+        }).unwrap();
         console.log(test);
 
         setAmount(null);
@@ -37,7 +55,58 @@ const Deposit = () => {
   };
 
   return (
-    <div className="pageContainer depositPage">
+    <section className="innerContainer depositSection">
+      <header>
+        <div className="title">
+          <h2>Lets save money</h2>
+        </div>
+        <div className="otherDetails">
+          <div className="reward">
+            Each deposit give you <FontAwesomeIcon icon={faStar} />
+          </div>
+          <div className="boxDetails"> {box.boxName}</div>
+        </div>
+      </header>
+
+      <main>
+        <div className="depositOptions">
+          <div className="optionWrapper">
+            <input
+              className="radioBtn"
+              type="radio"
+              value={RANDOM}
+              name={RANDOM}
+              checked={type === RANDOM}
+              onChange={(e) => onChangeSelection(e)}
+            />
+            Random
+          </div>
+
+          <div className="optionWrapper">
+            <input
+              className="radioBtn"
+              type="radio"
+              value={EXACT}
+              name={EXACT}
+              checked={type === EXACT}
+              onChange={(e) => onChangeSelection(e)}
+            />
+            Exact
+          </div>
+        </div>
+
+        {type === RANDOM ? (
+          <RandomDeposit />
+        ) : (
+          <ExactDeposit getValue={getValue} />
+        )}
+      </main>
+    </section>
+  );
+};
+
+export default Deposit;
+/*  <div className="pageContainer depositPage">
       <div className="boxName">box name</div>
       <div className="optionsBox" onChange={(e) => onChangeSelection(e)}>
         <input
@@ -67,8 +136,4 @@ const Deposit = () => {
         {" "}
         button
       </div>
-    </div>
-  );
-};
-
-export default Deposit;
+    </div> */

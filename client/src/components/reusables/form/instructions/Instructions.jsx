@@ -10,7 +10,8 @@ const instructions = {
     "Allowed special characters: @ ! #",
   ],
   confirmPwd: ["Must match the first password input field."],
-  boxName :[" 8 to 24 characters."]
+  boxName :[" 8 to 24 characters."] ,
+  exactDeposit :["please add amount between 1 to 100"] , 
 };
 const Instructions = ({ className, id }) => {
   const [textArr, SetTextArr] = useState(instructions[id] || null);

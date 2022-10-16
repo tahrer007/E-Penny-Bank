@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { MAX, MIN } from "services/const";
+import Instructions from "components/reusables/form/instructions/Instructions";
 
 import "./randomDeposit.scss";
 

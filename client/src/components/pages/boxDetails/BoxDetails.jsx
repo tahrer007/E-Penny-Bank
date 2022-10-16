@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from "react";
 import SharedBoxDetails from "components/boxDetails/sharedBoxDetails/SharedBoxDetails";
-import enGB from "date-fns/locale/en-GB";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { changeDateFormate } from "services/dateAndTimeFormate";
 import "./boxDetails.scss";
-import Footer from "components/footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faUser, faUsers } from "@fortawesome/free-solid-svg-icons";
 import InnerButton from "components/boxDetails/innerButtons/InnerButton";
 const SavingBox = () => {
-  const { boxId } = useParams();
   const location = useLocation();
   const { box } = location.state;
   const historyArrLength = box.depositsHistory.length;
-  const firstDeposit = box.depositsHistory[historyArrLength - 1]?.deposit ; 
+  const firstDeposit = box.depositsHistory[historyArrLength - 1]?.deposit;
 
   useEffect(() => {
     console.log(box);
@@ -25,8 +20,6 @@ const SavingBox = () => {
 
   const getSharedBoxDetails = ({ boxKey, isAllowedToReveal }) =>
     console.log(boxKey, isAllowedToReveal);
-
-  
 
   return (
     <section className="innerContainer boxdetailsSection">
@@ -49,11 +42,15 @@ const SavingBox = () => {
         </div>
       </header>
       <main>
-        {!box.type &&<div className="lastUpdate">
-          {firstDeposit ? `Last update at : ${firstDeposit}`: "you haven't saved yet"}
-          {/*//TODO : change the time formte 
+        {!box.type && (
+          <div className="lastUpdate">
+            {firstDeposit
+              ? `Last update at : ${firstDeposit}`
+              : "you haven't saved yet"}
+            {/*//TODO : change the time formte 
         // {*/}
-        </div>}
+          </div>
+        )}
         {box?.type ? (
           <SharedBoxDetails
             newBox={false}

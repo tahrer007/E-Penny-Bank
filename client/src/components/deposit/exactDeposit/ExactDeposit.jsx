@@ -1,41 +1,58 @@
 import React, { useState, useEffect } from "react";
+import Instructions from "components/reusables/form/instructions/Instructions";
+import Label from "components/reusables/form/label/Label";
 import "./exactDeposit.scss";
-import { MAX,MIN } from "services/const";
+import { MAX, MIN } from "services/const";
 
+const ExactDeposit = ({ getValue }) => {
+  const [value, setValue] = useState(MIN);
+  const [validValue, setValidValue] = useState(false);
+  const [valueFocus, setValueFocus] = useState(false);
 
-const ExactDeposit = ({ addAmount }) => {
-  const [amount, setAmount] = useState(MIN);
-  const [alert, setAlert] = useState(false);
+  useEffect(() => {
+    const num = parseInt(value);
 
-  const handleInputChange = (value) => {
-    if (value < MIN || value > MAX) {
-      setAlert(true);
-      setTimeout(() => {
-        setAlert(false);
-        value > MAX ? setAmount(MAX) : setAmount(MIN);
-      }, 3000);
+    if (num < MIN || num > MAX) {
+      setValidValue(true);
+      getValue(value);
     } else {
-      addAmount(value);
-      setAmount(value);
+      setValidValue(false);
     }
-  };
+
+    console.log("valid", validValue);
+    console.log("focus", valueFocus);
+    console.log("value", value);
+  }, [value]);
 
   return (
-    <div className="exactBox">
-      <h4>
-        please add amount betweem {MIN} to {MAX} .
-      </h4>
+    <div className="exactValueWrapper">
+      <Label
+        htmlFor={"exactAmount"}
+        valid1={null}
+        valid2={true}
+        labelName={"Amount :"}
+      />
+
       <input
         name="amount"
         type="number"
-        value={amount}
-        onChange={(e) => handleInputChange(e.target.value)}
+        pattern="^-?[0-9]\d*\.?\d*$"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
         min={MIN}
         max={MAX}
+        autoComplete="off"
+        required
+        aria-invalid={validValue ? "false" : "true"}
+        onFocus={() => setValueFocus(true)}
+        onBlur={() => setValueFocus(false)}
+        id="value"
       />
-      {alert && (
-        <div className="alert">please select number between the range</div>
-      )}
+      <Instructions
+        id={"exactDeposit"}
+        //TODO:instructions and values only number 
+        className={valueFocus && value && !validValue}
+      />
     </div>
   );
 };

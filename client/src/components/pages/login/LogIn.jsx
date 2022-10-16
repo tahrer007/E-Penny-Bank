@@ -8,7 +8,6 @@ import { setCredentials } from "features/auth/authSlice";
 import { useLoginMutation } from "features/auth/authApiSlice";
 import "./logIn.scss";
 
-
 const LogIn = () => {
   const userRef = useRef();
   const errRef = useRef();

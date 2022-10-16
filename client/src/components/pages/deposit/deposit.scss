@@ -1,5 +1,23 @@
+.depositSection {
+  main {
+    display: flex;
+    flex-direction: column;
 
-.depositPage {
+    justify-content: flex-start;
+    .depositOptions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      background-color: red;
+    }
+
+    .selectedOption {
+      background-color: yellowgreen;
+    }
+  }
+}
+/*.depositPage {
   background-color: red;
   justify-content: space-around;
     align-items: center;
@@ -40,4 +58,4 @@
   .submitBtn {
     height: 10%;
   }
-}
+}*/
