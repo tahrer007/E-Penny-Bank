@@ -16,15 +16,14 @@ const Deposit = () => {
   const { box } = location.state;
   const [type, setType] = useState(RANDOM);
   //const onChangeSelection = (e) => setRandomSlected(!randomSelected);
-  const [amount, setAmount] = useState(null);
-  //TODO:remove from the first time amount
+  const [value, setValue] = useState(null);
+  //TODO:remove from the first time value
 
   const onChangeSelection = (e) => {
     setType(e.target.value);
-    setAmount(null);
+    setValue(null);
   };
-  const getValue = (value) => setAmount(value);
-
+  const getValue = (value) => setValue(value);
 
   return (
     <section className="innerContainer depositSection">
@@ -68,47 +67,16 @@ const Deposit = () => {
         </div>
 
         {type === RANDOM ? (
-          <RandomDeposit getValue={getValue}  />
+          <RandomDeposit getValue={getValue} />
         ) : (
           <ExactDeposit getValue={getValue} />
         )}
       </main>
       <footer>
-        <MainButtons  value={amount}  boxId ={boxId}/>
+        <MainButtons value={value} boxId={boxId} />
       </footer>
     </section>
   );
 };
 
 export default Deposit;
-/*  <div className="pageContainer depositPage">
-      <div className="boxName">box name</div>
-      <div className="optionsBox" onChange={(e) => onChangeSelection(e)}>
-        <input
-          className="radioBtn"
-          type="radio"
-          value={true}
-          name="Random deposit"
-          defaultChecked={true}
-        />
-        Random deposit
-        <input
-          className="radioBtn"
-          type="radio"
-          value={false}
-          name="exact deposit"
-        />
-        exact deposit
-      </div>
-      <div className="selectedOptionBox">
-        {randomSelected ? (
-          <RandomDeposit addAmount={addAmount} />
-        ) : (
-          <ExactDeposit addAmount={addAmount} />
-        )}
-      </div>
-      <div className="submitBtn" onClick={onDoneClicked}>
-        {" "}
-        button
-      </div>
-    </div> */

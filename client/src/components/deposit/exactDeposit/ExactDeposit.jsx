@@ -12,16 +12,13 @@ const ExactDeposit = ({ getValue }) => {
   useEffect(() => {
     const num = parseInt(value);
 
-    if (num < MIN || num > MAX) {
-      setValidValue(true);
+
+    if (num > MIN || num < MAX) {
       getValue(value);
+      setValidValue(true);
     } else {
       setValidValue(false);
     }
-
-    console.log("valid", validValue);
-    console.log("focus", valueFocus);
-    console.log("value", value);
   }, [value]);
 
   return (
@@ -50,7 +47,7 @@ const ExactDeposit = ({ getValue }) => {
       />
       <Instructions
         id={"exactDeposit"}
-        //TODO:instructions and values only number 
+        //TODO:instructions and values only number
         className={valueFocus && value && !validValue}
       />
     </div>
