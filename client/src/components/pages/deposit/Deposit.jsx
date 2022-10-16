@@ -2,33 +2,22 @@ import React, { useState, useEffect } from "react";
 import RandomDeposit from "components/deposit/randomDeposit/RandomDeposit";
 import ExactDeposit from "components/deposit/exactDeposit/ExactDeposit";
 import { useParams } from "react-router-dom";
-import { useDepositMutation } from "features/boxes/boxesSlice";
-import { useSelector } from "react-redux";
-import { useNavigate, useLocation } from "react-router-dom";
-import { selectCurrentUser } from "features/auth/authSlice";
+import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-
+import MainButtons from "components/deposit/mainButtons/MainButtons";
 import "./deposit.scss";
 
 const RANDOM = "random";
 const EXACT = "exact";
 const Deposit = () => {
   const { boxId } = useParams();
-  const user = useSelector(selectCurrentUser);
   const location = useLocation();
   const { box } = location.state;
-  const navigate = useNavigate();
-  const [deposit, { isLoading }] = useDepositMutation();
   const [type, setType] = useState(RANDOM);
   //const onChangeSelection = (e) => setRandomSlected(!randomSelected);
   const [amount, setAmount] = useState(null);
   //TODO:remove from the first time amount
-  const addAmount = async (amount) => setAmount(amount);
-  useEffect(() => {
-    console.log(amount);
-  }, [amount]);
-  const canSave = amount && !isLoading;
 
   const onChangeSelection = (e) => {
     setType(e.target.value);
@@ -36,23 +25,6 @@ const Deposit = () => {
   };
   const getValue = (value) => setAmount(value);
 
-  const onDoneClicked = async () => {
-    if (canSave) {
-      try {
-        const test = await deposit({
-          boxId,
-          deposit: Number(amount),
-          userId: user._id,
-        }).unwrap();
-        console.log(test);
-
-        setAmount(null);
-        navigate(`../../welcome`);
-      } catch (err) {
-        console.error("Failed to save the post", err);
-      }
-    }
-  };
 
   return (
     <section className="innerContainer depositSection">
@@ -96,11 +68,14 @@ const Deposit = () => {
         </div>
 
         {type === RANDOM ? (
-          <RandomDeposit getValue={getValue} />
+          <RandomDeposit getValue={getValue}  />
         ) : (
           <ExactDeposit getValue={getValue} />
         )}
       </main>
+      <footer>
+        <MainButtons  value={amount}  boxId ={boxId}/>
+      </footer>
     </section>
   );
 };
