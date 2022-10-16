@@ -7,6 +7,7 @@ import { useGetBoxesByUserIdQuery } from "features/boxes/boxesSlice";
 import Spinner from "components/spinner/Spinner";
 import Error from "components/error/Error";
 import BoxListItem from "../item/BoxListItem";
+import Header from "components/header/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
@@ -33,9 +34,7 @@ function BoxesListPage() {
     content = (
       <>
         <header>
-          <div className="title">
-            <h2>Boxes list</h2>
-          </div>
+          <Header from ={"boxesList"}/>
           <div className="otherDetails">
             <div className="icons">
               <FontAwesomeIcon icon={faUser} /> private Box

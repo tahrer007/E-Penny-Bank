@@ -8,6 +8,7 @@ import { selectCurrentUser } from "features/auth/authSlice";
 import Label from "components/reusables/form/label/Label";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudArrowUp, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import Header from "components/header/Header";
 import "./createBox.scss";
 const CreateBox = () => {
   const user = useSelector(selectCurrentUser);
@@ -67,9 +68,7 @@ const CreateBox = () => {
   return (
     <section className="innerContainer createBoxSection">
       <header>
-        <div className="title columnFlex">
-          <h2>Create New Box</h2>
-        </div>
+        <Header from ={"newBox"}/>
         <div className="otherDetails">
           <div className="optionWrapper">
             <input

@@ -10,12 +10,13 @@ import { useNavigate } from "react-router-dom";
 const titles = {
   logs: "Deposits history",
   boxesList: "Boxes list",
-  deposits: "Lets save money",
+  deposit: "Lets save money",
+  newBox :"Create New Box"
 };
 
 function Header({ text ,from }) {
   console.log(titles[from])
-  const [title,setTitle] = useState(text || titles[from]) ;
+ const title = text || titles[from] ;
 
   useEffect(() => {
     console.log(title)

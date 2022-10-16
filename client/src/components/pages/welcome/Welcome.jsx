@@ -11,9 +11,13 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import "./welcome.scss";
 import HomeBody from "components/homeBody/HomeBody";
 import { changeDateFormate } from "services/dateAndTimeFormate";
+import Header from "components/header/Header";
 
 const Welcome = () => {
   const user = useSelector(selectCurrentUser);
+  const title = user?.lastLogIn
+    ? `Welcome back ${user?.name}`
+    : `Welcome ${user?.name}`;
   useEffect(() => {
     store.dispatch(extendedApiSlice.endpoints.getUsers.initiate());
   }, []);
@@ -34,12 +38,7 @@ const Welcome = () => {
     content = (
       <>
         <header>
-          <div className="title columnFlex">
-            <h2>
-              {user?.lastLogIn ? "Welcome back " : "Welcome "}
-              {user?.name}
-            </h2>
-          </div>
+          <Header text={title} />
 
           <div className="otherDetails">
             <div className="lastLogIn">

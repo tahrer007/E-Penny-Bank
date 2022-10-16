@@ -6,6 +6,7 @@ import "./boxDetails.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faUser, faUsers } from "@fortawesome/free-solid-svg-icons";
 import InnerButton from "components/boxDetails/innerButtons/InnerButton";
+import Header from "components/header/Header";
 const SavingBox = () => {
   const location = useLocation();
   const { box } = location.state;
@@ -24,9 +25,8 @@ const SavingBox = () => {
   return (
     <section className="innerContainer boxdetailsSection">
       <header>
-        <div className="title">
-          <h2>{box.boxName}</h2>
-        </div>
+        
+        <Header text ={box.boxName}/>
         <div className="otherDetails">
           <div className="dates">
             created at : {changeDateFormate(box.createdAt)}

@@ -6,6 +6,7 @@ import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import MainButtons from "components/deposit/mainButtons/MainButtons";
+import Header from "components/header/Header";
 import "./deposit.scss";
 
 const RANDOM = "random";
@@ -28,9 +29,7 @@ const Deposit = () => {
   return (
     <section className="innerContainer depositSection">
       <header>
-        <div className="title">
-          <h2>Lets save money</h2>
-        </div>
+        <Header from ={"deposit"}/>
         <div className="otherDetails">
           <div className="reward">
             Each deposit give you <FontAwesomeIcon icon={faStar} />
