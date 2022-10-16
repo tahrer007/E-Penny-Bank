@@ -1,9 +1,13 @@
-import React from 'react'
-import "./footer.scss"
+import React from 'react' ;
+import ContactIcons from './contacticons/ContactIcons';
+
+import "./footer.scss" ;
 function Footer() {
   return (
     <footer className="mainfooter">
-          all rights reserved @Tahrer abu diab linkedIn
+        <span>all rights reserved @Tahrer abu diab linkedIn</span>  
+
+          <ContactIcons/>
         </footer>
   )
 }

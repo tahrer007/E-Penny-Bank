@@ -1,0 +1,21 @@
+
+.contactIconsWraper {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+
+  .link {
+    display: block;
+    width: 1em;
+    box-sizing: border-box;
+    overflow: hidden;
+    .contactIcon {
+      fill: red;
+      cursor: pointer;
+    }
+  }
+
+  .contactIcon:hover {
+    fill: greenyellow;
+  }
+
+}
