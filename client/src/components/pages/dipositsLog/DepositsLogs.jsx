@@ -92,7 +92,7 @@ function DepositsLogs() {
       <main className="startColumnFlex">
         <div className="list logsList">
           {depositsHistory.map((log) => (
-            <Item key={log.time} log={log} />
+            <Item key={log._id} log={log} />
           ))}
         </div>
       </main>

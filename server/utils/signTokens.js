@@ -7,7 +7,7 @@ const createAccessToken = (email) =>
       email,
     },
     process.env.ACCESS_TOKEN_SECRET,
-    { expiresIn: "60s" }
+    { expiresIn: "900s" }
   );
 const createRefreshToken = (email) =>
   jwt.sign(

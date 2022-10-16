@@ -10,11 +10,8 @@ import { checkId } from "services/helper";
 
 function UsersList({ boxDetails }) {
   const { usersId, adminId } = boxDetails;
-
-  console.log(usersId, adminId);
-  //boxId
   const user = useSelector(selectCurrentUser);
-  //const allUsers = selectUserById((state)=>(state,)) ;
+  
   const Item = ({ id }) => {
     const selectedUser = useSelector((state) => selectUserById(state, id));
     const isAdmin = checkId(selectedUser.userId, adminId);
@@ -24,7 +21,9 @@ function UsersList({ boxDetails }) {
       <div className="listItem userItem">
         {selectedUser.name}
 
-        {isAdmin && <FontAwesomeIcon icon={faUserNinja} className="adminIcon"/>}
+        {isAdmin && (
+          <FontAwesomeIcon icon={faUserNinja} className="adminIcon" />
+        )}
       </div>
     );
   };
@@ -34,66 +33,6 @@ function UsersList({ boxDetails }) {
       {usersId?.map((id) =>
         id === user._id ? null : <Item key={id} id={id} />
       )}
-      {usersId?.map((id) =>
-        id === user._id ? null : <Item key={id} id={id} />
-      )}
-      {usersId?.map((id) =>
-        id === user._id ? null : <Item key={id} id={id} />
-      )}
-      {usersId?.map((id) =>
-        id === user._id ? null : <Item key={id} id={id} />
-      )}
-
-{usersId?.map((id) =>
-        id === user._id ? null : <Item key={id} id={id} />
-      )}
-      {usersId?.map((id) =>
-        id === user._id ? null : <Item key={id} id={id} />
-      )}
-      {usersId?.map((id) =>
-        id === user._id ? null : <Item key={id} id={id} />
-      )}
-      {usersId?.map((id) =>
-        id === user._id ? null : <Item key={id} id={id} />
-      )}
-      {usersId?.map((id) =>
-        id === user._id ? null : <Item key={id} id={id} />
-      )}
-      {usersId?.map((id) =>
-        id === user._id ? null : <Item key={id} id={id} />
-      )}
-      {usersId?.map((id) =>
-        id === user._id ? null : <Item key={id} id={id} />
-      )}
-      {usersId?.map((id) =>
-        id === user._id ? null : <Item key={id} id={id} />
-      )}
-      {usersId?.map((id) =>
-        id === user._id ? null : <Item key={id} id={id} />
-      )}
-      {usersId?.map((id) =>
-        id === user._id ? null : <Item key={id} id={id} />
-      )}
-      {usersId?.map((id) =>
-        id === user._id ? null : <Item key={id} id={id} />
-      )}
-      {usersId?.map((id) =>
-        id === user._id ? null : <Item key={id} id={id} />
-      )}
-      {usersId?.map((id) =>
-        id === user._id ? null : <Item key={id} id={id} />
-      )}
-
-      {usersId?.map((id) =>
-        id === user._id ? null : <Item key={id} id={id} />
-      )}
-      {usersId?.map((id) =>
-        id === user._id ? null : <Item key={id} id={id} />
-      )}
-      {usersId?.map((id) =>
-        id === user._id ? null : <Item key={id} id={id} />
-      )}
-      
     </div>
   );
 }

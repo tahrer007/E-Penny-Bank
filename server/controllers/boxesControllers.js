@@ -36,7 +36,7 @@ const deposit = async (req, res) => {
   const { deposit, boxId, userId } = req.body;
   const log = {
     userId,
-    amount :deposit 
+    amount: deposit,
   };
   console.log(req.body.boxId, req.body.deposit);
   try {
@@ -77,9 +77,10 @@ const addUserToBox = async (req, res) => {
   const filter = { boxKey };
   const update = { $push: { usersId: userId } };
   try {
-    let box = await Box.findOneAndUpdate(filter, update);
-    res.status(201).json(box);
-  } catch (error) {
+    //TODO : check id the user already exist !! 
+    const updated = await Box.findOneAndUpdate(filter, update);
+    res.status(201).json(updated);
+  } catch (err) {
     res.status(201).status(400).json({ message: err.message });
   }
 };
