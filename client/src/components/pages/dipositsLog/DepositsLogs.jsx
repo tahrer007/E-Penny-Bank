@@ -10,6 +10,8 @@ import {
   faUsers,
   faUserNinja,
   faDollarSign,
+  faEye,
+  faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
 import { selectAllUsers, selectUserById } from "features/users/userSlice";
 import { checkId } from "services/helper";
@@ -25,8 +27,17 @@ function DepositsLogs() {
   const { boxName, type, adminId, depositsHistory } = box;
   const [show, setShow] = useState(false);
 
+  const changeShow =()=>{
+    setShow(true) ;
+    setTimeout(() => {
+      setShow(false) ;
+    }, 3000);
+
+  }
+
   console.log(box, boxId);
-  const canReveal = box.isAllowedToReveal || checkId(user._id || adminId);
+  const canReveal = box.isAllowedToReveal || checkId(user._id, adminId);
+  console.log(canReveal);
   const admin = useSelector((state) => selectUserById(state, adminId));
 
   const Item = ({ log }) => {
@@ -37,9 +48,21 @@ function DepositsLogs() {
       <div className="listItem logItem">
         <div className="date">{changeDateFormate(log?.createdAt)}</div>
         <div className="name">{x?.name}</div>
-        <div className="icons">
-          <FontAwesomeIcon icon={faDollarSign} />
-          {log?.amount}
+        <div className={`icons ${!canReveal && "disabled"}`} onClick={changeShow} >
+          {canReveal ? (
+            show ? (
+              <span>
+                <FontAwesomeIcon icon={faDollarSign} />
+                {log?.amount}
+              </span>
+            ) : (
+              <FontAwesomeIcon icon={faEye} />
+            )
+          ) : (
+            <FontAwesomeIcon icon={faEyeSlash} />
+          )}
+
+          {/**/}
         </div>
       </div>
     );
