@@ -20,7 +20,7 @@ function InnerButton({ box }) {
     <div className="detailsInnerBtns">
       <div
         className="mainBtns columnFlex"
-        onClick={() => navigate(`../deposit/${box._id}` , {state :{box}})}
+        onClick={() => navigate(`../deposit/${box._id}`, { state: { box } })}
       >
         <FontAwesomeIcon icon={faCircleDollarToSlot} />
         Deposit
@@ -34,19 +34,15 @@ function InnerButton({ box }) {
         <FontAwesomeIcon icon={faFaceSurprise} />
         Reveal
       </div>
-      <div className="mainBtns columnFlex">
+      <div className="mainBtns columnFlex"
+       onClick={() => navigate(`../logs/${box._id}`, { state: { box } })}
+      
+      >
         <FontAwesomeIcon icon={faCalendarDays} />
+        History
       </div>
     </div>
   );
 }
 
 export default InnerButton;
-
-/**  <div><div className="buttonsBox">
-    <div className="deposit">
-      <Link to={`../deposit/${box._id}`}>deposit</Link>
-    </div>
-    <div className="history">history</div>
-    <div className="save">save</div>
-  </div></div> */
