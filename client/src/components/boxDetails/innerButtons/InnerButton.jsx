@@ -19,7 +19,7 @@ function InnerButton({ box }) {
   return (
     <div className="detailsInnerBtns">
       <div className="mainBtns columnFlex">
-        <FontAwesomeIcon icon={faCircleDollarToSlot} />
+        <FontAwesomeIcon icon={faCircleDollarToSlot} onClick={()=>navigate(`../deposit/${box._id}`)}/>
         Deposit
       </div>
       <div
