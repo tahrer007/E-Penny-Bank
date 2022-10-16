@@ -1,4 +1,16 @@
 .depositsLogsSections {
+  main {
+    .logsList {
+      width: 90%;
 
-    
+      .logItem {
+        display: grid;
+        grid-template-columns: 40% 40% 20%;
+        justify-items: start;
+        box-sizing: border-box;
+        width: 98%;
+        box-sizing: border-box;
+      }
+    }
+  }
 }
