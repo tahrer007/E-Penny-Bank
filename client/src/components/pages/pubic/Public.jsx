@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+
 import "./public.scss";
 import SvgLogo from "components/Svg/SvgLogo";
 import { useNavigate } from "react-router-dom";

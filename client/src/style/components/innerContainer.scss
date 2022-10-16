@@ -1,9 +1,8 @@
 //pages inner container main parts
-
+@use "style/abstracts/colors" as *;
 .innerContainer {
-  background-color: brown;
+  background-color: $sectionBgrd;
   width: 100vmin;
-  //height: 90vmin;
   height: inherit;
   padding: 0.5em;
   box-sizing: border-box;
@@ -11,18 +10,23 @@
   display: grid;
   grid-template-rows: 20% 70% 10%;
   overflow: hidden;
+  gap : 1em;
+
+ header,main ,footer {
+    background-color: $innerSectionBgd;
+  }
 
   header {
     display: flex;
     flex-direction: column;
-    background-color: yellowgreen;
+  
     box-sizing: border-box;
     > * {
       width: 100%;
     }
 
     .title {
-      background-color: chocolate;
+     
       height: 70%;
     }
     .otherDetails {
@@ -36,7 +40,7 @@
   }
   main {
     //flex-grow: 1;
-    background-color: lightblue;
+    
     padding: 0.3em;
 
     .innerButtonsWrapper {

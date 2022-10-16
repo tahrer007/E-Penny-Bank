@@ -8,11 +8,33 @@ $DarkBlue: #050a30;
 $NavyBlue: #000c66;
 $BabyBlue: #7ec8e3;
 $Rosewater: #ffc2c7;
+$test : #e0fbfc ; 
+$test2 : #00bbf9 ;
+
+$blue-50 : #e3f2fd ;
+$blue-100 : #bbdefb;
+$blue-200 : #90caf9 ;
+$blue-300 : #64b5f6 ;
+$blue-400 : #42a5f5 ;
+$blue-500 : #2196f3 ;
+$blue-600 : #1e88e5 ;
+$blue-700 : #1976d2 ;
+$blue-800 : #1565c0;
+$blue-900 : #0d47a1 ;
+
+//light theme 
+$appBgrd : $blue-50;
+$sectionBgrd :$blue-200;
+$innerSectionBgd :$blue-100  ; 
+$primary: $blue-500;
+$secondary: $blue-900 ;
+
+
 
 //light
-$primary: $Fuchsia;
-$secondary: $Violet;
-$background: $Aqua;
+//$primary: $Fuchsia;
+//$secondary: $Violet;
+//$background: $test;
 //dark
 $primary-dark: $BabyBlue;
 $secondary-dark: $Rosewater;

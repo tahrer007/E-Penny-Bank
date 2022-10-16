@@ -1,6 +1,7 @@
 @use "style/abstracts/global" as *;
+@use "style/abstracts/colors" as *;
 .public {
-  background-color: blueviolet;
+ // background-color: $conBgrd;
   text-align: center;
   width: fit-content;
   height: 90%;
@@ -20,7 +21,7 @@
       background-color: yellow;
       justify-content: space-around;
       height: fit-content;
-      .logoWrapper {
+      > * {
         width: 25vmin;
         height: 25vmin;
       }
@@ -66,7 +67,7 @@
     section {
       main {
         h1 {
-         // font-size: 1em;
+          // font-size: 1em;
           margin: 5px;
         }
       }
