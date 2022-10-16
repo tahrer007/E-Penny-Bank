@@ -9,7 +9,7 @@ const Layout = () => {
 
   return token ? (
     <>
-      <Header />
+    {  /*<Header />*/}
       <Outlet />
       <Footer/>
     </>

@@ -17,7 +17,7 @@ import { selectUserById } from "features/users/userSlice";
 import { checkId } from "services/helper";
 import { useSelector } from "react-redux";
 import { changeDateFormate } from "services/dateAndTimeFormate";
-
+import Header from "components/header/Header";
 function DepositsLogs() {
   const user = useSelector(selectCurrentUser);
   const { boxId } = useParams();
@@ -70,9 +70,7 @@ function DepositsLogs() {
   return (
     <section className="innerContainer depositsLogsSections">
       <header>
-        <div className="title">
-          <h2>Deposits history</h2>
-        </div>
+        <Header/>
         <div className="otherDetails">
           <div className="icons">
             <FontAwesomeIcon icon={faPiggyBank} /> {boxName}

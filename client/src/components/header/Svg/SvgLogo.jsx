@@ -1,5 +1,5 @@
 import * as React from "react";
-import "./logo.scss";
+
 
 const SvgLogo = () => {
   const LogoIcon = (props) => (
@@ -59,7 +59,7 @@ const SvgLogo = () => {
   </svg>
   );
   return (
-    <div className="logoWrapper columnFlex">
+    <div className="svgWrapper columnFlex">
       <LogoIcon />
     </div>
   );
