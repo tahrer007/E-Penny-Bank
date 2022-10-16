@@ -96,7 +96,7 @@ const Deposit = () => {
         </div>
 
         {type === RANDOM ? (
-          <RandomDeposit />
+          <RandomDeposit getValue={getValue} />
         ) : (
           <ExactDeposit getValue={getValue} />
         )}
