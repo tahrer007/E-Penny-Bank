@@ -1,18 +1,33 @@
-import React from "react";
+import React ,{useState ,useEffect} from "react";
 import "./header.scss";
-import SvgLogo from "components/header/Svg/SvgLogo";
-import SvgHome from "components/header/Svg/SvgHome";
+import SvgLogo from "components/Svg/SvgLogo";
+import SvgHome from "components/Svg/SvgHome";
 import { useNavigate } from "react-router-dom";
 
+//welcome
+//box title
 
-function Header() {
+const titles = {
+  logs: "Deposits history",
+  boxesList: "Boxes list",
+  deposits: "Lets save money",
+};
+
+function Header({ text ,from }) {
+  console.log(titles[from])
+  const [title,setTitle] = useState(text || titles[from]) ;
+
+  useEffect(() => {
+    console.log(title)
+  }, [title])
+  
   const navigate = useNavigate();
   return (
     <div className="title mainHeader">
       <div className="logo">
         <SvgLogo />
       </div>
-      <h2>Deposits history</h2>
+      <h2>{title}</h2>
       <div className="homeBtn" onClick={() => navigate("/welcome")}>
         <SvgHome />
       </div>

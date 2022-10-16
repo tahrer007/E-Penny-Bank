@@ -70,7 +70,7 @@ function DepositsLogs() {
   return (
     <section className="innerContainer depositsLogsSections">
       <header>
-        <Header/>
+        <Header from={"logs"}/>
         <div className="otherDetails">
           <div className="icons">
             <FontAwesomeIcon icon={faPiggyBank} /> {boxName}
