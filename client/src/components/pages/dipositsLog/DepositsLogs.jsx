@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./depositsLogs.scss";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { selectCurrentUser } from "features/auth/authSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,7 +13,7 @@ import {
   faEye,
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
-import { selectAllUsers, selectUserById } from "features/users/userSlice";
+import { selectUserById } from "features/users/userSlice";
 import { checkId } from "services/helper";
 import { useSelector } from "react-redux";
 import { changeDateFormate } from "services/dateAndTimeFormate";
@@ -22,18 +22,16 @@ function DepositsLogs() {
   const user = useSelector(selectCurrentUser);
   const { boxId } = useParams();
   const location = useLocation();
-  const navigate = useNavigate();
   const { box } = location.state;
   const { boxName, type, adminId, depositsHistory } = box;
   const [show, setShow] = useState(false);
 
-  const changeShow =()=>{
-    setShow(true) ;
+  const changeShow = () => {
+    setShow(true);
     setTimeout(() => {
-      setShow(false) ;
+      setShow(false);
     }, 3000);
-
-  }
+  };
 
   console.log(box, boxId);
   const canReveal = box.isAllowedToReveal || checkId(user._id, adminId);
@@ -48,7 +46,10 @@ function DepositsLogs() {
       <div className="listItem logItem">
         <div className="date">{changeDateFormate(log?.createdAt)}</div>
         <div className="name">{x?.name}</div>
-        <div className={`icons ${!canReveal && "disabled"}`} onClick={changeShow} >
+        <div
+          className={`icons ${!canReveal && "disabled"}`}
+          onClick={changeShow}
+        >
           {canReveal ? (
             show ? (
               <span>
@@ -61,8 +62,6 @@ function DepositsLogs() {
           ) : (
             <FontAwesomeIcon icon={faEyeSlash} />
           )}
-
-          {/**/}
         </div>
       </div>
     );
