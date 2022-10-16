@@ -45,7 +45,7 @@ function App() {
 
               <Route path="box">
                 <Route path=":boxId" element={<BoxDetails />} />
-                <Route path="deposit/:boxId" element={<Deposit />} />
+            { /*   <Route path="deposit/:boxId" element={<Deposit />} />*/}
                 <Route path="new" element={<CreateBox />} />
               </Route>
             </Route>

@@ -7,9 +7,14 @@ import {
   faCircleDollarToSlot,
   faCalendarDays,
 } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
+import { checkId } from "services/helper";
 import "./detailsInnerBtns.scss"
 function InnerButton({ box }) {
+  const user = useSelector(selectCurrentUser) ;
+  const isAdmin = checkId(user._id,box.adminId );
   const navigate = useNavigate();
   return (
     <div className="detailsInnerBtns">
@@ -18,8 +23,8 @@ function InnerButton({ box }) {
         Deposit
       </div>
       <div
-        className="mainBtns columnFlex"
-        onClick={() => navigate("../boxesList")}
+        className={`mainBtns columnFlex ${!isAdmin && !box?.isAllowedToReveal && "disabled"}`}
+        onClick={() => console.log("reveal")}
       >
         <FontAwesomeIcon icon={faFaceSurprise} />
         Reveal

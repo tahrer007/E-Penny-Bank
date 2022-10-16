@@ -14,6 +14,8 @@ const SavingBox = () => {
   const { boxId } = useParams();
   const location = useLocation();
   const { box } = location.state;
+  const historyArrLength = box.depositsHistory.length;
+  const firstDeposit = box.depositsHistory[historyArrLength - 1]?.deposit ; 
 
   useEffect(() => {
     console.log(box);
@@ -24,7 +26,7 @@ const SavingBox = () => {
   const getSharedBoxDetails = ({ boxKey, isAllowedToReveal }) =>
     console.log(boxKey, isAllowedToReveal);
 
-  const historyArrLength = box.depositsHistory.length;
+  
 
   return (
     <section className="innerContainer boxdetailsSection">
@@ -48,8 +50,9 @@ const SavingBox = () => {
       </header>
       <main>
         {!box.type &&<div className="lastUpdate">
-          {/*//TODO : change the time formte */}
-          Last update at : {box.depositsHistory[historyArrLength - 1].deposit}
+          {firstDeposit ? `Last update at : ${firstDeposit}`: "you haven't saved yet"}
+          {/*//TODO : change the time formte 
+        // {*/}
         </div>}
         {box?.type ? (
           <SharedBoxDetails
