@@ -21,7 +21,6 @@ import AddUser from "components/pages/addUser/AddUser";
 import BoxesList from "components/pages/boxesList/List/BoxesList";
 import DepositsLogs from "components/pages/dipositsLog/DepositsLogs";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleDarkMode } from "features/them/themSlice";
 import { selectedCurrentMode } from "features/them/themSlice";
 
 //import ThemButton from "components/reusables/themBtn/ThemButton";

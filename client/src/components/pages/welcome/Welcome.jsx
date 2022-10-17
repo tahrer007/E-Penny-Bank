@@ -12,9 +12,13 @@ import "./welcome.scss";
 import HomeBody from "components/homeBody/HomeBody";
 import { changeDateFormate } from "services/dateAndTimeFormate";
 import Header from "components/header/Header";
+import { selectedCurrentMode } from "features/them/themSlice";
+
 
 const Welcome = () => {
   const user = useSelector(selectCurrentUser);
+  const darkMode = useSelector(selectedCurrentMode);
+  const theme = darkMode ? "dark" : "light" ;
   const title = user?.lastLogIn
     ? `Welcome back ${user?.name}`
     : `Welcome ${user?.name}`;
@@ -62,6 +66,6 @@ const Welcome = () => {
     content = <p>{error}</p>;
   }
 
-  return <section className="innerContainer welcomePage">{content}</section>;
+  return <section className={`innerContainer welcomePage ${theme}`}>{content}</section>;
 };
 export default Welcome;

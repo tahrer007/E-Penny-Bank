@@ -42,6 +42,13 @@ body {
     height: inherit;
     width: inherit;
   }
+  .hoverable {
+    background-color: $mainClickableBgd;
+    &:hover {
+      background-color: $hoverBg;
+      color: $hoverColor;
+    }
+  }
 }
 
 .dark {
@@ -52,6 +59,13 @@ body {
     background-color: $appBgrdDark;
     height: inherit;
     width: inherit;
+  }
+  .hoverable {
+    background-color: $mainClickableBgdDark;
+    &:hover {
+      background-color: $hoverBgDark;
+      color: $hoverColorDark;
+    }
   }
 }
 
@@ -74,13 +88,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-.hoverable {
-  background-color: $mainClickableBgd;
-  &:hover {
-    background-color: $hoverBg;
-    color: $hoverColor;
-  }
-}
+
 a:-webkit-any-link {
   text-decoration: none;
   //color
@@ -94,7 +102,19 @@ a:-webkit-any-link {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
-.list::-webkit-scrollbar-thumb {
-  background-color:$mainClickableBgd ;
-  outline: 1px solid slategrey;
+.light {
+  .list::-webkit-scrollbar-thumb {
+    background-color: $mainClickableBgd;
+    outline: 1px solid slategrey;
+  }
+  
 }
+
+.dark {
+  .list::-webkit-scrollbar-thumb {
+    background-color: $mainClickableBgdDark;
+    outline: 1px solid slategrey;
+  }
+  
+}
+

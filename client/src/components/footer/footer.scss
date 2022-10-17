@@ -1,13 +1,24 @@
 @use "style/abstracts/colors" as *;
 .mainfooter {
-    background-color: $mainSectionsBg;
-    width: 100vmin;
-    height:7vh;
-    display : grid ;
-    grid-template-columns: 70% 30%;
-    box-sizing: border-box;
-    text-align: center;
-    align-items: center;
-    color: $blue-600;
-   
+  background-color: $mainSectionsBg;
+  width: 100vmin;
+  height: 7vh;
+  display: grid;
+  grid-template-columns: 60% 30%;
+  box-sizing: border-box;
+  text-align: center;
+  align-items: center;
+  margin: auto;
+}
+
+.light {
+  .mainfooter {
+    color: $footerColor;
   }
+}
+
+.dark {
+  .mainfooter {
+    color: $footerColorDark;
+  }
+}

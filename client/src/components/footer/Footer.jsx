@@ -1,15 +1,19 @@
-import React from 'react' ;
-import ContactIcons from './contacticons/ContactIcons';
-
-import "./footer.scss" ;
+import React from "react";
+import ContactIcons from "./contacticons/ContactIcons";
+import { useSelector } from "react-redux";
+import { selectedCurrentMode } from "features/them/themSlice";
+import "./footer.scss";
 function Footer() {
-  return (
-    <footer className="mainfooter">
-        <span>all rights reserved @Tahrer abu diab linkedIn</span>  
+  const darkMode = useSelector(selectedCurrentMode);
+  const theme = darkMode ? "dark" : "light" ;
 
-          <ContactIcons/>
-        </footer>
-  )
+  return (
+    <footer className={`mainfooter ${theme}`}>
+      <span>all rights reserved @Tahrer abu diab</span>
+
+      <ContactIcons />
+    </footer>
+  );
 }
 
-export default Footer
+export default Footer;
