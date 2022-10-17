@@ -1,3 +1,5 @@
+@use "style/abstracts/colors" as *;
+
 .mainHeader {
   height: 70%;
   display: grid;
@@ -9,10 +11,17 @@
     margin: auto;
     padding: 0.2em;
     
+    
 
     .home {
       width: 7vmin;
       height: 7vmin;
+      fill: $home;
+      cursor: pointer;
+
+      &:hover {
+        fill: $homeHover;
+      }
     }
     .logo {
     }
