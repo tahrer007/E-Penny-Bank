@@ -11,9 +11,8 @@
     flex-direction: column;
 
     justify-content: flex-start;
-    
+
     .boxNameBox {
-      background-color: yellowgreen;
       width: 100%;
       padding: 0.5rem;
       box-sizing: border-box;
@@ -27,14 +26,13 @@
       display: grid;
       width: 100%;
       grid-template-columns: repeat(2, 0.2fr);
-      background-color: blue;
+
       gap: 3vmin;
       justify-content: center;
       align-self: flex-end;
-      margin-top: auto ;
+      margin-top: auto;
       padding: 0.4em;
       box-sizing: border-box;
-      
     }
   }
   footer {

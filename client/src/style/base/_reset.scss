@@ -74,7 +74,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-.hoverd {
+.hoverable {
   background-color: $mainClickableBgd;
   &:hover {
     background-color: $hoverBg;
@@ -95,6 +95,6 @@ a:-webkit-any-link {
 }
 
 .list::-webkit-scrollbar-thumb {
-  background-color: $list;
+  background-color:$mainClickableBgd ;
   outline: 1px solid slategrey;
 }

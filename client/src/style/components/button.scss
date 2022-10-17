@@ -40,7 +40,7 @@ button {
 
 .disabled{
   pointer-events: none;
-  background-color: chocolate;
+  background-color: $disabled;
 }
 
 button::before {

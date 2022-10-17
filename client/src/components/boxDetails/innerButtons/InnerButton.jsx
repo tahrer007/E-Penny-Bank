@@ -19,14 +19,14 @@ function InnerButton({ box }) {
   return (
     <div className="detailsInnerBtns">
       <div
-        className="mainBtns columnFlex"
+        className="mainBtns columnFlex hoverable"
         onClick={() => navigate(`../deposit/${box._id}`, { state: { box } })}
       >
         <FontAwesomeIcon icon={faCircleDollarToSlot} />
         Deposit
       </div>
       <div
-        className={`mainBtns columnFlex ${
+        className={`mainBtns columnFlex hoverable ${
           !isAdmin && !box?.isAllowedToReveal && "disabled"
         }`}
         onClick={() => console.log("reveal")}
@@ -34,11 +34,11 @@ function InnerButton({ box }) {
         <FontAwesomeIcon icon={faFaceSurprise} />
         Reveal
       </div>
-      <div className="mainBtns columnFlex"
+      <div className="mainBtns columnFlex hoverable"
        onClick={() => navigate(`../logs/${box._id}`, { state: { box } })}
       
       >
-        <FontAwesomeIcon icon={faCalendarDays} />
+        <FontAwesomeIcon icon={faCalendarDays}  />
         History
       </div>
     </div>

@@ -18,7 +18,7 @@ function UsersList({ boxDetails }) {
     console.log(selectedUser, isAdmin);
 
     return (
-      <div className="listItem userItem hoverd">
+      <div className="listItem userItem hoverable">
         {selectedUser.name}
 
         {isAdmin && (

@@ -1,27 +1,23 @@
+@use "style/abstracts/colors" as *;
 .sharedBoxDetailsWrapper {
   width: 100%;
-  background-color: darkgoldenrod !important;
+
   box-sizing: border-box;
 
   .details {
     display: flex;
     justify-content: space-around;
-    background-color: red;
+    background-color: $innerMainBg;
     display: grid;
     grid-template-columns: 20% 70%;
     align-items: center;
     .keyBox {
-      background-color: salmon;
       display: grid;
       grid-template-columns: 60% 40%;
       padding: 0.2em;
       .shareIcon {
         display: block;
         cursor: pointer;
-
-        &:hover {
-          color: rebeccapurple;
-        }
       }
     }
 
