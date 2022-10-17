@@ -125,13 +125,13 @@ const CreateBox = () => {
 
         <div className="secBtnWrapper">
           <div
-            className={`mainBtns columnFlex ${!canSave && "disabled"}`}
+            className={`mainBtns columnFlex ${!canSave && "disabled"} hoverd`}
             onClick={onCreateBoxClick}
           >
             <FontAwesomeIcon icon={faCloudArrowUp} />
             Save
           </div>
-          <div className={`mainBtns columnFlex ${isLoading && "disabled"}`} onClick={()=>navigate("/welcome")}>
+          <div className={`mainBtns columnFlex ${isLoading && "disabled"} hoverd`} onClick={()=>navigate("/welcome")}>
             <FontAwesomeIcon icon={faTrashCan} />
             Cancel
           </div>

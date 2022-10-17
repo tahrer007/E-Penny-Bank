@@ -44,13 +44,13 @@ function MainButtons({ value, boxId }) {
   return (
     <div className="depositInnerBtns">
       <div
-        className={`mainBtns columnFlex ${!canSave && "disabled"}`}
+        className={`mainBtns columnFlex ${!canSave && "disabled"} hoverd`}
         onClick={onSaveClicked}
       >
         <FontAwesomeIcon icon={faCircleDollarToSlot} />
         Save
       </div>
-      <div className={`mainBtns columnFlex ${isLoading && "disabled"}`}>
+      <div className={`mainBtns columnFlex ${isLoading && "disabled"} hoverd`}>
         <FontAwesomeIcon icon={faTrashCan} />
         Cancel
       </div>

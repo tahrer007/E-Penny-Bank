@@ -34,7 +34,7 @@ const BoxListItem = ({ box, boxId }) => {
     navigate(`../box/${boxId}`, { state: { box: box } });
 
   return (
-    <div className={`listItem boxListItem`} onClick={handleOnitemClick}>
+    <div className={`listItem boxListItem hoverd`} onClick={handleOnitemClick}>
       <div className="name">{box.boxName}</div>
       <div className="icon">
         <FontAwesomeIcon icon={box.type ? faUsers : faUser} />

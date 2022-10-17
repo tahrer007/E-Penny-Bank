@@ -39,7 +39,7 @@
       justify-content: space-evenly;
       align-items: center;
       height: 30%;
-      color: $HoverBlue ;
+      color: $HoverBlue;
     }
   }
   main {
@@ -57,20 +57,14 @@
     }
 
     .list {
-      //background-color: brown;
       overflow-y: scroll;
       box-sizing: border-box;
 
       .listItem {
         height: fit-content;
-        background-color: $mainBtnBgd;
         margin: 0.1em;
         padding: 0.5em 1em;
         cursor: pointer;
-        &:hover {
-          color: red;
-          background-color: yellowgreen;
-        }
       }
     }
   }

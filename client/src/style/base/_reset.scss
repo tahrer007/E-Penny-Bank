@@ -74,7 +74,13 @@ body {
   justify-content: center;
   align-items: center;
 }
-
+.hoverd {
+  background-color: $mainClickableBgd;
+  &:hover {
+    background-color: $hoverBg;
+    color: $hoverColor;
+  }
+}
 a:-webkit-any-link {
   text-decoration: none;
   //color
