@@ -32,12 +32,12 @@ const RandomDeposit = ({ getValue }) => {
     <div className="randomWrapper">
       {<MultiRangeSlider min={MIN} max={MAX} onChange={handleRangeChange} />}
 
-      <div className={`show ${!value && "disabled"}`} onClick={showAmount}>
+      <div className={`show ${ value ? "hoverable" : "disabled"}`} onClick={showAmount}>
         <FontAwesomeIcon icon={faEye} />
         Show Amount
       </div>
 
-      <div className="random" onClick={randomPicker}>
+      <div className="random hoverable" onClick={randomPicker}>
         <FontAwesomeIcon icon={faCoins} /> Get random number
       </div>
     </div>

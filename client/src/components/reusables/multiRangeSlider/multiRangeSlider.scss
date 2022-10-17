@@ -1,3 +1,4 @@
+@use "style/abstracts/colors" as * ; 
 .container {
   display: flex;
   align-items: center;
@@ -31,13 +32,13 @@
   }
   
   .slider__range {
-    background-color: #9fe5e1;
+    background-color: $primary;
     z-index: 2;
   }
   
   .slider__left-value,
   .slider__right-value {
-    color: #dee2e6;
+    color: $primary;
     font-size: inherit;
     margin-top: 20px;
   }
@@ -75,7 +76,7 @@
   
   /* For Chrome browsers */
   .thumb::-webkit-slider-thumb {
-    background-color: #f1f5f7;
+    background-color: $primary;
     border: none;
     border-radius: 50%;
     box-shadow: 0 0 1px 1px #ced4da;

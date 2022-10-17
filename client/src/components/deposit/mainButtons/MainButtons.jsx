@@ -7,16 +7,16 @@ import {
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "features/auth/authSlice";
 import { useDepositMutation } from "features/boxes/boxesSlice";
-import { useNavigate , useLocation} from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import "./mainBtnsD.scss";
 
 function MainButtons({ value, boxId }) {
   const user = useSelector(selectCurrentUser);
-  const location = useLocation() ;
+  const location = useLocation();
   console.log(location);
   //const from = location.state?.from?.pathname;
-  const from = `../../BoxesList` ;
+  const from = `../../BoxesList`;
   console.log(from);
   const [deposit, { isLoading }] = useDepositMutation();
 
@@ -44,13 +44,17 @@ function MainButtons({ value, boxId }) {
   return (
     <div className="depositInnerBtns">
       <div
-        className={`mainBtns columnFlex ${!canSave && "disabled"} hoverd`}
+        className={`mainBtns columnFlex ${canSave ? "hoverable" : "disabled"} `}
         onClick={onSaveClicked}
       >
         <FontAwesomeIcon icon={faCircleDollarToSlot} />
         Save
       </div>
-      <div className={`mainBtns columnFlex ${isLoading && "disabled"} hoverd`}>
+      <div
+        className={`mainBtns columnFlex ${
+          isLoading ? "disabled" : "hoverable"
+        } `}
+      >
         <FontAwesomeIcon icon={faTrashCan} />
         Cancel
       </div>

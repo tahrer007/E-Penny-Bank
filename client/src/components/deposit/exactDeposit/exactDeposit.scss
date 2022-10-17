@@ -1,17 +1,14 @@
+.exactValueWrapper {
+  text-align: center;
 
+  width: 100%;
+  height: fit-content;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  height: fit-content;
 
-  .exactValueWrapper {
-    text-align: center;
-    background-color: yellowgreen;
-    width: 100%;
-    height: fit-content;
-    padding: 0.5rem;
-    box-sizing: border-box;
-    margin-bottom: 10px;
-    height: fit-content;
-   
-    #value {
-      width: fit-content;
-    }
-
+  #value {
+    width: fit-content;
   }
+}

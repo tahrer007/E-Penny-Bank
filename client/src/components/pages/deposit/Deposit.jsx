@@ -54,7 +54,7 @@ const Deposit = () => {
 
           <div className="optionWrapper">
             <input
-              className="radioBtn"
+              className="radioBtn" 
               type="radio"
               value={EXACT}
               name={EXACT}
