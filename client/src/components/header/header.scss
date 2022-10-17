@@ -1,23 +1,20 @@
 .mainHeader {
-  
   height: 70%;
-  //background-color: red;
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
+  border-bottom: 1px ridge  black ;
   .svgWrapper {
     box-sizing: border-box;
-    background-color: grey;
     height: 100%;
     margin: auto;
     padding: 0.2em;
-    //border-radius:46% 54% 47% 53% / 70% 73% 27% 30% ;
-  
+    
+
     .home {
-        width : 7vmin ;
-        height: 7vmin;
+      width: 7vmin;
+      height: 7vmin;
     }
     .logo {
-
     }
   }
 }

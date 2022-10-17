@@ -20,6 +20,9 @@ import Deposit from "./components/pages/deposit/Deposit";
 import AddUser from "components/pages/addUser/AddUser";
 import BoxesList from "components/pages/boxesList/List/BoxesList";
 import DepositsLogs from "components/pages/dipositsLog/DepositsLogs";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleDarkMode } from "features/them/themSlice";
+import { selectedCurrentMode } from "features/them/themSlice";
 
 //import ThemButton from "components/reusables/themBtn/ThemButton";
 import "./style/_main.scss";
@@ -27,8 +30,11 @@ import "./style/_main.scss";
 //import UsersList from "./features/users/UsersList";
 
 function App() {
+  const darkMode = useSelector(selectedCurrentMode);
+  const dispatch = useDispatch();
+  const handleCheck = () => dispatch(toggleDarkMode());
   return (
-    <div className={`appContainer light`}>
+    <div className={`appContainer ${darkMode ? "dark" : "light"}`}>
       {/* <ThemButton />*/}
       <div className="background columnFlex">
         <Routes>
@@ -45,11 +51,10 @@ function App() {
               <Route path="BoxesList" element={<BoxesList />} />
 
               <Route path="box">
-              <Route path="new" element={<CreateBox />} />
+                <Route path="new" element={<CreateBox />} />
                 <Route path=":boxId" element={<BoxDetails />} />
-              <Route path="deposit/:boxId" element={<Deposit />} />
-              <Route path="logs/:boxId" element={<DepositsLogs />} />
-                
+                <Route path="deposit/:boxId" element={<Deposit />} />
+                <Route path="logs/:boxId" element={<DepositsLogs />} />
               </Route>
             </Route>
           </Route>

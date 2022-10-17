@@ -1,15 +1,17 @@
 
 
 $green: #c2f970;
-$Aqua: #b4fee7;
+$Aqua: #9eccf8;
 $Fuchsia: #fd49a0;
 $Violet: #a16ae8;
 $DarkBlue: #050a30;
 $NavyBlue: #000c66;
 $BabyBlue: #7ec8e3;
-$Rosewater: #ffc2c7;
-$test : #e0fbfc ; 
+$Rosewater: #fde9eb;
+$Rosewater2: #fed9dd;
+$test : #FBFAF5 ; 
 $test2 : #00bbf9 ;
+
 
 $blue-50 : #e3f2fd ;
 $blue-100 : #bbdefb;
@@ -23,11 +25,16 @@ $blue-800 : #1565c0;
 $blue-900 : #0d47a1 ;
 
 //light theme 
-$appBgrd : $blue-50;
-$sectionBgrd :$blue-200;
-$innerSectionBgd :$blue-100  ; 
-$primary: $blue-500;
+$appBgrd : $Rosewater;
+$sectionBg : $Fuchsia ;
+$mainSectionsBg :$Rosewater2;
+$primary:$blue-900;
 $secondary: $blue-900 ;
+$title : $Fuchsia ;
+$subheader : $Violet; 
+$mainBtnBgd :$Aqua ;
+
+
 
 
 

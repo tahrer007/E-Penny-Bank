@@ -1,5 +1,6 @@
+@use "style/abstracts/colors" as *;
 .mainfooter {
-    background-color: lightcoral;
+    background-color: $mainSectionsBg;
     width: 100vmin;
     height:7vh;
     display : grid ;
