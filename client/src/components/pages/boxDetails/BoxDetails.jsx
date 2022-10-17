@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { selectedCurrentMode } from "features/them/themSlice";
+
 import SharedBoxDetails from "components/boxDetails/sharedBoxDetails/SharedBoxDetails";
 import { useLocation } from "react-router-dom";
 import { changeDateFormate } from "services/dateAndTimeFormate";
@@ -12,7 +15,8 @@ const SavingBox = () => {
   const { box } = location.state;
   const historyArrLength = box.depositsHistory.length;
   const firstDeposit = box.depositsHistory[historyArrLength - 1]?.deposit;
-
+  const darkMode = useSelector(selectedCurrentMode);
+  const theme = darkMode ? "dark" : "light" ;
   useEffect(() => {
     console.log(box);
   }, [box]);
@@ -23,7 +27,7 @@ const SavingBox = () => {
     console.log(boxKey, isAllowedToReveal);
 
   return (
-    <section className="innerContainer boxdetailsSection">
+    <section className={`innerContainer boxdetailsSection`}>
       <header>
         
         <Header text ={box.boxName}/>

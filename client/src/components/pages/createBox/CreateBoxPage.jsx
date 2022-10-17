@@ -8,6 +8,8 @@ import { selectCurrentUser } from "features/auth/authSlice";
 import Label from "components/reusables/form/label/Label";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudArrowUp, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { selectedCurrentMode } from "features/them/themSlice";
+
 import Header from "components/header/Header";
 import "./createBox.scss";
 const CreateBox = () => {
@@ -20,17 +22,15 @@ const CreateBox = () => {
   const [validName, setValidName] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
   const [boxType, setBoxType] = useState(PRIVATE_BOX);
-  const [errMsg, setErrMsg] = useState("");
   const [sharedBoxDetails, setSharedBoxDetails] = useState({});
+  const darkMode = useSelector(selectedCurrentMode);
+  const theme = darkMode ? "dark" : "light" ;
 
   useEffect(() => {
     setValidName(boxName ? true : false);
   }, [boxName]);
 
-  useEffect(() => {
-    setErrMsg("");
-  }, [boxName]);
-
+ 
   const canSave = Boolean(boxName) && !isLoading;
 
   const onChangeSelection = (e) => {
@@ -66,7 +66,7 @@ const CreateBox = () => {
   };
 
   return (
-    <section className="innerContainer createBoxSection">
+    <section className={`innerContainer createBoxSection ${theme}`}>
       <header>
         <Header from ={"newBox"}/>
         <div className="otherDetails">
@@ -142,13 +142,3 @@ const CreateBox = () => {
 };
 
 export default CreateBox;
-
-/*<div className="pageContainer newBoxPage">
-      <div className="boxDetails">
-       
-      <div className="createBtn">
-        <button type="button" disabled={!canSave} >
-          Create Box
-        </button>
-      </div>
-      </div>*/

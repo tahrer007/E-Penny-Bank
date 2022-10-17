@@ -7,6 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import MainButtons from "components/deposit/mainButtons/MainButtons";
 import Header from "components/header/Header";
+import { useSelector } from "react-redux";
+import { selectedCurrentMode } from "features/them/themSlice";
+
 import "./deposit.scss";
 
 const RANDOM = "random";
@@ -19,7 +22,8 @@ const Deposit = () => {
   //const onChangeSelection = (e) => setRandomSlected(!randomSelected);
   const [value, setValue] = useState(null);
   //TODO:remove from the first time value
-
+  const darkMode = useSelector(selectedCurrentMode);
+  const theme = darkMode ? "dark" : "light";
   const onChangeSelection = (e) => {
     setType(e.target.value);
     setValue(null);
@@ -27,9 +31,9 @@ const Deposit = () => {
   const getValue = (value) => setValue(value);
 
   return (
-    <section className="innerContainer depositSection">
+    <section className={`innerContainer depositSection ${theme}`}>
       <header>
-        <Header from ={"deposit"}/>
+        <Header from={"deposit"} />
         <div className="otherDetails">
           <div className="reward">
             Each deposit give you <FontAwesomeIcon icon={faStar} />
@@ -54,7 +58,7 @@ const Deposit = () => {
 
           <div className="optionWrapper">
             <input
-              className="radioBtn" 
+              className="radioBtn"
               type="radio"
               value={EXACT}
               name={EXACT}

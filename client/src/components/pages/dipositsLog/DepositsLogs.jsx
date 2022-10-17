@@ -18,6 +18,8 @@ import { checkId } from "services/helper";
 import { useSelector } from "react-redux";
 import { changeDateFormate } from "services/dateAndTimeFormate";
 import Header from "components/header/Header";
+import { selectedCurrentMode } from "features/them/themSlice";
+;
 function DepositsLogs() {
   const user = useSelector(selectCurrentUser);
   const { boxId } = useParams();
@@ -25,6 +27,8 @@ function DepositsLogs() {
   const { box } = location.state;
   const { boxName, type, adminId, depositsHistory } = box;
   const [show, setShow] = useState(false);
+  const darkMode = useSelector(selectedCurrentMode);
+  const theme = darkMode ? "dark" : "light" 
 
   const changeShow = () => {
     setShow(true);
@@ -68,7 +72,7 @@ function DepositsLogs() {
   };
 
   return (
-    <section className="innerContainer depositsLogsSections">
+    <section className={`innerContainer depositsLogsSections ${theme}`}>
       <header>
         <Header from={"logs"}/>
         <div className="otherDetails">

@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "features/auth/authSlice";
 import { useGetBoxesByUserIdQuery } from "features/boxes/boxesSlice";
+import { selectedCurrentMode } from "features/them/themSlice";
+
 import Spinner from "components/spinner/Spinner";
 import Error from "components/error/Error";
 import BoxListItem from "../item/BoxListItem";
@@ -23,7 +25,8 @@ function BoxesListPage() {
     isError,
     error,
   } = useGetBoxesByUserIdQuery(user._id);
-
+  const darkMode = useSelector(selectedCurrentMode);
+  const theme = darkMode ? "dark" : "light";
   let content;
 
   if (isLoading) {
@@ -34,7 +37,7 @@ function BoxesListPage() {
     content = (
       <>
         <header>
-          <Header from ={"boxesList"}/>
+          <Header from={"boxesList"} />
           <div className="otherDetails">
             <div className="icons">
               <FontAwesomeIcon icon={faUser} /> private Box
@@ -52,46 +55,45 @@ function BoxesListPage() {
             {ids.map((id) => (
               <BoxListItem key={id} boxId={id} box={entities[id]} />
             ))}
-             {ids.map((id) => (
+            {ids.map((id) => (
               <BoxListItem key={id} boxId={id} box={entities[id]} />
             ))}
-             {ids.map((id) => (
+            {ids.map((id) => (
               <BoxListItem key={id} boxId={id} box={entities[id]} />
             ))}
-             {ids.map((id) => (
+            {ids.map((id) => (
               <BoxListItem key={id} boxId={id} box={entities[id]} />
             ))}
-             {ids.map((id) => (
-              <BoxListItem key={id} boxId={id} box={entities[id]} />
-            ))}
-
-             {ids.map((id) => (
-              <BoxListItem key={id} boxId={id} box={entities[id]} />
-            ))}
-             {ids.map((id) => (
-              <BoxListItem key={id} boxId={id} box={entities[id]} />
-            ))}
-             {ids.map((id) => (
-              <BoxListItem key={id} boxId={id} box={entities[id]} />
-            ))}
-             {ids.map((id) => (
+            {ids.map((id) => (
               <BoxListItem key={id} boxId={id} box={entities[id]} />
             ))}
 
-{ids.map((id) => (
+            {ids.map((id) => (
+              <BoxListItem key={id} boxId={id} box={entities[id]} />
+            ))}
+            {ids.map((id) => (
+              <BoxListItem key={id} boxId={id} box={entities[id]} />
+            ))}
+            {ids.map((id) => (
+              <BoxListItem key={id} boxId={id} box={entities[id]} />
+            ))}
+            {ids.map((id) => (
               <BoxListItem key={id} boxId={id} box={entities[id]} />
             ))}
 
-{ids.map((id) => (
+            {ids.map((id) => (
               <BoxListItem key={id} boxId={id} box={entities[id]} />
             ))}
-             {ids.map((id) => (
+
+            {ids.map((id) => (
               <BoxListItem key={id} boxId={id} box={entities[id]} />
             ))}
-             {ids.map((id) => (
+            {ids.map((id) => (
               <BoxListItem key={id} boxId={id} box={entities[id]} />
             ))}
-            
+            {ids.map((id) => (
+              <BoxListItem key={id} boxId={id} box={entities[id]} />
+            ))}
           </div>
         </main>
       </>
@@ -100,7 +102,7 @@ function BoxesListPage() {
     <Error />;
   }
 
-  return <section className="innerContainer boxesListPage">{content}</section>;
+  return <section className={`innerContainer boxesListPage ${theme}`}>{content}</section>;
 }
 
 export default BoxesListPage;

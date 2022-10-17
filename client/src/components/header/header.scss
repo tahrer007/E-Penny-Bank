@@ -16,18 +16,37 @@
     .home {
       width: 7vmin;
       height: 7vmin;
-      fill: $home;
-      cursor: pointer;
 
-      &:hover {
-        fill: $homeHover;
-      }
+      cursor: pointer;
     }
     .logo {
-      fill: $secondary;
       display: flex;
       justify-content: center;
       align-content: center;
     }
+  }
+}
+
+.light {
+  .home {
+    fill: $home;
+    &:hover {
+      fill: $homeHover;
+    }
+  }
+  .logo {
+    fill: $secondary;
+  }
+}
+
+.dark {
+  .home {
+    fill: $homeDark;
+    &:hover {
+      fill: $homeHoverDark;
+    }
+  }
+  .logo {
+    fill: $primaryDark;
   }
 }
