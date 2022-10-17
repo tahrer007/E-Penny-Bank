@@ -89,6 +89,6 @@ a:-webkit-any-link {
 }
 
 .list::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
+  background-color: $list;
   outline: 1px solid slategrey;
 }

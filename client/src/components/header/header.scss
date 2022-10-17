@@ -4,14 +4,12 @@
   height: 70%;
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
-  border-bottom: 1px ridge  black ;
+  border-bottom: 1px ridge black;
   .svgWrapper {
     box-sizing: border-box;
     height: 100%;
     margin: auto;
     padding: 0.2em;
-    
-    
 
     .home {
       width: 7vmin;
@@ -24,6 +22,7 @@
       }
     }
     .logo {
+      fill: $secondary;
     }
   }
 }

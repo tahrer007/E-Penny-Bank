@@ -52,6 +52,46 @@ function BoxesListPage() {
             {ids.map((id) => (
               <BoxListItem key={id} boxId={id} box={entities[id]} />
             ))}
+             {ids.map((id) => (
+              <BoxListItem key={id} boxId={id} box={entities[id]} />
+            ))}
+             {ids.map((id) => (
+              <BoxListItem key={id} boxId={id} box={entities[id]} />
+            ))}
+             {ids.map((id) => (
+              <BoxListItem key={id} boxId={id} box={entities[id]} />
+            ))}
+             {ids.map((id) => (
+              <BoxListItem key={id} boxId={id} box={entities[id]} />
+            ))}
+
+             {ids.map((id) => (
+              <BoxListItem key={id} boxId={id} box={entities[id]} />
+            ))}
+             {ids.map((id) => (
+              <BoxListItem key={id} boxId={id} box={entities[id]} />
+            ))}
+             {ids.map((id) => (
+              <BoxListItem key={id} boxId={id} box={entities[id]} />
+            ))}
+             {ids.map((id) => (
+              <BoxListItem key={id} boxId={id} box={entities[id]} />
+            ))}
+
+{ids.map((id) => (
+              <BoxListItem key={id} boxId={id} box={entities[id]} />
+            ))}
+
+{ids.map((id) => (
+              <BoxListItem key={id} boxId={id} box={entities[id]} />
+            ))}
+             {ids.map((id) => (
+              <BoxListItem key={id} boxId={id} box={entities[id]} />
+            ))}
+             {ids.map((id) => (
+              <BoxListItem key={id} boxId={id} box={entities[id]} />
+            ))}
+            
           </div>
         </main>
       </>
