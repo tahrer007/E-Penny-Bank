@@ -43,7 +43,7 @@ function DepositsLogs() {
     const x = useSelector((state) => selectUserById(state, log.userId));
 
     return (
-      <div className="listItem logItem">
+      <div className="listItem logItem hoverable">
         <div className="date">{changeDateFormate(log?.createdAt)}</div>
         <div className="name">{x?.name}</div>
         <div
