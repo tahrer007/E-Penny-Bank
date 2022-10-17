@@ -9,13 +9,16 @@
     box-sizing: border-box;
     overflow: hidden;
     .contactIcon {
-      //fill: red;
+      fill: $blue-200;
       cursor: pointer;
+      &:hover {
+        fill: $blue-500;
+      }
+
+
     }
   }
 
-  .contactIcon:hover {
-    //fill: greenyellow;
-  }
+  
 
 }

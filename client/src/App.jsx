@@ -31,12 +31,11 @@ import "./style/_main.scss";
 
 function App() {
   const darkMode = useSelector(selectedCurrentMode);
-  const dispatch = useDispatch();
-  const handleCheck = () => dispatch(toggleDarkMode());
+
   return (
     <div className={`appContainer ${darkMode ? "dark" : "light"}`}>
       {/* <ThemButton />*/}
-      <div className="background columnFlex">
+      <div className="background columnFlex text">
         <Routes>
           <Route path="/" element={<Layout />}>
             {/* public routes */}

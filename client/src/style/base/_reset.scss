@@ -35,7 +35,7 @@ body {
 .light {
   position: relative;
   .text {
-    //color: $primary;
+    color: $primary;
   }
   .background {
     background-color: $appBgrd;
@@ -46,10 +46,10 @@ body {
 
 .dark {
   .text {
-    color: $primary-dark;
+    color: $primaryDark;
   }
   .background {
-    //background-color: $background-dark;
+    background-color: $appBgrdDark;
     height: inherit;
     width: inherit;
   }
