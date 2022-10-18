@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Public = () => {
   const navigate = useNavigate();
   const content = (
-    <div className="public">
+    <div className="public innerContainer">
       <section>
         <header>
           <SvgLogo />
