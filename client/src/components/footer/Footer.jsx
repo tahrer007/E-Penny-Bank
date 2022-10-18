@@ -9,7 +9,7 @@ function Footer() {
 
   return (
     <footer className={`mainfooter ${theme}`}>
-      <span>all rights reserved @Tahrer abu diab</span>
+      <span>@Tahrer abu diab</span>
 
       <ContactIcons />
     </footer>
