@@ -8,8 +8,8 @@ import { selectCurrentUser } from "features/auth/authSlice";
 import Label from "components/reusables/form/label/Label";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudArrowUp, faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import { selectedCurrentMode } from "features/them/themSlice";
-
+import { selectedCurrentMode } from "features/theme/themeSlice";
+import useTheme from "hooks/useUserInfo";
 import Header from "components/header/Header";
 import "./createBox.scss";
 const CreateBox = () => {
@@ -23,14 +23,15 @@ const CreateBox = () => {
   const [userFocus, setUserFocus] = useState(false);
   const [boxType, setBoxType] = useState(PRIVATE_BOX);
   const [sharedBoxDetails, setSharedBoxDetails] = useState({});
-  const darkMode = useSelector(selectedCurrentMode);
-  const theme = darkMode ? "dark" : "light" ;
+  const theme = useTheme();
+
 
   useEffect(() => {
     setValidName(boxName ? true : false);
   }, [boxName]);
 
- 
+  
+
   const canSave = Boolean(boxName) && !isLoading;
 
   const onChangeSelection = (e) => {

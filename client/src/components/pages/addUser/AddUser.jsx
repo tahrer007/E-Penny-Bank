@@ -5,12 +5,15 @@ import { selectCurrentUser } from "features/auth/authSlice";
 import { useAddUserMutation ,selectBoxById} from "features/boxes/boxesSlice";
 import { selectUserById } from "features/users/userSlice";
 import { useEffect } from "react";
+import useTheme from "hooks/useUserInfo";
+
 ///TODO : check if the user already partipate in the box !!
 const id = "6339f7d8453a2e923fff338d";
 const boxKey = "2VDBz";
 const AddUser = () => {
   const test = useSelector((state) => selectUserById(state, id));
   const test2 = useSelector((state) => selectBoxById(state, id));
+  const theme = useTheme();
 
   const user = useSelector(selectCurrentUser);
   const navigate = useNavigate();

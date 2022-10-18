@@ -8,7 +8,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import MainButtons from "components/deposit/mainButtons/MainButtons";
 import Header from "components/header/Header";
 import { useSelector } from "react-redux";
-import { selectedCurrentMode } from "features/them/themSlice";
+import useTheme from "hooks/useUserInfo";
 
 import "./deposit.scss";
 
@@ -22,8 +22,7 @@ const Deposit = () => {
   //const onChangeSelection = (e) => setRandomSlected(!randomSelected);
   const [value, setValue] = useState(null);
   //TODO:remove from the first time value
-  const darkMode = useSelector(selectedCurrentMode);
-  const theme = darkMode ? "dark" : "light";
+  const theme = useTheme();
   const onChangeSelection = (e) => {
     setType(e.target.value);
     setValue(null);

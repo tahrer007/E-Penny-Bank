@@ -21,7 +21,7 @@ import AddUser from "components/pages/addUser/AddUser";
 import BoxesList from "components/pages/boxesList/List/BoxesList";
 import DepositsLogs from "components/pages/dipositsLog/DepositsLogs";
 import { useSelector, useDispatch } from "react-redux";
-import { selectedCurrentMode } from "features/them/themSlice";
+import { selectedCurrentMode } from "features/theme/themeSlice";
 
 //import ThemButton from "components/reusables/themBtn/ThemButton";
 import "./style/_main.scss";

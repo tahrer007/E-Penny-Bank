@@ -9,6 +9,9 @@ import Label from "components/reusables/form/label/Label";
 import Instructions from "components/reusables/form/instructions/Instructions";
 
 import api from "api/axios";
+import useUserInfo from "hooks/useUserInfo";
+
+
 
 //const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -18,6 +21,7 @@ const SignUp = () => {
   const userRef = useRef();
   const errRef = useRef();
   const navigate = useNavigate() ; 
+  const [ theme] = useUserInfo();
 
   const [user, setUser] = useState("");
   const [validName, setValidName] = useState(false);
@@ -100,7 +104,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="pageContainer signupPage">
+    <div className={`pageContainer signupPage ${theme}`}>
       {success ? (
         <section>
           <h1>Success!</h1>

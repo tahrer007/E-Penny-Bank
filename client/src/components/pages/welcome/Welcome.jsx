@@ -12,16 +12,12 @@ import "./welcome.scss";
 import HomeBody from "components/homeBody/HomeBody";
 import { changeDateFormate } from "utils/dateAndTimeFormate";
 import Header from "components/header/Header";
-import { selectedCurrentMode } from "features/them/themSlice";
+import useUserInfo from "hooks/useUserInfo"
+
 
 
 const Welcome = () => {
-  const user = useSelector(selectCurrentUser);
-  const darkMode = useSelector(selectedCurrentMode);
-  const theme = darkMode ? "dark" : "light" ;
-  const title = user?.lastLogIn
-    ? `Welcome back ${user?.name}`
-    : `Welcome ${user?.name}`;
+const [user , welcomeMsg ,theme] = useUserInfo() ; 
   useEffect(() => {
     store.dispatch(extendedApiSlice.endpoints.getUsers.initiate());
   }, []);
@@ -42,7 +38,7 @@ const Welcome = () => {
     content = (
       <>
         <header>
-          <Header text={title} />
+          <Header text={welcomeMsg} />
 
           <div className="otherDetails">
             <div className="lastLogIn">

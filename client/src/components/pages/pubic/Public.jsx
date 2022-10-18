@@ -1,12 +1,15 @@
 
-import "./public.scss";
+
 import SvgLogo from "components/Svg/SvgLogo";
 import { useNavigate } from "react-router-dom";
-
+import useUserInfo from "hooks/useUserInfo";
+import "./public.scss";
 const Public = () => {
+  const [theme] = useUserInfo();
+
   const navigate = useNavigate();
   const content = (
-    <div className="public innerContainer">
+    <div className={`public innerContainer ${theme}`}>
       <section>
         <header>
           <SvgLogo />

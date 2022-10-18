@@ -1,4 +1,4 @@
-import React ,{useState ,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./header.scss";
 import SvgLogo from "components/Svg/SvgLogo";
 import SvgHome from "components/Svg/SvgHome";
@@ -11,17 +11,12 @@ const titles = {
   logs: "Deposits history",
   boxesList: "Boxes list",
   deposit: "Lets save money",
-  newBox :"Create New Box"
+  newBox: "Create New Box",
 };
 
-function Header({ text ,from }) {
-  console.log(titles[from])
- const title = text || titles[from] ;
+function Header({ text, from }) {
+  const title = text || titles[from];
 
-  useEffect(() => {
-    console.log(title)
-  }, [title])
-  
   const navigate = useNavigate();
   return (
     <div className="title mainHeader">

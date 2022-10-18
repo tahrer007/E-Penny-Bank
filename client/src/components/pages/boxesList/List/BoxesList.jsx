@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "features/auth/authSlice";
 import { useGetBoxesByUserIdQuery } from "features/boxes/boxesSlice";
-import { selectedCurrentMode } from "features/them/themSlice";
-
+import { selectedCurrentMode } from "features/theme/themeSlice";
+import useTheme from "hooks/useUserInfo";
 import Spinner from "components/spinner/Spinner";
 import Error from "components/error/Error";
 import BoxListItem from "../item/BoxListItem";
@@ -25,8 +25,8 @@ function BoxesListPage() {
     isError,
     error,
   } = useGetBoxesByUserIdQuery(user._id);
-  const darkMode = useSelector(selectedCurrentMode);
-  const theme = darkMode ? "dark" : "light";
+  const theme = useTheme();
+
   let content;
 
   if (isLoading) {

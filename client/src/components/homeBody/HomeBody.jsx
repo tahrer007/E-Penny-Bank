@@ -1,11 +1,10 @@
 import React from "react";
 import "./homeBody.scss";
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { selectCurrentUser } from "features/auth/authSlice";
-import { toggleDarkMode } from "features/them/themSlice";
-import { selectedCurrentMode } from "features/them/themSlice";
+import { toggleDarkMode } from "features/theme/themeSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { logOut } from "features/auth/authSlice";
 import {
   faUser,
   faPiggyBank,
@@ -14,14 +13,13 @@ import {
   faMoon,
   faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
+import useUserInfo from "hooks/useUserInfo";
 
 function HomeBody() {
-  const user = useSelector(selectCurrentUser);
   const navigate = useNavigate();
-  const darkMode = useSelector(selectedCurrentMode);
+  const [darkMode ,user ,token] = useUserInfo();
   const dispatch = useDispatch();
   const handleCheck = () => dispatch(toggleDarkMode());
-  console.log(darkMode);
 
   return (
     <div className="innerButtonsWrapper homeMainBody">
@@ -46,10 +44,10 @@ function HomeBody() {
 
       <div className="mainBtns columnFlex hoverable" onClick={handleCheck}>
         <FontAwesomeIcon icon={darkMode ? faMoon : faSun} />
-        theme
+        Theme
       </div>
       <div></div>
-      <div className="mainBtns columnFlex hoverable">
+      <div className="mainBtns columnFlex hoverable" onClick={()=> dispatch(logOut({user ,token}))}>
         <FontAwesomeIcon icon={faRightFromBracket} className="themeBtn" />
         Log out
       </div>

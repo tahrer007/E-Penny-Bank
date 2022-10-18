@@ -1,7 +1,7 @@
 import React from "react";
 import ContactIcons from "./contacticons/ContactIcons";
 import { useSelector } from "react-redux";
-import { selectedCurrentMode } from "features/them/themSlice";
+import { selectedCurrentMode } from "features/theme/themeSlice";
 import "./footer.scss";
 function Footer() {
   const darkMode = useSelector(selectedCurrentMode);

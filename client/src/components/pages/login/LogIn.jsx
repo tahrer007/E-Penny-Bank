@@ -6,6 +6,8 @@ import Instructions from "components/reusables/form/instructions/Instructions";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "features/auth/authSlice";
 import { useLoginMutation } from "features/auth/authApiSlice";
+import useUserInfo from "hooks/useUserInfo";
+
 import "./logIn.scss";
 
 const LogIn = () => {
@@ -14,7 +16,8 @@ const LogIn = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/welcome";
- 
+  const [theme] = useUserInfo();
+
 
   const [user, setUser] = useState("");
   const [validUserName, setValidUserName] = useState(false);
@@ -75,7 +78,7 @@ const LogIn = () => {
     }
   };
   return (
-    <div className="authPage">
+    <div className={`authPage ${theme}`}>
       <section>
         <p
           ref={errRef}

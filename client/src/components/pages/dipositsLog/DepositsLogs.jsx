@@ -18,32 +18,26 @@ import { checkId } from "utils/helper";
 import { useSelector } from "react-redux";
 import { changeDateFormate } from "utils/dateAndTimeFormate";
 import Header from "components/header/Header";
-import { selectedCurrentMode } from "features/them/themSlice";
-;
+import useUserInfo from "hooks/useUserInfo";
 function DepositsLogs() {
   const user = useSelector(selectCurrentUser);
   const { boxId } = useParams();
   const location = useLocation();
   const { box } = location.state;
   const { boxName, type, adminId, depositsHistory } = box;
-  const [show, setShow] = useState(false);
-  const darkMode = useSelector(selectedCurrentMode);
-  const theme = darkMode ? "dark" : "light" 
+  const [showAmount, setShowAmount] = useState(null);
+  const [theme] = useUserInfo();
 
-  const changeShow = () => {
-    setShow(true);
+  const changeShow = (id) => {
+    setShowAmount(id);
     setTimeout(() => {
-      setShow(false);
+      setShowAmount(false);
     }, 3000);
   };
-
-  console.log(box, boxId);
   const canReveal = box.isAllowedToReveal || checkId(user._id, adminId);
-  console.log(canReveal);
   const admin = useSelector((state) => selectUserById(state, adminId));
 
   const Item = ({ log }) => {
-    console.log(log);
     const x = useSelector((state) => selectUserById(state, log.userId));
 
     return (
@@ -52,10 +46,10 @@ function DepositsLogs() {
         <div className="name">{x?.name}</div>
         <div
           className={`icons ${!canReveal && "disabled"}`}
-          onClick={changeShow}
+          onClick={() => changeShow(log._id)}
         >
           {canReveal ? (
-            show ? (
+            showAmount === log._id ? (
               <span>
                 <FontAwesomeIcon icon={faDollarSign} />
                 {log?.amount}
@@ -74,7 +68,7 @@ function DepositsLogs() {
   return (
     <section className={`innerContainer depositsLogsSections ${theme}`}>
       <header>
-        <Header from={"logs"}/>
+        <Header from={"logs"} />
         <div className="otherDetails">
           <div className="icons">
             <FontAwesomeIcon icon={faPiggyBank} /> {boxName}
