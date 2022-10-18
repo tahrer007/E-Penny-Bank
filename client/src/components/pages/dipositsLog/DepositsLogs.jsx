@@ -14,9 +14,9 @@ import {
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
 import { selectUserById } from "features/users/userSlice";
-import { checkId } from "services/helper";
+import { checkId } from "utils/helper";
 import { useSelector } from "react-redux";
-import { changeDateFormate } from "services/dateAndTimeFormate";
+import { changeDateFormate } from "utils/dateAndTimeFormate";
 import Header from "components/header/Header";
 import { selectedCurrentMode } from "features/them/themSlice";
 ;

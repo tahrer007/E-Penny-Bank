@@ -10,7 +10,7 @@ import {
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import { checkId } from "services/helper";
+import { checkId } from "utils/helper";
 import "./detailsInnerBtns.scss";
 function InnerButton({ box }) {
   const user = useSelector(selectCurrentUser);

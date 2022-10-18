@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { makeKey, checkId } from "services/helper";
-import { SHARED_BOX } from "services/const";
+import { makeKey, checkId } from "utils/helper";
+import { SHARED_BOX } from "constants/const";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "features/auth/authSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

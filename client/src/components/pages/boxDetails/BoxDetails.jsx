@@ -4,7 +4,7 @@ import { selectedCurrentMode } from "features/them/themSlice";
 
 import SharedBoxDetails from "components/boxDetails/sharedBoxDetails/SharedBoxDetails";
 import { useLocation } from "react-router-dom";
-import { changeDateFormate } from "services/dateAndTimeFormate";
+import { changeDateFormate } from "utils/dateAndTimeFormate";
 import "./boxDetails.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faUser, faUsers } from "@fortawesome/free-solid-svg-icons";

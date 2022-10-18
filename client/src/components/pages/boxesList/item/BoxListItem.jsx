@@ -11,7 +11,7 @@ import {
   faUsers,
   faUserNinja,
 } from "@fortawesome/free-solid-svg-icons";
-import { checkId } from "services/helper";
+import { checkId } from "utils/helper";
 
 const BoxListItem = ({ box, boxId }) => {
   const navigate = useNavigate();

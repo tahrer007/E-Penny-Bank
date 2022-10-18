@@ -1,4 +1,4 @@
-import { CHARACTERS, KEY_LENGTH } from "./const";
+import { CHARACTERS, KEY_LENGTH } from "constants/const";
 const makeKey = () => {
   let result = "";
 

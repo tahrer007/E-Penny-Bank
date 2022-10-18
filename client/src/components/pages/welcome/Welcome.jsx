@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import "./welcome.scss";
 import HomeBody from "components/homeBody/HomeBody";
-import { changeDateFormate } from "services/dateAndTimeFormate";
+import { changeDateFormate } from "utils/dateAndTimeFormate";
 import Header from "components/header/Header";
 import { selectedCurrentMode } from "features/them/themSlice";
 

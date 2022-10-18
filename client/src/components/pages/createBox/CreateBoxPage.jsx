@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
-import { BOXES_TYPES, PRIVATE_BOX, SHARED_BOX } from "services/const";
+import { BOXES_TYPES, PRIVATE_BOX, SHARED_BOX } from "constants/const";
 import SharedBoxDetails from "components/boxDetails/sharedBoxDetails/SharedBoxDetails";
 import { useAddNewBoxMutation } from "features/boxes/boxesSlice";
 import { useNavigate } from "react-router-dom";

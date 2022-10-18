@@ -6,7 +6,7 @@ import { selectUserById } from "features/users/userSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserNinja } from "@fortawesome/free-solid-svg-icons";
 import "./usersList.scss";
-import { checkId } from "services/helper";
+import { checkId } from "utils/helper";
 
 function UsersList({ boxDetails }) {
   const { usersId, adminId } = boxDetails;

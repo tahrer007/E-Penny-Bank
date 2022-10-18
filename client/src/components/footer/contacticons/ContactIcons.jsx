@@ -1,6 +1,6 @@
 import React from "react";
 import "./contactIcons.scss";
-import { contactMe } from "services/contactMe";
+import { contactMe } from "constants/contactMe";
 
 const ContactIcons = () => {
   return (

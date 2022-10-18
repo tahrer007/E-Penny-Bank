@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Instructions from "components/reusables/form/instructions/Instructions";
 import Label from "components/reusables/form/label/Label";
 import "./exactDeposit.scss";
-import { MAX, MIN } from "services/const";
+import { MAX, MIN } from "constants/const";
 
 const ExactDeposit = ({ getValue }) => {
   const [value, setValue] = useState(MIN);
