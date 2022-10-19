@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import "./multiRangeSlider.scss";
+import useUserInfo from "hooks/useUserInfo";
 
 const MultiRangeSlider = ({ min, max, onChange }) => {
   const [minVal, setMinVal] = useState(min);
@@ -8,6 +9,7 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
   const minValRef = useRef(min);
   const maxValRef = useRef(max);
   const range = useRef(null);
+  const [theme] = useUserInfo() ; 
 
   // Convert to percentage
   const getPercent = useCallback(
@@ -42,7 +44,7 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
   }, [minVal, maxVal, onChange]);
 
   return (
-    <div className="container">
+    <div className={`container ${theme}`}>
       <input
         type="range"
         min={min}
