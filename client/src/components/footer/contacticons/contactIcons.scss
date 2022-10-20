@@ -15,10 +15,10 @@
 }
 .light {
   .contactIcon {
-    fill: $blue-200;
+    fill: $footerColor;
 
     &:hover {
-      fill: $blue-500;
+      fill: $footerColorHover;
     }
   }
 }

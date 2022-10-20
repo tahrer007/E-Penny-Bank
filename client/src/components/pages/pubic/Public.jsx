@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import useUserInfo from "hooks/useUserInfo";
 import "./public.scss";
 const Public = () => {
-  const [theme] = useUserInfo();
+  const {theme} = useUserInfo();
 
   const navigate = useNavigate();
   const content = (

@@ -16,7 +16,7 @@ const LogIn = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/welcome";
-  const [theme] = useUserInfo();
+  const {theme} = useUserInfo();
 
 
   const [user, setUser] = useState("");

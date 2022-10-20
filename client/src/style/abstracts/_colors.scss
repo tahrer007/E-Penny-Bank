@@ -26,25 +26,30 @@ $blue-800 : #1565c0;
 $blue-900 : #0d47a1 ;
 
 //light theme 
-$appBgrd : #FFF7E9;
-//$appBgrd : $Rosewater;
-$sectionBg : $Fuchsia ;
-$mainSectionsBg :$Rosewater2;
-$primary:$mainBlue;
+$appBgrd : #F4F7FC;
+//$appBgrd : #fff1d9;
+$sectionBg : #FFE9AE ;
+//$sectionBg : #1570EF ;
+//$mainSectionsBg :#fff1d9;
+$mainSectionsBg :#97D2EC;
+//$primary:#EAE509;
+$primary:$HoverBlue ;
 $secondary: $HoverBlue ;
-$footerColor : $blue-600;
-$title : $mainBlue;
-$subheader : $HoverBlue; 
+$footerColor : #FDFDBD;
+$footerColorHover : #FFB200;
+$title : $HoverBlue;
+$subheader : #FDFDBD; 
 $mainBtnBgd :$Aqua ;
-$home : #937DC2;
-$homeHover : #563056; 
-$mainClickableBgd :$Aqua ; 
+$home : #FDFDBD;
+$homeHover : #FFB200; 
+$mainClickableBgd :#ffd061; 
+//$mainClickableBgd :#FFB200; 
 $hoverBg : $HoverBlue;
-$hoverColor :$blue-50  ;
-$innerMainBg : $blue-100 ;
+$hoverColor :#FFB200  ;
+$innerMainBg : #FFB200 ;
 $disabled :$blue-50 ; 
 $border : black ; 
-
+//#FFB200
 
 
 

@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { selectCurrentUser } from "features/auth/authSlice";
 import { useGetBoxesByUserIdQuery } from "features/boxes/boxesSlice";
 import { selectedCurrentMode } from "features/theme/themeSlice";
-import useTheme from "hooks/useUserInfo";
+import useUserInfo from "hooks/useUserInfo"; 
 import Spinner from "components/spinner/Spinner";
 import Error from "components/error/Error";
 import BoxListItem from "../item/BoxListItem";
@@ -16,6 +16,7 @@ import {
   faUsers,
   faUserNinja,
 } from "@fortawesome/free-solid-svg-icons";
+
 function BoxesListPage() {
   const user = useSelector(selectCurrentUser);
   const {
@@ -25,7 +26,7 @@ function BoxesListPage() {
     isError,
     error,
   } = useGetBoxesByUserIdQuery(user._id);
-  const theme = useTheme();
+  const {theme} =  useUserInfo();
 
   let content;
 
