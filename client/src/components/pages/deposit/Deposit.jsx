@@ -7,13 +7,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import MainButtons from "components/deposit/mainButtons/MainButtons";
 import Header from "components/header/Header";
-import { useSelector } from "react-redux";
-import useTheme from "hooks/useUserInfo";
-
+import useUserInfo from "hooks/useUserInfo";
+import { RANDOM , EXACT } from "constants/const";
 import "./deposit.scss";
 
-const RANDOM = "random";
-const EXACT = "exact";
 const Deposit = () => {
   const { boxId } = useParams();
   const location = useLocation();
@@ -22,11 +19,16 @@ const Deposit = () => {
   //const onChangeSelection = (e) => setRandomSlected(!randomSelected);
   const [value, setValue] = useState(null);
   //TODO:remove from the first time value
-  const theme = useTheme();
+  const {theme} = useUserInfo();
   const onChangeSelection = (e) => {
     setType(e.target.value);
     setValue(null);
   };
+
+  useEffect(() => {
+    console.log("teeeeeeeeeeeeeeeeeeeeeeeest")
+  }, [])
+  
   const getValue = (value) => setValue(value);
 
   return (

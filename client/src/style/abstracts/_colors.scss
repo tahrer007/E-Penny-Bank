@@ -28,27 +28,54 @@ $blue-900 : #0d47a1 ;
 //light theme 
 $appBgrd : #F4F7FC;
 //$appBgrd : #fff1d9;
-$sectionBg : #FFE9AE ;
+$sectionBg : #ffe6a0 ;
 //$sectionBg : #1570EF ;
 //$mainSectionsBg :#fff1d9;
-$mainSectionsBg :#97D2EC;
+$mainSectionsBg :#a3e3ff;
+//$mainSectionsBg :#97D2EC;
 //$primary:#EAE509;
-$primary:$HoverBlue ;
+$primary:$blue-900 ;
 $secondary: $HoverBlue ;
 $footerColor : #FDFDBD;
 $footerColorHover : #FFB200;
 $title : $HoverBlue;
-$subheader : #FDFDBD; 
+$subheader : #ffff75; 
 $mainBtnBgd :$Aqua ;
 $home : #FDFDBD;
 $homeHover : #FFB200; 
 $mainClickableBgd :#ffd061; 
 //$mainClickableBgd :#FFB200; 
-$hoverBg : $HoverBlue;
+$hoverBg :  $blue-900;
 $hoverColor :#FFB200  ;
 $innerMainBg : #FFB200 ;
 $disabled :$blue-50 ; 
 $border : black ; 
+
+/* //light theme 
+$appBgrd : #F4F7FC;
+//$appBgrd : #fff1d9;
+$sectionBg : #ffe6a0 ;
+//$sectionBg : #1570EF ;
+//$mainSectionsBg :#fff1d9;
+$mainSectionsBg :#a3e3ff;
+//$mainSectionsBg :#97D2EC;
+//$primary:#EAE509;
+$primary:$blue-900 ;
+$secondary: $HoverBlue ;
+$footerColor : #FDFDBD;
+$footerColorHover : #FFB200;
+$title : $HoverBlue;
+$subheader : #ffff75; 
+$mainBtnBgd :$Aqua ;
+$home : #FDFDBD;
+$homeHover : #FFB200; 
+$mainClickableBgd :#ffd061; 
+//$mainClickableBgd :#FFB200; 
+$hoverBg :  $blue-900;
+$hoverColor :#FFB200  ;
+$innerMainBg : #FFB200 ;
+$disabled :$blue-50 ; 
+$border : black ; */
 //#FFB200
 
 

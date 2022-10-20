@@ -9,7 +9,9 @@ const CHARACTERS =
 const EMAIL ="email" ; 
 const PASSWORD = "password" ; 
 const NAME = "name" ; 
-const CONFIRMEDPASSWORD ="confirmedPassword"
+const CONFIRMEDPASSWORD ="confirmedPassword" ;
+const RANDOM = "random";
+const EXACT = "exact";
 export {
   MAX,
   MIN,
@@ -21,5 +23,7 @@ export {
   EMAIL ,
   PASSWORD ,
   CONFIRMEDPASSWORD , 
-  NAME
+  NAME ,
+  RANDOM ,
+  EXACT
 };

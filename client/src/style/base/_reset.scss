@@ -39,6 +39,7 @@ body {
   }
   .background {
     background-color: $appBgrd;
+    transition: background-color 1.5s ease-out;
     height: inherit;
     width: inherit;
   }
@@ -57,6 +58,7 @@ body {
   }
   .background {
     background-color: $appBgrdDark;
+    transition: background-color 1.5s ease-in;
     height: inherit;
     width: inherit;
   }
