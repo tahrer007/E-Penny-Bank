@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./homeBody.scss";
-import {  useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toggleDarkMode } from "features/theme/themeSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,8 +16,12 @@ import {
 import useUserInfo from "hooks/useUserInfo";
 
 function HomeBody() {
+  const {user,theme ,token }= useUserInfo();
   const navigate = useNavigate();
-  const [darkMode ,user ,token] = useUserInfo();
+  
+
+  console.log(theme);
+
   const dispatch = useDispatch();
   const handleCheck = () => dispatch(toggleDarkMode());
 
@@ -43,11 +47,14 @@ function HomeBody() {
       </div>
 
       <div className="mainBtns columnFlex hoverable" onClick={handleCheck}>
-        <FontAwesomeIcon icon={darkMode ? faMoon : faSun} />
+        <FontAwesomeIcon icon={theme === "dark" ? faMoon : faSun} />
         Theme
       </div>
       <div></div>
-      <div className="mainBtns columnFlex hoverable" onClick={()=> dispatch(logOut({user ,token}))}>
+      <div
+        className="mainBtns columnFlex hoverable"
+        onClick={() => dispatch(logOut({ user, token }))}
+      >
         <FontAwesomeIcon icon={faRightFromBracket} className="themeBtn" />
         Log out
       </div>

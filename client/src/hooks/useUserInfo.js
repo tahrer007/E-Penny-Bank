@@ -12,8 +12,9 @@ const useUserInfo = () => {
   const darkMode = useSelector(selectedCurrentMode);
 
   const theme = darkMode ? "dark" : "light";
+  
 
-  return [user,welcomeMsg,theme ,token];
+  return {user,welcomeMsg,theme ,token};
 };
 
 export default useUserInfo;

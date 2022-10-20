@@ -17,7 +17,7 @@ import useUserInfo from "hooks/useUserInfo"
 
 
 const Welcome = () => {
-const [user , welcomeMsg ,theme] = useUserInfo() ; 
+const {user , welcomeMsg ,theme} = useUserInfo() ; 
   useEffect(() => {
     store.dispatch(extendedApiSlice.endpoints.getUsers.initiate());
   }, []);
@@ -28,8 +28,6 @@ const [user , welcomeMsg ,theme] = useUserInfo() ;
     isError,
     error,
   } = useGetBoxesByUserIdQuery(user._id);
-
-  console.log(user);
 
   let content;
   if (isLoading) {
