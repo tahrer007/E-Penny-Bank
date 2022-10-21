@@ -1,9 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 //change from string to boolan
-const isTrueSet = (myValue) => 
-{
-  console.log("myValue",myValue)
-  return myValue === "true"};
+const isTrueSet = (myValue) => myValue === "true";
 
 const darkModeSlice = createSlice({
   name: "darkMode",
