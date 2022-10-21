@@ -1,10 +1,42 @@
-
-.ShowDeposits {
-    background-color: red;
+@use "style/abstracts/colors" as *;
+.window {
+   
     width: 100%;
     height: 100%;
     position: absolute ;
     top: 0;
     left: 0;
     //display: none;
+
+    .innerWindow {
+        width: 50%;
+        height: 30%;
+       
+        box-sizing: border-box;
+        display: grid; 
+        grid-template-rows: 1fr 1fr;
+
+        
+    }
+}
+.light {
+    .window{
+        background-color: $sectionBg;
+
+        .innerWindow { 
+            background-color: $mainSectionsBg;
+        }
+
+    }
+    
+}
+
+.dark {
+    .window{
+        background-color: $sectionBgDark;
+
+        .innerWindow { 
+            background-color: $mainSectionsBgDark;
+        }
+    }
 }
