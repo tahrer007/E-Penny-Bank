@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { MAX, MIN } from "constants/const";
-import Instructions from "components/reusables/form/instructions/Instructions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCoins, faEye } from "@fortawesome/free-solid-svg-icons";
 import "./randomDeposit.scss";
