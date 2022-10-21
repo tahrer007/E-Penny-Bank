@@ -9,7 +9,7 @@ import { PWD_REGEX } from "constants/const";
 import { textLength } from "utils/helper";
 import { useSignupMutation } from "features/auth/authApiSlice";
 import useUserInfo from "hooks/useUserInfo";
-
+//TODO :rector to shorter / reusable component 
 import "./SignUp";
 const SIGNUP_URL = "auth/signup";
 const SignUp = () => {

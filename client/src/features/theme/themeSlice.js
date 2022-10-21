@@ -1,11 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 //change from string to boolan
-const isTrueSet = (myValue) => myValue === "TRUE";
+const isTrueSet = (myValue) => 
+{
+  console.log("myValue",myValue)
+  return myValue === "true"};
 
 const darkModeSlice = createSlice({
   name: "darkMode",
   initialState: {
-    darkMode: isTrueSet(localStorage.getItem("darkMode")) || false,
+    darkMode: isTrueSet(localStorage.getItem("darkMode")) || true,
   },
   //initialState:{ darkMode: false },
   reducers: {
