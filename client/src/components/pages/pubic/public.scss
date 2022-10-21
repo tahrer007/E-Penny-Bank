@@ -1,82 +1,34 @@
 @use "style/abstracts/global" as *;
 @use "style/abstracts/colors" as *;
 .public {
- // background-color: $conBgrd;
-  text-align: center;
-  width: fit-content;
-  height: 90%;
-  padding: 0.2em;
+  width: 100vmin;
+  height: inherit;
+  padding: 0.5em;
   box-sizing: border-box;
+  text-align: center;
+  display: grid;
+  grid-template-rows: 35% 45% 20%;
+  overflow: hidden;
   border-radius: 5em;
-  line-height: 1.2em;
 
-  section {
+  > * {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
-
-    header {
-      //background-color: yellow;
-      justify-content: space-around;
-      height: fit-content;
-      > * {
-        width: 25vmin;
-        height: 25vmin;
-      }
-    }
-    main {
-      h1 {
-        line-height: 1.5em;
-      }
-    }
-
-    footer {
-      justify-content: center;
-      margin: auto;
-      P {
-        margin: 0.5em;
-        padding: 0;
-      }
-      button {
-        display: block;
-      }
-    }
   }
-  @media (orientation: portrait) and (max-width: $smallScreen) {
-    width: 90%;
-    height: max-content;
-    border-radius: 2em;
-    padding: 2em;
-    background-color: chocolate;
-    section {
-      main {
-        h1 {
-          line-height: 1.5em;
-        }
-      }
-    }
+
+  header {
+    width: 30vmin;
+    height: 30vmin;
+    margin: auto;
   }
-  @media (orientation: landScape) and (max-width: $landScapeWidth) {
-    width: 80%;
-    height: 95%;
-    border-radius: 2em;
-    background-color: pink;
-    line-height: 1rem;
-    section {
-      main {
-        h1 {
-          // font-size: 1em;
-          margin: 5px;
-        }
-      }
-      header {
-        .logoWrapper {
-          width: 21vmin;
-          height: 21vmin;
-        }
-      }
-    }
+  main {
+    justify-content: flex-start;
+  }
+  footer {
+    margin: auto;
   }
 }
+

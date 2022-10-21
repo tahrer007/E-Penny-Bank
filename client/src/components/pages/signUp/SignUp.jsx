@@ -3,26 +3,22 @@ import { useRef, useState, useEffect } from "react";
 //import InputField from "components/reusables/InputField/InputField";
 import validator from "validator";
 import { useNavigate } from "react-router-dom";
-import "./SignUp";
-
 import Label from "components/reusables/form/label/Label";
 import Instructions from "components/reusables/form/instructions/Instructions";
+import { PWD_REGEX } from "constants/const";
+import { pwdLength } from "utils/helper";
+import { useSignupMutation } from "features/auth/authApiSlice";
+import { useDispatch } from "react-redux";
 
-import api from "api/axios";
 import useUserInfo from "hooks/useUserInfo";
-
-
-
-//const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+import "./SignUp";
 const SIGNUP_URL = "auth/signup";
-
 const SignUp = () => {
   const userRef = useRef();
   const errRef = useRef();
-  const navigate = useNavigate() ; 
-  const [ theme] = useUserInfo();
-
+  const navigate = useNavigate();
+  const { theme } = useUserInfo();
+  const [signup, { isLoading }] = useSignupMutation();
   const [user, setUser] = useState("");
   const [validName, setValidName] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
@@ -38,6 +34,8 @@ const SignUp = () => {
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
 
+  const disableClick = !validName || !validPwd || !validMatch ? true : false;
+
   useEffect(() => {
     userRef.current.focus();
   }, []);
@@ -47,22 +45,21 @@ const SignUp = () => {
   }, [user]);
 
   useEffect(() => {
-    setValidPwd(PWD_REGEX.test(pwd));
+    setValidPwd(pwdLength(pwd));
     setValidMatch(pwd === matchPwd);
-    console.log(pwd, matchPwd);
   }, [pwd, matchPwd]);
 
   useEffect(() => {
     setErrMsg("");
   }, [user, pwd, matchPwd]);
 
-  useEffect(()=>{
-    if(success){
+  useEffect(() => {
+    if (success) {
       setTimeout(() => {
-        navigate("../Login") ; 
+        navigate("../Login");
       }, 5000);
     }
-  },[success])
+  }, [success]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -74,17 +71,13 @@ const SignUp = () => {
       return;
     }
     try {
-      const response = await api.post(
-        SIGNUP_URL,
-        JSON.stringify({ email: user, password: pwd, name: "tahrer" }),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      );
-      console.log(response?.data);
-      console.log(response);
-      console.log(JSON.stringify(response));
+      const newUser = await signup({
+        email: user,
+        password: pwd,
+        name: "tahrer",
+      }).unwrap();
+
+      console.log(newUser);
       setSuccess(true);
       //clear state and controlled inputs
       //need value attrib on inputs for this
@@ -95,7 +88,7 @@ const SignUp = () => {
       if (!err?.response) {
         setErrMsg("No Server Response");
       } else if (err.response?.status === 409) {
-        setErrMsg("Username Taken");
+        setErrMsg("Email is already exist!");
       } else {
         setErrMsg("Registration Failed");
       }
@@ -104,26 +97,18 @@ const SignUp = () => {
   };
 
   return (
-    <div className={`pageContainer signupPage ${theme}`}>
+    <>
       {success ? (
-        <section>
+        <section className={`pageContainer signupPage ${theme}`}>
           <h1>Success!</h1>
           <p>
             <a href="#">Sign In</a>
           </p>
         </section>
       ) : (
-        <section>
-          <p
-            ref={errRef}
-            className={errMsg ? "errmsg" : "offscreen"}
-            aria-live="assertive"
-          >
-            {errMsg}
-          </p>
-
+        <section className={`innerContainer authPage light`}>
           <h1>Registor</h1>
-          <form onSubmit={handleSubmit}>
+          <form>
             <Label
               htmlFor={"username"}
               valid1={validName}
@@ -144,7 +129,7 @@ const SignUp = () => {
             />
             <Instructions
               className={userFocus && user && !validName}
-              id="uidnote"
+              id="username"
             />
             <Label
               htmlFor={"password"}
@@ -158,7 +143,6 @@ const SignUp = () => {
               value={pwd}
               required
               autoComplete="off"
-
               aria-invalid={validPwd ? "false" : "true"}
               aria-describedby="pwdnote"
               onFocus={() => setPwdFocus(true)}
@@ -167,7 +151,7 @@ const SignUp = () => {
             <Instructions
               content={"pwd"}
               className={pwdFocus && !validPwd}
-              id={"pwdnote"}
+              id={"password"}
             />
             <Label
               htmlFor={"confirm_pwd"}
@@ -186,31 +170,43 @@ const SignUp = () => {
               onFocus={() => setPwdFocus(true)}
               onBlur={() => setMatchFocus(false)}
               autoComplete="off"
-
             />
             <Instructions
               content={"confirmnote"}
               className={matchFocus && !validMatch}
-              id={"confirmnote"}
+              id={"confirmPwd"}
             />
-            <button
-              disabled={!validName || !validPwd || !validMatch ? true : false}
+            <p
+              ref={errRef}
+              className={errMsg ? "errmsg" : "offscreen"}
+              aria-live="assertive"
             >
-              Sign Up
-            </button>
+              {errMsg}
+            </p>
+
+            <div className="singleBtnContainer">
+              <div
+                disabled={disableClick}
+                className={` mainBtns columnFlex hoverable ${
+                  disableClick ? "disabled" : ""
+                }`}
+                onClick={handleSubmit}
+              >
+                {isLoading ? "Loading ...." : " Sign up"}
+              </div>
+            </div>
           </form>
 
           <p>
             Already registered?
             <br />
             <span className="line">
-              {/*put router link here*/}
-              <a href="#">Sign In</a>
+              <a href="#">Login</a>
             </span>
           </p>
         </section>
       )}
-    </div>
+    </>
   );
 };
 

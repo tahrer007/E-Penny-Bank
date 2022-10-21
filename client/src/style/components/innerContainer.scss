@@ -67,12 +67,12 @@
 
 .light {
   background-color: $sectionBg;
-
-  header,
-  main,
-  footer {
-    background-color: $mainSectionsBg;
-    //border: 2px solid $border;
+  .innerContainer {
+    header,
+    main,
+    footer {
+      background-color: $mainSectionsBg;
+    }
   }
 
   .title {
@@ -84,13 +84,14 @@
 }
 .dark {
   background-color: $sectionBgDark;
-
-  header,
-  main,
-  footer {
-    background-color: $mainSectionsBgDark;
-    // border: 1px solid $borderDark;
+  .innerContainer {
+    header,
+    main,
+    footer {
+      background-color: $mainSectionsBgDark;
+    }
   }
+
   .title {
     color: $titleDark;
   }

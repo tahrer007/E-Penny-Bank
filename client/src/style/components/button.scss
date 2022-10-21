@@ -1,67 +1,49 @@
 @use "../abstracts/global" as *;
 @use "style/abstracts/colors" as *;
 
-button {
-  padding: 0.7em 1.2em;
-  border: unset;
-  border-radius: 15px;
-  color: #212121;
-  z-index: 1;
-  background: #e8e8e8;
-  position: relative;
-  font-weight: 1000;
-  font-size: $fontSizeBtn;
-  transition: all 250ms;
-  overflow: hidden;
-  width: 100%;
-  cursor: pointer;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
-  text-align: center;
-  margin-top: 1rem;
-
-  @media (orientation: portrait) and (max-width: $smallScreen) {
-    font-size: $fontSizeBtnMobile;
-  }
-
-  @media (orientation: landScape) and (max-width: $landScapeWidth) {
-    font-size: $fontSizeBtnMobile;
-  }
-}
-
 .mainBtns {
   border-radius: 32% 68% 55% 45% / 53% 35% 65% 47%;
   display: flex;
   flex-direction: column;
   cursor: pointer;
-   
 }
-
-.disabled{
+//TODO : add theme to disabled btns 
+.disabled {
   pointer-events: none;
   background-color: $disabled;
 }
 
-button::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 0;
-  border-radius: 15px;
-  background-color: #212121;
-  z-index: -1;
-  -webkit-box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-  box-shadow: 4px 8px 19px -3px rgba(0, 0, 0, 0.27);
-  transition: all 250ms;
-}
-
-button:hover {
-  color: #e8e8e8;
-}
-
-button:hover::before {
+.singleBtnContainer { 
+  display: grid;
+  width: inherit;
+  height: 30%;
   width: 100%;
+  grid-template-columns:  0.2fr;
+  justify-content: center;
+  gap: 3vmin;
+  margin: auto;
+  padding: 1em;
+  color: inherit;
+  font-size: inherit;
+
+  .authBtn {
+    font: inherit;
+      font-size: inherit;
+      color: inherit;
+  }
+
+
+}
+.twoBtnsContainer {
+  display: grid;
+  width: inherit;
+  height: 100%;
+  grid-template-columns: repeat(2, 0.2fr);
+  justify-content: center;
+  gap: 3vmin;
+  margin: auto;
+  
+}
+
+.threeInnerBtns {
 }

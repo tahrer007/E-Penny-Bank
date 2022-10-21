@@ -1,26 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { INSTRACTIONS } from "constants/const";
 import "./instructions.scss";
-const instructions = {
-  username: ["Valid e-mail address."],
-  password: [
-    " 8 to 24 characters.",
-    "Must include uppercase and lowercase letters, a number and a special character.",
-    "Allowed special characters: @ ! #",
-  ],
-  confirmPwd: ["Must match the first password input field."],
-  boxName :[" 8 to 24 characters."] ,
-  exactDeposit :["please add amount between 1 to 100"] , 
-};
-const Instructions = ({ className, id }) => {
-  const [textArr, SetTextArr] = useState(instructions[id] || null);
 
-  const content = instructions[id].map((item) => <li key={item}>{item}</li>);
+const Instructions = ({ className, id }) => {
+  const content = INSTRACTIONS[id].map((item) => <li key={item}>{item}</li>);
 
   return (
     <div id={id} className={className ? "instructions" : "offscreen"}>
-       <FontAwesomeIcon icon={faInfoCircle} />
+      <FontAwesomeIcon icon={faInfoCircle} />
       <ul>{content}</ul>
     </div>
   );

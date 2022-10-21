@@ -1,17 +1,11 @@
-/*import "./app.scss";
-import Welcome from "components/pages/welcome/Welcome";
-import Home from "./components/pages/home/Home";
-import Deposit from "./components/pages/deposit/Deposit";
-import NavBar from "components/navbar/NavBar";
-import LogIn from "./components/pages/login/LogIn";
-import SignUp from "./components/pages/signUp/SignUp";
-import RequireAuth from "components/pages/requireAuth/RequireAuth";
-import { BrowserRouter, Routes, Route } from "react-router-dom";*/
+
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Public from "./components/pages/pubic/Public";
 import Login from "./components/pages/login/LogIn";
+import SignUp from "./components/pages/signUp/SignUp";
+
 import RequireAuth from "./features/auth/RequireAuth";
 import Welcome from "./components/pages/welcome/Welcome";
 import BoxDetails from "./components/pages/boxDetails/BoxDetails";
@@ -40,6 +34,7 @@ function App() {
             {/* public routes */}
             <Route index element={<Public />} />
             <Route path="login" element={<Login />} />
+            <Route path="signup" element={<SignUp />} />
 
             {/* protected routes */}
             <Route element={<RequireAuth />}>

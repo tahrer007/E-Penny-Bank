@@ -10,7 +10,7 @@ const makeKey = () => {
   return result;
 };
 
-const checkId =(userId,adminId) =>userId===adminId ;
+const checkId = (userId, adminId) => userId === adminId;
 
-
-export { makeKey ,checkId };
+const pwdLength = pwd => pwd.length >= 4 && pwd.length <= 24;
+export { makeKey, checkId ,pwdLength };
