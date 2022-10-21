@@ -26,7 +26,7 @@ function DepositsLogs() {
   const { box } = location.state;
   const { boxName, type, adminId, depositsHistory } = box;
   const [showAmount, setShowAmount] = useState(null);
-  const [theme] = useUserInfo();
+  const {theme} = useUserInfo();
 
   const changeShow = (id) => {
     setShowAmount(id);

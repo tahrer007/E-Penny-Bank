@@ -17,39 +17,5 @@
     box-sizing: border-box;
     height: 100%;
   }
-  @media (orientation: portrait) and (max-width: $smallScreen) {
-    width: 90vw;
-    height: max-content;
-    border-radius: 2em;
-    padding: 2em;
-    background-color: chocolate;
-    section {
-      main {
-        h1 {
-          line-height: 1.5em;
-        }
-      }
-    }
-  }
-  /* @media (orientation: landScape) and (max-width: $landScapeWidth) {
-    width: 80%;
-    height: 95%;
-    border-radius: 2em;
-    background-color: pink;
-    line-height: 1rem;
-    section {
-      main {
-        h1 {
-          // font-size: 1em;
-          margin: 5px;
-        }
-      }
-      header {
-        .logoWrapper {
-          width: 21vmin;
-          height: 21vmin;
-        }
-      }
-    }
-  }*/
 }
+

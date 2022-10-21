@@ -75,7 +75,7 @@ const SignUp = () => {
     // if button enabled with JS hack
     const v1 = validator.isEmail(email);
     const v2 = PWD_REGEX.test(pwd);
-    if (!v1 || !v2) {
+    if (!v1 || !v2 || !name) {
       setErrMsg("Invalid Entry");
       return;
     }
@@ -83,7 +83,7 @@ const SignUp = () => {
       const newUser = await signup({
         email,
         password: pwd,
-        name: "tahrer",
+        name,
       }).unwrap();
 
       console.log(newUser);
@@ -115,7 +115,7 @@ const SignUp = () => {
           </p>
         </section>
       ) : (
-        <section className={`innerContainer authPage light`}>
+        <section className={`innerContainer authPage  ${theme}`}>
           <h1>Registor</h1>
           <form>
             <Label
@@ -235,7 +235,7 @@ const SignUp = () => {
             Already registered?
             <br />
             <span className="line">
-              <a href="#">Login</a>
+              <a href="/login">Login</a>
             </span>
           </p>
         </section>

@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-
 import useUserInfo from "hooks/useUserInfo";
 import SharedBoxDetails from "components/boxDetails/sharedBoxDetails/SharedBoxDetails";
 import { useLocation } from "react-router-dom";
 import { changeDateFormate } from "utils/dateAndTimeFormate";
-import "./boxDetails.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faUser, faUsers } from "@fortawesome/free-solid-svg-icons";
 import InnerButton from "components/boxDetails/innerButtons/InnerButton";
 import Header from "components/header/Header";
+import "./boxDetails.scss";
 const SavingBox = () => {
   const location = useLocation();
   const { box } = location.state;

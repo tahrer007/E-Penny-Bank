@@ -71,7 +71,7 @@ const LogIn = () => {
     }
   };
   return (
-    <section className={`innerContainer authPage light`}>
+    <section className={`innerContainer authPage ${theme}`}>
       <h1>Log in</h1>
       <form>
         <Label

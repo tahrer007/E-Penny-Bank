@@ -1,4 +1,5 @@
-import React from "react";
+import React , {useState}from "react";
+import ShowDeposits from "components/boxDetails/showDeposits/ShowDeposits";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { checkId } from "utils/helper";
 import "./detailsInnerBtns.scss";
 function InnerButton({ box }) {
+  const [showDeposits ,setShowDeposits] = useState(false) ; 
   const user = useSelector(selectCurrentUser);
   const isAdmin = checkId(user._id, box.adminId);
   const navigate = useNavigate();
