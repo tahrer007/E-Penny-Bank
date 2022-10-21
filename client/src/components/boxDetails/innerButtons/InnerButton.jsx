@@ -1,4 +1,4 @@
-import React , {useState}from "react";
+import React, { useState } from "react";
 import ShowDeposits from "components/boxDetails/showDeposits/ShowDeposits";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { checkId } from "utils/helper";
 import "./detailsInnerBtns.scss";
 function InnerButton({ box }) {
-  const [showDeposits ,setShowDeposits] = useState(false) ; 
+  const [showDeposits, setShowDeposits] = useState(false);
   const user = useSelector(selectCurrentUser);
   const isAdmin = checkId(user._id, box.adminId);
   const navigate = useNavigate();
@@ -28,19 +28,19 @@ function InnerButton({ box }) {
         Deposit
       </div>
       <div
-        className={`mainBtns columnFlex hoverable ${
-          !isAdmin && !box?.isAllowedToReveal && "disabled"
+        className={`mainBtns columnFlex  ${
+          !isAdmin && !box?.isAllowedToReveal ? "disabled" : "hoverable"
         }`}
-        onClick={() => console.log("reveal")}
+        onClick={() => setShowDeposits(true)}
       >
         <FontAwesomeIcon icon={faFaceSurprise} />
         Reveal
       </div>
-      <div className="mainBtns columnFlex hoverable"
-       onClick={() => navigate(`../logs/${box._id}`, { state: { box } })}
-      
+      <div
+        className="mainBtns columnFlex hoverable"
+        onClick={() => navigate(`../logs/${box._id}`, { state: { box } })}
       >
-        <FontAwesomeIcon icon={faCalendarDays}  />
+        <FontAwesomeIcon icon={faCalendarDays} />
         History
       </div>
     </div>

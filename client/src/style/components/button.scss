@@ -7,18 +7,29 @@
   flex-direction: column;
   cursor: pointer;
 }
-//TODO : add theme to disabled btns 
+//TODO : add theme to disabled btns
+
 .disabled {
   pointer-events: none;
-  background-color: $disabled;
 }
 
-.singleBtnContainer { 
+.light {
+  .disabled {
+    background-color: $disabled;
+  }
+}
+.dark {
+  .disabled {
+    background-color: $disabledDark;
+  }
+}
+
+.singleBtnContainer {
   display: grid;
   width: inherit;
   height: 30%;
   width: 100%;
-  grid-template-columns:  0.2fr;
+  grid-template-columns: 0.2fr;
   justify-content: center;
   gap: 3vmin;
   margin: auto;
@@ -28,11 +39,9 @@
 
   .authBtn {
     font: inherit;
-      font-size: inherit;
-      color: inherit;
+    font-size: inherit;
+    color: inherit;
   }
-
-
 }
 .twoBtnsContainer {
   display: grid;
@@ -42,7 +51,6 @@
   justify-content: center;
   gap: 3vmin;
   margin: auto;
-  
 }
 
 .threeInnerBtns {
