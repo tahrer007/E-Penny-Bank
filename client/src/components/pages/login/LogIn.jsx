@@ -6,7 +6,7 @@ import Instructions from "components/reusables/form/instructions/Instructions";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "features/auth/authSlice";
 import { useLoginMutation } from "features/auth/authApiSlice";
-import { pwdLength } from "utils/helper";
+import { textLength } from "utils/helper";
 import useUserInfo from "hooks/useUserInfo";
 import "./logIn.scss";
 
@@ -40,7 +40,7 @@ const LogIn = () => {
     setValidUserName(validator.isEmail(user));
   }, [user]);
   useEffect(() => {
-    setValidPwd(pwdLength(pwd));
+    setValidPwd(textLength(pwd));
   }, [pwd]);
 
   useEffect(() => {

@@ -13,8 +13,8 @@ const CONFIRMEDPASSWORD ="confirmedPassword" ;
 const RANDOM = "random";
 const EXACT = "exact";
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const PWD_LENGTH_MIN = 4 ; 
-const PWD_LENGTH_MAX = 24 ; 
+const TEXT_LENGTH_MIN = 4 ; 
+const TEXT_LENGTH_MAX = 24 ; 
 
 const INSTRACTIONS = {
   username: ["Valid e-mail address."],
@@ -24,7 +24,7 @@ const INSTRACTIONS = {
     "Allowed special characters: @ ! #",
   ],
   confirmPwd: ["Must match the first password input field."],
-  boxName :[" 8 to 24 characters."] ,
+  name :[" 4 to 24 characters."] ,
   exactDeposit :["please add amount between 1 to 100"] , 
 };
 
@@ -41,8 +41,9 @@ export {
   CONFIRMEDPASSWORD , 
   NAME ,
   RANDOM ,
-  EXACT ,PWD_REGEX ,
+  EXACT ,
+  PWD_REGEX ,
   INSTRACTIONS ,
-  PWD_LENGTH_MIN ,
-  PWD_LENGTH_MAX
+  TEXT_LENGTH_MIN ,
+  TEXT_LENGTH_MAX
 };

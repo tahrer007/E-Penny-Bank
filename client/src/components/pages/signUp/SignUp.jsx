@@ -6,11 +6,10 @@ import { useNavigate } from "react-router-dom";
 import Label from "components/reusables/form/label/Label";
 import Instructions from "components/reusables/form/instructions/Instructions";
 import { PWD_REGEX } from "constants/const";
-import { pwdLength } from "utils/helper";
+import { textLength } from "utils/helper";
 import { useSignupMutation } from "features/auth/authApiSlice";
-import { useDispatch } from "react-redux";
-
 import useUserInfo from "hooks/useUserInfo";
+
 import "./SignUp";
 const SIGNUP_URL = "auth/signup";
 const SignUp = () => {
@@ -19,9 +18,14 @@ const SignUp = () => {
   const navigate = useNavigate();
   const { theme } = useUserInfo();
   const [signup, { isLoading }] = useSignupMutation();
-  const [user, setUser] = useState("");
+
+  const [name, setName] = useState("");
+  const [nameFocus, setNameFocus] = useState(false);
   const [validName, setValidName] = useState(false);
-  const [userFocus, setUserFocus] = useState(false);
+
+  const [email, setUser] = useState("");
+  const [validEmail, setValidEmail] = useState(false);
+  const [emailFocus, setEmailFocus] = useState(false);
 
   const [pwd, setPwd] = useState("");
   const [validPwd, setValidPwd] = useState(false);
@@ -34,24 +38,29 @@ const SignUp = () => {
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
 
-  const disableClick = !validName || !validPwd || !validMatch ? true : false;
+  const disableClick =
+    !validEmail || !validPwd || !validMatch || !name ? true : false;
 
   useEffect(() => {
     userRef.current.focus();
   }, []);
 
   useEffect(() => {
-    setValidName(validator.isEmail(user));
-  }, [user]);
+    setValidName(textLength(name));
+  }, [name]);
 
   useEffect(() => {
-    setValidPwd(pwdLength(pwd));
+    setValidEmail(validator.isEmail(email));
+  }, [email]);
+
+  useEffect(() => {
+    setValidPwd(PWD_REGEX.test(pwd));
     setValidMatch(pwd === matchPwd);
   }, [pwd, matchPwd]);
 
   useEffect(() => {
     setErrMsg("");
-  }, [user, pwd, matchPwd]);
+  }, [email, pwd, matchPwd, name]);
 
   useEffect(() => {
     if (success) {
@@ -64,7 +73,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // if button enabled with JS hack
-    const v1 = validator.isEmail(user);
+    const v1 = validator.isEmail(email);
     const v2 = PWD_REGEX.test(pwd);
     if (!v1 || !v2) {
       setErrMsg("Invalid Entry");
@@ -72,7 +81,7 @@ const SignUp = () => {
     }
     try {
       const newUser = await signup({
-        email: user,
+        email,
         password: pwd,
         name: "tahrer",
       }).unwrap();
@@ -102,7 +111,7 @@ const SignUp = () => {
         <section className={`pageContainer signupPage ${theme}`}>
           <h1>Success!</h1>
           <p>
-            <a href="#">Sign In</a>
+            <a href="#">Log in</a>
           </p>
         </section>
       ) : (
@@ -110,31 +119,55 @@ const SignUp = () => {
           <h1>Registor</h1>
           <form>
             <Label
-              htmlFor={"username"}
-              valid1={validName}
-              valid2={validName || !user}
+              labelName={"name: "}
+              htmlFor={"name"}
+              validInput={name}
+              invalidInput={!validName && name}
+            />
+            <input
+              type="text"
+              id="name"
+              onChange={(e) => setName(e.target.value)}
+              value={name}
+              ref={userRef}
+              required
+              aria-invalid={validName ? "false" : "true"}
+              aria-describedby="namenote"
+              onFocus={() => setNameFocus(true)}
+              onBlur={() => setMatchFocus(false)}
+              autoComplete="off"
+            />
+            <Instructions
+              className={nameFocus && name && !validName}
+              id="name"
+            />
+            <Label
+              labelName={"email :"}
+              htmlFor={"email"}
+              validInput={validEmail}
+              invalidInput={!validEmail && email}
             />
             <input
               type="text"
               id="username"
-              ref={userRef}
               autoComplete="off"
               onChange={(e) => setUser(e.target.value)}
-              value={user}
+              value={email}
               required
-              aria-invalid={validName ? "false" : "true"}
+              aria-invalid={validEmail ? "false" : "true"}
               aria-describedby="uidnote"
-              onFocus={() => setUserFocus(true)}
-              onBlur={() => setUserFocus(false)}
+              onFocus={() => setEmailFocus(true)}
+              onBlur={() => setEmailFocus(false)}
             />
             <Instructions
-              className={userFocus && user && !validName}
+              className={emailFocus && email && !validEmail}
               id="username"
             />
             <Label
+              labelName={"Password: "}
               htmlFor={"password"}
-              valid1={validPwd}
-              valid2={validPwd || !pwd}
+              validInput={validPwd}
+              invalidInput={!validPwd && pwd}
             />
             <input
               type="password"
@@ -150,14 +183,14 @@ const SignUp = () => {
             />
             <Instructions
               content={"pwd"}
-              className={pwdFocus && !validPwd}
+              className={pwdFocus && !validPwd && pwd}
               id={"password"}
             />
             <Label
-              htmlFor={"confirm_pwd"}
-              valid1={validPwd}
-              valid2={validPwd || !pwd}
-              text={"Confirm Password:"}
+              labelName={"Confirm Password: "}
+              htmlFor={"pwdConfirm"}
+              validInput={validMatch && matchPwd }
+              invalidInput={!validMatch && matchPwd }
             />
             <input
               type="password"
@@ -173,9 +206,10 @@ const SignUp = () => {
             />
             <Instructions
               content={"confirmnote"}
-              className={matchFocus && !validMatch}
+              className={matchFocus && !matchPwd}
               id={"confirmPwd"}
             />
+
             <p
               ref={errRef}
               className={errMsg ? "errmsg" : "offscreen"}

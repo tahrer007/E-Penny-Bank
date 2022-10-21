@@ -1,4 +1,4 @@
-import { CHARACTERS, KEY_LENGTH } from "constants/const";
+import { CHARACTERS, KEY_LENGTH ,TEXT_LENGTH_MAX ,TEXT_LENGTH_MIN } from "constants/const";
 const makeKey = () => {
   let result = "";
 
@@ -12,5 +12,5 @@ const makeKey = () => {
 
 const checkId = (userId, adminId) => userId === adminId;
 
-const pwdLength = pwd => pwd.length >= 4 && pwd.length <= 24;
-export { makeKey, checkId ,pwdLength };
+const textLength = text => text.length >= TEXT_LENGTH_MIN && text.length <= TEXT_LENGTH_MAX;
+export { makeKey, checkId ,textLength };
