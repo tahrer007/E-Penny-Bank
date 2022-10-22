@@ -12,17 +12,16 @@ import { useSelector } from "react-redux";
 import { selectCurrentUser } from "features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
 import { checkId } from "utils/helper";
-import "./detailsInnerBtns.scss";
 
 function InnerButton({ box }) {
   const [showDeposits, setShowDeposits] = useState(false);
   const user = useSelector(selectCurrentUser);
   const isAdmin = checkId(user._id, box.adminId);
   const navigate = useNavigate();
-  const hideWindow =()=>setShowDeposits(false) ; 
+  const hideWindow = () => setShowDeposits(false);
 
   return (
-    <div className="detailsInnerBtns">
+    <div className="threeBtnsContainer">
       <div
         className="mainBtns columnFlex hoverable"
         onClick={() => navigate(`../deposit/${box._id}`, { state: { box } })}
@@ -46,7 +45,9 @@ function InnerButton({ box }) {
         <FontAwesomeIcon icon={faCalendarDays} />
         History
       </div>
-      { showDeposits ? <ShowDeposits hideWindow={hideWindow} deposits={box.totalDeposits} /> : null }
+      {showDeposits ? (
+        <ShowDeposits hideWindow={hideWindow} deposits={box.totalDeposits} />
+      ) : null}
     </div>
   );
 }

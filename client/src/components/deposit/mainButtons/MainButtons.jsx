@@ -7,19 +7,12 @@ import {
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "features/auth/authSlice";
 import { useDepositMutation } from "features/boxes/boxesSlice";
-import { useNavigate, useLocation } from "react-router-dom";
-
-import "./mainBtnsD.scss";
+import { useNavigate } from "react-router-dom";
 
 function MainButtons({ value, boxId }) {
-
   const user = useSelector(selectCurrentUser);
-  const location = useLocation();
-  const navigate = useNavigate() ; 
-  console.log(location);
-  //const from = location.state?.from?.pathname;
-  const from = `../../BoxesList`;
-  console.log(from);
+  const navigate = useNavigate();
+
   const [deposit, { isLoading }] = useDepositMutation();
 
   const canSave = value && !isLoading;
@@ -33,7 +26,7 @@ function MainButtons({ value, boxId }) {
         }).unwrap();
         console.log(test);
 
-        navigate(from);
+        navigate(-1);
       } catch (err) {
         console.error("Failed to save the post", err);
       }
@@ -41,9 +34,8 @@ function MainButtons({ value, boxId }) {
     //TODO : update main scereen start after deposit !!
   };
 
-  //const isAdmin = checkId(user._id, box.adminId);
   return (
-    <div className="depositInnerBtns">
+    <div className="twoBtnsContainer">
       <div
         className={`mainBtns columnFlex ${canSave ? "hoverable" : "disabled"} `}
         onClick={onSaveClicked}
@@ -55,7 +47,7 @@ function MainButtons({ value, boxId }) {
         className={`mainBtns columnFlex ${
           isLoading ? "disabled" : "hoverable"
         } `}
-        onClick={()=>navigate(-1)}
+        onClick={() => navigate(-1)}
       >
         <FontAwesomeIcon icon={faTrashCan} />
         Cancel

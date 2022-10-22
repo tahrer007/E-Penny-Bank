@@ -45,14 +45,22 @@
 }
 .twoBtnsContainer {
   display: grid;
-  // width: inherit;
   height: 100%;
   grid-template-columns: repeat(2, 0.2fr);
   justify-content: center;
   gap: 3vmin;
   margin: auto;
   width: 100%;
+  box-sizing: border-box;
+  padding: 0.5em;
 }
 
-.threeInnerBtns {
+.threeBtnsContainer {
+  display: grid;
+  height: 100%;
+  grid-template-columns: repeat(3, 0.2fr);
+  justify-content: center;
+  box-sizing: border-box;
+  gap: 3vmin;
+  padding: 0.5em;
 }

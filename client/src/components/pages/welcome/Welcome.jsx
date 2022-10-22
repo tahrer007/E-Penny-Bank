@@ -28,14 +28,10 @@ const Welcome = () => {
   } = useGetBoxesByUserIdQuery(user._id);
 
   let content;
-  if (!isLoading) {
+  if (isLoading) {
     content = <Spinner />;
   } else if (isSuccess) {
-    content = (
-      <main className="columnFlex">
-        <HomeBody />
-      </main>
-    );
+    content = <HomeBody />;
   } else if (isError) {
     content = <Error />;
   }
@@ -58,10 +54,7 @@ const Welcome = () => {
           </div>
         </div>
       </header>
-      <main>
-      {content}
-      </main>
-      
+      <main className="columnFlex">{content}</main>
     </section>
   );
 };
