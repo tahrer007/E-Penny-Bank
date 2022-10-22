@@ -5,6 +5,8 @@ import { selectUserById } from "features/users/userSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserNinja } from "@fortawesome/free-solid-svg-icons";
 import { checkId } from "utils/helper";
+import { capitalizeAll } from "utils/helper";
+
 import "./usersList.scss";
 
 function UsersList({ boxDetails }) {
@@ -17,7 +19,7 @@ function UsersList({ boxDetails }) {
 
     return (
       <div className="listItem userItem hoverable">
-        {selectedUser.name}
+        {capitalizeAll(selectedUser.name)}
 
         {isAdmin && (
           <FontAwesomeIcon icon={faUserNinja} className="adminIcon" />

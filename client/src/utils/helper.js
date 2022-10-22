@@ -1,4 +1,9 @@
-import { CHARACTERS, KEY_LENGTH ,TEXT_LENGTH_MAX ,TEXT_LENGTH_MIN } from "constants/const";
+import {
+  CHARACTERS,
+  KEY_LENGTH,
+  TEXT_LENGTH_MAX,
+  TEXT_LENGTH_MIN,
+} from "constants/const";
 const makeKey = () => {
   let result = "";
 
@@ -11,6 +16,23 @@ const makeKey = () => {
 };
 
 const checkId = (userId, adminId) => userId === adminId;
+const textLength = (text) =>
+  text.length >= TEXT_LENGTH_MIN && text.length <= TEXT_LENGTH_MAX;
 
-const textLength = text => text.length >= TEXT_LENGTH_MIN && text.length <= TEXT_LENGTH_MAX;
-export { makeKey, checkId ,textLength };
+const capitalize1stChar = (str) => {
+  if (!str) return null;
+  const str2 = str.charAt(0).toUpperCase() + str.slice(1);
+  return str2;
+};
+
+const capitalizeAll = (str) => {
+  console.log(str);
+  const arr = str.split(" ");
+
+  const capitalized = arr.map((str) => capitalize1stChar(str));
+  console.log(capitalized);
+
+  return capitalized.join(" ");
+};
+
+export { makeKey, checkId, textLength, capitalize1stChar, capitalizeAll };

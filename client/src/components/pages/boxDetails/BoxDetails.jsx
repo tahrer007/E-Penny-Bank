@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faUser, faUsers } from "@fortawesome/free-solid-svg-icons";
 import InnerButton from "components/boxDetails/innerButtons/InnerButton";
 import Header from "components/header/Header";
+
 import "./boxDetails.scss";
 const SavingBox = () => {
   const location = useLocation();

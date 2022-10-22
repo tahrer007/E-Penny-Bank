@@ -3,8 +3,7 @@ import "./header.scss";
 import SvgLogo from "components/Svg/SvgLogo";
 import SvgHome from "components/Svg/SvgHome";
 import { useNavigate } from "react-router-dom";
-
-//welcome
+import { capitalizeAll } from "utils/helper"; //welcome
 //box title
 
 const titles = {
@@ -12,12 +11,12 @@ const titles = {
   boxesList: "Boxes list",
   deposit: "Lets save money",
   newBox: "Create New Box",
-  profile :"Profile" ,
-  joinBox : "Join Box"
+  profile: "Profile",
+  joinBox: "Join Box",
 };
 
 function Header({ text, from }) {
-  const title = text || titles[from];
+  const title = capitalizeAll(text || titles[from]);
 
   const navigate = useNavigate();
   return (
