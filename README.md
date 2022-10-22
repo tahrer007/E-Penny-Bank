@@ -16,7 +16,7 @@ So the app offers two main unique features:
 ## From the App
 * ### desktop
 ** Dark Theme 
-![home] (https://i.ibb.co/1fBR23b/Screenshot-100.png)
+![home](https://i.ibb.co/1fBR23b/Screenshot-100.png)
 ![desktop2](/client/src/assets/images/readMe/desktop2.png "Optional Title")
 *  ### mobile (only landscape)
 ![mobile](/client/src/assets/images/readMe/mobile.png "Optional Title")
