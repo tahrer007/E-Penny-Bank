@@ -16,7 +16,7 @@ So the app offers two main unique features:
 ## From the App
 ### Dark and light theme
 * ### desktop
- Dark Theme 
+
 ![home](https://i.ibb.co/1fBR23b/Screenshot-100.png)
 ![boxdetails](https://i.ibb.co/99PhTgy/Screenshot-99.png)
 ![deposit](https://i.ibb.co/zfYv6d6/Screenshot-101.png)
@@ -26,29 +26,22 @@ So the app offers two main unique features:
 ![boxes List](https://i.ibb.co/C1KmL3s/Screenshot-103.png)
 ![new box](https://i.ibb.co/RQcPzVd/Screenshot-104.png)
 
-## technology 
-### client 
+## Front-End 
+### technologies
 * React 
-* CSS3
+* Sass
 * JavaScript
- #### Libraries
-* @reach/combobox
-* react-google-places-autocomplete
-* react-google-maps/api
-* axios 
-* socket.io-client
-### server side 
-* xpress 
-* cors
-* socket.io
+* redux toolKit
+### Back-End 
+* nodjs 
+* express 
+* MongoDB Atlas Database
+* Jwt authentication
 ### dataBase 
-* MongoDB Atlas
-
+* database relationships diagram
+![diagram](https://i.ibb.co/9VMtc9B/diagram.png)
 
 ## Todos 
 * send notifications to subscribers 
 * provide help in emergency cases (chat app).
 
-## long term targets?
-to collaborate with the authorities and go global.
-![global](/client/src/assets/images/global.jpg "Optional Title")
