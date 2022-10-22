@@ -1,7 +1,7 @@
  
 
-<img src="/client/src/assets/images/logo.png" width="300" height="200">
-# e-Penny Bank
+<img src="/client/src/assets/images/logo.png" width="100%" height="200">
+
 
 ## About the App
 Since becoming a cashless person, I miss the experience of saving in a piggy bank.
