@@ -1,7 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setCredentials, logOut } from "features/auth/authSlice";
 
-const baseUrl = "http://localhost:5000";
+//const baseUrl = "http://localhost:5000";
+const baseUrl =
+  process.env.NODE_ENV === "production" ? "/" : "http://localhost:5000/";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: baseUrl,
