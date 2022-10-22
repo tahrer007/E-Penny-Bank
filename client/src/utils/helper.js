@@ -26,11 +26,9 @@ const capitalize1stChar = (str) => {
 };
 
 const capitalizeAll = (str) => {
-  console.log(str);
   const arr = str.split(" ");
 
   const capitalized = arr.map((str) => capitalize1stChar(str));
-  console.log(capitalized);
 
   return capitalized.join(" ");
 };

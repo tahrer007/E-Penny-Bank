@@ -36,7 +36,7 @@ function InnerButton({ box }) {
         onClick={() => setShowDeposits(true)}
       >
         <FontAwesomeIcon icon={faFaceSurprise} />
-        Reveal
+        Open 
       </div>
       <div
         className="mainBtns columnFlex hoverable"

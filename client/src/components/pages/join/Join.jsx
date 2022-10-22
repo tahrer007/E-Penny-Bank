@@ -6,16 +6,19 @@ import useUserInfo from "hooks/useUserInfo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudArrowUp, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { useAddUserMutation } from "features/boxes/boxesSlice";
+import { capitalizeAll } from "utils/helper"; //welcome
+
 
 import Header from "components/header/Header";
 import "./join.scss";
+import { capitalize } from "lodash";
 
 const JoinBox = () => {
   const { theme, user } = useUserInfo();
   const navigate = useNavigate();
   const userRef = useRef();
   const errRef = useRef();
-  const [errMsg, setErrMsg] = useState("");
+  const [msg, setMsg] = useState("");
 
   const [boxKey, setBoxKey] = useState("");
   const [validBoxKey, setValidBoxKey] = useState(false);
@@ -24,7 +27,7 @@ const JoinBox = () => {
 
   useEffect(() => {
     setValidBoxKey(boxKey.length === 5 ? true : false);
-    setErrMsg("")
+    setMsg("")
   }, [boxKey]);
 
   
@@ -35,12 +38,16 @@ const JoinBox = () => {
   const handleSave = async () => {
     if (canSave) {
       try {
-        const test = await addUser({ boxKey, userId: user._id }).unwrap();
-        console.log(test);
+        const box = await addUser({ boxKey, userId: user._id }).unwrap();
+        if(!box)setMsg("Not valid key !") ;
+        else {
+          setMsg(`Success ! now you are a memeber in ${capitalizeAll(box.boxName)} box`)
+        }
+        console.log(box);
 
-        navigate("../BoxesList");
+       // navigate("../BoxesList");
       } catch (err) {
-        setErrMsg("Failed to particpate !! ");
+        setMsg("Failed to particpate !! ");
       }
     }
   };
@@ -49,7 +56,7 @@ const JoinBox = () => {
     <section className={`innerContainer createBoxSection ${theme}`}>
       <header>
         <Header from={"joinBox"} />
-        <div className="otherDetails">test</div>
+        <div className="otherDetails"></div>
       </header>
 
       <main>
@@ -70,6 +77,7 @@ const JoinBox = () => {
             required
             onFocus={() => setBoxKeyFocus(true)}
             onBlur={() => setBoxKeyFocus(false)}
+            placeholder="Type box key to join"
           />
           <Instructions
             className={BoxKeyFocus && boxKey && !validBoxKey}
@@ -77,10 +85,10 @@ const JoinBox = () => {
           />
           <p
             ref={errRef}
-            className={errMsg ? "errmsg" : "offscreen"}
+            className={msg ? "msg" : "offscreen"}
             aria-live="assertive"
           >
-            {errMsg}
+            {msg}
           </p>
         </div>
 
