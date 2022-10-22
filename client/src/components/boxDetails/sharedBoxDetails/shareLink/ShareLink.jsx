@@ -12,7 +12,8 @@ import "./shareLink.scss";
 function ShareLink({ boxKey, hideWindow }) {
   const qoute = "Lets join me and start saving together";
   const url = boxKey;
-  //boxkey
+//TODO generate link 
+
   return (
     <div className="window columnFlex">
       <div className="innerWindow">
