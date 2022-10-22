@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { MAX, MIN } from "constants/const";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoins, faEye } from "@fortawesome/free-solid-svg-icons";
+import { faCoins, faEye ,faEyeSlash , faDollar} from "@fortawesome/free-solid-svg-icons";
 import "./randomDeposit.scss";
 import MultiRangeSlider from "components/reusables/multiRangeSlider/MultiRangeSlider";
 
@@ -9,6 +9,7 @@ const RandomDeposit = ({ getValue }) => {
   const [value, setValue] = useState(null);
   const [minVal, setMin] = useState(MIN);
   const [maxVal, setMax] = useState(MAX);
+  const [showAmount, setShowAmount] = useState(false);
 
   const randomPicker = () => {
     const randomNum = Number(
@@ -23,22 +24,35 @@ const RandomDeposit = ({ getValue }) => {
     setMin(min);
     setMax(max);
   };
-  useEffect(() => {
-    console.log(minVal, maxVal);
-  }, [minVal, maxVal]);
-  const showAmount = () => console.log(value);
+
   return (
     <div className="randomWrapper">
       {<MultiRangeSlider min={MIN} max={MAX} onChange={handleRangeChange} />}
 
-      <div className={`show ${ value ? "hoverable" : "disabled"}`} onClick={showAmount}>
-        <FontAwesomeIcon icon={faEye} />
-        Show Amount
-      </div>
+      <div className="twoBtnsContainer">
+        <div
+          className={`mainBtns ${value ? "hoverable" : "disabled"}`}
+          onClick={() => setShowAmount(!showAmount)}
+        >
+          {!showAmount ? (
+            <>
+              <FontAwesomeIcon icon={faEye} /> Show
+            </>
+          ) : (
+            <>
+              <FontAwesomeIcon icon={faEyeSlash} /> Hide
+            </>
+          )}
+        </div>
 
-      <div className="random hoverable" onClick={randomPicker}>
-        <FontAwesomeIcon icon={faCoins} /> Get random number
+        <div className="mainBtns hoverable" onClick={randomPicker}>
+          <FontAwesomeIcon icon={faCoins} /> Random
+        </div>
       </div>
+      {showAmount ? <div className="amount">{value}  {" "}
+      
+      <FontAwesomeIcon icon={faDollar} />
+      </div> : null}
     </div>
   );
 };

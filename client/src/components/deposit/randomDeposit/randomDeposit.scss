@@ -1,19 +1,18 @@
 
 .randomWrapper {
   text-align: center;
- height:fit-content;
-  padding: 0.5rem;
+ height:max-content;
+  //padding: 0.5rem;
   box-sizing: border-box;
   margin-bottom: 10px;
   display: grid;
-  grid-template-columns:70% 15% 15% ;
+  grid-template-rows:repeat(3 ,1fr) ;
+  row-gap: 1em;
+  
  
-  .random ,.show{
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-direction: column;
-  }
-
+  //
+  //margin: auto;
+ .amount {
+ 
+ }
 }

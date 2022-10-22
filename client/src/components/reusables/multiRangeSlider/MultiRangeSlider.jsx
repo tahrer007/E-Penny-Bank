@@ -44,7 +44,7 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
   }, [minVal, maxVal, onChange]);
 
   return (
-    <div className={`container ${theme}`}>
+    <div className={`sliderWrapper`}>
       <input
         type="range"
         min={min}

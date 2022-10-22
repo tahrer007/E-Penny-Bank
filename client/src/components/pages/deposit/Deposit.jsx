@@ -8,7 +8,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import MainButtons from "components/deposit/mainButtons/MainButtons";
 import Header from "components/header/Header";
 import useUserInfo from "hooks/useUserInfo";
-import { RANDOM , EXACT } from "constants/const";
+import { RANDOM, EXACT } from "constants/const";
 import "./deposit.scss";
 
 const Deposit = () => {
@@ -19,16 +19,12 @@ const Deposit = () => {
   //const onChangeSelection = (e) => setRandomSlected(!randomSelected);
   const [value, setValue] = useState(null);
   //TODO:remove from the first time value
-  const {theme} = useUserInfo();
+  const { theme } = useUserInfo();
   const onChangeSelection = (e) => {
     setType(e.target.value);
     setValue(null);
   };
 
-  useEffect(() => {
-    console.log("teeeeeeeeeeeeeeeeeeeeeeeest")
-  }, [])
-  
   const getValue = (value) => setValue(value);
 
   return (
