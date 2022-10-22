@@ -1,6 +1,6 @@
  
 
-<img src="/client/src/assets/images/logo.png" width="50%" height="200">
+<img src="/client/src/assets/images/logo.png" width="50%">
 
 
 ## About the App
@@ -21,11 +21,13 @@ So the app offers two main unique features:
 ![home](https://i.ibb.co/1fBR23b/Screenshot-100.png)
 ![boxdetails](https://i.ibb.co/99PhTgy/Screenshot-99.png)
 ![deposit](https://i.ibb.co/zfYv6d6/Screenshot-101.png)
-![desktop2](/client/src/assets/images/readMe/desktop2.png)
 *  ### mobile 
 ![history](https://i.ibb.co/DR2mvfh/Screenshot-102.png)
 ![boxes List](https://i.ibb.co/C1KmL3s/Screenshot-103.png)
 ![new box](https://i.ibb.co/RQcPzVd/Screenshot-104.png)
+<img src="https://i.ibb.co/DR2mvfh/Screenshot-102.png" width="50%">
+<img src="https://i.ibb.co/C1KmL3s/Screenshot-103.png" width="50%">
+<img src="https://i.ibb.co/C1KmL3s/Screenshot-103.png" width="50%">
 
 ## Front-End 
 ### technologies
