@@ -12,8 +12,10 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./mainBtnsD.scss";
 
 function MainButtons({ value, boxId }) {
+
   const user = useSelector(selectCurrentUser);
   const location = useLocation();
+  const navigate = useNavigate() ; 
   console.log(location);
   //const from = location.state?.from?.pathname;
   const from = `../../BoxesList`;
@@ -40,7 +42,6 @@ function MainButtons({ value, boxId }) {
   };
 
   //const isAdmin = checkId(user._id, box.adminId);
-  const navigate = useNavigate();
   return (
     <div className="depositInnerBtns">
       <div
@@ -54,6 +55,7 @@ function MainButtons({ value, boxId }) {
         className={`mainBtns columnFlex ${
           isLoading ? "disabled" : "hoverable"
         } `}
+        onClick={()=>navigate(-1)}
       >
         <FontAwesomeIcon icon={faTrashCan} />
         Cancel

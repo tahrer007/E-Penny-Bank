@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import RandomDeposit from "components/deposit/randomDeposit/RandomDeposit";
 import ExactDeposit from "components/deposit/exactDeposit/ExactDeposit";
 import { useParams } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import MainButtons from "components/deposit/mainButtons/MainButtons";
@@ -16,9 +16,7 @@ const Deposit = () => {
   const location = useLocation();
   const { box } = location.state;
   const [type, setType] = useState(RANDOM);
-  //const onChangeSelection = (e) => setRandomSlected(!randomSelected);
   const [value, setValue] = useState(null);
-  //TODO:remove from the first time value
   const { theme } = useUserInfo();
   const onChangeSelection = (e) => {
     setType(e.target.value);
