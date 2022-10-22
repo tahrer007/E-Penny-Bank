@@ -40,7 +40,15 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
         method: "PATCH",
         body: details,
       }),
-      invalidatesTags: (result, error, arg) => [{ type: "Box", id: arg.id }],
+      invalidatesTags: (result, error, arg) => {
+        console.log("Arg", arg);
+        console.log("results ", result);
+
+        return [
+          { type: "Box", id: arg.id },
+          { type: "User", rewards: arg.rewards + 1 },
+        ];
+      },
     }),
   }),
 });
@@ -58,9 +66,8 @@ export const selectBoxesResult =
   (boxesResult) => boxesResult.data
 );*/
 
-
-
-export const selectBoxesData = (state, userId) => extendedApiSlice.endpoints.getBoxesByUserId.select(userId)(state)?.data ?? {};
+export const selectBoxesData = (state, userId) =>
+  extendedApiSlice.endpoints.getBoxesByUserId.select(userId)(state)?.data ?? {};
 //getSelectors creates these selectors and we rename them with aliases using destructuring
 export const {
   selectAll: selectAllBoxes,

@@ -31,6 +31,15 @@ body {
   @media (orientation: landScape) and (max-width: $landScapeWidth) {
     font-size: $fontSizeMobile;
   }
+
+  @media screen and (max-width: 995px), 
+       screen and (max-height: 700px) {
+        font-size: $fontSizeMobile;
+}
+
+  @media (orientation: landScape) and (max-width: 920px) {
+    font-size: $fontSizeMobile;
+  }
 }
 .light {
   position: relative;
@@ -109,7 +118,6 @@ a:-webkit-any-link {
     background-color: $mainClickableBgd;
     outline: 1px solid slategrey;
   }
-  
 }
 
 .dark {
@@ -117,6 +125,4 @@ a:-webkit-any-link {
     background-color: $mainClickableBgdDark;
     outline: 1px solid slategrey;
   }
-  
 }
-

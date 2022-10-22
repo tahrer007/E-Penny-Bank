@@ -11,7 +11,7 @@ const Public = () => {
       <header>
         <SvgLogo />
       </header>
-      <main>
+      <main className="columnFlex">
         <h1 className="text">Welcome to E-Penny Bank</h1>
         like real penny bank, Start saving now and get surprised by how much you
         save :)

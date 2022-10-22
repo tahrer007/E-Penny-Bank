@@ -9,6 +9,7 @@ import { selectCurrentUser } from "features/auth/authSlice";
 import { useDepositMutation } from "features/boxes/boxesSlice";
 import { useNavigate } from "react-router-dom";
 
+
 function MainButtons({ value, boxId }) {
   const user = useSelector(selectCurrentUser);
   const navigate = useNavigate();

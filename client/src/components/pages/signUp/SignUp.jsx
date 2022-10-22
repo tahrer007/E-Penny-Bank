@@ -11,7 +11,6 @@ import { useSignupMutation } from "features/auth/authApiSlice";
 import useUserInfo from "hooks/useUserInfo";
 //TODO :rector to shorter / reusable component 
 import "./SignUp";
-const SIGNUP_URL = "auth/signup";
 const SignUp = () => {
   const userRef = useRef();
   const errRef = useRef();

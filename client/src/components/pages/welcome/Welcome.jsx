@@ -1,7 +1,4 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { selectCurrentUser } from "features/auth/authSlice";
-import { Link, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import { extendedApiSlice } from "features/users/userSlice";
 import { useGetBoxesByUserIdQuery } from "features/boxes/boxesSlice";
 import { store } from "app/store";
@@ -9,7 +6,6 @@ import Spinner from "components/spinner/Spinner";
 import Error from "components/error/Error";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import "./welcome.scss";
 import HomeBody from "components/homeBody/HomeBody";
 import { changeDateFormate } from "utils/dateAndTimeFormate";
 import Header from "components/header/Header";
