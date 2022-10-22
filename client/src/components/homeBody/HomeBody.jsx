@@ -16,9 +16,8 @@ import {
 import useUserInfo from "hooks/useUserInfo";
 
 function HomeBody() {
-  const {user,theme ,token }= useUserInfo();
+  const { user, theme, token } = useUserInfo();
   const navigate = useNavigate();
-  
 
   console.log(theme);
 
@@ -27,7 +26,10 @@ function HomeBody() {
 
   return (
     <div className="innerButtonsWrapper homeMainBody">
-      <div className="mainBtns columnFlex hoverable">
+      <div
+        className="mainBtns columnFlex hoverable"
+        onClick={() => navigate("../profile")}
+      >
         <FontAwesomeIcon icon={faUser} />
         Profile
       </div>

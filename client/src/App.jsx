@@ -14,6 +14,7 @@ import Deposit from "./components/pages/deposit/Deposit";
 import AddUser from "components/pages/addUser/AddUser";
 import BoxesList from "components/pages/boxesList/List/BoxesList";
 import DepositsLogs from "components/pages/dipositsLog/DepositsLogs";
+import Profile from "components/pages/profile/Profile";
 import { useSelector, useDispatch } from "react-redux";
 import { selectedCurrentMode } from "features/theme/themeSlice";
 import useUserInfo from "hooks/useUserInfo";
@@ -44,6 +45,7 @@ function App() {
             <Route element={<RequireAuth />}>
               <Route path="newBox" element={<CreateBox />} />
               <Route path="welcome" element={<Welcome />} />
+              <Route path="profile" element={<Profile />} />
               <Route path="addUser" element={<AddUser />} />
               <Route path="BoxesList" element={<BoxesList />} />
 

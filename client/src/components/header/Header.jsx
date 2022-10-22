@@ -12,6 +12,7 @@ const titles = {
   boxesList: "Boxes list",
   deposit: "Lets save money",
   newBox: "Create New Box",
+  profile :"Profile"
 };
 
 function Header({ text, from }) {
