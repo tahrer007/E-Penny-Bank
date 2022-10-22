@@ -12,6 +12,7 @@ import {
   faSun,
   faMoon,
   faRightFromBracket,
+  faRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import useUserInfo from "hooks/useUserInfo";
 
@@ -50,7 +51,14 @@ function HomeBody() {
         <FontAwesomeIcon icon={theme === "dark" ? faMoon : faSun} />
         Theme
       </div>
-      <div></div>
+      <div
+        className="mainBtns columnFlex hoverable"
+        onClick={() => navigate("../box/new")}
+      >
+        <FontAwesomeIcon icon={faRightToBracket} />
+        Join
+      </div>
+
       <div
         className="mainBtns columnFlex hoverable"
         onClick={() => dispatch(logOut({ user, token }))}

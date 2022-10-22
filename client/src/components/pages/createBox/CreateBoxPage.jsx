@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
 import { BOXES_TYPES, PRIVATE_BOX, SHARED_BOX } from "constants/const";
 import SharedBoxDetails from "components/boxDetails/sharedBoxDetails/SharedBoxDetails";
 import { useAddNewBoxMutation } from "features/boxes/boxesSlice";
@@ -8,12 +7,12 @@ import { selectCurrentUser } from "features/auth/authSlice";
 import Label from "components/reusables/form/label/Label";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudArrowUp, faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import { selectedCurrentMode } from "features/theme/themeSlice";
-import useTheme from "hooks/useUserInfo";
+import useUserInfo from "hooks/useUserInfo";
+
 import Header from "components/header/Header";
 import "./createBox.scss";
 const CreateBox = () => {
-  const user = useSelector(selectCurrentUser);
+  const { theme, user } = useUserInfo();
   const navigate = useNavigate();
   const userRef = useRef();
   const errRef = useRef();
@@ -23,14 +22,10 @@ const CreateBox = () => {
   const [userFocus, setUserFocus] = useState(false);
   const [boxType, setBoxType] = useState(PRIVATE_BOX);
   const [sharedBoxDetails, setSharedBoxDetails] = useState({});
-  const theme = useTheme();
-
 
   useEffect(() => {
     setValidName(boxName ? true : false);
   }, [boxName]);
-
-  
 
   const canSave = Boolean(boxName) && !isLoading;
 
@@ -59,7 +54,7 @@ const CreateBox = () => {
 
         setBoxName("");
         setSharedBoxDetails({});
-        navigate("/welcome");
+        navigate(-1);
       } catch (err) {
         console.error("Failed to save the post", err);
       }
@@ -69,7 +64,7 @@ const CreateBox = () => {
   return (
     <section className={`innerContainer createBoxSection ${theme}`}>
       <header>
-        <Header from ={"newBox"}/>
+        <Header from={"newBox"} />
         <div className="otherDetails">
           <div className="optionWrapper">
             <input
@@ -126,13 +121,20 @@ const CreateBox = () => {
 
         <div className="secBtnWrapper">
           <div
-            className={`mainBtns columnFlex ${canSave ?"hoverable" :"disabled"} `}
+            className={`mainBtns columnFlex ${
+              canSave ? "hoverable" : "disabled"
+            } `}
             onClick={onCreateBoxClick}
           >
             <FontAwesomeIcon icon={faCloudArrowUp} />
             Save
           </div>
-          <div className={`mainBtns columnFlex  ${isLoading ?"disabled" :"hoverable"} `} onClick={()=>navigate("/welcome")}>
+          <div
+            className={`mainBtns columnFlex  ${
+              isLoading ? "disabled" : "hoverable"
+            } `}
+            onClick={() => navigate("/welcome")}
+          >
             <FontAwesomeIcon icon={faTrashCan} />
             Cancel
           </div>

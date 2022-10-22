@@ -12,7 +12,6 @@ const SavingBox = () => {
   const location = useLocation();
   const { box } = location.state;
   const historyArrLength = box.depositsHistory.length;
-  const firstDeposit = box.depositsHistory[historyArrLength - 1]?.deposit;
   const { theme } = useUserInfo();
 
   if (!box) return;
