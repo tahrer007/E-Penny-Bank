@@ -1,6 +1,6 @@
  
 
-<img src="/client/src/assets/images/logo.png" width="100" height="100">
+<img src="/client/src/assets/images/logo.png" width="300" height="200">
 # e-Penny Bank
 
 ## About the App
