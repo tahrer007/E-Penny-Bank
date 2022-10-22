@@ -1,5 +1,6 @@
  
-![logo](/client/src/assets/images/logo.png "Optional Title")
+
+<img src="/client/src/assets/images/logo.png" width="100" height="100">
 # e-Penny Bank
 
 ## About the App
