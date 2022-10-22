@@ -15,14 +15,7 @@ const SavingBox = () => {
   const firstDeposit = box.depositsHistory[historyArrLength - 1]?.deposit;
   const { theme } = useUserInfo();
 
-  useEffect(() => {
-    console.log(box);
-  }, [box]);
-
   if (!box) return;
-
-  const getSharedBoxDetails = ({ boxKey, isAllowedToReveal }) =>
-    console.log(boxKey, isAllowedToReveal);
 
   return (
     <section className={`innerContainer boxdetailsSection ${theme}`}>
@@ -44,11 +37,7 @@ const SavingBox = () => {
       </header>
       <main>
         {!box.type ? null : (
-          <SharedBoxDetails
-            newBox={false}
-            getSharedBoxDetails={getSharedBoxDetails}
-            boxDetails={box}
-          />
+          <SharedBoxDetails newBox={false} boxDetails={box} />
         )}
       </main>
       <footer>

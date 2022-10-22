@@ -4,6 +4,13 @@ import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { selectCurrentUser } from "features/auth/authSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { selectUserById } from "features/users/userSlice";
+import { checkId } from "utils/helper";
+import { useSelector } from "react-redux";
+import { changeDateFormate } from "utils/dateAndTimeFormate";
+import Header from "components/header/Header";
+import useUserInfo from "hooks/useUserInfo";
 import {
   faPiggyBank,
   faUser,
@@ -13,12 +20,6 @@ import {
   faEye,
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
-import { selectUserById } from "features/users/userSlice";
-import { checkId } from "utils/helper";
-import { useSelector } from "react-redux";
-import { changeDateFormate } from "utils/dateAndTimeFormate";
-import Header from "components/header/Header";
-import useUserInfo from "hooks/useUserInfo";
 function DepositsLogs() {
   const user = useSelector(selectCurrentUser);
   const { boxId } = useParams();

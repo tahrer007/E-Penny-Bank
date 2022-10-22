@@ -8,7 +8,7 @@ import "./profile.scss";
 
 export default function Profile() {
   const { user, theme } = useUserInfo();
-  console.log(user);
+ 
 
   return (
     <section className={`innerContainer ${theme}`}>

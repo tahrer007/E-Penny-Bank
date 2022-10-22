@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { selectCurrentUser } from "features/auth/authSlice";
 import { useGetBoxesByUserIdQuery } from "features/boxes/boxesSlice";
 import { selectedCurrentMode } from "features/theme/themeSlice";
-import useUserInfo from "hooks/useUserInfo"; 
+import useUserInfo from "hooks/useUserInfo";
 import Spinner from "components/spinner/Spinner";
 import Error from "components/error/Error";
 import BoxListItem from "../item/BoxListItem";
@@ -26,7 +26,7 @@ function BoxesListPage() {
     isError,
     error,
   } = useGetBoxesByUserIdQuery(user._id);
-  const {theme} =  useUserInfo();
+  const { theme } = useUserInfo();
 
   let content;
 
@@ -34,7 +34,7 @@ function BoxesListPage() {
     return <Spinner />;
   } else if (isSuccess) {
     const { ids, entities } = boxesForUser;
-    console.log(boxesForUser);
+
     content = (
       <>
         <header>
@@ -103,7 +103,11 @@ function BoxesListPage() {
     <Error />;
   }
 
-  return <section className={`innerContainer boxesListPage ${theme}`}>{content}</section>;
+  return (
+    <section className={`innerContainer boxesListPage ${theme}`}>
+      {content}
+    </section>
+  );
 }
 
 export default BoxesListPage;

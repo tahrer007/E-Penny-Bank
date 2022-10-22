@@ -19,8 +19,6 @@ function HomeBody() {
   const { user, theme, token } = useUserInfo();
   const navigate = useNavigate();
 
-  console.log(theme);
-
   const dispatch = useDispatch();
   const handleCheck = () => dispatch(toggleDarkMode());
 

@@ -9,12 +9,15 @@
     justify-content: space-around;
     //background-color: $innerMainBg;
     display: grid;
-    grid-template-columns: 20% 70%;
+    grid-template-columns: 30% 70%;
     align-items: center;
     .keyBox {
+      width: 100%;
       display: grid;
-      grid-template-columns: 60% 40%;
+      grid-template-columns: 2fr 1fr;
+
       padding: 0.2em;
+      text-align: center;
       .shareIcon {
         display: block;
         cursor: pointer;
@@ -40,8 +43,6 @@
   }
 }
 
-#newBox {
-}
 #details {
   height: 100%;
   display: grid;

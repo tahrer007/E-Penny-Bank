@@ -1,40 +1,45 @@
 import React, { useEffect, useState } from "react";
 import { makeKey, checkId } from "utils/helper";
-import { SHARED_BOX } from "constants/const";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "features/auth/authSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShareFromSquare } from "@fortawesome/free-solid-svg-icons";
+import ShareLink from "./shareLink/ShareLink";
 import UsersList from "./usersList/UsersList";
+
 import "./sharedBoxDetails.scss";
 
-const SharedBoxDetails = ({ newBox, boxDetails, getSharedBoxDetails }) => {
+const SharedBoxDetails = ({
+  newBox,
+  boxDetails,
+  getSharedBoxDetails,
+  disable,
+}) => {
   const [boxKey, setBoxKey] = useState(boxDetails?.boxKey || makeKey());
-  const user = useSelector(selectCurrentUser);
-
+  //const user = useSelector(selectCurrentUser);
   const [isAllowedToReveal, setIsAllowedToReveal] = useState(
     boxDetails?.isAllowedToReveal || false
   );
-  let isAdmin = checkId(user._id, boxDetails?.adminId);
-
+  const [showShareWindow, setShowShareWindow] = useState(false);
   useEffect(() => {
-    if (!boxKey) return;
+    if (!boxKey || !newBox) return;
     getSharedBoxDetails({ boxKey, isAllowedToReveal });
   }, [isAllowedToReveal]);
 
-  const share = () => {
-    if (newBox) return;
-  };
+  const handleshareWindow = () => setShowShareWindow(!showShareWindow);
 
   return (
-    <div className={"sharedBoxDetailsWrapper"}id ={newBox ? "newBox" : "details"}>
+    <div
+      className={"sharedBoxDetailsWrapper"}
+      id={newBox ? "newBox" : "details"}
+    >
       <div className="details">
         <div className="keyBox">
-          <div className="key">{boxKey} </div>
+          <div className="key">Box key: {boxKey} </div>
           {!newBox && (
             <FontAwesomeIcon
               icon={faShareFromSquare}
-              onClick={() => console.log("Test")}
+              onClick={handleshareWindow}
               className="shareIcon"
             />
           )}
@@ -44,9 +49,8 @@ const SharedBoxDetails = ({ newBox, boxDetails, getSharedBoxDetails }) => {
             <input
               type="checkbox"
               checked={isAllowedToReveal}
-              //value={isAllowedToReveal}
               onChange={() => setIsAllowedToReveal(!isAllowedToReveal)}
-              disabled={!newBox && !isAdmin}
+              disabled={!newBox}
               className="cbx"
             />
             allow users to reveal deposits and history
@@ -58,6 +62,9 @@ const SharedBoxDetails = ({ newBox, boxDetails, getSharedBoxDetails }) => {
           <h3 className="subtitle">Other users </h3>
           <UsersList boxDetails={boxDetails} />
         </div>
+      )}
+      {!showShareWindow && (
+        <ShareLink boxKey={boxKey} hideWindow={handleshareWindow} />
       )}
     </div>
   );
