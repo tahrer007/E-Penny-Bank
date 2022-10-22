@@ -13,7 +13,7 @@ const SavingBox = () => {
   const { box } = location.state;
   const historyArrLength = box.depositsHistory.length;
   const firstDeposit = box.depositsHistory[historyArrLength - 1]?.deposit;
-  const {theme} = useUserInfo();
+  const { theme } = useUserInfo();
 
   useEffect(() => {
     console.log(box);
@@ -27,8 +27,7 @@ const SavingBox = () => {
   return (
     <section className={`innerContainer boxdetailsSection ${theme}`}>
       <header>
-        
-        <Header text ={box.boxName}/>
+        <Header text={box.boxName} />
         <div className="otherDetails">
           <div className="dates">
             created at : {changeDateFormate(box.createdAt)}
@@ -44,15 +43,7 @@ const SavingBox = () => {
         </div>
       </header>
       <main>
-        {!box.type ? (
-          <div className="lastUpdate">
-            {firstDeposit
-              ? `Last update at : ${firstDeposit}`
-              : "you haven't saved yet"}
-            {/*//TODO : change the time formte 
-        // {*/}
-          </div>
-        ) : (
+        {!box.type ? null : (
           <SharedBoxDetails
             newBox={false}
             getSharedBoxDetails={getSharedBoxDetails}
