@@ -16,15 +16,15 @@ So the app offers two main unique features:
 
 ## From the App
 ### Dark and light theme
-* ## desktop
+* #### desktop
 
 ![home](https://i.ibb.co/1fBR23b/Screenshot-100.png)
 ![boxdetails](https://i.ibb.co/99PhTgy/Screenshot-99.png)
 ![deposit](https://i.ibb.co/zfYv6d6/Screenshot-101.png)
-*  ## mobile 
-<img src="https://i.ibb.co/DR2mvfh/Screenshot-102.png" width="50%" height="300px">
-<img src="https://i.ibb.co/C1KmL3s/Screenshot-103.png" width="50%" height="300px">
-<img src="https://i.ibb.co/C1KmL3s/Screenshot-104.png" width="50%" height="300px">
+*  #### mobile 
+<img src="https://i.ibb.co/DR2mvfh/Screenshot-102.png" width="30%"  >
+<img src="https://i.ibb.co/C1KmL3s/Screenshot-103.png" width="30%">
+<img src="https://i.ibb.co/C1KmL3s/Screenshot-104.png" width="30%" >
 
 ## Front-End 
 ### technologies
