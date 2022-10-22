@@ -35,7 +35,8 @@ const SharedBoxDetails = ({
             <FontAwesomeIcon
               icon={faShareFromSquare}
               onClick={handleshareWindow}
-              className="shareIcon"
+              className="shareIcon hoverable"
+              style={{ backgroundColor : "transparent"}}
             />
           )}
         </div>

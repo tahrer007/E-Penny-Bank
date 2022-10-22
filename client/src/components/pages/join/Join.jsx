@@ -6,12 +6,10 @@ import useUserInfo from "hooks/useUserInfo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCloudArrowUp, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { useAddUserMutation } from "features/boxes/boxesSlice";
-import { capitalizeAll } from "utils/helper"; //welcome
-
-
+import { capitalizeAll } from "utils/helper"; 
 import Header from "components/header/Header";
 import "./join.scss";
-import { capitalize } from "lodash";
+
 
 const JoinBox = () => {
   const { theme, user } = useUserInfo();
@@ -45,7 +43,11 @@ const JoinBox = () => {
         }
         console.log(box);
 
-       // navigate("../BoxesList");
+        setTimeout(() => {
+          navigate("../welcome");
+        }, 3000);
+
+       // 
       } catch (err) {
         setMsg("Failed to particpate !! ");
       }
