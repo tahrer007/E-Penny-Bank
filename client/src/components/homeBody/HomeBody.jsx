@@ -53,7 +53,7 @@ function HomeBody() {
       </div>
       <div
         className="mainBtns columnFlex hoverable"
-        onClick={() => navigate("../box/new")}
+        onClick={() => navigate("../joinBox")}
       >
         <FontAwesomeIcon icon={faRightToBracket} />
         Join

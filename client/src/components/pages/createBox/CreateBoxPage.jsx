@@ -44,13 +44,14 @@ const CreateBox = () => {
 
     if (canSave) {
       try {
-        await addNewBox({
+        const box = await addNewBox({
           boxName,
           type: boxType,
           boxKey,
           isAllowedToReveal,
           userId: user._id,
         }).unwrap();
+        console.log(box);
 
         setBoxName("");
         setSharedBoxDetails({});

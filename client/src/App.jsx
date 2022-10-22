@@ -11,12 +11,11 @@ import Welcome from "./components/pages/welcome/Welcome";
 import BoxDetails from "./components/pages/boxDetails/BoxDetails";
 import CreateBox from "./components/pages/createBox/CreateBoxPage";
 import Deposit from "./components/pages/deposit/Deposit";
-import AddUser from "components/pages/addUser/AddUser";
+//import AddUser from "components/pages/addUser/AddUser";
 import BoxesList from "components/pages/boxesList/List/BoxesList";
 import DepositsLogs from "components/pages/dipositsLog/DepositsLogs";
 import Profile from "components/pages/profile/Profile";
-import { useSelector, useDispatch } from "react-redux";
-import { selectedCurrentMode } from "features/theme/themeSlice";
+import JoinBox from "components/pages/join/Join";
 import useUserInfo from "hooks/useUserInfo";
 
 //import ThemButton from "components/reusables/themBtn/ThemButton";
@@ -46,7 +45,7 @@ function App() {
               <Route path="newBox" element={<CreateBox />} />
               <Route path="welcome" element={<Welcome />} />
               <Route path="profile" element={<Profile />} />
-              <Route path="addUser" element={<AddUser />} />
+              <Route path="joinBox" element={<JoinBox />} />
               <Route path="BoxesList" element={<BoxesList />} />
 
               <Route path="box">
@@ -54,6 +53,7 @@ function App() {
                 <Route path=":boxId" element={<BoxDetails />} />
                 <Route path="deposit/:boxId" element={<Deposit />} />
                 <Route path="logs/:boxId" element={<DepositsLogs />} />
+                
               </Route>
             </Route>
           </Route>

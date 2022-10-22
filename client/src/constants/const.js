@@ -26,6 +26,7 @@ const INSTRACTIONS = {
   confirmPwd: ["Must match the first password input field."],
   name :[" 4 to 24 characters."] ,
   exactDeposit :["please add amount between 1 to 100"] , 
+  boxKey :[" 5 characters."]
 };
 
 export {
