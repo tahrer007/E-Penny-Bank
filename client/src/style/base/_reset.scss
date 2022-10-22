@@ -29,16 +29,17 @@ body {
     font-size: $fontSizeMobile;
   }
   @media (orientation: landScape) and (max-width: $landScapeWidth) {
-    font-size: $fontSizeMobile;
+    font-size: $fontSizeMobileLandscape;
   }
 
-  @media screen and (max-width: 995px), 
+  /*@media screen and (max-width: 995px), 
+
        screen and (max-height: 700px) {
         font-size: $fontSizeMobile;
-}
+}*/
 
   @media (orientation: landScape) and (max-width: 920px) {
-    font-size: $fontSizeMobile;
+    font-size: $fontSizeMobileLandscape;
   }
 }
 .light {
