@@ -22,9 +22,9 @@ So the app offers two main unique features:
 ![boxdetails](https://i.ibb.co/99PhTgy/Screenshot-99.png)
 ![deposit](https://i.ibb.co/zfYv6d6/Screenshot-101.png)
 *  #### mobile 
-<img src="https://i.ibb.co/DR2mvfh/Screenshot-102.png" width="30%"  >
-<img src="https://i.ibb.co/C1KmL3s/Screenshot-103.png" width="30%">
-<img src="https://i.ibb.co/C1KmL3s/Screenshot-104.png" width="30%" >
+<img src="https://i.ibb.co/DR2mvfh/Screenshot-102.png" width="40%"  >
+<img src="https://i.ibb.co/C1KmL3s/Screenshot-103.png" width="40%">
+<img src="https://i.ibb.co/C1KmL3s/Screenshot-104.png" width="40%" >
 
 ## Front-End 
 ### technologies
