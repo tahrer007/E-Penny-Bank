@@ -1,7 +1,7 @@
  
-
+<p align="center">
 <img src="/client/src/assets/images/logo.png" width="50%">
-
+</p>
 
 ## About the App
 Since becoming a cashless person, I miss the experience of saving in a piggy bank.
