@@ -1,6 +1,6 @@
  
 <p align="center">
-<img src="/client/src/assets/images/logo.png" width="50%">
+<img src="/client/src/assets/images/logo.png" width="25%">
 </p>
 
 ## About the App
