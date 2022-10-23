@@ -57,8 +57,8 @@ const LogIn = () => {
       setPwd("");
       navigate(from);
     } catch (err) {
+    
       if (!err?.originalStatus) {
-        // isLoading: true until timeout occurs
         setErrMsg("No Server Response");
       } else if (err.originalStatus === 400) {
         setErrMsg("Missing Username or Password");
@@ -116,6 +116,9 @@ const LogIn = () => {
           onBlur={() => setPwdFocus(false)}
         />
         <Instructions className={pwdFocus && pwd && !validPwd} id="password" />
+        <p>
+        Guest account: guest@guest.com  {' '} Aa!12345
+        </p>
         <p
         ref={errRef}
         className={errMsg ? "errmsg" : "offscreen"}

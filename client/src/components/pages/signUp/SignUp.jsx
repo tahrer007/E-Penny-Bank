@@ -9,7 +9,7 @@ import { PWD_REGEX } from "constants/const";
 import { textLength } from "utils/helper";
 import { useSignupMutation } from "features/auth/authApiSlice";
 import useUserInfo from "hooks/useUserInfo";
-//TODO :rector to shorter / reusable component 
+//TODO :rector to shorter / reusable component
 import "./SignUp";
 const SignUp = () => {
   const userRef = useRef();
@@ -105,141 +105,128 @@ const SignUp = () => {
   };
 
   return (
-    <>
-      {success ? (
-        <section className={`pageContainer signupPage ${theme}`}>
-          <h1>Success!</h1>
-          <p>
-            <a href="#">Log in</a>
-          </p>
-        </section>
-      ) : (
-        <section className={`innerContainer authPage  ${theme}`}>
-          <h1>Registor</h1>
-          <form>
-            <Label
-              labelName={"name: "}
-              htmlFor={"name"}
-              validInput={name}
-              invalidInput={!validName && name}
-            />
-            <input
-              type="text"
-              id="name"
-              onChange={(e) => setName(e.target.value)}
-              value={name}
-              ref={userRef}
-              required
-              aria-invalid={validName ? "false" : "true"}
-              aria-describedby="namenote"
-              onFocus={() => setNameFocus(true)}
-              onBlur={() => setMatchFocus(false)}
-              autoComplete="off"
-            />
-            <Instructions
-              className={nameFocus && name && !validName}
-              id="name"
-            />
-            <Label
-              labelName={"email :"}
-              htmlFor={"email"}
-              validInput={validEmail}
-              invalidInput={!validEmail && email}
-            />
-            <input
-              type="text"
-              id="username"
-              autoComplete="off"
-              onChange={(e) => setUser(e.target.value)}
-              value={email}
-              required
-              aria-invalid={validEmail ? "false" : "true"}
-              aria-describedby="uidnote"
-              onFocus={() => setEmailFocus(true)}
-              onBlur={() => setEmailFocus(false)}
-            />
-            <Instructions
-              className={emailFocus && email && !validEmail}
-              id="username"
-            />
-            <Label
-              labelName={"Password: "}
-              htmlFor={"password"}
-              validInput={validPwd}
-              invalidInput={!validPwd && pwd}
-            />
-            <input
-              type="password"
-              id="password"
-              onChange={(e) => setPwd(e.target.value)}
-              value={pwd}
-              required
-              autoComplete="off"
-              aria-invalid={validPwd ? "false" : "true"}
-              aria-describedby="pwdnote"
-              onFocus={() => setPwdFocus(true)}
-              onBlur={() => setPwdFocus(false)}
-            />
-            <Instructions
-              content={"pwd"}
-              className={pwdFocus && !validPwd && pwd}
-              id={"password"}
-            />
-            <Label
-              labelName={"Confirm Password: "}
-              htmlFor={"pwdConfirm"}
-              validInput={validMatch && matchPwd }
-              invalidInput={!validMatch && matchPwd }
-            />
-            <input
-              type="password"
-              id="confirm_pwd"
-              onChange={(e) => setMatchPwd(e.target.value)}
-              value={matchPwd}
-              required
-              aria-invalid={validPwd ? "false" : "true"}
-              aria-describedby="pwdnote"
-              onFocus={() => setPwdFocus(true)}
-              onBlur={() => setMatchFocus(false)}
-              autoComplete="off"
-            />
-            <Instructions
-              content={"confirmnote"}
-              className={matchFocus && !matchPwd}
-              id={"confirmPwd"}
-            />
+    <section className={`innerContainer authPage  ${theme}`}>
+      <h1>Registor</h1>
+      <form>
+        <Label
+          labelName={"name: "}
+          htmlFor={"name"}
+          validInput={name}
+          invalidInput={!validName && name}
+        />
+        <input
+          type="text"
+          id="name"
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+          ref={userRef}
+          required
+          aria-invalid={validName ? "false" : "true"}
+          aria-describedby="namenote"
+          onFocus={() => setNameFocus(true)}
+          onBlur={() => setMatchFocus(false)}
+          autoComplete="off"
+        />
+        <Instructions className={nameFocus && name && !validName} id="name" />
+        <Label
+          labelName={"email :"}
+          htmlFor={"email"}
+          validInput={validEmail}
+          invalidInput={!validEmail && email}
+        />
+        <input
+          type="text"
+          id="username"
+          autoComplete="off"
+          onChange={(e) => setUser(e.target.value)}
+          value={email}
+          required
+          aria-invalid={validEmail ? "false" : "true"}
+          aria-describedby="uidnote"
+          onFocus={() => setEmailFocus(true)}
+          onBlur={() => setEmailFocus(false)}
+        />
+        <Instructions
+          className={emailFocus && email && !validEmail}
+          id="username"
+        />
+        <Label
+          labelName={"Password: "}
+          htmlFor={"password"}
+          validInput={validPwd}
+          invalidInput={!validPwd && pwd}
+        />
+        <input
+          type="password"
+          id="password"
+          onChange={(e) => setPwd(e.target.value)}
+          value={pwd}
+          required
+          autoComplete="off"
+          aria-invalid={validPwd ? "false" : "true"}
+          aria-describedby="pwdnote"
+          onFocus={() => setPwdFocus(true)}
+          onBlur={() => setPwdFocus(false)}
+        />
+        <Instructions
+          content={"pwd"}
+          className={pwdFocus && !validPwd && pwd}
+          id={"password"}
+        />
+        <Label
+          labelName={"Confirm Password: "}
+          htmlFor={"pwdConfirm"}
+          validInput={validMatch && matchPwd}
+          invalidInput={!validMatch && matchPwd}
+        />
+        <input
+          type="password"
+          id="confirm_pwd"
+          onChange={(e) => setMatchPwd(e.target.value)}
+          value={matchPwd}
+          required
+          aria-invalid={validPwd ? "false" : "true"}
+          aria-describedby="pwdnote"
+          onFocus={() => setPwdFocus(true)}
+          onBlur={() => setMatchFocus(false)}
+          autoComplete="off"
+        />
+        <Instructions
+          content={"confirmnote"}
+          className={matchFocus && !matchPwd}
+          id={"confirmPwd"}
+        />
 
-            <p
-              ref={errRef}
-              className={errMsg ? "errmsg" : "offscreen"}
-              aria-live="assertive"
-            >
-              {errMsg}
-            </p>
+        <p
+          ref={errRef}
+          className={errMsg ? "errmsg" : "offscreen"}
+          aria-live="assertive"
+        >
+          {errMsg}
+        </p>
+        {success ?<p>Success! will redirect to login</p> : null }
+        <div className="singleBtnContainer">
+          <div
+            disabled={disableClick}
+            className={` mainBtns columnFlex hoverable ${
+              disableClick ? "disabled" : ""
+            }`}
+            onClick={handleSubmit}
+          >
+            {isLoading ? "Loading ...." : " Sign up"}
+          </div>
+        </div>
+       
+      </form>
 
-            <div className="singleBtnContainer">
-              <div
-                disabled={disableClick}
-                className={` mainBtns columnFlex hoverable ${
-                  disableClick ? "disabled" : ""
-                }`}
-                onClick={handleSubmit}
-              >
-                {isLoading ? "Loading ...." : " Sign up"}
-              </div>
-            </div>
-          </form>
-
-          <p>
-            Already registered?
-            <br />
-            <span className="line">
-              <a href="/login">Login</a>
-            </span>
-          </p>
-        </section>
-      )}
-    </>
+      <p>
+        Already registered?
+        <br />
+        <span className="line">
+          <a href="/login">Login</a>
+        </span>
+      </p>
+    </section>
   );
 };
 
