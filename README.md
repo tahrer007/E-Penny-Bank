@@ -38,8 +38,7 @@ So the app offers two main unique features:
 * express 
 * MongoDB Atlas Database
 * Jwt authentication
-### dataBase 
-* database relationships diagram
+### database relationships diagram
 ![diagram](https://i.ibb.co/9VMtc9B/diagram.png)
 
 
