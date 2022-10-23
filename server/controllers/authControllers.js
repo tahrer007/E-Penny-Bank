@@ -2,7 +2,6 @@ const bcrypt = require("bcrypt");
 require("dotenv").config();
 const User = require("../dataBase/models/users");
 const RefreshTokenModel = require("../dataBase/models/refreshToken");
-//import { createAccessToken, createRefreshToken } from "../utils/signTokens" ;
 const {
   createAccessToken,
   createRefreshToken,
