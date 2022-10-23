@@ -11,7 +11,7 @@ So the app offers two main unique features:
 * Shared boxes; the users can save with their family and friends.
 
 ###  Links 
-* 👉[Live demo](https://spot-it-web-2022.netlify.app/) 🐗
+* 👉[Live demo](https://e-penny-bank.netlify.app/) 💸
 * 👉[Backend repo](https://github.com/tahrer007/spot-it-server) 💻
 
 ## From the App
