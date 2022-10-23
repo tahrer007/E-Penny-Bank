@@ -12,7 +12,7 @@ So the app offers two main unique features:
 
 ###  Links 
 * 👉[Live demo](https://e-penny-bank.netlify.app/) 💸
-* 👉[Backend repo](https://github.com/tahrer007/spot-it-server) 💻
+
 
 ## From the App
 ### Dark and light theme
@@ -38,11 +38,7 @@ So the app offers two main unique features:
 * express 
 * MongoDB Atlas Database
 * Jwt authentication
-### dataBase 
-* database relationships diagram
+### database relationships diagram
 ![diagram](https://i.ibb.co/9VMtc9B/diagram.png)
 
-## Todos 
-* send notifications to subscribers 
-* provide help in emergency cases (chat app).
 
