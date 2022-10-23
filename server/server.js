@@ -28,7 +28,7 @@ const boxesRouter = require("./routes/boxesRouter");
 const usersRouter = require("./routes/usersRouter");
 const refreshRouter = require("./routes/refreshRouter");
 const logoutRouter = require("./routes/logoutRouter");
-const authRouter = require("./routes/authRouter");
+//const authRouter = require("./routes/authRouter");
 const registerRouter = require("./routes/registerRouter");
 
 app.get("/test", (req, res) => {
@@ -39,7 +39,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/signup", registerRouter);
-app.use("/login", authRouter);
+//app.use("/login", authRouter);
 app.use("/refresh", refreshRouter);
 app.use("/logout", logoutRouter);
 
