@@ -12,7 +12,7 @@ So the app offers two main unique features:
 
 ###  Links 
 * 👉[Live demo](https://e-penny-bank.netlify.app/) 💸
-* 👉[Backend repo](https://github.com/tahrer007/spot-it-server) 💻
+
 
 ## From the App
 ### Dark and light theme
