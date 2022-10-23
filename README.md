@@ -42,7 +42,4 @@ So the app offers two main unique features:
 * database relationships diagram
 ![diagram](https://i.ibb.co/9VMtc9B/diagram.png)
 
-## Todos 
-* send notifications to subscribers 
-* provide help in emergency cases (chat app).
 
