@@ -1,9 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setCredentials, logOut } from "features/auth/authSlice";
 
-//const baseUrl = "http://localhost:5000";
+//const baseUrl = "https://e-penny-bank.herokuapp.com"
 const baseUrl =
-  process.env.NODE_ENV === "production" ? "/" : "http://localhost:5000/";
+  process.env.NODE_ENV === "production"
+    ? "https://e-penny-bank.herokuapp.com"
+    : "http://localhost:5000/";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: baseUrl,
