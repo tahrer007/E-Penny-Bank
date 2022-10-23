@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./depositsLogs.scss";
 import { useParams } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useLocation ,useNavigate } from "react-router-dom";
 import { selectCurrentUser } from "features/auth/authSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -25,6 +25,8 @@ function DepositsLogs() {
   const { boxId } = useParams();
   const location = useLocation();
   const { box } = location.state;
+  const navigate = useNavigate();
+  if (!box) navigate("../../welcome");
   const { boxName, type, adminId, depositsHistory } = box;
   const [showAmount, setShowAmount] = useState(null);
   const {theme} = useUserInfo();

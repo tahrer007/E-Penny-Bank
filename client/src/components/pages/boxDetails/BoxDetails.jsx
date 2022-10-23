@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useUserInfo from "hooks/useUserInfo";
 import SharedBoxDetails from "components/boxDetails/sharedBoxDetails/SharedBoxDetails";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { changeDateFormate } from "utils/dateAndTimeFormate";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faUser, faUsers } from "@fortawesome/free-solid-svg-icons";
@@ -11,11 +11,13 @@ import Header from "components/header/Header";
 import "./boxDetails.scss";
 const SavingBox = () => {
   const location = useLocation();
+  const navigate=useNavigate() ; 
   const { box } = location.state;
+  if (!box) navigate("../../welcome");
   const historyArrLength = box.depositsHistory.length;
   const { theme } = useUserInfo();
 
-  if (!box) return;
+  
 
   return (
     <section className={`innerContainer boxdetailsSection ${theme}`}>

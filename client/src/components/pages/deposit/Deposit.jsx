@@ -14,7 +14,10 @@ import "./deposit.scss";
 const Deposit = () => {
   const { boxId } = useParams();
   const location = useLocation();
+
   const { box } = location.state;
+  const navigate = useNavigate();
+  if (!box) navigate("../../welcome");
   const [type, setType] = useState(RANDOM);
   const [value, setValue] = useState(null);
   const { theme } = useUserInfo();

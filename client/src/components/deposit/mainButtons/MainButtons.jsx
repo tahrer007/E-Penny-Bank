@@ -25,9 +25,9 @@ function MainButtons({ value, boxId }) {
           deposit: Number(value),
           userId: user._id,
         }).unwrap();
-        console.log(test);
+       
 
-        navigate(-1);
+        navigate("../../welcome");
       } catch (err) {
         console.error("Failed to save the post", err);
       }

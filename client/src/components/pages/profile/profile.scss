@@ -5,6 +5,7 @@
   grid-template-rows: repeat(5, 1fr);
   justify-content: center;
   margin: auto;
+  box-sizing: border-box;
 
   .pItem {
     display: grid;

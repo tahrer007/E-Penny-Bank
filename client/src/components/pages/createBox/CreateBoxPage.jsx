@@ -51,7 +51,6 @@ const CreateBox = () => {
           isAllowedToReveal,
           userId: user._id,
         }).unwrap();
-        console.log(box);
 
         setBoxName("");
         setSharedBoxDetails({});

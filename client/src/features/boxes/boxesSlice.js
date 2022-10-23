@@ -13,8 +13,8 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
       query: (id) => `/boxes/?userId=${id}`,
       transformResponse: (responseData) =>
         boxesAdapter.setAll(initialState, responseData),
-
       providesTags: (result, error, arg) => [
+        { type: "Box", id: "LIST" },
         ...result.ids.map((id) => ({ type: "Box", id })),
       ],
     }),
@@ -40,15 +40,11 @@ export const extendedApiSlice = apiSlice.injectEndpoints({
         method: "PATCH",
         body: details,
       }),
-      invalidatesTags: (result, error, arg) => {
-        console.log("Arg", arg);
-        console.log("results ", result);
 
-        return [
-          { type: "Box", id: arg.id },
-          { type: "User", rewards: arg.rewards + 1 },
-        ];
-      },
+      invalidatesTags: (result, error, arg) => [
+        { type: "Box", id: arg.id },
+        { type: "User" },
+      ],
     }),
   }),
 });
@@ -61,10 +57,8 @@ export const {
 export const selectBoxesResult =
   extendedApiSlice.endpoints.getBoxesByUserId.select();
 
-/*const selectBoxesData = createSelector(
-  selectBoxesResult,
-  (boxesResult) => boxesResult.data
-);*/
+export const getBoxForId = (state, id) =>
+  extendedApiSlice.endpoints.getBoxById.select(id)(state)?.data ?? {};
 
 export const selectBoxesData = (state, userId) =>
   extendedApiSlice.endpoints.getBoxesByUserId.select(userId)(state)?.data ?? {};
