@@ -12,6 +12,9 @@ So the app offers two main unique features:
 
 ###  Links 
 * 👉[Live demo](https://e-penny-bank.netlify.app/) 💸
+* guest account  : <br>
+email :guest@guest.com  
+password: Aa!12345
 
 
 ## From the App
